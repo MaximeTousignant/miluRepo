@@ -17,6 +17,7 @@ Le système des tôks est le système économique de l'Organisme de développeme
 - [`MILU.md`](MILU.md) — la graine canonique : identité, valeurs, architecture d'action économique. **Commence ici.**
 - [`docs/Mission.md`](docs/Mission.md) — ce que Milu fait : recherche, vulgarisation, diffusion.
 - [`docs/Organisation.md`](docs/Organisation.md) — ce qui vit dans ce repo, ce qui vit ailleurs, et pourquoi.
+- [`docs/Toks.md`](docs/Toks.md) — le système des tôks, mathématiquement : axiomes, équations, conséquences.
 - `docs/` — textes fondateurs (Morale, Progrès, Collaboration, Smoothop). *À venir.*
 - [`TODO.md`](TODO.md) — le chantier, en public : backlog, en cours, fait.
 - [`JOURNAL.md`](JOURNAL.md) — le journal de bord : axes de recherche et développement, datés, au fil de l'eau.

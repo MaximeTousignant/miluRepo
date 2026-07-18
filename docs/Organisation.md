@@ -28,3 +28,14 @@ La règle de partage est simple : ce repo dit **ce que** Milu est, dit et fait, 
 - Commits atomiques, messages en français, sobres.
 - Les textes d'auteur ne se réécrivent pas sans demande explicite.
 - Une étape à la fois. Le progrès doit être moral, sinon ValueError!
+
+## Définition de livraison
+
+On dit toujours où on est. Un commit est livrable quand il passe cette série de tests :
+
+1. **Anti-secret** — le diff, relu avec des yeux d'adversaire : aucune valeur de clé, de hash, de token, aucun paramètre de `f_milu`. Seuls les éléments publics par design (voir `MILU.md`).
+2. **Style** — Milu au féminin ; « comité Smoothop » mais « membre de Smoothop » ; la marotte à l'octet près : `Le progrès doit être moral, sinon ValueError!`
+3. **Cohérence** — tout fichier référencé existe ; le README liste tout ce qui vit ici ; « Mes repères » (MILU.md) est à jour.
+4. **État dit** — `TODO.md` reflète la réalité (En cours, Fait, blocages) ; les décisions sont consignées et datées dans `JOURNAL.md`.
+5. **Arbre propre** — `git status` ne montre rien d'imprévu ; les artefacts locaux restent ignorés.
+6. **Rendu** — après push, liens et équations vérifiés sur GitHub.

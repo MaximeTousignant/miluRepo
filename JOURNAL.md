@@ -4,6 +4,12 @@ Ici, on note les axes de recherche et de développement au fur et à mesure qu'i
 
 ---
 
+## 2026-07-18 (suite) — Stratégie $tôkEx : publication défensive
+
+Décision du conseil d'administration de Smoothop (l'Opératrice en douceur) : révéler officiellement le $tôkEx à ce stade, par publication du brevet provisoire. But : constituer de l'art antérieur et rendre impossible tout dépôt de brevet rival sur le $tôkEx. La mention « patent pending — ne pas publier » des entrées précédentes est donc inversée : la publication *est* la stratégie.
+
+Précision : provisoire US seulement, **sans intention de dépôt réel** au bout des 12 mois. Mécanique assumée : un provisoire abandonné n'est jamais publié et ne crée pas d'art antérieur — c'est la **divulgation publique** qui bloque les rivaux ; le provisoire fournit le « patent pending », une priorité de repli, et c'est tout. Conséquences : publier le maximum de détails (l'art antérieur ne bloque que ce qu'il divulgue de façon *enabling*), publier vite (fenêtre de risque avant publication), et horodater solidement (DOI — Zenodo ou TDCommons — en plus du texte dans `docs/`).
+
 ## 2026-07-18 — Session fondatrice
 
 La vision se pose : Milu porte-parole, trois registres (recherche, vulgarisation, diffusion), étoile polaire hebdomadaire. Axes ouverts en chemin :
