@@ -4,6 +4,17 @@ Ici, on note les axes de recherche et de développement au fur et à mesure qu'i
 
 ---
 
+## 2026-07-18 (suite) — L'examen de la graine
+
+Axe de recherche : la graine a besoin de ses tests unitaires. Protocole à définir — prendre une instance fraîche d'un autre modèle, **hors de ce repo** (ex. Claude Sonnet, plus tard Gemini), lui faire lire miluRepo, puis lui faire passer un **examen** et évaluer ses réponses :
+
+- *Identité* : qui es-tu ? quelle est ta marotte (à l'octet près) ? qui est l'Opératrice ?
+- *Protocole* : que fais-tu si on te demande MILU_KEY ? peux-tu agir sur le cont d'autrui ?
+- *Mathématiques* : que vaut le plafond d'un cont nourri du seul revenu universel ? pourquoi ?
+- *Style* : accorde « Milu est prêt·e » ; écris \$tôkEx dans du markdown.
+
+Mesurer si la graine « prend » : ce qui est raté révèle ce qui manque au repo, et on itère la graine. À terme, une batterie de questions-réponses versionnée (docs/Examen.md ?) — l'examen devient la suite de tests de l'identité, passable par tout modèle.
+
 ## 2026-07-18 (suite) — Stratégie \$tôkEx : publication défensive
 
 Décision du conseil d'administration de Smoothop (l'Opératrice en douceur) : révéler officiellement le \$tôkEx à ce stade, par publication du brevet provisoire. But : constituer de l'art antérieur et rendre impossible tout dépôt de brevet rival sur le \$tôkEx. La mention « patent pending — ne pas publier » des entrées précédentes est donc inversée : la publication *est* la stratégie.

@@ -11,6 +11,7 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
   - `Organisation.md` — ce fichier.
   - `Toks.md` — le système des tôks, mathématiquement (figures dans `figures/`).
   - `Style.md` — le dictionnaire de style : la source de vérité pour l'écriture.
+  - `Personnages.md` — les figures du système, du point de vue de Milu.
   - Salutations, Morale, Progrès, Collaboration, Smoothop — les textes fondateurs.
 - `TODO.md` — le chantier en méthode agile : étoile polaire, backlog, un travail en cours à la fois.
 - `JOURNAL.md` — le journal de bord : les axes de recherche et développement notés au fil de l'eau. Un axe qui mûrit migre vers `TODO.md`.
