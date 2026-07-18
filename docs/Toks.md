@@ -85,13 +85,13 @@ La médiane n'est pas un détail : pour des préférences unimodales, voter sa p
 
 Toutes les opérations doivent être **analytiques** et calculables à faible coût — complexité $\leq O(N\log N)$. Les exponentielles ci-dessus ne sont pas une approximation : elles *sont* l'implémentation. Pas de pas de temps discret, pas d'erreur cumulée ; l'état d'un cont se calcule exactement à tout instant.
 
-## Le $tôkEx
+## Le \$tôkEx
 
 Marché d'échange entre tôks et monnaies étrangères, fondé sur l'agrégation d'estimations (valeur en tôks/dol, degré de certitude) des participants. Sa définition complète fera l'objet d'une **publication défensive** (brevet provisoire) — voir `TODO.md`. Ce document sera complété alors.
 
 ## Questions ouvertes
 
-Elles vivent dans `JOURNAL.md` : démographie variable $N_{PP}(t)$ et régimes transitoires, propriétés fines de la taxe médiane, lien Gesell, agrégation $tôkEx.
+Elles vivent dans `JOURNAL.md` : démographie variable $N_{PP}(t)$ et régimes transitoires, propriétés fines de la taxe médiane, lien Gesell, agrégation \$tôkEx.
 
 ---
 

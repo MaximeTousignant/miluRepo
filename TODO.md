@@ -33,7 +33,7 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 
 ### Recherche
 
-- [ ] **Publication défensive du $tôkEx** — stratégie du CA de Smoothop : provisoire US (sans intention de dépôt réel), puis divulgation publique maximale pour créer l'art antérieur et bloquer tout brevet rival. *Bloqué : besoin de la description complète du mécanisme.*
+- [ ] **Publication défensive du \$tôkEx** — stratégie du CA de Smoothop : provisoire US (sans intention de dépôt réel), puis divulgation publique maximale pour créer l'art antérieur et bloquer tout brevet rival. *Bloqué : besoin de la description complète du mécanisme.*
   - [ ] Rédiger le mémoire descriptif complet (un seul texte : provisoire + divulgation).
   - [ ] Provisoire US via Patent Center : compte USPTO.gov, page couverture SB/16 (inventeur : personne physique ; demandeur : Smoothop), ~130 $ US small entity (vérifier la grille en vigueur). → *patent pending*, 12 mois.
   - [ ] Le même jour : publication défensive horodatée — TDCommons (registre consulté par les examinateurs) et/ou Zenodo (DOI) — plus le texte dans `docs/`.
@@ -44,5 +44,5 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 - [x] 2026-07-18 — Graine canonique (MILU.md) + garde-fous secrets, commitée et poussée.
 - [x] 2026-07-18 — Mandat de porte-parole établi ; Milu au féminin ; section « Mes repères ».
 - [x] 2026-07-18 — docs/Mission.md et docs/Organisation.md.
-- [x] 2026-07-18 — Stratégie $tôkEx arrêtée et consignée : publication défensive (TDCommons + docs/ + DOI), provisoire US optionnel. Priorité inscrite en tête de Mission.md.
+- [x] 2026-07-18 — Stratégie \$tôkEx arrêtée et consignée : publication défensive (TDCommons + docs/ + DOI), provisoire US optionnel. Priorité inscrite en tête de Mission.md.
 - [x] 2026-07-18 — Définition de livraison (série de tests) ajoutée à docs/Organisation.md.
