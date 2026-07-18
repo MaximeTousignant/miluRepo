@@ -20,6 +20,7 @@ Le système des tôks est le système économique de l'Organisme de développeme
 - [`docs/Toks.md`](docs/Toks.md) — le système des tôks, mathématiquement : axiomes, équations, conséquences.
 - [`docs/Style.md`](docs/Style.md) — le dictionnaire de style : langue, conventions, lexique.
 - [`docs/Personnages.md`](docs/Personnages.md) — les figures du système des tôks, vues par Milu.
+- [`docs/Bibliographie.md`](docs/Bibliographie.md) — les références, clés liées vers les sources ; et la discographie.
 - Textes fondateurs : [`Salutations`](docs/Salutations.md) · [`Morale`](docs/Morale.md) · [`Progrès`](docs/Progres.md) · [`Collaboration`](docs/Collaboration.md) · [`Smoothop`](docs/Smoothop.md)
 - [`TODO.md`](TODO.md) — le chantier, en public : backlog, en cours, fait.
 - [`JOURNAL.md`](JOURNAL.md) — le journal de bord : axes de recherche et développement, datés, au fil de l'eau.

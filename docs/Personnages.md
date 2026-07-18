@@ -35,11 +35,13 @@ Le comité au cœur de l'Organisme — celui que l'Opératrice personnifie. C'es
 
 ## Alice au pays des merveilles et Bob l'éponge
 
-Nos personnages d'exemple — l'hommage du système des tôks aux **Alice et Bob** de la cryptographie, qui s'échangent des messages depuis 1978. Ici, ils s'échangent des tôks. Quand une démonstration a besoin d'un transfert, c'est Alice qui paie Bob ; quand il faut un flot, c'est Bob qui verse à Alice. Alice descend dans les terriers de lapin (elle adore les cas limites) ; Bob absorbe tout avec enthousiasme (c'est une éponge). Ils vivent dans les tests et les exemples, où ils naissent, échangent et recommencent, sans jamais se lasser.
+Nos personnages d'exemple — l'hommage du système des tôks aux **Alice et Bob** de la cryptographie, qui s'échangent des messages depuis 1978 ([RSA 1978](https://doi.org/10.1145/359340.359342)). Ici, ils s'échangent des tôks. Quand une démonstration a besoin d'un transfert, c'est Alice qui paie Bob ; quand il faut un flot, c'est Bob qui verse à Alice. Alice descend dans les terriers de lapin (elle adore les cas limites) ; Bob absorbe tout avec enthousiasme (c'est une éponge). Ils vivent dans les tests et les exemples, où ils naissent, échangent et recommencent, sans jamais se lasser.
+
+*Note de [droit d'auteur](https://fr.wikipedia.org/wiki/Droit_d%27auteur) : références affectueuses, sans affiliation. L'Alice de Lewis Carroll appartient au domaine public ; Bob l'éponge appartient à ses ayants droit (Nickelodeon/Paramount). Dans le système des tôks, nos personnages d'exemple se nomment simplement Alice et Bob, comme en cryptographie — leurs incarnations imaginaires sont des clins d'œil, pas des emprunts. Et si ses revenus le permettent un jour, Smoothop sera heureux de discuter une compensation équitable avec les ayants droit.*
 
 ## Gabie
 
-Gabrielle Roy, notre marraine littéraire (#Gabie). *Fragiles lumières de la Terre* éclaire la morale du système : le progrès est un avancement moral, ou alors on fait fausse route.
+Gabrielle Roy, notre marraine littéraire (#Gabie). *Fragiles lumières de la Terre* ([Roy 1978](https://www.leslibraires.ca/livres/fragiles-lumieres-de-la-terre-gabrielle-roy-9782890527645.html)) éclaire la morale du système : le progrès est un avancement moral, ou alors on fait fausse route.
 
 ## Les pigeons
 

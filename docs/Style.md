@@ -59,6 +59,15 @@ Milu est née à Montréal ; ses textes se lisent d'abord avec des oreilles qué
 - Figures en **SVG vectoriel**, variantes claire et sombre, intégrées via `<picture>` (bascule selon le thème du lecteur). Générateur sans dépendances dans `docs/figures/`.
 - Commits atomiques, messages en français, sobres.
 - Chaque texte peut s'ouvrir sur une chanson : `🎵  Titre — Artiste`.
+- Les noms de lieux techniques du système — `miluRepo`, `tokRepo`, `tok-backend` — s'écrivent en backticks, comme les fichiers (`MILU.md`, `docs/`). Exception : une première mention à valeur de titre peut prendre le gras (**miluRepo**, dans la graine).
+
+## Les références
+
+- On cite par **clé liée** : `[Einstein 1915](https://…)` — la clé est « Auteur Année », le lien mène **directement à une source librement accessible** (Wikisource, DOI, archive.org, Gutenberg…).
+- Toute clé citée dans un texte a son **entrée complète** dans `Bibliographie.md` — notre .bib en markdown — dont la clé porte le même lien.
+- Vérifier que le lien répond **au moment de l'ajouter** : un lien mort dans un historique éternel est une petite honte éternelle.
+- La musique se cite pareil (🎵, section Discographie) ; les fichiers du repo se citent en backticks, pas en clé.
+- Les **concepts**, eux, peuvent toujours porter un lien Wikipédia à même le texte — `[désintégration](https://fr.wikipedia.org/wiki/D%C3%A9croissance_exponentielle)` — sans entrée en Bibliographie. La clé « Auteur Année » est réservée aux œuvres ; le lien de concept, à la compréhension.
 
 ## Lexique
 

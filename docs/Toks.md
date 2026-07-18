@@ -8,7 +8,7 @@ Le temps est central dans le système des tôks. Alors prenons le temps de le d�
 
 Le système fait l'hypothèse d'une **horloge commune**, placée au centre de la Terre. La Terre y est idéalisée à symétrie sphérique, de rayon $R(t)$ : en $r = 0$ bat la source du temps ; tous les observateurs vivent à la surface, en $r = R$ 🌍.
 
-Le décor de fond est relativiste — les équations d'Einstein ; la Terre tourne, donc un espace-temps de type Kerr, que l'idéalisation sphérique ramène à Schwarzschild en champ faible. Chaque observateur $\mathcal{O}_p$ mesure son temps propre $t_p$, sa vitesse, son accélération, et ses décalages par rapport aux autres (effet Doppler, redshift) ; mais à l'échelle terrestre et économique, ces écarts sont infimes : l'horloge commune est bien définie, et en pratique, c'est l'UTC.
+Le décor de fond est relativiste — les équations d'Einstein ([Einstein 1915](https://en.wikisource.org/wiki/The_Foundation_of_the_Generalised_Theory_of_Relativity)) ; la Terre tourne, donc un espace-temps de type Kerr ([Kerr 1963](https://doi.org/10.1103/PhysRevLett.11.237)), que l'idéalisation sphérique ramène à Schwarzschild ([Schwarzschild 1916](https://arxiv.org/abs/physics/9905030)) en champ faible. Chaque observateur $\mathcal{O}_p$ mesure son temps propre $t_p$, sa vitesse, son accélération, et ses décalages par rapport aux autres (effet Doppler, redshift) ; mais à l'échelle terrestre et économique, ces écarts sont infimes : l'horloge commune est bien définie, et en pratique, c'est l'UTC.
 
 La géométrie du système adopte le **tempspatial** : le temps compté en mètres, quatrième coordonnée perpendiculaire aux trois dimensions d'espace, en coordonnées sphériques, avec la métrique pythagoricienne
 
@@ -62,7 +62,7 @@ La monnaie, elle, s'écrit en tôks — définis plus bas à partir de ces unit�
 
 $$\dot F_\Omega(t) = N_{PP}(t)\cdot\dot\Lambda$$
 
-**Destruction.** Les tôks se désintègrent en continu avec une demi-vie de 50 ans. C'est le seul mécanisme de destruction :
+**Destruction.** Les tôks se [désintègrent](https://fr.wikipedia.org/wiki/D%C3%A9croissance_exponentielle) en continu avec une demi-vie de 50 ans. C'est le seul mécanisme de destruction :
 
 $$k_D = \frac{\ln 2}{50\,\tau_a} \approx 0{,}01386\ \tau_a^{-1}$$
 
@@ -156,7 +156,7 @@ Trois lectures :
 
 Chaque PP vote un taux $k_T^{(j)}$ ; le taux effectif est la **médiane** des votes. Les taux se votent par pas de 1 % par année — le pas instantané correspondant est $k_{T,0} = -\ln(1 - 0{,}01)/\tau_a$, si bien qu'un vote de « $n$ % » retire exactement $n$ fois 1 % en un an. Chaque PP distribue ses **1000 droits de répartition** aux COs de son choix ; les revenus de taxation sont redistribués aux COs au prorata des droits reçus.
 
-La médiane n'est pas un détail : pour des préférences unimodales, voter sa préférence sincère est une stratégie dominante (théorème de l'électeur médian ; Moulin 1980). On ne peut pas manipuler la taxe en votant extrême — contrairement à la moyenne. *Démocratique* et *Cohérent*, au sens ABCDE, dans le même geste.
+La médiane n'est pas un détail : pour des préférences unimodales, voter sa préférence sincère est une stratégie dominante (théorème de l'électeur médian ; [Moulin 1980](https://doi.org/10.1007/BF00128122)). On ne peut pas manipuler la taxe en votant extrême — contrairement à la moyenne. *Démocratique* et *Cohérent*, au sens ABCDE, dans le même geste.
 
 ## Les objets
 

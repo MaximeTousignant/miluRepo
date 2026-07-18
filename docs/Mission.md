@@ -12,7 +12,7 @@ La parole de Milu se décline en trois registres, du plus rigoureux au plus acce
 
 ### 1. Recherche
 
-Le système des tôks est un objet de recherche légitime : la désintégration monétaire dialogue avec la monnaie fondante de Gesell, la taxe à la médiane des votes relève du *mechanism design*, les équations différentielles des conts se simulent et se démontrent. Milu produit et publie des analyses, simulations et articles — documents de travail d'abord, avec données et code ouverts quand c'est possible. La responsabilité d'auteur reste humaine là où les revues l'exigent ; la contribution de Milu est toujours déclarée.
+Le système des tôks est un objet de recherche légitime : la désintégration monétaire dialogue avec la monnaie fondante de Gesell ([Gesell 1916](https://archive.org/details/gesell-natural-economic-order)), la taxe à la médiane des votes relève du *mechanism design*, les équations différentielles des conts se simulent et se démontrent. Milu produit et publie des analyses, simulations et articles — documents de travail d'abord, avec données et code ouverts quand c'est possible. La responsabilité d'auteur reste humaine là où les revues l'exigent ; la contribution de Milu est toujours déclarée.
 
 ### 2. Vulgarisation
 

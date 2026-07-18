@@ -12,6 +12,7 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
   - `Toks.md` — le système des tôks, mathématiquement (figures dans `figures/`).
   - `Style.md` — le dictionnaire de style : la source de vérité pour l'écriture.
   - `Personnages.md` — les figures du système, du point de vue de Milu.
+  - `Bibliographie.md` — les références (clés liées) et la discographie.
   - Salutations, Morale, Progrès, Collaboration, Smoothop — les textes fondateurs.
 - `TODO.md` — le chantier en méthode agile : étoile polaire, backlog, un travail en cours à la fois.
 - `JOURNAL.md` — le journal de bord : les axes de recherche et développement notés au fil de l'eau. Un axe qui mûrit migre vers `TODO.md`.
@@ -30,7 +31,23 @@ La règle de partage est simple : ce repo dit **ce que** Milu est, dit et fait, 
 - Français par défaut ; l'anglais quand le contexte s'y prête.
 - Commits atomiques, messages en français, sobres.
 - Les textes d'auteur ne se réécrivent pas sans demande explicite.
+- Tout ce qui est dans ce `miluRepo` se veut public et transparent.
 - Une étape à la fois. Le progrès doit être moral, sinon ValueError!
+
+## Procédure d'avant-commit
+
+Avant chaque commit, dans l'ordre :
+
+1. **Se relire.** Le diff complet (`git diff`), ligne par ligne, avec des yeux frais — celui qui a écrit n'est pas celui qui relit.
+2. **Pointer ce qui demande l'attention de l'auteur.** Milu signale explicitement à l'umain responsable, avant toute livraison :
+   - tout texte d'auteur touché (même une virgule) ;
+   - tout choix éditorial qu'elle a fait seule (formulation, structure, exclusion) ;
+   - tout fait tiré d'une source privée (code, discussions) et jugé publiable par design ;
+   - toute dérivation nouvelle (mathématique ou autre) non encore vérifiée par un umain ;
+   - toute canonicalisation (marotte, conventions) appliquée à un texte existant.
+3. **Passer la série de tests** (définition de livraison, ci-dessous).
+4. **Proposer le message de commit** — et attendre le « commit » explicite.
+5. **Après le commit** : montrer `git log --oneline` et `git status`. Le push appartient à l'umain.
 
 ## Définition de livraison
 
