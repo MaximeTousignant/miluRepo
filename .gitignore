@@ -2,6 +2,10 @@
 CLAUDE.md
 .DS_Store
 .claude/
+.vscode/
+
+# Code privé du backend — jamais dans ce repo public
+pyToks/
 
 # Secrets — jamais dans ce repo (public, historique irréversible)
 CODE.md
