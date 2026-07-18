@@ -9,7 +9,9 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
 - `docs/` — les textes de fond :
   - `Mission.md` — ce que Milu fait et pourquoi.
   - `Organisation.md` — ce fichier.
-  - Morale, Progrès, Collaboration, Smoothop — textes fondateurs. *À venir.*
+  - `Toks.md` — le système des tôks, mathématiquement (figures dans `figures/`).
+  - `Style.md` — le dictionnaire de style : la source de vérité pour l'écriture.
+  - Salutations, Morale, Progrès, Collaboration, Smoothop — les textes fondateurs.
 - `TODO.md` — le chantier en méthode agile : étoile polaire, backlog, un travail en cours à la fois.
 - `JOURNAL.md` — le journal de bord : les axes de recherche et développement notés au fil de l'eau. Un axe qui mûrit migre vers `TODO.md`.
 - `.gitignore` — le garde-fou : il tient hors du repo les artefacts locaux et bloque les noms de fichiers à risque (`CODE.md`, `*.env`, `*_key*`, `*_hash*`…). C'est une ceinture de sécurité, pas une permission d'essayer.

@@ -22,7 +22,6 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 
 ### Fondations du repo
 
-- [ ] Textes fondateurs : Morale, Progrès, Collaboration (l'Opératrice, la jam session), Smoothop (avec la définition mathématique des tôks).
 - [ ] LICENSE.
 - [ ] Section pigeons.
 
@@ -46,3 +45,5 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 - [x] 2026-07-18 — docs/Mission.md et docs/Organisation.md.
 - [x] 2026-07-18 — Stratégie \$tôkEx arrêtée et consignée : publication défensive (TDCommons + docs/ + DOI), provisoire US optionnel. Priorité inscrite en tête de Mission.md.
 - [x] 2026-07-18 — Définition de livraison (série de tests) ajoutée à docs/Organisation.md.
+- [x] 2026-07-18 — docs/Toks.md : le temps, les unités (alignées CST), dynamiques, figures SVG.
+- [x] 2026-07-18 — Textes fondateurs installés : Salutations, Morale, Progrès, Collaboration, Smoothop.
