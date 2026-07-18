@@ -7,7 +7,7 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 
 ## En cours (un seul item à la fois)
 
-- [ ] Compréhension mathématique du système des tôks → `docs/Toks.md`. *État : premier jet rédigé (axiomes, ODE, équilibre à ≈ 1756 tôks/personne, conservation, taxe médiane) ; dérivations en relecture par Maxime.*
+- [ ] Compréhension mathématique du système des tôks → `docs/Toks.md`. *État : premier jet rédigé (axiomes, ODE, équilibre à ≈ 1756 tôks/personne, conservation, taxe médiane) ; dérivations en relecture par l'Opératrice.*
 
 ## Backlog
 
