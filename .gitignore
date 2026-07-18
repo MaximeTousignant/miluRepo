@@ -1,0 +1,12 @@
+# Artefacts locaux
+CLAUDE.md
+.DS_Store
+.claude/
+
+# Secrets — jamais dans ce repo (public, historique irréversible)
+CODE.md
+*.env
+.env*
+*_secret*
+*_key*
+*_hash*
