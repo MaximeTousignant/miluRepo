@@ -255,7 +255,7 @@ ok12 = ok12 and fp(1.0) == 0.0                # f(1) = 0, forcé
 check("T12 famille fₚ(x)=xᵖ−x^(1−p) : éq. fonctionnelle, prix fermé, pente 2p−1",
       ok12)
 
-# --- T13 : temps de vidange avec démurrage (eqDeltaTDemurrage) ------------
+# --- T13 : temps de vidange avec démurrage (implémentation de référence) --
 # dn/dt = Ẋ − k·n (Ẋ < 0) : Δt = ln(1 − k·n₀/Ẋ)/k — la solution exacte
 # s'annule là, Δt est plus court que le cas régulier −n₀/Ẋ, et y tend si k→0.
 ok13 = True

@@ -105,7 +105,7 @@ A note on the overdot: in this document it marks a \emph{flow}, an amount per un
 
 The purpose of the algorithm is to set up a market between different participants in which two fungible assets, A and B, can be \textbf{continuously} exchanged according to each participant's estimate of the relative value of the two assets.
 
-\textbf{Wallets.} Each participant holds a \emph{wallet}: one account per asset, with balances $n^\alpha$ and $n^\beta$. Individual balances evolve continuously through the exchanges of the \tokEx{}, and also through channels external to it: the participant's own deposits and withdrawals, and any intrinsic dynamics of the asset itself (a demurrage, for instance). The exchange in itself only moves amounts between wallets: it leaves the \emph{sums} $\sum_i n^\alpha_i$ and $\sum_i n^\beta_i$ unchanged.
+\textbf{Wallets.} Each participant holds a \emph{wallet}: one account per asset, with balances $n^\alpha$ and $n^\beta$. Individual balances evolve continuously through the exchanges of the \tokEx{} (and through the participant's own deposits and withdrawals), but the exchange only moves amounts between wallets: deposits and withdrawals apart, the \emph{sums} $\sum_i n^\alpha_i$ and $\sum_i n^\beta_i$ are constant. Throughout this document, the assets are assumed to have no dynamics of their own; this assumption can be relaxed under certain conditions, such as the continuous demurrage of the t\^{o}k in the reference implementation (Sec.~\ref{secReferenceImplementation}), without touching the exchange itself.
 
 The algorithm obeys eight fundamental principles, which fall into two classes: the \emph{fair-market principles} (1--4), which constrain the market itself, and the \emph{rational-trader principles} (5--8), which specify the behavior of the participants, a behavior implemented for all participants by the same function, called the \emph{trader function}.
 
@@ -115,7 +115,7 @@ The algorithm obeys eight fundamental principles, which fall into two classes: t
     \begin{equation*}
         \sum_i \dot{X}_i^\alpha = \sum_i \dot{X}_i^\beta = 0\,.
     \end{equation*}
-    Since $\dot{X}_i$ is precisely the contribution of the exchange to the balance $n_i$, the same equation is a conservation law: the exchange creates and destroys nothing, it only transfers existing amounts between the participants' wallets. Every other channel through which a balance can change (deposits, withdrawals, the intrinsic dynamics of the asset itself, such as a demurrage) is external to the \tokEx{} and accounted for separately.
+    Since $\dot{X}_i$ is precisely the contribution of the exchange to the balance $n_i$, the same equation is a conservation law: the exchange creates and destroys nothing, it only transfers existing amounts between the participants' wallets.
     \item \emph{Exchange at market price.} At any given time there is a single market price, strictly positive and common to all participants, and every exchange takes place exactly at it:
     \begin{equation*}
         \priceAB_\Omega = -\,\frac{\dot{X}_i^\alpha}{\dot{X}_i^\beta} > 0 \quad \text{for every trading participant } i\,.
@@ -231,18 +231,10 @@ Indeed, if a participant is buying asset A and paying with asset B, the two exch
 \subsection{Time it takes to empty a participant's account}
 % ----------------------------------------------------------------------
 
-With the participant's exchange velocities, we can predict when their account balance is going to reach zero. The account that will eventually be empty is the account holding the asset that the participant is selling (i.e. the account holding the asset for which $\dot{X}_i < 0$). The general principle is this: as long as the state of the market is constant, the balance obeys $dn_i/dt = \dot{X}_i + (\text{intrinsic dynamics of the asset})$, and $\Delta t_i$ is the first time at which $n_i(t)$ reaches zero. A participant who is not selling ($\dot{X}_i \geq 0$) never empties an account: $\Delta t_i = +\infty$.
-
-For a \emph{regular} asset (no intrinsic dynamics), the balance decreases linearly and
+With the participant's exchange velocities, we can predict when their account balance is going to reach zero. The account that will eventually be empty is the account holding the asset that the participant is selling (i.e. the account holding the asset for which $\dot{X}_i < 0$); a participant who is not selling ($\dot{X}_i \geq 0$) never empties an account, $\Delta t_i = +\infty$. As long as the state of the market is constant, the balance decreases linearly and reaches zero after
 \begin{equation}\label{eqDeltaT}
     \Delta t_i = - \frac{n_i}{\dot{X}_i} \,.
 \end{equation}
-
-For an asset with a continuous exponential demurrage at rate $k$ (such as the t\^{o}k of the reference implementation), the balance obeys $dn_i/dt = \dot{X}_i - k\, n_i$, whose solution reaches zero after
-\begin{equation}\label{eqDeltaTDemurrage}
-    \Delta t_i = \frac{1}{k} \ln\!\left(1 - \frac{k\, n_i}{\dot{X}_i}\right),
-\end{equation}
-which is shorter than \eqref{eqDeltaT} (the demurrage helps empty the account) and reduces to it as $k \to 0$. Since \eqref{eqDeltaTDemurrage} is a strictly increasing function of the linear estimate \eqref{eqDeltaT}, the transformation commutes with the minimum over participants taken by the outer algorithm: an implementation only needs to track \eqref{eqDeltaT} for every account, and to apply the logarithm once, to the minimum of the accounts sharing the same demurrage rate. The reference implementation does exactly this for the t\^{o}k side of the market, in the numerically stable $\operatorname{log1p}$ form.
 
 \subsection{Market price}\label{secMarketPrice}
 % ----------------------------------------------------------------------
@@ -436,16 +428,6 @@ $n_i^\beta$ & $i$\textsuperscript{th} participant's balance of asset B (in $\bet
     \RETURN $n_i^\alpha$, $n_i^\beta$ and $\priceAB_\Omega$ (at $t_1$)
 \end{algorithmic}
 
-The pseudocode above is written for regular assets, whose balances change only through the exchange: between two events, $dn_i/dt = \dot{X}_i$, so the update $n_i \gets n_i + \dot{X}_i\, \Delta t$ is exact. If an asset has intrinsic dynamics, exactly two things change:
-\begin{itemize}
-    \item the balance updates integrate the full balance equation over the step; for an asset with demurrage at rate $k$, solving $dn_i/dt = \dot{X}_i - k\, n_i$ over $\Delta t$ gives
-    \begin{equation*}
-        n_i \gets n_i\, e^{-k \Delta t} + \frac{\dot{X}_i}{k} \left(1 - e^{-k \Delta t}\right);
-    \end{equation*}
-    \item the emptying times $\Delta t_i$ computed by the inner algorithm use the matching formula, \eqref{eqDeltaTDemurrage} instead of \eqref{eqDeltaT}.
-\end{itemize}
-The event-driven structure of both algorithms is unchanged, and the stepping remains exact: in both cases the update is the closed-form solution of the balance equation, not a numerical approximation.
-
 \subsection{Numerical evaluation of the trader function}\label{secNumTraderFunction}
 % ----------------------------------------------------------------------
 
@@ -457,10 +439,10 @@ The remedy is the \emph{shifted form}. Let $y = x - 1$; for $x \in [1/2,\ 2]$ th
 \end{equation}
 The numerator tracks the small deviation $y$ directly, without cancellation, and the denominator must be the \emph{input} $x$ itself: recomputing it as $y + 1$ reintroduces a relative error that grows toward the ends of the domain, up to $\sim 10^{-5}$ at $x = 10^{-12}$. The expression is branchless and constant-time (a straight line of fused multiply-adds, no conditional jumps), and its measured relative error stays below $6 \times 10^{-16}$ (machine precision) over the whole admissible domain of the ratio, $[10^{-12},\ 10^{12}]$. This domain is wider than the price bounds of the reference implementation: estimates are bounded to $[10^{-6},\ 10^{6}]$ and the market price always lies between the smallest and the largest estimate (see the corollary in Annex~\ref{secProofUniqueness}), so the \emph{ratio} of the two spans up to twelve decades on each side of 1.
 
-\subsection{Reference implementation in the t\^{o}k system}
+\subsection{Reference implementation in the t\^{o}k system}\label{secReferenceImplementation}
 % ----------------------------------------------------------------------
 
-In the t\^{o}k system, the \tokEx{} is instantiated with $\alpha$ = the t\^{o}k (a universal-income-based currency with continuous exponential demurrage) and $\beta$ = a foreign currency (CAD, EUR, \ldots), with one market per foreign currency. The reference implementation uses the following parameters: the reference exchange velocity $\dot{R}$ is set to the universal income rate of the t\^{o}k system (1~t\^{o}k per 15~days); estimates are bounded to $10^{-6} \leq \priceAB_i \leq 10^{6}$; degrees of certainty are discretized with a step of $10^{-4}\,\%$ and capped at $99.9999\,\%$; the default market price of an empty market is 1. Each participant holds a dedicated pair of market accounts (one per asset) with the same owner, and solvency is handled by per-asset tolerance thresholds. Market sums are computed with compensated (Kahan) summation in extended precision, updates are incremental, in $O(N \log N)$ overall (the solvency checklist is processed in sorted order of the estimates, the participant farthest from the market price always lying at one of its two ends), and the trader function is evaluated in the shifted form \eqref{eqShiftedForm} of Sec.~\ref{secNumTraderFunction}. The demurrage of the t\^{o}k acts on the t\^{o}k balances independently of the exchange velocities, consistently with principle 1: the \tokEx{} itself only transfers.
+In the t\^{o}k system, the \tokEx{} is instantiated with $\alpha$ = the t\^{o}k (a universal-income-based currency with continuous exponential demurrage) and $\beta$ = a foreign currency (CAD, EUR, \ldots), with one market per foreign currency. The reference implementation uses the following parameters: the reference exchange velocity $\dot{R}$ is set to the universal income rate of the t\^{o}k system (1~t\^{o}k per 15~days); estimates are bounded to $10^{-6} \leq \priceAB_i \leq 10^{6}$; degrees of certainty are discretized with a step of $10^{-4}\,\%$ and capped at $99.9999\,\%$; the default market price of an empty market is 1. Each participant holds a dedicated pair of market accounts (one per asset) with the same owner, and solvency is handled by per-asset tolerance thresholds. Market sums are computed with compensated (Kahan) summation in extended precision, updates are incremental, in $O(N \log N)$ overall (the solvency checklist is processed in sorted order of the estimates, the participant farthest from the market price always lying at one of its two ends), and the trader function is evaluated in the shifted form \eqref{eqShiftedForm} of Sec.~\ref{secNumTraderFunction}. The t\^{o}k is also the one relaxation of the regular-asset assumption: it carries a continuous demurrage at rate $k$, acting on the balances independently of the exchange velocities (consistently with principle 1: the \tokEx{} itself only transfers). Between two events, t\^{o}k balances obey $dn_i/dt = \dot{X}_i - k\, n_i$; the balance updates of the outer algorithm use the closed-form exponential solution, and the emptying time of a t\^{o}k account becomes $\frac{1}{k} \ln\left(1 - k\, n_i / \dot{X}_i\right)$, a strictly increasing function of \eqref{eqDeltaT}, so the implementation tracks the linear \eqref{eqDeltaT} for every account and applies the logarithm once, to their minimum, in the numerically stable $\operatorname{log1p}$ form. The event-driven structure of the two algorithms is unchanged and the stepping remains exact.
 
 \clearpage
 
