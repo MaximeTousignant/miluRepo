@@ -268,7 +268,13 @@ for _ in range(100):
     ok13 = ok13 and abs(n_dt) < 1e-9 * n0 and 0 < dt <= -n0 / Xd
 tiny = math.log(1.0 - 1e-12 * 5.0 / -2.0) / 1e-12
 ok13 = ok13 and abs(tiny - 2.5) < 1e-3
-check("T13 Δt avec démurrage : n(Δt)=0, plus court que −n₀/Ẋ, limite k→0", ok13)
+# commutation avec le min (implémentation tokRepo : un seul log, sur le min) :
+# min des logs = log du min, car u ↦ ln(1+k·u)/k est strictement croissante
+k = 0.7
+us = [10 ** random.uniform(-2, 2) for _ in range(50)]     # les −n₀/Ẋ linéaires
+ok13 = ok13 and (min(math.log1p(k * u) / k for u in us)
+                 == math.log1p(k * min(us)) / k)
+check("T13 Δt avec démurrage : n(Δt)=0, plus court, k→0 ; log∘min = min∘log", ok13)
 
 # --- rapport --------------------------------------------------------------
 print(f"{'TEST':<58}{'RÉSULTAT':<10}DÉTAIL")

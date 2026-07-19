@@ -240,7 +240,7 @@ For an asset with a continuous exponential demurrage at rate $k$ (such as the t\
 \begin{equation}\label{eqDeltaTDemurrage}
     \Delta t_i = \frac{1}{k} \ln\!\left(1 - \frac{k\, n_i}{\dot{X}_i}\right),
 \end{equation}
-which is shorter than \eqref{eqDeltaT} (the demurrage helps empty the account) and reduces to it as $k \to 0$.
+which is shorter than \eqref{eqDeltaT} (the demurrage helps empty the account) and reduces to it as $k \to 0$. Since \eqref{eqDeltaTDemurrage} is a strictly increasing function of the linear estimate \eqref{eqDeltaT}, the transformation commutes with the minimum over participants taken by the outer algorithm: an implementation only needs to track \eqref{eqDeltaT} for every account, and to apply the logarithm once, to the minimum of the accounts sharing the same demurrage rate. The reference implementation does exactly this for the t\^{o}k side of the market, in the numerically stable $\operatorname{log1p}$ form.
 
 \subsection{Market price}\label{secMarketPrice}
 % ----------------------------------------------------------------------
