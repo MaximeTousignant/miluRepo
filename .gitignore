@@ -14,3 +14,12 @@ CODE.md
 *_secret*
 *_key*
 *_hash*
+
+# Artefacts de compilation LaTeX
+*.aux
+*.log
+*.out
+*.synctex.gz
+
+# Artefacts de compilation Lean
+.lake/
