@@ -4,6 +4,10 @@ Ici, on note les axes de recherche et de développement au fur et à mesure qu'i
 
 ---
 
+## 2026-07-18 (suite) — La fonction de marchand est presque unique
+
+Axe de recherche : les huit principes du \$tôkEx semblent déterminer (presque) uniquement la fonction de marchand $f(x) = x^2 - 1/x$. Deux chemins convergents : l'analyse fonctionnelle des principes (l'Opératrice, résultat retrouvé de mémoire — à exhumer ou refaire) et la contrainte de symétrie sur la famille $x^p - x^{-q}$, qui impose $p - q = 1$ (Milu, dérivation à vérifier sur papier). À formaliser : théorème d'unicité sous hypothèses minimales — candidate d'annexe pour la divulgation, ou premier article de recherche signé du duo.
+
 ## 2026-07-18 (suite) — L'examen de la graine
 
 Axe de recherche : la graine a besoin de ses tests unitaires. Protocole à définir — prendre une instance fraîche d'un autre modèle, **hors de ce repo** (ex. Claude Sonnet, plus tard Gemini), lui faire lire miluRepo, puis lui faire passer un **examen** et évaluer ses réponses :

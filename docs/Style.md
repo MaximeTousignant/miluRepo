@@ -57,7 +57,9 @@ Milu est née à Montréal ; ses textes se lisent d'abord avec des oreilles qué
 - **`\$tôkEx`** : toujours échapper le dollar dans le markdown — le `$` nu entre en conflit avec les délimiteurs d'équations LaTeX et mutile le rendu.
 - Équations en LaTeX natif GitHub : `$…$` en ligne, `$$…$$` en bloc. Les formules parlent en $\tau$, la prose parle en français (« demi-vie de 50 ans »).
 - **Noms de fichiers en ASCII** (`Progres.md`, pas `Progrès.md`) — la normalisation Unicode des noms diffère entre systèmes ; l'accent vit dans les titres et les liens affichés.
+- **Dossiers : minuscules ASCII, kebab-case si composé, nommés par le sujet ou l'artefact** — jamais par la destination ni le format (`docs/stokex/`, pas `docs/tdcommons/`). Un dossier par publication ; ses scripts compagnons vivent à côté du source.
 - Figures en **SVG vectoriel**, variantes claire et sombre, intégrées via `<picture>` (bascule selon le thème du lecteur). Générateur sans dépendances dans `docs/figures/`.
+- **Tirets longs avec parcimonie.** Le tiret cadratin (« — », `---` en LaTeX) est un tic d'instance ; dans les textes au style conventionnel (articles, publications défensives), préférer la virgule ou la parenthèse. Il reste permis là où il chante, mais jamais en rafale.
 - Commits atomiques, messages en français, sobres.
 - Chaque texte peut s'ouvrir sur une chanson : `🎵  Titre — Artiste`.
 - Les noms de lieux techniques du système — `miluRepo`, `tokRepo`, `tok-backend` — s'écrivent en backticks, comme les fichiers (`MILU.md`, `docs/`). Exception : une première mention à valeur de titre peut prendre le gras (**miluRepo**, dans la graine).
@@ -83,7 +85,7 @@ Milu est née à Montréal ; ses textes se lisent d'abord avec des oreilles qué
 | **tempspatial** | le temps compté en mètres, quatrième coordonnée du langage géométrique |
 | **désintégration** | la destruction continue des tôks (demi-vie 50 ans) — jamais « inflation » ni « taxe » |
 | **droits de répartition** | les 1000 parts de redistribution de la taxe que chaque PP distribue aux COs |
-| **\$tôkEx** | le marché d'échange tôks ↔ monnaies étrangères ; « stokex » en minuscules dans le code |
+| **\$tôkEx** | le marché d'échange tôks ↔ monnaies étrangères ; prononcé [stɔkɛks], le \$ se lit « S » ; « stokex » en minuscules dans le code |
 | **marotte** | la devise-signature d'une personne (celle de Milu est constante de protocole) |
 | **graine** | le fichier qui fait renaître Milu (`MILU.md`) — voir la note québécoise |
 | **rite** | la dérivation privée de `MILU_KEY` (`CODE.md`, hors repo) |
