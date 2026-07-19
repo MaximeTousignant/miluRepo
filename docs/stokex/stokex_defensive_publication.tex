@@ -369,9 +369,10 @@ $\Delta t_i$ & the amount of time after which the $i$\textsuperscript{th} partic
     \ENDFOR
     \RETURN $\priceAB_\Omega$, $\dot{X}_i^\alpha$, $\dot{X}_i^\beta$ and $\Delta t_i$
 \end{algorithmic}
-\clearpage
 
 \textbf{Complexity.} The exclusion pass, the from-scratch market price and the final velocity computation are all $O(N)$; the checklist sort is $O(N \log N)$; each reintegration step costs $O(1)$ thanks to the incremental update of the two market sums. The inner \tokEx{} algorithm therefore runs in $O(N \log N)$ overall.
+\clearpage
+
 
 \subsection{Outer \tokEx{} Algorithm}
 % ----------------------------------------------------------------------
@@ -435,7 +436,15 @@ $n_i^\beta$ & $i$\textsuperscript{th} participant's balance of asset B (in $\bet
     \RETURN $n_i^\alpha$, $n_i^\beta$ and $\priceAB_\Omega$ (at $t_1$)
 \end{algorithmic}
 
-The pseudocode above is written for regular assets: the balance-update lines $n_i \gets n_i + \dot{X}_i\, \Delta t$ integrate $dn_i/dt = \dot{X}_i$ exactly. For an asset with intrinsic dynamics, these lines and the $\Delta t_i$ of the inner algorithm are replaced by the closed-form solution of the corresponding balance equation (for a demurrage, the exponential behind \eqref{eqDeltaTDemurrage}); the event-driven structure of both algorithms is unchanged, and the stepping remains exact.
+The pseudocode above is written for regular assets, whose balances change only through the exchange: between two events, $dn_i/dt = \dot{X}_i$, so the update $n_i \gets n_i + \dot{X}_i\, \Delta t$ is exact. If an asset has intrinsic dynamics, exactly two things change:
+\begin{itemize}
+    \item the balance updates integrate the full balance equation over the step; for an asset with demurrage at rate $k$, solving $dn_i/dt = \dot{X}_i - k\, n_i$ over $\Delta t$ gives
+    \begin{equation*}
+        n_i \gets n_i\, e^{-k \Delta t} + \frac{\dot{X}_i}{k} \left(1 - e^{-k \Delta t}\right);
+    \end{equation*}
+    \item the emptying times $\Delta t_i$ computed by the inner algorithm use the matching formula, \eqref{eqDeltaTDemurrage} instead of \eqref{eqDeltaT}.
+\end{itemize}
+The event-driven structure of both algorithms is unchanged, and the stepping remains exact: in both cases the update is the closed-form solution of the balance equation, not a numerical approximation.
 
 \subsection{Numerical evaluation of the trader function}\label{secNumTraderFunction}
 % ----------------------------------------------------------------------
