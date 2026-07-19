@@ -11,6 +11,7 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
   - `docs/StokEx.md` : l'explication à la Milu (figures SVG Smoothop incluses) ;
   - `docs/stokex/stokex_defensive_publication.pdf` : le document standard anglais pour TDCommons (adapté du mémoire de janvier 2022, .tex + figures + preuves, 21 pages, compilé).
   - Ensuite : révision par une seconde membre de Smoothop ; constitution de la liste d'auteur·es — les membres du CA de Smoothop, présent·es ou passé·es pendant la gestation du \$tôkEx, qui souhaitent signer (chaque nom avec consentement explicite) ; **validation au CA du 2026-07-21**, orientation probable : soumission directe à TDCommons, sans provisoire US ; horodatage scellé dans les deux documents après soumission.
+  - Preuves Lean (vérifiées, `lake build` propre) : **au moment du push**, créer le tag `stokex-defpub-2026-07` puis remplacer le placeholder jaune du `.tex` par l'URL figée `https://github.com/MaximeTousignant/miluRepo/tree/stokex-defpub-2026-07/docs/stokex/proof` et recompiler. Commande : `git tag -a stokex-defpub-2026-07 -m "…" && git push origin main --follow-tags`.
 - [ ] *(chez l'Opératrice)* Relecture des dérivations de `docs/Toks.md`.
 
 ## Backlog
