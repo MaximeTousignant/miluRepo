@@ -7,6 +7,7 @@
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{lastpage}
+\usepackage{xcolor}
 \usepackage{hyperref}
 \hypersetup{
     unicode=true,
@@ -37,6 +38,12 @@
 \newcommand{\priceAB}{\left[\alpha / \beta\right]}
 \newcommand{\priceBA}{\left[\beta / \alpha\right]}
 \newcommand{\tokEx}{\$t\^{o}kEx}
+
+% Placeholder mis en évidence (à remplacer avant soumission)
+\newcommand{\placeholder}[1]{%
+  \par\smallskip\noindent
+  \colorbox{yellow}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{#1}}%
+  \par\smallskip}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -167,7 +174,7 @@ Exchanges on the \tokEx{} are continuous, instead of discrete in time like on tr
 
 On the participant level, the advantage of a continuous exchange is that, by spreading their transaction over a longer period of time, they reduce the risk of making their transaction at a bad time. As we will show, the \tokEx{} allows the participant to automatically either buy or sell more (i.e. at a higher velocity) when the market price is more advantageous for them.
 
-At the market level, the advantage of a continuous exchange is that the market price would potentially be more stable since every participant is automatically reacting to any change in the market price by increasing or decreasing their exchange velocities.
+At the market level, the advantage of a continuous exchange is that the market price would be more stable since every participant is automatically reacting to any change in the market price by increasing or decreasing their exchange velocities.
 
 \subsection{Participant's exchange velocities}
 % ----------------------------------------------------------------------
@@ -178,7 +185,7 @@ This function requires two inputs from the participant:
 
 \begin{tabularx}{\textwidth}{rX}
  $[\alpha/\beta]_i$ & $i$\textsuperscript{th} participant's estimate of the value of 1~unit of~$\beta$ priced in~$\alpha$ \\
-$\theta_i$ & $i$\textsuperscript{th} participant's degree of certainty (0-100\%) in their estimate of the relative value of the two assets.
+$\theta_i$ & $i$\textsuperscript{th} participant's degree of certainty ($[0,100)\,\%$) in their estimate of the relative value of the two assets.
 \end{tabularx}
 
 The function controlling the participant's exchange velocities in the \tokEx{} takes the following form:
@@ -215,9 +222,9 @@ Thus, the exact expressions for the exchange velocities of the $i$\textsuperscri
     \dot{X}^\alpha_i &= w_i \left( \left( \frac{\hspace{2pt}\priceAB_\Omega}{\priceAB_i}\right)^2 - \frac{\priceAB_i}{\hspace{2pt}\priceAB_\Omega} \right) \dot{R}\,, \nonumber\\
     \dot{X}^\beta_i &= w_i \left( \left( \frac{\hspace{2pt}\priceBA_\Omega}{\priceBA_i}\right)^2 - \frac{\priceBA_i}{\hspace{2pt}\priceBA_\Omega} \right) \dot{R} \priceBA_i\,. \label{eqExchangeVelocities}
 \end{align}
-In Fig.~\ref{figExchangeSymmetry}, we can see that indeed, the expressions in \eqref{eqExchangeVelocities} are symmetric (unbiased toward one asset or the other) and that they allow each participant to automatically ``buy low and sell high" according to their estimate of the relative value of assets~A and~B.
+In Fig.~\ref{figExchangeSymmetry}, we can see that indeed, the expressions in \eqref{eqExchangeVelocities} are symmetric (unbiased toward one asset or the other) and that they allow each participant to automatically ``buy low and sell high'' according to their estimate of the relative value of assets~A and~B.
 
-\begin{figure}[b!]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{stok-market_symmetry.pdf}
 \caption{$i$\textsuperscript{th} participant's exchange velocities with $\priceAB_i = 10$~$\alpha$ per~$\beta$, and $\theta_i= 75 \%$}
@@ -275,7 +282,7 @@ Between $t_0$ and $t_1$, both inputs from all participants are constant. However
 
 Thus, the \tokEx{} is implemented in two parts. First we describe the inner algorithm responsible for outputting the current state of the market. Second we describe the outer algorithm that performs the time stepping to get from $t_0$ to $t_1$. This process is illustrated in Fig.~\ref{figMarketSteps}.
 
-\begin{figure}[b!]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{stok-market_steps.pdf}
 \caption{Process by which the state of the \tokEx{} is updated between $t_0$ and $t_1$.}
@@ -295,7 +302,7 @@ Each participant in the market must provide the following information:
 
 \begin{tabularx}{\textwidth}{rX}
  $[\alpha/\beta]_i$ & $i$\textsuperscript{th} participant's estimate of the value of 1 unit of $\beta$ priced in $\alpha$ \\
-$\theta_i$ & $i$\textsuperscript{th} participant's degree of certainty (0-100\%) in their estimate of the relative value of the two assets.
+$\theta_i$ & $i$\textsuperscript{th} participant's degree of certainty ($[0,100)\,\%$) in their estimate of the relative value of the two assets.
 \end{tabularx}
 
 In addition, we must provide to the algorithm the balance for both accounts of every participant at the current time $t$:
@@ -319,10 +326,9 @@ $\Delta t_i$ & the amount of time after which the $i$\textsuperscript{th} partic
 \begin{itemize}
     \item Exclude every participant that has at least one empty account from the market and add them to a checklist. (lines 3-10)
     \item Compute the market price using \eqref{eqMarketPrice}. (line 11)
-    \item For each participant that has been excluded, check if they have a positive balance in the account holding the asset they wish to sell. If so, reintegrate them in the market and compute the new market price using \eqref{eqMarketPrice}. Once a participant has been checked, remove them from the checklist. Repeat this process until no participant is left on the checklist. Since reintegrating a participant in the market changes the market price, we have to be careful with the order in which we cross off the participants from the checklist. To ensure that this process is done properly, it can be shown that we must always check the participant whose value estimate is the ``furthest" away from the market price, our metric for the distance being $|f_i^\alpha|$, computed using \eqref{eqFunctionX}. To find that participant efficiently, the checklist is first \emph{sorted} by estimate: for any given price, since $f$ is monotone in the estimate, the largest $|f_i^\alpha|$ is always attained at one of the two ends of the sorted checklist, so each step examines two participants only, and each reintegration updates the market price in $O(1)$: the participant's terms are added to the two market sums of \eqref{eqMarketPrice} and the price is recomputed from them (the same incremental bookkeeping as the market update of Sec.~\ref{secMarketUpdate}). (lines 12-21)
+    \item For each participant that has been excluded, check if they have a positive balance in the account holding the asset they wish to sell. If so, reintegrate them in the market and compute the new market price using \eqref{eqMarketPrice}. Once a participant has been checked, remove them from the checklist. Repeat this process until no participant is left on the checklist. Since reintegrating a participant in the market changes the market price, we have to be careful with the order in which we cross off the participants from the checklist. To ensure that this process is done properly, it can be shown that we must always check the participant whose value estimate is the ``furthest'' away from the market price, our metric for the distance being $|f_i^\alpha|$, computed using \eqref{eqFunctionX}. To find that participant efficiently, the checklist is first \emph{sorted} by estimate. For any given price, since $f$ is monotone in the estimate, the largest $|f_i^\alpha|$ is always attained at one of the two ends of the sorted checklist, so each step examines two participants only. Each reintegration then updates the market price in $O(1)$: the participant's terms are added to the two market sums of \eqref{eqMarketPrice} and the price is recomputed from them (the same incremental bookkeeping as the market update of Sec.~\ref{secMarketUpdate}). (lines 12-21)
     \item For each participant, compute their exchange velocities, using \eqref{eqExchangeVelocities}, and the time it will take to empty the account for the asset they are selling, using \eqref{eqDeltaT}. (lines 22-36)
 \end{itemize}
-\clearpage
 
 \subsubsection{Pseudocode for the inner \tokEx{} algorithm}
 \begin{algorithmic}[1]
@@ -384,7 +390,7 @@ Each participant in the market must provide the following information:
 
 \begin{tabularx}{\textwidth}{rX}
  $[\alpha/\beta]_i$ & $i$\textsuperscript{th} participant's estimate of the value of 1 unit of $\beta$ priced in $\alpha$ \\
-$\theta_i$ & $i$\textsuperscript{th} participant's degree of certainty (0-100\%) in their estimate of the relative value of the two assets.
+$\theta_i$ & $i$\textsuperscript{th} participant's degree of certainty ($[0,100)\,\%$) in their estimate of the relative value of the two assets.
 \end{tabularx}
 
 In addition, we must provide to the algorithm the balance for both accounts of every participant at the initial time $t_0$:
@@ -433,7 +439,7 @@ $n_i^\beta$ & $i$\textsuperscript{th} participant's balance of asset B (in $\bet
 \subsection{Numerical evaluation of the trader function}\label{secNumTraderFunction}
 % ----------------------------------------------------------------------
 
-The typical operating point of the \tokEx{} is $x \approx 1$: participants' estimates hover around the market price. Precisely there, the defining expression $f(x) = x^2 - 1/x$ suffers \emph{catastrophic cancellation} in floating-point arithmetic: both terms are close to 1, and their subtraction erases up to half of the significand. Measured against exact rational arithmetic (IEEE-754 double precision), the relative error of the standard form reaches $4 \times 10^{-2}$ at $x = 1 - 10^{-15}$, and the algebraically equivalent form $(x^3-1)/x$ still errs by $\sim 10^{-9}$ at $x = 1 \pm 10^{-9}$.
+The typical operating point of the \tokEx{} is $x \approx 1$: participants' estimates hover around the market price. Precisely there, the defining expression $f(x) = x^2 - 1/x$ suffers \emph{catastrophic cancellation} in floating-point arithmetic: both terms are close to 1, and their subtraction erases up to half of the significand. Measured against exact rational arithmetic (IEEE-754 double precision), the relative error of the standard form reaches $4 \times 10^{-2}$ at $x = 1 - 10^{-15}$.
 
 The remedy is the \emph{shifted form}. Let $y = x - 1$; for $x \in [1/2,\ 2]$ this subtraction is exact in floating point (Sterbenz's lemma), and $x^3 - 1 = y^3 + 3y^2 + 3y$, so that
 \begin{equation}
@@ -444,7 +450,13 @@ The numerator tracks the small deviation $y$ directly, without cancellation, and
 \subsection{Reference implementation in the t\^{o}k system}\label{secReferenceImplementation}
 % ----------------------------------------------------------------------
 
-In the t\^{o}k system, the \tokEx{} is instantiated with $\alpha$ = the t\^{o}k (a universal-income-based currency with continuous exponential demurrage) and $\beta$ = a foreign currency (CAD, EUR, \ldots), with one market per foreign currency. The reference implementation uses the following parameters: the reference exchange velocity $\dot{R}$ is set to the universal income rate of the t\^{o}k system (1~t\^{o}k per 15~days); estimates are bounded to $10^{-6} \leq \priceAB_i \leq 10^{6}$; degrees of certainty are discretized with a step of $10^{-4}\,\%$ and capped at $99.9999\,\%$; the default market price of an empty market is 1. Each participant holds a dedicated pair of market accounts (one per asset) with the same owner, and solvency is handled by per-asset tolerance thresholds. Market sums are computed with compensated (Kahan~\cite{Kahan1965}) summation in extended precision, updates are incremental, in $O(N \log N)$ overall (the solvency checklist is processed in sorted order of the estimates, the participant farthest from the market price always lying at one of its two ends), and the trader function is evaluated in the shifted form \eqref{eqShiftedForm} of Sec.~\ref{secNumTraderFunction}. The t\^{o}k is also the one relaxation of the regular-asset assumption: it carries a continuous demurrage at rate $k$, acting on the balances independently of the exchange velocities (consistently with principle 1: the \tokEx{} itself only transfers). Between two events, t\^{o}k balances obey $dn_i/dt = \dot{X}_i - k\, n_i$; the balance updates of the outer algorithm use the closed-form exponential solution, and the emptying time of a t\^{o}k account becomes $\frac{1}{k} \ln\left(1 - k\, n_i / \dot{X}_i\right)$, a strictly increasing function of \eqref{eqDeltaT}. Since $k$ is the same for every t\^{o}k account (a single demurrage rate applies to the whole t\^{o}k asset), this transform is monotonic within that homogeneous group, and \eqref{eqDeltaT} can therefore be minimized before it is applied: the implementation tracks the linear \eqref{eqDeltaT} for every account, takes the minimum \emph{separately} among the t\^{o}k-selling accounts and among the accounts selling the foreign currency (which carries no demurrage and needs no transform), applies the logarithm once, to the former minimum only, in the numerically stable $\operatorname{log1p}$ form, and compares the two resulting candidates. The event-driven structure of the two algorithms is unchanged and the stepping remains exact.
+In the t\^{o}k system, the \tokEx{} is instantiated with $\alpha$ = the t\^{o}k (a universal-income-based currency with continuous exponential demurrage) and $\beta$ = a foreign currency (CAD, EUR, \ldots), with one market per foreign currency. The reference implementation uses the following parameters: the reference exchange velocity $\dot{R}$ is set to the universal income rate of the t\^{o}k system (1~t\^{o}k per 15~days); estimates are bounded to $10^{-6} \leq \priceAB_i \leq 10^{6}$; degrees of certainty are discretized with a step of $10^{-4}\,\%$ and capped at $99.9999\,\%$; the default market price of an empty market is 1.
+
+Each participant holds a dedicated pair of market accounts (one per asset) with the same owner, and solvency is handled by per-asset tolerance thresholds. Market sums are computed with compensated (Kahan~\cite{Kahan1965}) summation in extended precision, updates are incremental, in $O(N \log N)$ overall (the solvency checklist is processed in sorted order of the estimates, the participant farthest from the market price always lying at one of its two ends), and the trader function is evaluated in the shifted form \eqref{eqShiftedForm} of Sec.~\ref{secNumTraderFunction}.
+
+The t\^{o}k is also the one relaxation of the regular-asset assumption: it carries a continuous demurrage at rate $k$, acting on the balances independently of the exchange velocities (consistently with principle 1: the \tokEx{} itself only transfers). Between two events, t\^{o}k balances obey $dn_i/dt = \dot{X}_i - k\, n_i$; the balance updates of the outer algorithm use the closed-form exponential solution, and the emptying time of a t\^{o}k account becomes $\frac{1}{k} \ln\left(1 - k\, n_i / \dot{X}_i\right)$, a strictly increasing function of \eqref{eqDeltaT}.
+
+Since $k$ is the same for every t\^{o}k account (a single demurrage rate applies to the whole t\^{o}k asset), this transform is monotonic within that homogeneous group, and \eqref{eqDeltaT} can therefore be minimized before it is applied: the implementation tracks the linear \eqref{eqDeltaT} for every account, takes the minimum \emph{separately} among the t\^{o}k-selling accounts and among the accounts selling the foreign currency (which carries no demurrage and needs no transform), applies the logarithm once, to the former minimum only, in the numerically stable $\operatorname{log1p}$ form, and compares the two resulting candidates. The event-driven structure of the two algorithms is unchanged and the stepping remains exact.
 
 \clearpage
 
@@ -461,7 +473,7 @@ We define the market behavior as the sum of the behavior of all its participants
 \begin{equation}
     \dot{X}_\Omega^\alpha = \sum_i w_i \left( \left( \frac{\priceAB_z}{\priceAB_i}\right)^2 - \frac{\priceAB_i}{\priceAB_z} \right) \dot{R} \,, \label{eqDefMarketBehavior}
 \end{equation}
-where $\priceAB_z$ is a \emph{probe price}: an arbitrary strictly positive price, distinct in general from the market price $\priceAB_\Omega$, at which we choose to evaluate the aggregate response of the market. If $\priceAB_z = \priceAB_\Omega$ then, the market is in equilibrium (by definition of $\priceAB_\Omega$) and $\dot{X}_\Omega^\alpha=0$. However, if a random new participant was added to the market, we know that the market price would change. The market behavior allows us to know how the ``old" market will react, or in other words at what velocity it will exchange with the new participant. Indeed, given the new participant's inputs, we can calculate the new market price using~\eqref{eqMarketPrice}, which gives us $\priceAB_z$ that allows us to calculate the market behavior $\dot{X}_\Omega^\alpha$ we just defined.
+where $\priceAB_z$ is a \emph{probe price}: an arbitrary strictly positive price, distinct in general from the market price $\priceAB_\Omega$, at which we choose to evaluate the aggregate response of the market. If $\priceAB_z = \priceAB_\Omega$ then the market is in equilibrium (by definition of $\priceAB_\Omega$) and $\dot{X}_\Omega^\alpha=0$. However, if a random new participant was added to the market, we know that the market price would change. The market behavior allows us to know how the ``old'' market will react, or in other words at what velocity it will exchange with the new participant. Indeed, given the new participant's inputs, we can calculate the new market price using~\eqref{eqMarketPrice}, which gives us $\priceAB_z$ that allows us to calculate the market behavior $\dot{X}_\Omega^\alpha$ we just defined.
 
 \subsection{Total market weight}
 % ----------------------------------------------------------------------
@@ -486,7 +498,7 @@ Consequently, we can define the total market degree of certainty as
 
 In the form of \eqref{eqMarketBehavior}, we can clearly see the similarity between the market behavior and that of a single participant (see \eqref{eqExchangeVelocities}). This means that the whole market can be thought of as a single participant. Indeed, from the point of view of a new participant entering the market, it is not possible to distinguish if the exchange is taking place with a diverse collection of participants with various estimates $(\priceAB_i,\, \theta_i)$ or a single participant with estimate $(\priceAB_\Omega,\, \Theta_\Omega)$.
 
-An important takeaway from this analysis is that the total market weight $W_\Omega$ can serve as a useful index that indicates the ``stiffness" of the market. A market with a large $W_\Omega$ will resist more strongly to a change in market price $\priceAB_\Omega$. Moreover, we can see from \eqref{eqTotalMarketWeight} that the market weight increases with each new participant to the market (unless, of course, the old participants decide to change their estimate). This suggests that a market with a large number of participants using the \tokEx{} algorithm would have a relatively stable market price.
+An important takeaway from this analysis is that the total market weight $W_\Omega$ can serve as a useful index that indicates the ``stiffness'' of the market. A market with a large $W_\Omega$ will resist more strongly to a change in market price $\priceAB_\Omega$. Moreover, we can see from \eqref{eqTotalMarketWeight} that the market weight increases with each new participant to the market (unless, of course, the old participants decide to change their estimate). This suggests that a market with a large number of participants using the \tokEx{} algorithm would have a relatively stable market price.
 
 \subsection{Market update}\label{secMarketUpdate}
 % ----------------------------------------------------------------------
@@ -542,6 +554,13 @@ In order to derive this result, we had to imply that, in some sense, $w_i/W_\Ome
 \section{Annexes: Mathematical Proofs}
 % ----------------------------------------------------------------------
 
+\placeholder{\textbf{[À COMPLÉTER au push --- ne pas soumettre tel quel]}~ Les
+résultats centraux de ces annexes (pente $f'(1)=3$, échange au prix de marché,
+équilibre du marché, agrégation en un participant unique, unicité du prix) sont
+formalisés et vérifiés par machine en Lean~4 / mathlib (Lean et mathlib
+v4.32.0). Insérer ici l'URL figée au tag \texttt{stokex-defpub-2026-07} :
+\url{https://github.com/MaximeTousignant/miluRepo/tree/stokex-defpub-2026-07/docs/stokex/proof}}
+
 \subsection{Proof that the participant's degree of certainty corresponds to a geometrical angle}\label{secProofDegree}
 % ----------------------------------------------------------------------
 
@@ -564,7 +583,7 @@ Thus, the relation between $\theta_i$ and $w_i$ is
     w_i = \frac{1}{3}\tan \left(\theta_i\right)\,.
 \end{equation*}
 
-\begin{figure}[b!]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.75\textwidth]{degree_of_certainty.pdf}
     \caption{Geometrical interpretation of the participant's degree of certainty $\theta_i$}
@@ -594,12 +613,12 @@ Let us note that the last expression assumes that the angle $\theta_i$ is in rad
 \begin{equation*}
     w_i = \frac{1}{3}\tan \left(\frac{\pi\, \theta_i}{200\%}\right)\,,
 \end{equation*}
-in which $\theta_i$ is the participant's ``degree of certainty" contained between 0\% and 100\%.
+in which $\theta_i$ is the participant's ``degree of certainty'' contained between 0\% and 100\%.
 
-\begin{figure}[b!]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.75\textwidth]{degree_of_certainty_log.pdf}
-    \caption{Geometrical interpretation of the participant's degree of certainty $\theta_i$}
+    \caption{Geometrical interpretation of the participant's degree of certainty $\theta_i$ (logarithmic scale in $x$)}
     \label{figDegreeLog}
 \end{figure}
 \clearpage
