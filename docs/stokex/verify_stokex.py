@@ -11,7 +11,7 @@ random.seed(20260718)  # reproductible
 TOL = 1e-9
 
 
-def w_of_theta(theta):          # Eq. (4)
+def w_of_theta(theta):          # eqFunctionW du papier
     return math.tan(math.pi * theta / 200.0) / 3.0
 
 
@@ -23,14 +23,14 @@ def f(x):                       # fonction de marchand, forme stable
     return (x ** 3 - 1.0) / x
 
 
-def market_price(parts):        # Eq. (9) : V = (Σ w v / Σ w v^-2)^(1/3)
+def market_price(parts):        # eqMarketPrice : V = (Σ w v / Σ w v^-2)^(1/3)
     num = sum(w * v for v, w in parts)
     den = sum(w / v ** 2 for v, w in parts)
     return (num / den) ** (1.0 / 3.0)
 
 
 def velocities(parts, V, R=1.0):
-    """Eq. (1) et (5) : les deux formes (α directe, β symétrique)."""
+    """eqExchangeSymmetry / eqExchangeVelocities : les deux formes (α directe, β symétrique)."""
     Xa = [w * f(V / v) * R for v, w in parts]
     Xb = [w * f((1.0 / V) / (1.0 / v)) * R * (1.0 / v) for v, w in parts]
     return Xa, Xb
@@ -48,7 +48,7 @@ def check(name, ok, detail=""):
     results.append((name, ok, detail))
 
 
-# --- T1 : le prix ferme le marché des deux côtés (Eq. 8 & 9) --------------
+# --- T1 : le prix ferme le marché des deux côtés (eqEquilibrium, eqMarketPrice) --------------
 for n in (2, 5, 50, 500):
     parts = random_market(n)
     V = market_price(parts)
@@ -58,7 +58,7 @@ for n in (2, 5, 50, 500):
           and abs(sum(Xb)) < TOL * sum(abs(x) for x in Xb) + TOL,
           f"ΣẊα={sum(Xa):.2e} ΣẊβ={sum(Xb):.2e}")
 
-# --- T2 : échange au prix de marché (Eq. 6) -------------------------------
+# --- T2 : échange au prix de marché (eqExchangeAtMarketPrice) -------------------------------
 parts = random_market(30)
 V = market_price(parts)
 Xa, Xb = velocities(parts, V)
@@ -72,9 +72,9 @@ vals = [g(z) for z in zs]
 check("T3 unicité : flux net croissant, signe autour de V",
       all(a < b for a, b in zip(vals, vals[1:])) and vals[2] < 0 < vals[3])
 
-# --- T4 : le marché est un participant (Eq. 12-14) ------------------------
-W1 = (1.0 / V) * sum(w * v for v, w in parts)          # Eq. (13)
-W2 = V ** 2 * sum(w / v ** 2 for v, w in parts)        # Eq. (14)
+# --- T4 : le marché est un participant (eqMarketBehavior, eqTotalMarketWeight) ------------------------
+W1 = (1.0 / V) * sum(w * v for v, w in parts)          # eqTotalMarketWeight
+W2 = V ** 2 * sum(w / v ** 2 for v, w in parts)        # eqTotalMarketWeight2
 ok4 = abs(W1 - W2) < 1e-9 * W1
 for _ in range(20):
     z = 10 ** random.uniform(-3, 3)
@@ -254,6 +254,21 @@ for p_exp in (1.0, 1.5, 2.0, 3.0):
 ok12 = ok12 and fp(1.0) == 0.0                # f(1) = 0, forcé
 check("T12 famille fₚ(x)=xᵖ−x^(1−p) : éq. fonctionnelle, prix fermé, pente 2p−1",
       ok12)
+
+# --- T13 : temps de vidange avec démurrage (eqDeltaTDemurrage) ------------
+# dn/dt = Ẋ − k·n (Ẋ < 0) : Δt = ln(1 − k·n₀/Ẋ)/k — la solution exacte
+# s'annule là, Δt est plus court que le cas régulier −n₀/Ẋ, et y tend si k→0.
+ok13 = True
+for _ in range(100):
+    k = 10 ** random.uniform(-4, 1)
+    n0 = 10 ** random.uniform(-2, 2)
+    Xd = -(10 ** random.uniform(-2, 2))
+    dt = math.log(1.0 - k * n0 / Xd) / k
+    n_dt = (n0 - Xd / k) * math.exp(-k * dt) + Xd / k     # solution exacte
+    ok13 = ok13 and abs(n_dt) < 1e-9 * n0 and 0 < dt <= -n0 / Xd
+tiny = math.log(1.0 - 1e-12 * 5.0 / -2.0) / 1e-12
+ok13 = ok13 and abs(tiny - 2.5) < 1e-3
+check("T13 Δt avec démurrage : n(Δt)=0, plus court que −n₀/Ẋ, limite k→0", ok13)
 
 # --- rapport --------------------------------------------------------------
 print(f"{'TEST':<58}{'RÉSULTAT':<10}DÉTAIL")
