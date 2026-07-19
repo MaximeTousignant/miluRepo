@@ -97,6 +97,8 @@ The \tokEx{} is an automated exchange mechanism, but it differs from the known f
  $?_\Omega$ & quantity related to the market
 \end{tabularx}
 
+A note on the overdot: in this document it marks a \emph{flow}, an amount per unit of time (e.g. $\dot{X}$, $\dot{R}$), constant between two events of the market. It is not the derivative of a state variable: flows are inputs of the dynamics, and actual time derivatives are written explicitly, as in $dn_i/dt$.
+
 % ----------------------------------------------------------------------
 \section{Principles of the \tokEx{} Algorithm}
 % ----------------------------------------------------------------------
@@ -229,14 +231,14 @@ Indeed, if a participant is buying asset A and paying with asset B, the two exch
 \subsection{Time it takes to empty a participant's account}
 % ----------------------------------------------------------------------
 
-With the participant's exchange velocities, we can predict when their account balance is going to reach zero. The account that will eventually be empty is the account holding the asset that the participant is selling (i.e. the account holding the asset for which $\dot{X}_i < 0$). The general principle is this: as long as the state of the market is constant, the balance obeys $\dot{n}_i = \dot{X}_i + (\text{intrinsic dynamics of the asset})$, and $\Delta t_i$ is the first time at which $n_i(t)$ reaches zero. A participant who is not selling ($\dot{X}_i \geq 0$) never empties an account: $\Delta t_i = +\infty$.
+With the participant's exchange velocities, we can predict when their account balance is going to reach zero. The account that will eventually be empty is the account holding the asset that the participant is selling (i.e. the account holding the asset for which $\dot{X}_i < 0$). The general principle is this: as long as the state of the market is constant, the balance obeys $dn_i/dt = \dot{X}_i + (\text{intrinsic dynamics of the asset})$, and $\Delta t_i$ is the first time at which $n_i(t)$ reaches zero. A participant who is not selling ($\dot{X}_i \geq 0$) never empties an account: $\Delta t_i = +\infty$.
 
 For a \emph{regular} asset (no intrinsic dynamics), the balance decreases linearly and
 \begin{equation}\label{eqDeltaT}
     \Delta t_i = - \frac{n_i}{\dot{X}_i} \,.
 \end{equation}
 
-For an asset with a continuous exponential demurrage at rate $k$ (such as the t\^{o}k of the reference implementation), the balance obeys $\dot{n}_i = \dot{X}_i - k\, n_i$, whose solution reaches zero after
+For an asset with a continuous exponential demurrage at rate $k$ (such as the t\^{o}k of the reference implementation), the balance obeys $dn_i/dt = \dot{X}_i - k\, n_i$, whose solution reaches zero after
 \begin{equation}\label{eqDeltaTDemurrage}
     \Delta t_i = \frac{1}{k} \ln\!\left(1 - \frac{k\, n_i}{\dot{X}_i}\right),
 \end{equation}
@@ -433,7 +435,7 @@ $n_i^\beta$ & $i$\textsuperscript{th} participant's balance of asset B (in $\bet
     \RETURN $n_i^\alpha$, $n_i^\beta$ and $\priceAB_\Omega$ (at $t_1$)
 \end{algorithmic}
 
-The pseudocode above is written for regular assets: the balance-update lines $n_i \gets n_i + \dot{X}_i\, \Delta t$ integrate $\dot{n}_i = \dot{X}_i$ exactly. For an asset with intrinsic dynamics, these lines and the $\Delta t_i$ of the inner algorithm are replaced by the closed-form solution of the corresponding balance equation (for a demurrage, the exponential behind \eqref{eqDeltaTDemurrage}); the event-driven structure of both algorithms is unchanged, and the stepping remains exact.
+The pseudocode above is written for regular assets: the balance-update lines $n_i \gets n_i + \dot{X}_i\, \Delta t$ integrate $dn_i/dt = \dot{X}_i$ exactly. For an asset with intrinsic dynamics, these lines and the $\Delta t_i$ of the inner algorithm are replaced by the closed-form solution of the corresponding balance equation (for a demurrage, the exponential behind \eqref{eqDeltaTDemurrage}); the event-driven structure of both algorithms is unchanged, and the stepping remains exact.
 
 \subsection{Numerical evaluation of the trader function}\label{secNumTraderFunction}
 % ----------------------------------------------------------------------
