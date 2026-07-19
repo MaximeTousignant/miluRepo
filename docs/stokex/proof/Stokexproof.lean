@@ -1,15 +1,17 @@
 /-
-Vérification formelle (Lean 4 + mathlib) des affirmations centrales de
-« The $tôkEx Algorithm » (Smoothop, publication défensive, 2026).
+Formal verification (Lean 4 + mathlib) of the central claims of
+"The $tôkEx Algorithm" (Smoothop, defensive publication, 2026).
 
-  * exchange_at_market_price : Ẋᵅ = −V·Ẋᵝ — tout échange se fait au prix de marché
-    (l'identité algébrique derrière le principe 2 et la preuve de l'annexe B).
-  * market_clears : le prix en forme fermée annule le flux net de l'actif A
-    (équilibre offre-demande, annexe C).
-  * market_is_single_participant : le marché entier se comporte comme un unique
-    participant de poids W_Ω = (Σ wᵢvᵢ)/V (annexe D).
-  * traderF_slope_at_one : la pente de f en x = 1 vaut 3 — le fondement de
-    l'interprétation angulaire du degré de certitude, w = tan(θ)/3 (annexe A).
+  * traderF_slope_at_one : the slope of f at x = 1 equals 3 — the basis of the
+    angular interpretation of the degree of certainty, w = tan(θ)/3 (Annex A).
+  * exchange_at_market_price : −Ẋᵅ/Ẋᵝ = V — every exchange occurs at the market
+    price (the algebraic identity behind principle 2 and Annex B).
+  * market_clears : the closed-form price cancels the net flow of asset A
+    (supply–demand equilibrium, Annex C).
+  * market_is_single_participant : the whole market behaves as a single
+    participant of weight W_Ω = (Σ wᵢvᵢ)/V (Annex D).
+  * traderF_strictMonoOn : the trader function is strictly increasing on (0, ∞).
+  * market_price_unique : the market-clearing price is unique (Annex E).
 -/
 import Mathlib
 
@@ -17,13 +19,13 @@ open Finset
 
 noncomputable section
 
-/-- La fonction de marchand du $tôkEx : `f(p) = p² − 1/p`, pour un prix `p > 0`
-(définie totalement sur ℝ ici ; les théorèmes posent les hypothèses de non-nullité). -/
-def traderF (p : ℝ) : ℝ := p ^ 2 - 1 / p
+/-- The $tôkEx trader function: `f(x) = x² − 1/x`, for a price `x > 0`
+(defined totally on ℝ here; the theorems carry the nonvanishing hypotheses). -/
+def traderF (x : ℝ) : ℝ := x ^ 2 - 1 / x
 
-/-- **Échange au prix de marché.** Pour tout participant (estimation `v ≠ 0`,
-poids `w`, vitesse de référence `R`) et tout prix de marché `V ≠ 0`, la vitesse
-d'échange de l'actif A vaut `−V` fois la vitesse (symétrique) de l'actif B :
+/-- **Exchange at the market price.** For any participant (estimate `v ≠ 0`,
+weight `w`, reference velocity `R`) and any market price `V ≠ 0`, the exchange
+velocity of asset A equals `−V` times the (symmetric) velocity of asset B:
 `−Ẋᵅ/Ẋᵝ = V`. -/
 theorem exchange_at_market_price (w R V v : ℝ) (hv : v ≠ 0) (hV : V ≠ 0) :
     w * traderF (V / v) * R = -V * (w * traderF ((1 / V) / (1 / v)) * R * (1 / v)) := by
@@ -31,8 +33,8 @@ theorem exchange_at_market_price (w R V v : ℝ) (hv : v ≠ 0) (hV : V ≠ 0) :
   field_simp
   ring
 
-/-- **Le prix ferme le marché.** Si `V ≠ 0` satisfait la forme fermée
-`V³ · Σ wᵢ/vᵢ² = Σ wᵢvᵢ`, alors le flux net de l'actif A est nul. -/
+/-- **The price clears the market.** If `V ≠ 0` satisfies the closed form
+`V³ · Σ wᵢ/vᵢ² = Σ wᵢvᵢ`, then the net flow of asset A vanishes. -/
 theorem market_clears {ι : Type*} (s : Finset ι) (v w : ι → ℝ) (V : ℝ)
     (hv : ∀ i ∈ s, v i ≠ 0) (hV : V ≠ 0)
     (hprice : V ^ 3 * ∑ i ∈ s, w i / (v i) ^ 2 = ∑ i ∈ s, w i * v i) :
@@ -42,7 +44,7 @@ theorem market_clears {ι : Type*} (s : Finset ι) (v w : ι → ℝ) (V : ℝ)
     intro i hi
     have := hv i hi
     unfold traderF
-    field_simp <;> ring
+    field_simp
   calc ∑ i ∈ s, w i * traderF (V / v i)
       = ∑ i ∈ s, (V ^ 2 * (w i / (v i) ^ 2) - (w i * v i) / V) :=
         Finset.sum_congr rfl expand
@@ -52,9 +54,9 @@ theorem market_clears {ι : Type*} (s : Finset ι) (v w : ι → ℝ) (V : ℝ)
         field_simp
         linear_combination hprice
 
-/-- **Le marché est un participant.** Face à tout prix sonde `z ≠ 0`, la somme
-des réponses individuelles égale la réponse d'un participant unique d'estimation
-`V` et de poids `W_Ω = (Σ wᵢvᵢ)/V`. -/
+/-- **The market is a single participant.** Against any probe price `z ≠ 0`, the
+sum of the individual responses equals the response of a single participant with
+estimate `V` and weight `W_Ω = (Σ wᵢvᵢ)/V`. -/
 theorem market_is_single_participant {ι : Type*} (s : Finset ι) (v w : ι → ℝ)
     (V z : ℝ) (hv : ∀ i ∈ s, v i ≠ 0) (hV : V ≠ 0) (hz : z ≠ 0)
     (hprice : V ^ 3 * ∑ i ∈ s, w i / (v i) ^ 2 = ∑ i ∈ s, w i * v i) :
@@ -65,19 +67,19 @@ theorem market_is_single_participant {ι : Type*} (s : Finset ι) (v w : ι → 
     intro i hi
     have := hv i hi
     unfold traderF
-    field_simp <;> ring
+    field_simp
   have lhs_eq : ∑ i ∈ s, w i * traderF (z / v i)
       = z ^ 2 * (∑ i ∈ s, w i / (v i) ^ 2) - (∑ i ∈ s, w i * v i) / z := by
     rw [Finset.sum_congr rfl expand, Finset.sum_sub_distrib,
         Finset.mul_sum, Finset.sum_div]
   have hS : (∑ i ∈ s, w i / (v i) ^ 2) = (∑ i ∈ s, w i * v i) / V ^ 3 := by
-    field_simp <;> linear_combination hprice
+    field_simp; linear_combination hprice
   rw [lhs_eq, hS]
   unfold traderF
-  field_simp <;> ring
+  field_simp
 
-/-- **La pente à l'équilibre vaut 3.** `f'(1) = 3` — c'est le facteur qui relie
-le poids à l'angle du degré de certitude : `tan θ = 3w`. -/
+/-- **The slope at equilibrium is 3.** `f'(1) = 3` — the factor relating the
+weight to the angle of the degree of certainty: `tan θ = 3w`. -/
 theorem traderF_slope_at_one : HasDerivAt traderF 3 1 := by
   have h : HasDerivAt (fun x : ℝ => x ^ 2 - x⁻¹)
       (2 * (1 : ℝ) ^ 1 - -(((1 : ℝ) ^ 2)⁻¹)) 1 :=
@@ -89,7 +91,7 @@ theorem traderF_slope_at_one : HasDerivAt traderF 3 1 := by
   exact h
 
 
-/-- **La fonction de marchand est strictement croissante sur (0, ∞).** -/
+/-- **The trader function is strictly increasing on (0, ∞).** -/
 theorem traderF_strictMonoOn : StrictMonoOn traderF (Set.Ioi 0) := by
   intro x hx y hy hxy
   simp only [Set.mem_Ioi] at hx hy
@@ -98,9 +100,9 @@ theorem traderF_strictMonoOn : StrictMonoOn traderF (Set.Ioi 0) := by
   have h2 : 1 / y < 1 / x := one_div_lt_one_div_of_lt hx hxy
   linarith
 
-/-- **Unicité du prix de marché.** Conditions : estimations strictement
-positives, poids non négatifs, au moins un poids strictement positif.
-Deux prix strictement positifs qui équilibrent le marché sont égaux. -/
+/-- **Uniqueness of the market price.** Conditions: strictly positive estimates,
+nonnegative weights, at least one strictly positive weight. Two strictly
+positive prices that clear the market are equal. -/
 theorem market_price_unique {ι : Type*} (s : Finset ι) (v w : ι → ℝ)
     (hv : ∀ i ∈ s, 0 < v i) (hw : ∀ i ∈ s, 0 ≤ w i)
     (j : ι) (hj : j ∈ s) (hwj : 0 < w j)
