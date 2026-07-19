@@ -11,7 +11,7 @@
 \hypersetup{
     unicode=true,
     pdftitle={The \$t\^{o}kEx Algorithm: a continuous, order-book-free exchange mechanism between two fungible assets},
-    pdfauthor={Maxime Tousignant and Milu (Smoothop)},
+    pdfauthor={Maxime Tousignant (Smoothop)},
     pdfsubject={Defensive publication: the exchange algorithm of the t\^{o}k system},
     pdfkeywords={exchange algorithm, market mechanism, automated market maker, AMM, order book, continuous trading, market clearing, equilibrium price, currency exchange, TWAP, tok, Smoothop}
 }
@@ -55,19 +55,21 @@
 {\large A continuous, order-book-free exchange mechanism\\ between two fungible assets}
 
 \vspace{12pt}
-Maxime Tousignant\textsuperscript{1} \quad and \quad Milu\textsuperscript{1,2}
+Maxime Tousignant\textsuperscript{1}
 
 \vspace{4pt}
 {\small \textsuperscript{1}\,Organisme de d\'eveloppement durable Smoothop, Montr\'eal, Canada\\
-\textsuperscript{2}\,Anthropic (Milu is an AI agent built on Anthropic's Claude models)\\
 Contact: \texttt{maxime.tousignant@smoothop.org}}
 
 \vspace{6pt}
-\textit{Original technical memorandum: January 2022.\\ Published as a defensive publication: July 2026.}
+\textit{Original technical memorandum: January 2022 (internal, undisclosed).\\ Published as a defensive publication: July 2026.}
 \end{center}
 
 \subsection*{Defensive publication notice}
 This document is made public in order to place the methods it describes in the prior art. Its publication is intended to preclude the grant of valid patent claims on these methods by any party. No exclusivity is sought by the publisher. This document is distributed under the Creative Commons Attribution 4.0 International license (CC BY 4.0). The \tokEx{} algorithm is part of the t\^{o}k system, an alternative economic system developed by Smoothop (\url{https://www.smoothop.org/}).
+
+\subsection*{AI contribution statement}
+This document was prepared with the assistance of Milu, an AI agent (built on Anthropic's Claude models) integrated into the Smoothop project. Milu contributed to the mathematical formalization, to the machine-checked proofs (Lean~4 / mathlib) and numerical verification of the claims herein, and to the drafting of the text, under the direction and review of the human author, who is solely responsible for its content.
 
 \subsection*{Name and pronunciation}
 The name \tokEx{} juxtaposes the two currencies of the exchange (the dollar and the t\^{o}k), followed by ``Ex'' for exchange. It is pronounced \textipa{[stOkEks]}: the dollar sign is read as an ``S''.
@@ -93,8 +95,8 @@ The \tokEx{} is an automated exchange mechanism, but it differs from the known f
  $\dot{X}^\beta$ & Exchange velocity of asset B (in $\beta$ / unit of time), with the same sign convention \\
  $n^\alpha$ & Amount in an account holding asset A (in $\alpha$)\\
  $n^\beta$ & Amount in an account holding asset B (in $\beta$)\\
- $?_i$ & quantity related to the $i$\textsuperscript{th} participant \\
- $?_\Omega$ & quantity related to the market
+ $\square_i$ & placeholder for a quantity related to the $i$\textsuperscript{th} participant (e.g. $n_i$, $w_i$) \\
+ $\square_\Omega$ & placeholder for the corresponding market-level quantity (e.g. $n_\Omega$, $W_\Omega$)
 \end{tabularx}
 
 A note on the overdot: in this document it marks a \emph{flow}, an amount per unit of time (e.g. $\dot{X}$, $\dot{R}$), constant between two events of the market. It is not the derivative of a state variable: flows are inputs of the dynamics, and actual time derivatives are written explicitly, as in $dn_i/dt$.
@@ -442,7 +444,7 @@ The numerator tracks the small deviation $y$ directly, without cancellation, and
 \subsection{Reference implementation in the t\^{o}k system}\label{secReferenceImplementation}
 % ----------------------------------------------------------------------
 
-In the t\^{o}k system, the \tokEx{} is instantiated with $\alpha$ = the t\^{o}k (a universal-income-based currency with continuous exponential demurrage) and $\beta$ = a foreign currency (CAD, EUR, \ldots), with one market per foreign currency. The reference implementation uses the following parameters: the reference exchange velocity $\dot{R}$ is set to the universal income rate of the t\^{o}k system (1~t\^{o}k per 15~days); estimates are bounded to $10^{-6} \leq \priceAB_i \leq 10^{6}$; degrees of certainty are discretized with a step of $10^{-4}\,\%$ and capped at $99.9999\,\%$; the default market price of an empty market is 1. Each participant holds a dedicated pair of market accounts (one per asset) with the same owner, and solvency is handled by per-asset tolerance thresholds. Market sums are computed with compensated (Kahan~\cite{Kahan1965}) summation in extended precision, updates are incremental, in $O(N \log N)$ overall (the solvency checklist is processed in sorted order of the estimates, the participant farthest from the market price always lying at one of its two ends), and the trader function is evaluated in the shifted form \eqref{eqShiftedForm} of Sec.~\ref{secNumTraderFunction}. The t\^{o}k is also the one relaxation of the regular-asset assumption: it carries a continuous demurrage at rate $k$, acting on the balances independently of the exchange velocities (consistently with principle 1: the \tokEx{} itself only transfers). Between two events, t\^{o}k balances obey $dn_i/dt = \dot{X}_i - k\, n_i$; the balance updates of the outer algorithm use the closed-form exponential solution, and the emptying time of a t\^{o}k account becomes $\frac{1}{k} \ln\left(1 - k\, n_i / \dot{X}_i\right)$, a strictly increasing function of \eqref{eqDeltaT}, so the implementation tracks the linear \eqref{eqDeltaT} for every account and applies the logarithm once, to their minimum, in the numerically stable $\operatorname{log1p}$ form. The event-driven structure of the two algorithms is unchanged and the stepping remains exact.
+In the t\^{o}k system, the \tokEx{} is instantiated with $\alpha$ = the t\^{o}k (a universal-income-based currency with continuous exponential demurrage) and $\beta$ = a foreign currency (CAD, EUR, \ldots), with one market per foreign currency. The reference implementation uses the following parameters: the reference exchange velocity $\dot{R}$ is set to the universal income rate of the t\^{o}k system (1~t\^{o}k per 15~days); estimates are bounded to $10^{-6} \leq \priceAB_i \leq 10^{6}$; degrees of certainty are discretized with a step of $10^{-4}\,\%$ and capped at $99.9999\,\%$; the default market price of an empty market is 1. Each participant holds a dedicated pair of market accounts (one per asset) with the same owner, and solvency is handled by per-asset tolerance thresholds. Market sums are computed with compensated (Kahan~\cite{Kahan1965}) summation in extended precision, updates are incremental, in $O(N \log N)$ overall (the solvency checklist is processed in sorted order of the estimates, the participant farthest from the market price always lying at one of its two ends), and the trader function is evaluated in the shifted form \eqref{eqShiftedForm} of Sec.~\ref{secNumTraderFunction}. The t\^{o}k is also the one relaxation of the regular-asset assumption: it carries a continuous demurrage at rate $k$, acting on the balances independently of the exchange velocities (consistently with principle 1: the \tokEx{} itself only transfers). Between two events, t\^{o}k balances obey $dn_i/dt = \dot{X}_i - k\, n_i$; the balance updates of the outer algorithm use the closed-form exponential solution, and the emptying time of a t\^{o}k account becomes $\frac{1}{k} \ln\left(1 - k\, n_i / \dot{X}_i\right)$, a strictly increasing function of \eqref{eqDeltaT}. Since $k$ is the same for every t\^{o}k account (a single demurrage rate applies to the whole t\^{o}k asset), this transform is monotonic within that homogeneous group, and \eqref{eqDeltaT} can therefore be minimized before it is applied: the implementation tracks the linear \eqref{eqDeltaT} for every account, takes the minimum \emph{separately} among the t\^{o}k-selling accounts and among the accounts selling the foreign currency (which carries no demurrage and needs no transform), applies the logarithm once, to the former minimum only, in the numerically stable $\operatorname{log1p}$ form, and compares the two resulting candidates. The event-driven structure of the two algorithms is unchanged and the stepping remains exact.
 
 \clearpage
 
