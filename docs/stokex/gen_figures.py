@@ -48,8 +48,9 @@ def style(ax, grid_axis="both"):
 
 # ------------------------------------------------- stok-market_symmetry.pdf
 def fig_symmetry():
-    """Vitesses d'échange du i-e participant, chaque actif dans son unité de
-    référence : un seul axe (sans double échelle), les courbes sont miroir."""
+    """Vitesses d'échange du i-e participant : B est converti en équivalent-α
+    via l'estimé propre priceAB_i (son taux de conversion « juste »), pour
+    un seul axe commun en unités de Rdot (sans double échelle) ; miroir."""
     v_i, theta = 10.0, 75.0
     w_i = math.tan(math.pi * theta / 200.0) / 3.0
 
@@ -62,8 +63,8 @@ def fig_symmetry():
             label=r"asset A: $\dot{X}_i^\alpha$ (in units of $\dot{R}$)",
             clip_on=True)
     ax.plot(p, [w_i * f(v_i / q) for q in p], color=ORANGE, lw=1.8,
-            label=r"asset B: $\dot{X}_i^\beta$"
-                  r" (in units of $\dot{R}\,[\beta/\alpha]_i$)",
+            label=r"asset B: $\dot{X}_i^\beta\,[\alpha/\beta]_i$"
+                  r" (in units of $\dot{R}$)",
             clip_on=True)
     ax.axvline(v_i, color=MUTED, lw=0.8, ls=(0, (2, 3)))
     ax.plot([v_i], [0.0], "o", ms=6, color=INK, zorder=5)
@@ -74,7 +75,8 @@ def fig_symmetry():
     ax.set_yticks([0, 20, 40])
     ax.set_xlabel(r"market price $[\alpha/\beta]_\Omega$"
                   r" (in $\alpha$ per unit of $\beta$, log scale)")
-    ax.set_ylabel("exchange velocity\n(in the reference units of each asset)")
+    ax.set_ylabel("exchange velocity, in units of $\\dot{R}$\n"
+                  "(asset B converted at $i$'s own estimate)")
     style(ax, grid_axis="y")
 
     ax.text(v_i, -9, "equilibrium at the estimate", ha="center", color=INK)
