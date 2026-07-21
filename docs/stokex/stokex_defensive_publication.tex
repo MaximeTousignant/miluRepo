@@ -72,23 +72,35 @@ Contact: \texttt{maxime.tousignant@smoothop.org}}
 \textit{Original technical memorandum: January 2022 (internal, undisclosed).\\ Published as a defensive publication: July 2026.}
 \end{center}
 
-\subsection*{Defensive publication notice}
-This document is made public in order to place the methods it describes in the prior art. Its publication is intended to preclude the grant of valid patent claims on these methods by any party. No exclusivity is sought by the publisher. This document is distributed under the Creative Commons Attribution 4.0 International license (CC BY 4.0). The \StokEx{} algorithm is part of the t\^{o}k system, an alternative economic system developed by Smoothop (\url{https://www.smoothop.org/}).
+\subsection*{Defensive publication notice} % locked
+This document is made public in order to place the methods it describes in the prior art.
+Its publication is intended to preclude the grant of valid patent claims on these methods by any party. No exclusivity is sought by the publisher.
+This document is distributed under the Creative Commons Attribution 4.0 International license (CC BY 4.0).
+The \StokEx{} algorithm is part of the t\^{o}k system, an alternative economic system developed by Smoothop (\url{https://www.smoothop.org/}).
 
 \subsection*{AI contribution statement}
-This document was prepared with the assistance of Milu, an AI agent (built on Anthropic's Claude models) integrated into the Smoothop project. Milu contributed to the mathematical formalization, to the machine-checked proofs (Lean~4 / mathlib) and numerical verification of the claims herein, and to the drafting of the text, under the direction and review of the human author, who is solely responsible for its content.
+This document was prepared with the assistance of Milu, an AI agent (built on Anthropic's Claude models) integrated into the Smoothop project.
+Milu contributed to the mathematical formalization, to the machine-checked proofs (Lean~4 / mathlib) and numerical verification of the claims herein, and to the drafting of the text, under the direction and review of the uman author, who is solely responsible for its content.
 
 \subsection*{Name and pronunciation}
 The name \StokEx{} juxtaposes the two currencies of the exchange (the dollar and the t\^{o}k), followed by ``Ex'' for exchange. It is pronounced \textipa{[stOkEks]}: the dollar sign is read as an ``S''.
 
 \clearpage
 \subsection*{Abstract}
-The \StokEx{} is an algorithm for the continuous exchange of two fungible assets, A and B, without an order book, without counterparty matching, and without fees. It aims at a market that is fair, transparent, and accessible: rather than asking each participant how much to buy or sell at every instant, it asks only what they think the two assets are worth relative to each other and how confident they are in that estimate, and it trades continuously on their behalf, spreading each transaction over time and reacting automatically to the market, so that no constant monitoring is required. Each participant thus declares an estimate of the relative value of the two assets and a degree of certainty in that estimate. The degree of certainty is mapped to a weight through $w = \frac{1}{3}\tan\left(\pi\,\theta/200\,\%\right)$; geometrically, $\theta$ is the angle of the participant's response curve at its equilibrium point. Every participant exchanges continuously, at velocities given by a common trader function $f(x) = x^2 - 1/x$ of the ratio between the market price and the participant's estimate; both assets are treated symmetrically and all exchanges occur exactly at the market price. The market price is the unique positive price that simultaneously clears both assets; it has the closed form given in Eq.~\eqref{eqMarketPrice}. The whole market is provably indistinguishable from a single participant with an aggregate weight and degree of certainty. The state of the market is piecewise constant between events and is advanced exactly, event by event, by the two algorithms given below, with incremental $O(N \log N)$ updates. Mathematical proofs are provided in the annexes.
+The \StokEx{} is an algorithm for the continuous exchange of two fungible assets A and B. It works without an order book, without counterparty matching, without liquidity pools and without fees. It aims at a market that is fair, transparent, and accessible.
 
-\textbf{Keywords:} exchange algorithm, market mechanism, automated market maker (AMM), order book, decentralized exchange, continuous trading, market clearing, equilibrium price, currency exchange, time-weighted execution (TWAP).
+Rather than asking each participant how much to buy or sell at every instant,
+the \StokEx{} asks each participant two simple questions: how much do they think one asset is worth relative to the other, and how certain are they of that estimate?
+From the answers, the \StokEx{} extracts two parameters for each participant $i$: their estimate $\priceAB_i$ of the relative value of assets A and B, and their degree of certainty $\theta_i$ in that estimate. Every participant thereby deploys their own personal trader robot $T_i$ instancitated from the rational trader robot function $T(\priceAB_i,\theta_i)$ with one standingwho ouputs the exchange (buy/sell) velocities for assets A and B.  much to buy , with one standing order: buy low and sell high, at every instant.
+
+The degree of certainty is mapped to a weight through $w = \frac{1}{3}\tan\left(\pi\,\theta/200\,\%\right)$; geometrically, $\theta$ is the angle of the participant's response curve at its equilibrium point. Every participant exchanges continuously, at velocities given by a common trader function $f(x) = x^2 - 1/x$ of the ratio between the market price and the participant's estimate; both assets are treated symmetrically and all exchanges occur exactly at the market price. The market price is the unique positive price that simultaneously clears both assets; it has the closed form given in Eq.~\eqref{eqMarketPrice}.
+
+The whole market is provably indistinguishable from a single participant with an aggregate weight and degree of certainty. The state of the market is piecewise constant between events and is advanced exactly, event by event, by the two algorithms given below, with incremental $O(N \log N)$ updates. Mathematical proofs are provided in the annexes.
+
+\textbf{Keywords:} stokex, tok system, fair market, exchange algorithm, market mechanism, automated market maker (AMM), order book, decentralized exchange, continuous trading, market clearing, equilibrium price, currency exchange, time-weighted execution (TWAP).
 
 \subsection*{Relation to known mechanisms}
-The \StokEx{} is an automated exchange mechanism, but it differs from the known families of market designs. Unlike the continuous double auction (the order book of stock and cryptocurrency exchanges), it involves no orders, no bids or asks, and no counterparty matching. Unlike the automated market makers (AMM) and constant-function market makers of decentralized exchanges (constant-product pools and their generalizations), it holds no liquidity pool and derives no price from reserves: the price is computed in closed form from the participants' declared estimates and degrees of certainty, and the participants trade with each other, continuously, exactly at that price. The continuous execution spreads each transaction over time, as time-weighted average price (TWAP) execution strategies do on traditional markets, but here the property belongs to the market itself: supply and demand clear exactly at every instant.
+The \StokEx{} is an automated exchange mechanism, but it differs from the known families of market designs. Unlike the continuous double auction (the order book of stock and cryptocurrency exchanges), it involves no orders, no bids or asks, and no counterparty matching. Unlike automated market makers (AMM) of decentralized exchanges --- constant-function market makers such as constant-product pools and their generalizations --- it holds no liquidity pool and derives no price from reserves. Unlike scoring-rule market makers such as Hanson's logarithmic market scoring rule (LMSR) for prediction markets~\cite{Hanson2003}, and the convex-cost-function market makers that generalize it~\cite{AbernethyChenVaughan2013}, it requires no subsidizing party to commit capital against a bounded worst-case loss, and it elicits a participant's belief directly, as a declared estimate and degree of certainty, rather than inferring it from trades against an accumulated position. In all these cases, the \StokEx{} price is instead computed in closed form from the participants' declared estimates and degrees of certainty, and the participants trade with each other, continuously, exactly at that price. The continuous execution spreads each transaction over time, as time-weighted average price (TWAP) execution strategies do on traditional markets, but here the property belongs to the market itself: supply and demand clear exactly at every instant.
 
 % ----------------------------------------------------------------------
 \section{Notation}
@@ -473,26 +485,29 @@ Since $k$ is the same for every t\^{o}k account (a single demurrage rate applies
 \section{Market analysis}
 % ----------------------------------------------------------------------
 
-In this section we build some additional mathematical tools that may provide helpful insights into a market that uses the \StokEx{} algorithm. Among other things, the information about the market provided by these tools may help some participants to make their estimation.
+In this section we build some additional mathematical tools that may provide helpful insights into a market that uses the \StokEx{} algorithm. Chief among these is the fact that, from the point of view of any outside participant, the whole market behaves exactly like a single participant. This this gives an intuitive picture of the market and underlies several of the tools developed below. Among other things, the information about the market provided by these tools may help some participants to make their estimation. This fits principle 
 
 \subsection{Market behavior}\label{secMarketBehavior}
 % ----------------------------------------------------------------------
 
-We define the market behavior as the sum of the behavior of all its participants, such that
+We define the market behavior as the sum of the behavior of all its participants, evaluated at a common probe price in place of the market price. By \eqref{eqExchangeVelocities}, applied to every participant at the probe price $\priceAB_z$ (and its reciprocal $\priceBA_z = \priceAB_z^{-1}$) instead of $\priceAB_\Omega$ (and $\priceBA_\Omega$), this gives
 \begin{align}
     \dot{X}_\Omega^\alpha &= \sum_i w_i \left( \left( \frac{\priceAB_z}{\priceAB_i}\right)^2 - \frac{\priceAB_i}{\priceAB_z} \right) \dot{R} \,, \nonumber\\
-    \dot{X}_\Omega^\beta  &= \sum_i w_i \left( \left( \frac{\priceAB_z}{\priceAB_i}\right)^2 - \frac{\priceAB_i}{\priceAB_z} \right) \dot{R} \priceBA_\Omega \,, \label{eqDefMarketBehavior}
+    \dot{X}_\Omega^\beta  &= \sum_i w_i \left( \left( \frac{\priceBA_z}{\priceBA_i}\right)^2 - \frac{\priceBA_i}{\priceBA_z} \right) \dot{R} \priceBA_i \,, \label{eqDefMarketBehavior}
 \end{align}
-where $\priceAB_z$ is a \emph{probe price}: an arbitrary strictly positive price, distinct in general from the market price $\priceAB_\Omega$, at which we choose to evaluate the aggregate response of the market. If $\priceAB_z = \priceAB_\Omega$ then the market is in equilibrium (by definition of $\priceAB_\Omega$) and $\dot{X}_\Omega^\alpha=0$. However, if a random new participant was added to the market, we know that the market price would change. The market behavior allows us to know how the ``old'' market will react, or in other words at what velocity it will exchange with the new participant. Indeed, given the new participant's inputs, we can calculate the new market price using~\eqref{eqMarketPrice}, which gives us $\priceAB_z$ that allows us to calculate the market behavior $\dot{X}_\Omega^\alpha$ we just defined.
+where $\priceAB_z$ is a \emph{probe price}: an arbitrary strictly positive price, distinct in general from the market price $\priceAB_\Omega$, at which we choose to evaluate the aggregate response of the market. If $\priceAB_z = \priceAB_\Omega$ then the market is in equilibrium (by definition of $\priceAB_\Omega$) and $\dot{X}_\Omega^\alpha=\dot{X}_\Omega^\beta=0$. However, if a random new participant was added to the market, we know that the market price would change. The market behavior allows us to know how the ``old'' market will react, or in other words at what velocity it will exchange with the new participant. Indeed, given the new participant's inputs, we can calculate the new market price using~\eqref{eqMarketPrice}, which gives us $\priceAB_z$ that allows us to calculate the market behavior we just defined.
 
 \subsection{Total market weight}
 % ----------------------------------------------------------------------
 
-In Annex~\ref{secProofTotalMarketWeight}, we demonstrate that the market behavior defined in \eqref{eqDefMarketBehavior} can be written as
-\begin{equation}
-    \dot{X}_\Omega^\alpha = W_\Omega \left(\left(\frac{\priceAB_z}{\priceAB_\Omega}\right)^2-\frac{\priceAB_\Omega}{\priceAB_z}\right) \dot{R} \,, \label{eqMarketBehavior}
-\end{equation}
-where $W_\Omega$ is the total market weight, given by
+\textbf{Claim.} The whole market can be thought of as a single participant: from the point of view of a new participant entering the market, it is not possible to distinguish if the exchange is taking place with a diverse collection of participants with various estimates $(\priceAB_i,\, \theta_i)$ or a single participant with an aggregate estimate $\priceAB_\Omega$ (the market price itself) and an aggregate degree of certainty $\Theta_\Omega$, defined below.
+
+We prove this claim in Annex~\ref{secProofTotalMarketWeight}, by showing that there exists a total market weight $W_\Omega$ such that the market behavior defined in \eqref{eqDefMarketBehavior} can be written in the same closed form as a single participant's exchange velocities \eqref{eqExchangeVelocities}, with $i \to \Omega$:
+\begin{align}
+    \dot{X}_\Omega^\alpha &= W_\Omega \left(\left(\frac{\priceAB_z}{\priceAB_\Omega}\right)^2-\frac{\priceAB_\Omega}{\priceAB_z}\right) \dot{R} \,, \nonumber\\
+    \dot{X}_\Omega^\beta &= W_\Omega \left(\left(\frac{\priceBA_z}{\priceBA_\Omega}\right)^2-\frac{\priceBA_\Omega}{\priceBA_z}\right) \dot{R} \priceBA_\Omega \,, \label{eqMarketBehavior}
+\end{align}
+where the total market weight is given by
 \begin{equation}
    W_\Omega = \priceBA_\Omega \sum_i w_i \priceAB_i\,. \label{eqTotalMarketWeight}
 \end{equation}
@@ -502,11 +517,9 @@ Using the expression \eqref{eqMarketPrice} for the market price, we can also wri
 \end{equation}
 
 Consequently, we can define the total market degree of certainty (using the inverse of the  weighting factor function \eqref{eqFunctionW}) as
-\begin{equation}    
+\begin{equation}
    \Theta_\Omega = \frac{200\%}{\pi} \arctan \left( 3 \, W_\Omega\right) \,. \label{eqTotalMarketDegree}
 \end{equation}
-
-In the form of \eqref{eqMarketBehavior}, we can clearly see the similarity between the market behavior and that of a single participant (see \eqref{eqExchangeVelocities}). This means that the whole market can be thought of as a single participant. Indeed, from the point of view of a new participant entering the market, it is not possible to distinguish if the exchange is taking place with a diverse collection of participants with various estimates $(\priceAB_i,\, \theta_i)$ or a single participant with estimate $(\priceAB_\Omega,\, \Theta_\Omega)$.
 
 An important takeaway from this analysis is that the total market weight $W_\Omega$ can serve as a useful index that indicates the ``stiffness'' of the market. A market with a large $W_\Omega$ will resist more strongly to a change in market price $\priceAB_\Omega$. Moreover, we can see from \eqref{eqTotalMarketWeight} that the market weight increases with each new participant to the market (unless, of course, the old participants decide to change their estimate). This suggests that a market with a large number of participants using the \StokEx{} algorithm would have a relatively stable market price.
 
@@ -750,14 +763,15 @@ Q.E.D.
 % ----------------------------------------------------------------------
 
 In \eqref{eqDefMarketBehavior}, we defined the market behavior as the sum of the behavior of all its participants
-\begin{equation*}
-    \dot{X}_\Omega^\alpha = \sum_i w_i \left( \left( \frac{\priceAB_z}{\priceAB_i}\right)^2 - \frac{\priceAB_i}{\priceAB_z} \right) \dot{R} \,.
-\end{equation*}
+\begin{align*}
+    \dot{X}_\Omega^\alpha &= \sum_i w_i \left( \left( \frac{\priceAB_z}{\priceAB_i}\right)^2 - \frac{\priceAB_i}{\priceAB_z} \right) \dot{R} \,,\\
+    \dot{X}_\Omega^\beta &= \sum_i w_i \left( \left( \frac{\priceBA_z}{\priceBA_i}\right)^2 - \frac{\priceBA_i}{\priceBA_z} \right) \dot{R} \priceBA_i \,.
+\end{align*}
 We want to prove that there exists a total market weight $W_\Omega$ such that the market behaves as a single participant, in a way that
 \begin{equation*}
     W_\Omega\left(\left(\frac{\priceAB_z}{\priceAB_\Omega}\right)^2-\frac{\priceAB_\Omega}{\priceAB_z}\right) \dot{R} = \sum_i w_i \left( \left( \frac{\priceAB_z}{\priceAB_i}\right)^2 - \frac{\priceAB_i}{\priceAB_z} \right) \dot{R} \,,
 \end{equation*}
-for any $\priceAB_z$.
+for any $\priceAB_z$. We treat the asset~A identity first; the asset~B identity then follows as an easy corollary.
 
 Of course, this statement is true in the trivial case when the inputs of each of the $N_\Omega$ participants are $\priceAB_i = \priceAB_\Omega$ and $w_i=W_\Omega / N_\Omega$, but we want to prove that it is in fact true for any participant's inputs.
 
@@ -780,6 +794,18 @@ Now, we need to verify that this choice also satisfies the first expression
 \end{align*}
 The last line corresponds to the expression for the market price that we already proved in Annex~\ref{secProofMarketprice}.
 
+\begin{flushright}
+Q.E.D.
+\end{flushright}
+
+\textbf{Corollary (asset B).} Write $x_i = \priceAB_z/\priceAB_i$ and $x_\Omega = \priceAB_z/\priceAB_\Omega$, and recall the trader function $f(x) = x^2 - 1/x$ \eqref{eqTraderFunction}, so that $\dot{X}_\Omega^\alpha = \sum_i w_i f(x_i) \dot{R} = W_\Omega f(x_\Omega) \dot{R}$ is exactly the identity just proved. Since $\priceBA_z/\priceBA_i = 1/x_i$, the functional equation $f(1/x) = -f(x)/x$ \eqref{eqFunctionalEquation} of Annex~\ref{secTraderFamily} gives $f(\priceBA_z/\priceBA_i) = -f(x_i)/x_i$; moreover $\priceBA_i/x_i = \priceBA_i \priceAB_i/\priceAB_z = 1/\priceAB_z$ for every $i$ (asset~A's estimate and asset~B's estimate of the same participant are reciprocal), the aggregate participant $\Omega$ included. Hence
+\begin{align*}
+    \dot{X}_\Omega^\beta &= \sum_i w_i\, f\!\left(\priceBA_z/\priceBA_i\right)\, \dot{R}\, \priceBA_i\\
+    &= -\dot{R} \sum_i w_i\, f(x_i)\, \frac{\priceBA_i}{x_i}\\
+    &= -\frac{\dot{R}}{\priceAB_z} \sum_i w_i\, f(x_i)\\
+    &= -\frac{\dot{R}}{\priceAB_z}\, W_\Omega\, f(x_\Omega)\,,
+\end{align*}
+using the asset~A identity for the last step. Running the same three simplifications backward, with $i$ replaced by $\Omega$, turns the right-hand side back into $W_\Omega f(\priceBA_z/\priceBA_\Omega) \dot{R} \priceBA_\Omega$, which is the asset-B line of \eqref{eqMarketBehavior}.
 \begin{flushright}
 Q.E.D.
 \end{flushright}
@@ -822,6 +848,12 @@ Thus, we find that the quantity analogous to the variance of the participants' e
 
 \bibitem{Kahan1965}
 W.~Kahan, ``Pracniques: further remarks on reducing truncation errors,'' \emph{Communications of the ACM}, vol.~8, no.~1, p.~40, 1965. \url{https://doi.org/10.1145/363707.363723}
+
+\bibitem{Hanson2003}
+R.~Hanson, ``Combinatorial information market design,'' \emph{Information Systems Frontiers}, vol.~5, no.~1, pp.~107--119, 2003. \url{https://doi.org/10.1023/A:1022058209073}
+
+\bibitem{AbernethyChenVaughan2013}
+J.~Abernethy, Y.~Chen, and J.~Wortman Vaughan, ``Efficient market making via convex optimization, and a connection to online learning,'' \emph{ACM Transactions on Economics and Computation}, vol.~1, no.~2, pp.~12:1--12:39, 2013. \url{https://doi.org/10.1145/2465769.2465777}
 
 \end{thebibliography}
 
