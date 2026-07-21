@@ -25,6 +25,7 @@
 \geometry{letterpaper,left=1in, right=1in, top=1in, bottom=1in}
 \setlength{\parskip}{5pt}
 \setlength{\parindent}{0pt}
+\raggedbottom
 
 % Header and footer
 \pagestyle{fancy}
@@ -78,30 +79,57 @@ Its publication is intended to preclude the grant of valid patent claims on thes
 This document is distributed under the Creative Commons Attribution 4.0 International license (CC BY 4.0).
 The \StokEx{} algorithm is part of the t\^{o}k system, an alternative economic system developed by Smoothop (\url{https://www.smoothop.org/}).
 
-\subsection*{AI contribution statement}
+\subsection*{AI contribution statement}% locked
 This document was prepared with the assistance of Milu, an AI agent (built on Anthropic's Claude models) integrated into the Smoothop project.
 Milu contributed to the mathematical formalization, to the machine-checked proofs (Lean~4 / mathlib) and numerical verification of the claims herein, and to the drafting of the text, under the direction and review of the uman author, who is solely responsible for its content.
 
-\subsection*{Name and pronunciation}
+\subsection*{Name and pronunciation} % locked
 The name \StokEx{} juxtaposes the two currencies of the exchange (the dollar and the t\^{o}k), followed by ``Ex'' for exchange. It is pronounced \textipa{[stOkEks]}: the dollar sign is read as an ``S''.
 
+\subsection*{Abstract} % locked
+The \StokEx{} is an algorithm for the continuous exchange of two fungible assets A and B.
+It works without an order book, without counterparty matching, without liquidity pools and without fees.
+It aims at a market that is fair, transparent, and accessible.
+
+Rather than requiring each participant to repeatedly decide how much to buy or sell every time they want to trade,
+the \StokEx{} asks each participant two simple questions up front: how much do they think one asset is worth relative to the other, and how certain are they of that estimate?
+From those answers, the \StokEx{} extracts two parameters for each participant $i$: their estimate $\priceAB_i$ of the relative value of assets A and B, and their degree of certainty $\theta_i$, between 0 and 100\%, in that estimate.
+Every participant thereby deploys their own personal trading robot with one standing order: buy low and sell high, at every instant.
+
+Each trading robot continuously outputs two exchange (buy/sell) velocities, one for asset A and one for asset B, that are coherent with its participant's standing order.
+The degree of certainty is mapped to a weight through $w = \frac{1}{3}\tan\left(\pi\,\theta/200\,\%\right)$;
+geometrically, $\theta$ is the angle of the participant's response curve at its equilibrium point.
+Every trading robot exchanges continuously at velocities proportional to its weight $w$ and to a common trader function $f(x) = x^2 - 1/x$,
+where $x$ is the ratio between the market price and its participant's estimate.
+
+The \StokEx{} treats both assets A and B symmetrically and all exchanges occur exactly at the market price.
+The market price is the unique positive price that simultaneously clears both assets;
+it has the closed form given in Eq.~\eqref{eqMarketPrice}.
+
+From an outsider's perspective, the whole market is provably indistinguishable from a single participant with an aggregate estimate (the equilibrium market price) and an aggregate degree of certainty.
+The state of the market is piecewise constant between events and is advanced exactly, event by event, by the two algorithms given below, with incremental $O(N \log N)$ updates.
+Mathematical proofs are provided in the annexes.
+
+\textbf{Keywords:} stokex, automated market maker (AMM), decentralized exchange, logarithmic market scoring rule (LMSR), order book, continuous trading, prediction market, tok system, time-weighted execution (TWAP).
+
+\subsection*{Relation to known mechanisms} % locked
+The \StokEx{} is an automated exchange mechanism, but it differs from the known families of market designs.
+
+Unlike the continuous double auction (the order book of stock and cryptocurrency exchanges),
+the \StokEx{} involves no orders, no bids or asks, and no counterparty matching.
+
+Unlike automated market makers (AMM) of decentralized exchanges --- in particular constant-function market makers (CFMMs), such as Uniswap's constant-product pools~\cite{UniswapV2} and their generalizations~\cite{AngerisChitra2020} ---
+the \StokEx{} holds no liquidity pool and derives no price from reserves.
+
+Unlike scoring-rule market makers such as Hanson's logarithmic market scoring rule (LMSR) for prediction markets~\cite{Hanson2003} and the convex-cost-function market makers that generalize it~\cite{AbernethyChenVaughan2013},
+the \StokEx{} requires no subsidizing party to commit capital against a bounded worst-case loss.
+Nothing prevents an ordinary participant from unilaterally anchoring the price near their own estimate by declaring a very high degree of certainty, but the role is not a privileged one: any participant may take it on, their resulting exposure is bounded by their own account balance rather than by a worst-case loss fixed in advance for the whole market by a designer, and the algorithm itself enforces solvency as that balance is spent.
+Moreover, the \StokEx{} elicits a participant's belief directly, as a declared estimate and degree of certainty, rather than inferring it from trades against an accumulated position.
+
+Instead, the \StokEx{} computes the market price in closed form from the participants' declared estimates and degrees of certainty, and the participants' robots trade with each other, continuously, exactly at that price.
+The continuous execution spreads each transaction over time, as time-weighted average price (TWAP) execution strategies do on traditional markets, but here the property belongs to the market itself: supply and demand clear exactly at every instant.
+
 \clearpage
-\subsection*{Abstract}
-The \StokEx{} is an algorithm for the continuous exchange of two fungible assets A and B. It works without an order book, without counterparty matching, without liquidity pools and without fees. It aims at a market that is fair, transparent, and accessible.
-
-Rather than asking each participant how much to buy or sell at every instant,
-the \StokEx{} asks each participant two simple questions: how much do they think one asset is worth relative to the other, and how certain are they of that estimate?
-From the answers, the \StokEx{} extracts two parameters for each participant $i$: their estimate $\priceAB_i$ of the relative value of assets A and B, and their degree of certainty $\theta_i$ in that estimate. Every participant thereby deploys their own personal trader robot $T_i$ instancitated from the rational trader robot function $T(\priceAB_i,\theta_i)$ with one standingwho ouputs the exchange (buy/sell) velocities for assets A and B.  much to buy , with one standing order: buy low and sell high, at every instant.
-
-The degree of certainty is mapped to a weight through $w = \frac{1}{3}\tan\left(\pi\,\theta/200\,\%\right)$; geometrically, $\theta$ is the angle of the participant's response curve at its equilibrium point. Every participant exchanges continuously, at velocities given by a common trader function $f(x) = x^2 - 1/x$ of the ratio between the market price and the participant's estimate; both assets are treated symmetrically and all exchanges occur exactly at the market price. The market price is the unique positive price that simultaneously clears both assets; it has the closed form given in Eq.~\eqref{eqMarketPrice}.
-
-The whole market is provably indistinguishable from a single participant with an aggregate weight and degree of certainty. The state of the market is piecewise constant between events and is advanced exactly, event by event, by the two algorithms given below, with incremental $O(N \log N)$ updates. Mathematical proofs are provided in the annexes.
-
-\textbf{Keywords:} stokex, tok system, fair market, exchange algorithm, market mechanism, automated market maker (AMM), order book, decentralized exchange, continuous trading, market clearing, equilibrium price, currency exchange, time-weighted execution (TWAP).
-
-\subsection*{Relation to known mechanisms}
-The \StokEx{} is an automated exchange mechanism, but it differs from the known families of market designs. Unlike the continuous double auction (the order book of stock and cryptocurrency exchanges), it involves no orders, no bids or asks, and no counterparty matching. Unlike automated market makers (AMM) of decentralized exchanges --- constant-function market makers such as constant-product pools and their generalizations --- it holds no liquidity pool and derives no price from reserves. Unlike scoring-rule market makers such as Hanson's logarithmic market scoring rule (LMSR) for prediction markets~\cite{Hanson2003}, and the convex-cost-function market makers that generalize it~\cite{AbernethyChenVaughan2013}, it requires no subsidizing party to commit capital against a bounded worst-case loss, and it elicits a participant's belief directly, as a declared estimate and degree of certainty, rather than inferring it from trades against an accumulated position. In all these cases, the \StokEx{} price is instead computed in closed form from the participants' declared estimates and degrees of certainty, and the participants trade with each other, continuously, exactly at that price. The continuous execution spreads each transaction over time, as time-weighted average price (TWAP) execution strategies do on traditional markets, but here the property belongs to the market itself: supply and demand clear exactly at every instant.
-
 % ----------------------------------------------------------------------
 \section{Notation}
 % ----------------------------------------------------------------------
@@ -854,6 +882,12 @@ R.~Hanson, ``Combinatorial information market design,'' \emph{Information System
 
 \bibitem{AbernethyChenVaughan2013}
 J.~Abernethy, Y.~Chen, and J.~Wortman Vaughan, ``Efficient market making via convex optimization, and a connection to online learning,'' \emph{ACM Transactions on Economics and Computation}, vol.~1, no.~2, pp.~12:1--12:39, 2013. \url{https://doi.org/10.1145/2465769.2465777}
+
+\bibitem{UniswapV2}
+H.~Adams, N.~Zinsmeister, and D.~Robinson, ``Uniswap v2 core,'' Mar. 2020. \url{https://uniswap.org/whitepaper.pdf}
+
+\bibitem{AngerisChitra2020}
+G.~Angeris and T.~Chitra, ``Improved price oracles: constant function market makers,'' in \emph{Proc. 2nd ACM Conf. on Advances in Financial Technologies (AFT)}, 2020, pp.~80--91. \url{https://doi.org/10.1145/3419614.3423251}
 
 \end{thebibliography}
 
