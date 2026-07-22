@@ -1,0 +1,9 @@
+# Environnement Python pour générer les figures du $tôkEx (gen_figures.py).
+# Bootstrap (depuis la racine du repo) :
+#   python3 -m venv .venv
+#   ./.venv/bin/pip install -r docs/stokex/requirements.txt
+# Puis :  ./.venv/bin/python docs/stokex/gen_figures.py
+# Requiert aussi une installation LaTeX système (text.usetex=True) :
+# latex, dvipng — fournis par MacTeX / TeX Live.
+matplotlib
+pandas

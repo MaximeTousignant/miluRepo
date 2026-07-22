@@ -9,7 +9,8 @@ import os
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Arc
+from matplotlib.patches import (Arc, Circle, FancyArrowPatch, FancyBboxPatch,
+                                Polygon)
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 
@@ -21,7 +22,9 @@ MUTED = "#6E6E6E"
 GRID = "#E4E4E4"
 
 plt.rcParams.update({
-    "mathtext.fontset": "cm",
+    # Rendu du texte par LaTeX : même police Computer Modern que le document
+    "text.usetex": True,
+    "text.latex.preamble": r"\usepackage{amsmath}\usepackage{amssymb}",
     "font.family": "serif",
     "font.size": 11,
     "axes.edgecolor": MUTED,
@@ -46,7 +49,7 @@ def style(ax, grid_axis="both"):
         ax.set_axisbelow(True)
 
 
-# ------------------------------------------------- stok-market_symmetry.pdf
+# ------------------------------------------------- stokex_symmetry.pdf
 def fig_symmetry():
     """Vitesses d'échange du i-e participant : B est converti en équivalent-α
     via l'estimé propre priceAB_i (son taux de conversion « juste »), pour
@@ -79,15 +82,16 @@ def fig_symmetry():
                   "(asset B converted at $i$'s own estimate)")
     style(ax, grid_axis="y")
 
-    ax.text(v_i, -9, "equilibrium at the estimate", ha="center", color=INK)
-    ax.legend(loc="upper center", ncol=1)
+    ax.text(v_i, -9, "equilibrium at the estimate", ha="center", color=INK,
+            bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.8})
+    ax.legend(loc="upper center", ncol=1, frameon=True, facecolor='white', edgecolor='none', framealpha=0.8)
 
-    fig.savefig(os.path.join(OUT, "stok-market_symmetry.pdf"),
+    fig.savefig(os.path.join(OUT, "stokex_symmetry.pdf"),
                 bbox_inches="tight")
     plt.close(fig)
 
 
-# ----------------------------------------------------- stok-market_steps.pdf
+# ----------------------------------------------------- stokex_steps.pdf
 def fig_steps():
     """Le prix de marché, constant par morceaux entre les événements."""
     fig, ax = plt.subplots(figsize=(6.5, 3.2))
@@ -115,7 +119,7 @@ def fig_steps():
             fontsize=10)
     ax.legend(loc="upper right")
 
-    fig.savefig(os.path.join(OUT, "stok-market_steps.pdf"), bbox_inches="tight")
+    fig.savefig(os.path.join(OUT, "stokex_steps.pdf"), bbox_inches="tight")
     plt.close(fig)
 
 
@@ -164,9 +168,271 @@ def fig_degree(log=False):
     plt.close(fig)
 
 
+# --------------------------------------------- personal_trading_robot.pdf
+def fig_robot_schema():
+    """Schéma du robot de trading personnel dans le contexte du marché.
+
+    Un participant humain honnête déclare deux entrées, une fois ; son robot
+    personnel négocie ensuite en continu à sa place. Comme c'est un marché,
+    on montre trois participants : le participant i (mis en évidence, honnête)
+    et deux pairs (grisés, « un parmi d'autres »). L'agrégat de tous les
+    robots fixe l'unique prix de marché, qui réalimente chaque robot en
+    continu. Diagramme, pas un graphe de données."""
+    # ---- Palette and drawing constants ---------------------------------
+    FADE = "#AAAAAA"           # muted peers: "one participant among others"
+    WHITE_PAD = 3.0            # pt, white box behind a label (masks the arrow)
+    PAD = 0.12                 # data units, FancyBboxPatch corner pad
+    TAIL, HEAD = 0.02, 0.04    # gap left outside a box by an arrow tail / head
+    DASH = (0, (4, 3))         # dashed style, for the price feedback
+    ROUND = "round,pad=%g,rounding_size=%g" % (PAD, PAD)
+    SQUARE = "square,pad=%g" % PAD
+
+    # ---- Layout: columns, human rows, and the boxes (cx, cy, w, h) ------
+    COL_I, COL_J, COL_K = 5.0, 1.05, 8.95
+    Y_PERSON, Y_NAME, Y_NOTE, Y_INPUT = 10.75, 10.15, 9.68, 8.85
+    ROBOT_I = (COL_I, 6.825, 5.6, 2.55)
+    ROBOT_J = (COL_J, 6.225, 1.4, 1.35)
+    ROBOT_K = (COL_K, 6.225, 1.4, 1.35)
+    MARKET = (COL_I, 2.75, 9.4, 1.6)
+    BASE = ROBOT_I[1] - ROBOT_I[3] / 2      # shared bottom edge of every robot
+    ROB_OUT = BASE - PAD - TAIL             # y where flows leave/enter a robot
+    BUS_Y = 4.55                            # the single price bus
+
+    fig, ax = plt.subplots(figsize=(7.6, 7.3))
+    ax.set_xlim(0, 10)
+    ax.set_ylim(1.55, 11.15)   # hug content: axis is off, so tight-bbox = limits
+    ax.axis("off")
+
+    # ---- Drawing helpers -----------------------------------------------
+    def box(cx, cy, w, h, text, edgecolor, textcolor=INK, fontsize=10.5,
+            lw=1.5, boxstyle=ROUND):
+        ax.add_patch(FancyBboxPatch(
+            (cx - w / 2, cy - h / 2), w, h, boxstyle=boxstyle, linewidth=lw,
+            edgecolor=edgecolor, facecolor="white", zorder=3))
+        if text:
+            ax.text(cx, cy, text, ha="center", va="center", fontsize=fontsize,
+                    color=textcolor, zorder=4)
+
+    def arrow(xy_from, xy_to, color=INK, lw=1.3, ls="solid"):
+        ax.add_patch(FancyArrowPatch(
+            xy_from, xy_to, arrowstyle="-|>", mutation_scale=12,
+            color=color, lw=lw, linestyle=ls, shrinkA=0, shrinkB=0, zorder=2))
+
+    def label(x, y, text, color=MUTED, fontsize=9.5, ha="center",
+              style="normal"):
+        ax.text(x, y, text, ha=ha, va="center", fontsize=fontsize, color=color,
+                zorder=5, style=style,
+                bbox=dict(facecolor="white", edgecolor="none", pad=WHITE_PAD))
+
+    def person(cx, cy, s, color):
+        ax.add_patch(Circle((cx, cy + 0.17 * s), 0.13 * s, facecolor="white",
+                            edgecolor=color, lw=1.4, zorder=4))
+        ax.add_patch(Polygon(
+            [(cx - 0.24 * s, cy - 0.30 * s), (cx + 0.24 * s, cy - 0.30 * s),
+             (cx + 0.15 * s, cy + 0.02 * s), (cx - 0.15 * s, cy + 0.02 * s)],
+            closed=True, facecolor="white", edgecolor=color, lw=1.4,
+            joinstyle="round", zorder=4))
+
+    def top_in(b):
+        """y just above box b's top edge, where an arrow head should land."""
+        return b[1] + b[3] / 2 + PAD + HEAD
+
+    MKT_IN = top_in(MARKET)    # y where the exchange velocities reach the market
+
+    # ---- Peers j and k: a participant, their robot, their trades (muted) -
+    # Each peer trades out on its outer edge and reads the price on its inner
+    # edge; `side` (-1 for j, +1 for k) mirrors the two columns.
+    for b, tag, side in ((ROBOT_J, "j", -1), (ROBOT_K, "k", +1)):
+        cx = b[0]
+        person(cx, Y_PERSON, 0.85, FADE)
+        label(cx, Y_NAME, "Participant $%s$" % tag, color=FADE, fontsize=9.5)
+        arrow((cx, Y_NAME - 0.40), (cx, top_in(b)), color=FADE, lw=1.1)
+        label(cx, Y_INPUT, r"$[\alpha/\beta]_%s,\ \theta_%s$" % (tag, tag),
+              color=FADE, fontsize=8.5)
+        box(*b, r"\texttt{robot %s}" % tag, FADE, textcolor=FADE, fontsize=9.5,
+            lw=1.2, boxstyle=SQUARE)
+        arrow((cx + side * 0.45, ROB_OUT), (cx + side * 0.25, MKT_IN),
+              color=FADE, lw=1.1)                                  # trade out
+        arrow((cx - side * 0.45, BUS_Y), (cx - side * 0.45, ROB_OUT),
+              color=FADE, lw=1.0, ls=DASH)                         # price in
+
+    # ---- Participant i: the human, in full detail ----------------------
+    person(COL_I, Y_PERSON, 1.0, INK)
+    label(COL_I, Y_NAME, "Participant $i$", color=INK, fontsize=11)
+    label(COL_I, Y_NOTE, "declares estimate and confidence once at $t_0$",
+          color=MUTED, fontsize=8.7, style="italic")
+    arrow((COL_I, Y_NOTE - 0.30), (COL_I, top_in(ROBOT_I)), color=INK)
+    label(COL_I, Y_INPUT, r"$[\alpha/\beta]_i,\ \theta_i$", color=INK,
+          fontsize=10)
+
+    # Square, monospace = the machine. Title / equations / standing order are
+    # placed separately (linespacing is ignored under usetex) so each breathes.
+    box(*ROBOT_I, "", BLUE, boxstyle=SQUARE)
+    ax.text(COL_I, 7.72, r"\texttt{personal trading robot i}", ha="center",
+            va="center", color=INK, fontsize=9, zorder=4)
+    ax.text(COL_I, 6.78,
+            r"$\begin{aligned}"
+            r"\dot{X}_i^\alpha &= w(\theta_i)\, f\!\left("
+            r"\dfrac{[\alpha/\beta]_\Omega}{[\alpha/\beta]_i}\right)\dot{R}"
+            r"\\[6pt]"
+            r"\dot{X}_i^\beta &= w(\theta_i)\, f\!\left("
+            r"\dfrac{[\beta/\alpha]_\Omega}{[\beta/\alpha]_i}\right)"
+            r"\dot{R}\,[\beta/\alpha]_i"
+            r"\end{aligned}$",
+            ha="center", va="center", color=INK, fontsize=9.5, zorder=4)
+    ax.text(COL_I, 5.88, r"\texttt{buy low, sell high, every instant}",
+            ha="center", va="center", color=INK, fontsize=9, zorder=4)
+
+    # Two exchange velocities flow down into the market; labels ride the arrows.
+    arrow((3.8, ROB_OUT), (4.0, MKT_IN), color=INK)
+    arrow((6.2, ROB_OUT), (6.0, MKT_IN), color=INK)
+    label(3.86, 4.90, r"$\dot{X}_i^\alpha$", color=INK, fontsize=10)
+    label(6.14, 4.90, r"$\dot{X}_i^\beta$", color=INK, fontsize=10)
+
+    # ---- The market: the aggregate of every robot ----------------------
+    box(*MARKET, "", ORANGE)
+    ax.text(COL_I, 3.04, r"\textbf{Market: every participant's robot at once}",
+            ha="center", va="center", color=INK, fontsize=10.5, zorder=4)
+    ax.text(COL_I, 2.40,
+            r"$\sum_i \dot{X}_i^\alpha = \sum_i \dot{X}_i^\beta = 0"
+            r"\ \Longrightarrow\ [\alpha/\beta]_\Omega$",
+            ha="center", va="center", color=INK, fontsize=10.5, zorder=4)
+
+    # ---- Price bus: one market price, fed up the middle to every robot --
+    ax.plot([0.9, 9.1], [BUS_Y, BUS_Y], color=MUTED, lw=1.1, zorder=1)
+    arrow((COL_I, MKT_IN), (COL_I, BUS_Y), color=MUTED, lw=1.1)  # market feeds it
+    arrow((COL_I, BUS_Y), (COL_I, ROB_OUT), color=MUTED, lw=1.1, ls=DASH)
+    label(COL_I, 4.12, r"$[\alpha/\beta]_\Omega$", color=MUTED, fontsize=9.5)
+
+    fig.savefig(os.path.join(OUT, "personal_trading_robot.pdf"),
+                bbox_inches="tight")
+    plt.close(fig)
+
+
+# ------------------------------------------------- cadeur_example.pdf
+def fig_cadeur_example():
+    """Illustration numerique pertinente au systeme des toks (echange
+    contre une devise etrangere) : CAD/EUR (CAD par EUR = DEXCAUS x
+    DEXUSEU, FRED)."""
+    import pandas as pd
+
+    # alpha = CAD, beta = EUR
+    RCAD = 1.0  # CAD / day, arbitrary reference
+
+    df = pd.read_csv(os.path.join(OUT, "cadeur_daily.csv"))
+    df["observation_date"] = pd.to_datetime(df["observation_date"])
+    df["DEXCAUS"] = pd.to_numeric(df["DEXCAUS"], errors="coerce")
+    df["DEXUSEU"] = pd.to_numeric(df["DEXUSEU"], errors="coerce")
+    df["CADEUR"] = df["DEXCAUS"] * df["DEXUSEU"]  # CAD per 1 EUR
+    df = df.dropna(subset=["CADEUR"]).reset_index(drop=True)
+
+    # 5 years of observation before 5 years of trading with fixed parameters
+    test_end = df["observation_date"].max()
+    test_start = test_end - pd.DateOffset(years=5)
+    fit_start = test_start - pd.DateOffset(years=5)
+    fit = df[(df["observation_date"] >= fit_start)
+             & (df["observation_date"] < test_start)].reset_index(drop=True)
+    full = df[df["observation_date"] >= fit_start].reset_index(drop=True)
+    df = df[df["observation_date"] >= test_start].reset_index(drop=True)
+    market_price = df["CADEUR"] # CAD/EUR
+
+    # participant variables
+    estimate = fit["CADEUR"].mean() # CAD/EUR, plain 5-year average, no trend fit
+    theta = 60.0
+    w = (1.0 / 3.0) * math.tan(math.pi * theta / 200.0)
+    x = market_price / estimate
+    f = lambda z: z ** 2 - 1.0 / z
+    XCAD = w * f(x) * RCAD                   # CAD/day
+    XEUR = w * f(1.0 / x) * RCAD / estimate  # EUR/day
+
+    # balances
+    n0 = 1000.0  # 1000 CAD and 1000 EUR to start -- both native, round units
+    cumsumCAD = XCAD.cumsum() # accumulated CAD, from t0
+    cumsumEUR = XEUR.cumsum() # accumulated EUR, from t0
+    nCAD = n0 + cumsumCAD # amount CAD
+    nEUR = n0 + cumsumEUR # amount EUR
+    dnCAD = nCAD - nCAD.iloc[0] # amount change CAD, since t0
+    dnEUR = nEUR - nEUR.iloc[0] # amount change EUR, since t0
+    PCAD = dnCAD + dnEUR * market_price # total profit CAD, since t0
+    PEUR = dnEUR + dnCAD / market_price # total profit EUR, since t0
+
+    fig, (ax1, ax2, ax3, ax4) = plt.subplots(
+        4, 1, figsize=(6.8, 10.6), sharex=True, height_ratios=[1, 1, 1, 1])
+
+    SHADE = "#EDEDED"
+    for ax in (ax1, ax2, ax3, ax4):
+        ax.axvspan(fit_start, test_start, color=SHADE, zorder=0)
+        ax.axvline(test_start, color=MUTED, lw=0.9, ls=(0, (1, 2)), zorder=1)
+
+    ax1.plot(full["observation_date"], full["CADEUR"], color="black", lw=1.2, zorder=2)
+    ax1.plot([fit_start, test_start], [estimate, estimate],
+              color=INK, lw=1.3, zorder=3)
+    ax1.axhline(estimate, color=INK, lw=1.1, ls=(0, (4, 3)), zorder=1)
+    ax1.text(full["observation_date"].iloc[int(0.02 * len(fit))],
+              estimate * 1.02,
+              r"declared estimate $[\mathrm{CAD/EUR}]_i$ = 5-year average"
+              r" $\approx$ %.3f CAD/EUR" % estimate,
+              color=INK, fontsize=9.5, va="bottom")
+    ax1.text((fit_start + (test_start - fit_start) / 2), 1.15,
+              "observation window", color=MUTED, fontsize=9.5,
+              ha="center", va="bottom", style="italic")
+    ax1.text((test_start + (test_end - test_start) / 2), 1.15,
+              "exchange window", color=MUTED, fontsize=9.5,
+              ha="center", va="bottom", style="italic")
+    ax1.set_ylim(bottom=0)
+    ax1.set_ylabel("CAD/EUR rate\n(CAD per 1 EUR)")
+    style(ax1, grid_axis="y")
+
+    # Panel 2: CAD (blue) and EUR (orange), each a native currency unit --
+    # no numeraire imposed between them, as in the ETF example.
+    colorCAD = "#990000"
+    dates = df["observation_date"]
+    ax2.plot(dates, nCAD, color=colorCAD, lw=1.4, zorder=3)
+    ax2.axhline(n0, color=colorCAD, lw=0.7, ls=(0, (2, 3)), alpha=0.6, zorder=1)
+    ax2.set_ylim(800, 1200)
+    ax2.set_ylabel("amount\n(CAD)", color=colorCAD)
+    ax2.tick_params(axis="y", colors=colorCAD)
+    style(ax2, grid_axis="y")
+
+    colorEUR =  "#003399"
+    ax2b = ax2.twinx()
+    ax2b.plot(dates, nEUR, color=colorEUR, lw=1.4, zorder=3)
+    ax2b.axhline(n0, color=colorEUR, lw=0.7, ls=(0, (2, 3)), alpha=0.6, zorder=1)
+    ax2b.set_ylim(800, 1200)
+    ax2b.set_ylabel("amount\n(EUR)", color=colorEUR)
+    ax2b.tick_params(axis="y", colors=colorEUR)
+    ax2b.grid(False)
+    ax2b.spines[["top"]].set_visible(False)
+
+    ax2.text(dates.iloc[int(0.03 * len(df))], n0 * 1.002,
+              "start: 1000 CAD (blue) and 1000 EUR (orange)",
+              color=INK, fontsize=8.5, va="bottom")
+
+    # Panel 3: total profit accounted in CAD.
+    ax3.plot(dates, PCAD, color=colorCAD, lw=1.4)
+    ax3.axhline(0.0, color=MUTED, lw=0.8, ls=(0, (2, 3)))
+    ax3.set_ylabel("profit\n(CAD)", color=colorCAD)
+    ax3.tick_params(axis="y", colors=colorCAD)
+    style(ax3, grid_axis="y")
+
+    # Panel 4: the same portfolio, the same trades, accounted in EUR instead.
+    ax4.plot(dates, PEUR, color=colorEUR, lw=1.4)
+    ax4.axhline(0.0, color=MUTED, lw=0.8, ls=(0, (2, 3)))
+    ax4.set_ylabel("profit\n(EUR)", color=colorEUR)
+    ax4.tick_params(axis="y", colors=colorEUR)
+    ax4.set_xlabel("date")
+    style(ax4, grid_axis="y")
+
+    fig.align_ylabels([ax1, ax2, ax3, ax4])
+    fig.savefig(os.path.join(OUT, "cadeur_example.pdf"), bbox_inches="tight")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     fig_symmetry()
     fig_steps()
     fig_degree(log=False)
     fig_degree(log=True)
+    fig_robot_schema()
+    fig_cadeur_example()
     print("OK :", sorted(f for f in os.listdir(OUT) if f.endswith(".pdf")))

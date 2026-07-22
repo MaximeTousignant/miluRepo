@@ -26,3 +26,7 @@ CODE.md
 
 # Artefacts de compilation Lean
 .lake/
+
+# Environnement Python local — jamais sur git
+.venv/
+__pycache__/
