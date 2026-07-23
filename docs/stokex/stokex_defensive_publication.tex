@@ -6,6 +6,9 @@
 \usepackage{amssymb}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\definecolor{smoothblue}{HTML}{0F8EB1}
 \usepackage{lastpage}
 \usepackage{xcolor}
 \usepackage{hyperref}
@@ -76,42 +79,60 @@ Contact: \texttt{maxime.tousignant@smoothop.org}}
 
 \subsection*{Defensive publication notice} % locked
 This document is made public in order to place the methods it describes in the prior art.
-Its publication is intended to preclude the grant of valid patent claims on these methods by any party. No exclusivity is sought by the publisher.
+Its publication is intended to preclude the grant of valid patent claims on these methods by any party.
+No exclusivity is sought by the publisher.
 This document is distributed under the Creative Commons Attribution 4.0 International license (CC BY 4.0).
-The \StokEx{} algorithm is part of the t\^{o}k system, an alternative economic system developed by Smoothop (\url{https://www.smoothop.org/}).
+The \StokEx{} algorithm is part of the t\^{o}k system,
+an alternative economic system developed by Smoothop (\url{https://www.smoothop.org/}).
 
 \subsection*{AI contribution statement}% locked
-This document was prepared with the assistance of Milu, an AI agent (built on Anthropic's Claude models) integrated into the Smoothop project; Milu's own identity and protocol are public, at \url{https://github.com/MaximeTousignant/miluRepo} (tag \texttt{stokex-defpub-2026-07}).
-Milu contributed to the mathematical formalization, to the machine-checked proofs (Lean~4 / mathlib) and numerical verification of the claims herein, and to the drafting of the text,
+This document was prepared with the assistance of Milu,
+an AI agent (built on Anthropic's Claude models) integrated into the Smoothop project;
+Milu's own identity and protocol are public,
+at \url{https://github.com/MaximeTousignant/miluRepo} (tag \texttt{stokex-defpub-2026-07}).
+Milu contributed to the mathematical formalization, to the machine-checked proofs (Lean~4 / mathlib)
+and numerical verification of the claims herein, and to the drafting of the text,
 under the direction and review of the human author, who is solely responsible for its content.  % uman author, smooth operator
 
 \subsection*{Name and pronunciation} % locked
-The name \StokEx{} juxtaposes the two currencies of the exchange (the dollar and the t\^{o}k), followed by ``Ex'' for exchange. It is pronounced \textipa{[stOkEks]}: the dollar sign is read as an ``S''.
+The name \StokEx{} juxtaposes the two currencies of the exchange (the dollar and the t\^{o}k), followed by ``Ex'' for exchange.
+It is pronounced \textipa{[stOkEks]}: the dollar sign is read as an ``S''.
 
 \subsection*{Abstract} % locked
 The \StokEx{} is an algorithm for the continuous exchange of two fungible assets A and B.
 It works without an order book, without counterparty matching, without liquidity pools and without fees.
 It aims at a market that is fair, transparent, and accessible.
 
-The \StokEx{} asks each participant two simple questions up front: how much do they think one asset is worth relative to the other, and how confident are they in that estimate?
-From those answers, the \StokEx{} extracts two parameters for each participant identified by an index $i$: their estimate $\priceAB_i$ of the relative value of assets A and B, and their degree of confidence $\theta_i$, between 0 and 100\%, in that estimate.
-Every participant thereby deploys their own personal trading robot with one standing order: buy low and sell high, at every instant.
+The \StokEx{} asks each participant two simple questions up front:
+how much do they think one asset is worth relative to the other,
+and how confident are they in that estimate?
+From those answers, the \StokEx{} extracts two parameters for each participant identified by an index $i$:
+their estimate $\priceAB_i$ of the relative value of assets A and B,
+and their degree of confidence $\theta_i$, between 0 and 100\%, in that estimate.
+Every participant thereby deploys their own personal trading robot with one standing order:
+buy low and sell high, at every instant.
 
-The trading robot working for participant $i$ continuously outputs two exchange (buy/sell) velocities, one for asset A and one for asset B, that are coherent with its participant's standing order and with global market rules.
+The trading robot working for participant $i$ continuously outputs two exchange (buy/sell) velocities,
+one for asset A and one for asset B,
+that are coherent with its participant's standing order and with global market rules.
 The degree of confidence $\theta_i$ is mapped onto a weight $w(\theta_i) = \frac{1}{3}\tan\left(\pi\,\theta_i/200\,\%\right)$;
 geometrically, $\theta_i$ is the angle of the participant's response curve at its equilibrium point.
-Every trading robot exchanges continuously at velocities $\dot{X}_i^\alpha$ and $\dot{X}_i^\beta$ proportional to its weight and to a common trader function $f(x_i) = x_i^2 - 1/x_i$,
+Every trading robot exchanges continuously at velocities $\dot{X}_i^\alpha$ and $\dot{X}_i^\beta$
+proportional to its weight and to a common trader function $f(x_i) = x_i^2 - 1/x_i$,
 where $x_i$ is the ratio between the market price and its participant's estimate.
 
 The \StokEx{} treats both assets A and B symmetrically and all exchanges occur exactly at the market price.
 The market price is the unique positive price that simultaneously clears both assets;
 it has the closed form given in Eq.~\eqref{eqMarketPrice}.
 
-From an outsider's perspective, the whole market is provably indistinguishable from a single participant with an aggregate estimate (equal to the market price) and an aggregate degree of confidence.
-The state of the market is piecewise constant between events and is advanced exactly, event by event, by the two algorithms given below, with incremental $O(N \log N)$ updates.
+From an outsider's perspective, the whole market is provably indistinguishable from a single participant
+with an aggregate estimate (equal to the market price) and an aggregate degree of confidence.
+The state of the market is piecewise constant between events and is advanced exactly, event by event,
+by the two algorithms given below, with incremental $O(N \log N)$ updates.
 Mathematical proofs are provided in the annexes.
 
-\textbf{Keywords:} stokex, automated market maker (AMM), decentralized exchange, logarithmic market scoring rule (LMSR), order book, continuous trading, prediction market, tok system, time-weighted execution (TWAP).
+\textbf{Keywords:} stokex, automated market maker (AMM), decentralized exchange, logarithmic market scoring rule (LMSR),
+order book, continuous trading, prediction market, tok system, time-weighted execution (TWAP).
 
 \subsection*{Relation to known mechanisms} % locked
 The \StokEx{} is an automated exchange mechanism, but it differs from the known families of market designs.
@@ -119,16 +140,31 @@ The \StokEx{} is an automated exchange mechanism, but it differs from the known 
 Unlike the continuous double auction (the order book of stock and cryptocurrency exchanges),
 the \StokEx{} involves no orders, no bids or asks, and no counterparty matching.
 
-Unlike automated market makers (AMM) of decentralized exchanges --- in particular constant-function market makers (CFMMs), such as Uniswap's constant-product pools~\cite{UniswapV2} and their generalizations~\cite{AngerisChitra2020} ---
+Unlike automated market makers (AMM) of decentralized exchanges ---
+in particular constant-function market makers (CFMMs),
+such as Uniswap's constant-product pools~\cite{UniswapV2} and their generalizations~\cite{AngerisChitra2020} ---
 the \StokEx{} holds no liquidity pool and derives no price from reserves.
 
-Unlike scoring-rule market makers, such as Hanson's logarithmic market scoring rule (LMSR) for prediction markets~\cite{Hanson2003} and the convex-cost-function market makers that generalize it~\cite{AbernethyChenVaughan2013},
+Unlike scoring-rule market makers,
+such as Hanson's logarithmic market scoring rule (LMSR) for prediction markets~\cite{Hanson2003}
+and the convex-cost-function market makers that generalize it~\cite{AbernethyChenVaughan2013},
 the \StokEx{} requires no subsidizing party to commit capital against a bounded worst-case loss.
-Nothing prevents an ordinary participant from unilaterally anchoring the price near their own estimate by declaring a very high degree of confidence, but the role is not a privileged one: any participant may take it on, their resulting exposure is bounded by their own account balance rather than by a worst-case loss fixed in advance for the whole market by a designer, and the algorithm itself enforces solvency as that balance is spent.
-Moreover, the \StokEx{} elicits a participant's belief directly, as a declared estimate and degree of confidence, rather than inferring it from trades against an accumulated position.
+Nothing prevents an ordinary participant from unilaterally anchoring the price near their own estimate
+by declaring a very high degree of confidence,
+but the role is not a privileged one: any participant may take it on,
+their resulting exposure is bounded by their own account balance
+rather than by a worst-case loss fixed in advance for the whole market by a designer,
+and the algorithm itself enforces solvency as that balance is spent.
+Moreover, the \StokEx{} elicits a participant's belief directly,
+as a declared estimate and degree of confidence,
+rather than inferring it from trades against an accumulated position.
 
-The \StokEx{} computes the market price in closed form from the participants' declared estimates and degrees of confidence, and the participants' robots trade with each other, continuously, exactly at that price.
-The continuous execution spreads each transaction over time, as time-weighted average price (TWAP) execution strategies do on traditional markets, but here the property belongs to the market itself: supply and demand clear exactly at every instant.
+The \StokEx{} computes the market price in closed form
+from the participants' declared estimates and degrees of confidence,
+and the participants' robots trade with each other, continuously, exactly at that price.
+The continuous execution spreads each transaction over time,
+as time-weighted average price (TWAP) execution strategies do on traditional markets,
+but here the property belongs to the market itself: supply and demand clear exactly at every instant.
 
 \clearpage
 % ----------------------------------------------------------------------
@@ -158,64 +194,96 @@ The continuous execution spreads each transaction over time, as time-weighted av
  $f(x)$ & Trader function
 \end{tabularx}
 
-A note on assets and their units: $A$ and $B$ name the two \emph{assets} being exchanged, while $\alpha$ and $\beta$ name one \emph{unit} of each --- the yardstick in which balances, velocities and prices are counted. For instance, asset $A$ could be gold, the metal, and then $\alpha$ is one gram of it; or asset $A$ could be the Canadian economy, and then $\alpha$ is one Canadian dollar. Likewise asset $B$ could be the company Google, and then $\beta$ is one share, that is the fraction $1/N_{\mathrm{Google}}$ of the company, where $N_{\mathrm{Google}}$ is the number of shares outstanding. Throughout, $n^\alpha$ and $n^\beta$ are amounts of these units, and a price such as $\priceAB$ is a number of $\alpha$ per $\beta$.
+A note on assets and their units: $A$ and $B$ name the two \emph{assets} being exchanged, while $\alpha$ and $\beta$ name one \emph{unit} of each --- the yardstick in which balances,
+velocities and prices are counted. For instance, asset $A$ could be gold, the metal, and then $\alpha$ is one gram of it; or asset $A$ could be the Canadian economy, and then $\alpha$ is one Canadian dollar.
+Likewise asset $B$ could be the company Google, and then $\beta$ is one share, that is the fraction $1/N_{\mathrm{Google}}$ of the company, where $N_{\mathrm{Google}}$ is the number of shares outstanding.
+Throughout, $n^\alpha$ and $n^\beta$ are amounts of these units, and a price such as $\priceAB$ is a number of $\alpha$ per $\beta$.
 
 A note on the index $i$: it tags a participant, the way a UUID does in the reference implementation (Sec.~\ref{secReferenceImplementation}).
 It identifies each participant, it does not order them. ``Participant $i$'' is therefore read as ``the participant tagged $i$'', not as ``the $i$-th participant''.
 
 A note on the overdot: in this document it marks a velocity, an amount per unit of time (e.g. $\dot{X}^\alpha$, $\dot{X}^\beta$, $\dot{R}$), constant between two events of the market.
-It is not the derivative of a state variable. Actual time derivatives are written explicitly, as in $dn_i/dt$.
+It is not the derivative of a state variable. Actual time derivatives are written explicitly, as in $dn^\alpha_i/dt$.
 
 % ----------------------------------------------------------------------
-\section{Principles of the \StokEx{} Algorithm}
+\section{Principles of the \StokEx{} Algorithm} % locked
 % ----------------------------------------------------------------------
 
-The purpose of the algorithm is to set up a market between different participants in which two fungible assets,
-A and B, can be \textbf{continuously} exchanged according to each participant's estimate of the relative value of the two assets.
-
+The purpose of the algorithm is to set up a market among participants in which two fungible assets,
+A and B, can be \emph{continuously} exchanged according to each participant's estimate
+of the relative value of the two assets.
+\emph{Continuous} here is meant in time:
+rather than buying 5~$\beta$ for 10~$\alpha$ at a single instant
+(which implies a market price of 2~$\alpha$ per~$\beta$),
+the same exchange on the \StokEx{} runs as a steady flow --- say 1~$\beta$ per hour for five hours ---
+always at the current market price.
 The goals that guide this market's design are fairness, transparency, and accessibility.
+
 The \StokEx{} achieves accessibility by changing the question it asks a participant.
-A traditional market asks \emph{how much do you want to buy or sell, now?} --- a question whose correct answer moves with every tick;
-the \StokEx{} asks instead \emph{what do you think the two assets are worth relative to each other, and how sure are you?} --- a standing judgment that the mechanism then trades on continuously,
+A traditional market asks \emph{how much do you want to buy or sell, now?}
+--- a question that forces the participant to constantly pay attention to the current market price.
+Instead the \StokEx{} asks
+\emph{what do you think the two assets are worth relative to each other, and how sure are you?}
+--- a standing judgment that the mechanism then trades on continuously,
 buying more when the market is cheap relative to the estimate and selling more when it is dear.
-In effect, that standing judgment instantiates the participant's own personal trading robot, which trades on their behalf without further attention.
+In effect, that standing judgment instantiates the participant's own personal trading robot,
+which trades on their behalf without further attention.
+At any time a participant may change their estimate or their degree of confidence,
+which modifies their personal trading robot's parameters.
 
-Accessibility also constrains the mechanism from the other side. A market that means to be accessible should ideally charge no fees; but a mechanism that collects no fees earns nothing to spend on running itself, so it cannot pass its computational cost on to anyone and must instead keep that cost as low as possible. This budget shapes the construction that follows: the state of the market is advanced exactly, event by event, in $O(N \log N)$ time, and wherever the form of a function is left free, the cheapest to evaluate is preferred --- one reason the trader function is taken at $p = 2$, $f(x) = x^2 - 1/x$, which is built from integer powers alone and calls no transcendental function (Annex~\ref{secTraderFamily}).
+Each participant $i$ holds a \emph{wallet}: one account per asset, with positive balances $n^\alpha_i$ and $n^\beta_i$.
+Individual balances evolve continuously through the exchanges of the \StokEx{}
+(and through the participant's own deposits and withdrawals),
+but the exchange only moves amounts between wallets:
+deposits and withdrawals apart, the \emph{sums} $\sum_i n^\alpha_i$ and $\sum_i n^\beta_i$ are constant.
+Throughout this document, the assets are assumed to have no dynamics of their own;
+this assumption can be relaxed under certain conditions,
+such as the continuous disintegration (sometimes called demurrage) of the t\^{o}k
+in the reference implementation (Sec.~\ref{secReferenceImplementation}), without touching the exchange itself.
 
-\textbf{Wallets.} Each participant holds a \emph{wallet}: one account per asset, with balances $n^\alpha_i$ and $n^\beta_i$.
-Individual balances evolve continuously through the exchanges of the \StokEx{} (and through the participant's own deposits and withdrawals),
-but the exchange only moves amounts between wallets: deposits and withdrawals apart, the \emph{sums} $\sum_i n^\alpha_i$ and $\sum_i n^\beta_i$ are constant.
-Throughout this document, the assets are assumed to have no dynamics of their own; this assumption can be relaxed under certain conditions,
-such as the continuous disintegration (sometimes called demurrage) of the t\^{o}k in the reference implementation (Sec.~\ref{secReferenceImplementation}), without touching the exchange itself.
+The \StokEx{} algorithm obeys eight fundamental principles, which fall into two classes.
+The \emph{fair-market principles} (1--4) constrain the market itself,
+and the \emph{rational-trader principles} (5--8)
+specify how each trading robot behaves, once it is given its participant's inputs.
 
-The algorithm obeys eight fundamental principles, which fall into two classes.
-The \emph{fair-market principles} (1--4) constrain the market itself, and the \emph{rational-trader principles} (5--8) specify the behavior of the participants ---
-a behavior implemented for all participants by the same function, called the \emph{trader function}.
-
-\clearpage
 \textbf{Fair-market principles} (the market is unbiased):
 \begin{enumerate}
     \item \emph{Equilibrium and conservation.} The market price $\priceAB_\Omega$ is the price at which supply meets demand: at any given time, whatever amount of an asset some participants sell must be bought by others, and vice versa,
     \begin{equation*}
-        \sum_i \dot{X}_i^\alpha = \sum_i \dot{X}_i^\beta = 0\,.
+        \sum_i \dot{X}_i^\alpha = \sum_i \dot{X}_i^\beta = 0\,,
     \end{equation*}
-    Since $\dot{X}_i$ is precisely the contribution of the exchange to the balance $n_i$, the same equation is a conservation law: the exchange creates and destroys nothing, it only transfers existing amounts between the participants' wallets.
+    where $\dot{X}_i^\alpha$ and $\dot{X}_i^\beta$ are the exchange velocities of assets A and B for participant $i$.
+    And since we assume that A and B have no intrinsic dynamics, this principle is also a conservation law on the sum of all deposits in participants' wallets, because $\sum_i \dot{X}_i^\alpha = d/dt \sum_i n_i^\alpha = 0$ (same for $\beta$).
     \item \emph{Exchange at market price.} At any given time there is a single market price, strictly positive and common to all participants, and every exchange takes place exactly at it:
     \begin{equation*}
         \priceAB_\Omega = -\,\frac{\dot{X}_i^\alpha}{\dot{X}_i^\beta} > 0 \quad \text{for every trading participant } i\,.
     \end{equation*}
-    The minus sign records that $\dot{X}_i^\alpha$ and $\dot{X}_i^\beta$ always carry opposite signs --- one asset comes in as the other goes out --- and they vanish together only at the participant's own estimate, where there is no trade.
-    \item \emph{No bias between participants.} All exchange velocities are given by one common function of the participant's own inputs and of the market price, the same function for every participant:
-    \begin{equation*}
-        \dot{X}_i^\alpha = F\!\left(\priceAB_i,\ \theta_i\ ;\ \priceAB_\Omega\right) \quad \text{for all } i\,.
-    \end{equation*}
+    The minus sign records that $\dot{X}_i^\alpha$ and $\dot{X}_i^\beta$ always carry opposite signs (one asset comes in as the other goes out --- buy/sell or sell/buy) and they vanish together only at the participant's own estimate, where there is no trade.
+    \item \emph{No bias between participants.} All exchange velocities are given by one common function of the participant's own inputs and of the market price, the same function (i.e. the same model of trading robot) for every participant:
+    \begin{center}
+    \begin{tikzpicture}[>={Stealth[length=5pt]}, font=\small]
+        \node[draw=smoothblue, line width=1pt, minimum width=3.2cm, minimum height=1.2cm] (robot) {\texttt{trading robot}};
+        \node (mp)    at (0,1.35)     {$\priceAB_\Omega$};
+        \node (est)   at (-3.0,0.35)  {$\priceAB_i$};
+        \node (theta) at (-3.0,-0.35) {$\theta_i$};
+        \node (xa)    at (3.0,0.35)   {$\dot{X}_i^\alpha$};
+        \node (xb)    at (3.0,-0.35)  {$\dot{X}_i^\beta$};
+        \draw[->] (mp)        -- (robot.north);
+        \draw[->] (est)       -- (-1.6,0.35);
+        \draw[->] (theta)     -- (-1.6,-0.35);
+        \draw[->] (1.6,0.35)  -- (xa);
+        \draw[->] (1.6,-0.35) -- (xb);
+    \end{tikzpicture}
+    \end{center}
     \item \emph{No bias between assets.} The defining equations are invariant under swapping the two assets:
     \begin{equation*}
         \alpha \leftrightarrow \beta \quad \left(\text{hence } \priceAB \leftrightarrow \priceBA\right).
     \end{equation*}
 \end{enumerate}
 
-\textbf{Rational-trader principles} (every participant trades rationally). Let $x_i := \priceAB_\Omega / \priceAB_i$ denote the ratio between the market price and participant $i$'s estimate:
+\textbf{Rational-trader principles} (each trading robot trades rationally according to its participant inputs):
+
+Let $x_i := \priceAB_\Omega / \priceAB_i$ denote the ratio between the market price and participant $i$'s estimate:
 \begin{enumerate}
     \setcounter{enumi}{4}
     \item \emph{Buy low.} When the market prices an asset below the participant's estimate, the participant is willing to buy that asset:
@@ -237,34 +305,33 @@ a behavior implemented for all participants by the same function, called the \em
     so that $|\dot{X}_i^\alpha|$ and $|\dot{X}_i^\beta|$ grow as $x_i$ moves away from 1 in either direction.
     \item \emph{Urgency grows with confidence.} A participant's exchange velocities scale with a weight $w_i$ that increases strictly with their degree of confidence $\theta_i$:
     \begin{equation*}
-        \dot{X}_i \propto w_i = w(\theta_i)\,, \quad w \ \text{strictly increasing in } \theta_i\,.
+        \dot{X}_i^\alpha\text{ and }\dot{X}_i^\beta\text{ are both }\propto w_i = w(\theta_i)\,, \quad w \ \text{strictly increasing in } \theta_i\,.
     \end{equation*}
     No conviction, no trade: $w(0) = 0$.
 \end{enumerate}
 
-These eight principles are the \emph{hypotheses} of the \StokEx{}: everything that follows is constructed to satisfy them. The trader function \eqref{eqTraderFunction} realizes principles 5--8, the symmetric velocity pair \eqref{eqExchangeSymmetry} realizes principles 2--4, and the market price \eqref{eqMarketPrice} realizes principle 1.
+These eight principles are the \emph{hypotheses} of the \StokEx{}: everything that follows is constructed to satisfy them.
+The symmetric velocity pair \eqref{eqExchangeSymmetry} realizes principles~2--4,
+the trader function \eqref{eqTraderFunction} realizes principles~5--7, the weight function \eqref{eqFunctionW} realizes principle~8,
+and finally the closed form of market price \eqref{eqMarketPrice} realizes principle~1.
 
-\clearpage
 
 % ----------------------------------------------------------------------
 \section{Core Equations of the \StokEx{} Algorithm}
 % ----------------------------------------------------------------------
 
-Exchanges on the \StokEx{} are continuous, instead of discrete in time like on traditional markets. For example, rather than buying 5 units of $\beta$ in exchange for 10~units of $\alpha$ at some instant~$t$ on a traditional market (which implies a market price of 2~$\alpha$ per~$\beta$), the same exchange on the \StokEx{} could happen by continuously buying units of~$\beta$ (at the market price of 2~$\alpha$ per~$\beta$) with a velocity of 1~$\beta$ per hour for 5 hours.
-
-On the participant level, the advantage of a continuous exchange is that, by spreading their transaction over a longer period of time, they reduce the risk of making their transaction at a bad time. As we will show, the \StokEx{} allows the participant to automatically either buy or sell more (i.e. at a higher velocity) when the market price is more advantageous for them.
-
-At the market level, the advantage of a continuous exchange is that the market price would be more stable since every participant is automatically reacting to any change in the market price by increasing or decreasing their exchange velocities.
-
-\subsection{The personal trading robot}
+\subsection{The personal trading robot} % locked
 % ----------------------------------------------------------------------
 
-Everything in this subsection is written from the point of view of a single participant, taking the market price $\priceAB_\Omega$ as a given input. We give the two exchange velocities the participant's robot outputs, the profit it accumulates over time, the moment it empties an account, and a worked example on real data. The market price it reacts to is itself constructed, from the aggregate of all participants' robots, in Sec.~\ref{secMarketPrice}.
+Everything in this subsection is written from the point of view of a single participant, taking the market price $\priceAB_\Omega$ as a given input.
+We give the two exchange velocities the participant's trading robot outputs, the profit it accumulates over time, the moment it empties an account, and a worked example on real data.
+The market price it reacts to is itself constructed, from the aggregate of all participants' trading robots, in Sec.~\ref{secMarketPrice}.
 
 \subsubsection{Exchange velocities}
 % ----------------------------------------------------------------------
 
-Every participant in the \StokEx{} has their exchange velocities --- the output of their personal trading robot (Fig.~\ref{figRobotSchema}) --- determined by the same function. In that sense, the \StokEx{} is not biased towards a participant or another and therefore fulfills principle number~3 mentioned earlier.
+Every participant in the \StokEx{} has their exchange velocities --- the output of their personal trading robot (Fig.~\ref{figRobotSchema}) --- determined by the same function.
+In that sense, the \StokEx{} is not biased towards a participant or another and therefore fulfills principle number~3 mentioned earlier.
 
 This function requires two inputs from the participant:
 
@@ -279,28 +346,77 @@ The function controlling the participant's exchange velocities in the \StokEx{} 
 \dot{X}^\beta_i &=  w\!\left(\theta_i\right)\, f\!\left(\frac{\hspace{2pt}\priceBA_\Omega}{\priceBA_i} \right) \, \dot{R} \priceBA_i \,,
 \label{eqExchangeSymmetry}
 \end{align}
-where $\dot{R}$ is the reference exchange velocity (in $\alpha$ / unit of time) for this particular exchange. The algorithm requires that a reference exchange velocity, constant and common to all participants, be defined for one of the two assets. For example, in a market where gold is exchanged for dollars, the reference exchange velocity could be set to 1~dollar per hour or 1~ounce of gold per day or whatever reference velocity makes sense in the context of that particular market.
+where $\dot{R}$ is the reference exchange velocity (in $\alpha$ / unit of time) for this particular market.
+The algorithm requires that a reference exchange velocity, constant and common to all participants, be defined for one of the two assets.
+For example, in a market where gold is exchanged for dollars, the reference exchange velocity could be set to 1~dollar per second or 1~gram of gold per hour or whatever reference velocity makes sense in the context of that particular market.
 
-By convention, the reference exchange velocity $\dot{R}$ is defined in terms of asset A. The corresponding reference exchange velocity for asset B is $\dot{R} \priceBA_i$ in the eyes of participant $i$. Apart from this difference, the two equations in \eqref{eqExchangeSymmetry} are perfectly symmetric in the sense that they are the same except that $\alpha$ is swapped with $\beta$. This property ensures that the market is not biased towards one asset or the other. Therefore, the form of the function controlling a participant's exchange velocities satisfies principle number~4.
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.75\textwidth]{personal_trading_robot.pdf}
+\caption{General schema of a participant's personal trading robot: it takes the participant's own inputs and the current market price, and outputs the two exchange velocities.
+The single market price it reacts to emerges from the aggregate of every participant's robot at once and feeds back into each of them continuously.
+The same construction runs independently for every participant $i = 1, \dots, N$; three are shown here.}
+\label{figRobotSchema}
+\end{figure}
 
-Next, we need to specify the functions~$w$ and~$f$ that compose the exchange velocities function. Let us first define the \emph{trader function}~$f$. This function describes the general behavior of a participant depending on the ratio between the market price $\priceAB_\Omega$ and their estimate of the value of $\priceAB$. This general behavior follows principles number~5, 6 and~7. The \StokEx{} satisfies these principles by defining the trader function, for any price ratio $x > 0$, as
+By convention, the reference exchange velocity $\dot{R}$ is defined in terms of asset A. The corresponding reference exchange velocity for asset B is $\dot{R} \priceBA_i$ in the eyes of participant $i$.
+Apart from this difference, the two equations in \eqref{eqExchangeSymmetry} are perfectly symmetric in the sense that they are the same except that $\alpha$ is swapped with $\beta$.
+This property ensures that the market is not biased towards one asset or the other. Therefore, the form of the function controlling a participant's exchange velocities satisfies principle number~4.
+
+Next, we need to specify the functions~$w$ and~$f$ that compose the exchange velocities function.
+
+\clearpage
+\subsubsection{The trader function}
+% ----------------------------------------------------------------------
+
+Let us first define the \emph{trader function}~$f$.
+This function describes the general behavior of a participant's trading robot, depending on the ratio between the market price and the participant's estimate~--- either $\priceAB_\Omega / \priceAB_i$ or $\priceBA_\Omega / \priceBA_i$.
+This general behavior follows principles number~5, 6 and~7. The \StokEx{} satisfies these principles by defining the trader function, for any price ratio $x > 0$, as
 \begin{equation}
     f(x) = x^2 - \frac{1}{x}\,. \label{eqTraderFunction}
 \end{equation}
-This choice is principled but not arbitrary. As shown in Annex~\ref{secTraderFamily}, principles 2 and 4 by themselves force two structural properties of any admissible trader function: the functional equation $f(1/x) = -f(x)/x$, and hence $f(1) = 0$ (no trade at one's own estimate). The functions compatible with all eight principles and with a closed-form market price form a one-parameter family, of which \eqref{eqTraderFunction} is the minimal member with unbounded urgency on both the buying and the selling side; the whole family is described in Annex~\ref{secTraderFamily} and is part of the present disclosure.
+This choice is principled but not arbitrary. As shown in Annex~\ref{secTraderFamily}, principles 2 and 4 by themselves force two structural properties of any admissible trader function:
+the functional equation $f(1/x) = -f(x)/x$, and hence $f(1) = 0$ (no trade at one's own estimate).
+The functions compatible with all eight principles and with a closed-form market price form a one-parameter family, of which \eqref{eqTraderFunction} is the minimal member with unbounded urgency on both the buying and the selling side;
+the whole family is described in Annex~\ref{secTraderFamily} and is part of the present disclosure.
 
-Each participant evaluates it at the ratio between the market price and their own estimate:
+\textbf{Numerical evaluation of the trader function}:
+
+Each robot evaluates the trader function at the ratio between the market price and its participant's estimate:
 \begin{align}
-f_i^\alpha &:= f\!\left(\frac{\hspace{2pt}\priceAB_\Omega}{\priceAB_i} \right) =  \left( \frac{\hspace{2pt}\priceAB_\Omega}{\priceAB_i}\right)^2 - \frac{\priceAB_i}{\hspace{2pt}\priceAB_\Omega} \, , \nonumber \\
-f_i^\beta &:= f\!\left(\frac{\hspace{2pt}\priceBA_\Omega}{\priceBA_i} \right) = \left( \frac{\hspace{2pt}\priceBA_\Omega}{\priceBA_i}\right)^2 - \frac{\priceBA_i}{\hspace{2pt}\priceBA_\Omega} \, .
+f_i^\alpha &:= f\!\left(\frac{\hspace{2pt}\priceAB_\Omega}{\priceAB_i} \right)\, , \nonumber \\
+f_i^\beta &:= f\!\left(\frac{\hspace{2pt}\priceBA_\Omega}{\priceBA_i} \right) \, .
 \label{eqFunctionX}
 \end{align}
+
+The typical operating point of the \StokEx{} is $x \approx 1$: participants' estimates hover around the market price. Precisely there, the defining expression $f(x) = x^2 - 1/x$ suffers \emph{catastrophic cancellation} in floating-point arithmetic:
+both terms are close to 1, and their subtraction erases up to half of the significand. Measured against exact rational arithmetic (IEEE-754 double precision), the relative error of the standard form reaches $4 \times 10^{-2}$ at $x = 1 - 10^{-15}$.
+
+The remedy is the \emph{shifted form}. Let $y = x - 1$; for $x \in [1/2,\ 2]$ this subtraction is exact in floating point (Sterbenz's lemma), and $x^3 - 1 = y^3 + 3y^2 + 3y$, so that
+\begin{equation}
+    f(x) = \frac{y\left(y^2 + 3y + 3\right)}{x}\,, \qquad y = x - 1\,. \label{eqShiftedForm}
+\end{equation}
+The numerator tracks the small deviation $y$ directly, without cancellation, and the denominator must be the \emph{input} $x$ itself: recomputing it as $y + 1$ reintroduces a relative error that grows toward the ends of the domain, up to $\sim 10^{-5}$ at $x = 10^{-12}$.
+The expression is branchless and constant-time (a straight line of fused multiply-adds~---\emph{fma}, no conditional jumps), and its measured relative error stays below $6 \times 10^{-16}$ (machine precision) over the whole admissible domain of the ratio, $[10^{-12},\ 10^{12}]$.
+This domain is wider than the price bounds of the reference implementation: estimates are bounded to $[10^{-6},\ 10^{6}]$ and the market price always lies between the smallest and the largest estimate (see the corollary in Annex~\ref{secProofUniqueness}),
+so the \emph{ratio} of the two spans up to twelve decades on each side of 1.
+
+
+\subsubsection{The weight function}
+% ----------------------------------------------------------------------
 
 Second, we define the function $w$ that serves as a weighting factor for each participant in the \StokEx{}. It maps a participant's degree of confidence $[0, 100)\,\%$ onto $[0,+\infty)$, such that
 \begin{equation}
     w_i := w\left(\theta_i\right) = \frac{1}{3}\tan \left( \frac{\pi \,\theta_i}{200\%}\right)\,. \label{eqFunctionW}
 \end{equation}
-The function $w$ is consistent with principle number 8 since it scales the participant's exchange velocities according to their degree of confidence (we show in Annex \ref{secProofDegree} that $\theta_i$ can be interpreted as a geometrical angle in the right context). This tangent map is a design choice, not a requirement: principle 8 only asks for a strictly increasing $w$ with $w(0) = 0$, and Annex~\ref{secWeightFamily} shows that every result in this document holds unchanged for any such function.
+The function $w$ is consistent with principle number 8 since it scales the participant's exchange velocities according to their degree of confidence (we show in Annex \ref{secProofDegree} that $\theta_i$ can be interpreted as a geometrical angle in the right context).
+This tangent map is a design choice, not a requirement: principle 8 only asks for a strictly increasing $w$ with $w(0) = 0$, and Annex~\ref{secWeightFamily} shows that every result in this document holds unchanged for any such function.
+Either way, what the present document discloses is the per-participant weighting itself --- the scaling of each participant's exchange velocities by a weight $w_i \geq 0$ --- independently of the variable substitution used to derive that weight from a declared degree of confidence or equivalent conviction signal, of which the tangent map \eqref{eqFunctionW} is only one instance.
+
+The participant's weight $w_i$ is computed only once from their declared degree of confidence and, until the participant revises it, need not be recomputed at any step of the algorithm.
+
+\subsubsection{Consistency with the principles}
+% ----------------------------------------------------------------------
 
 Thus, the exact expressions for the exchange velocities of participant $i$ are
 \begin{align}
@@ -308,12 +424,6 @@ Thus, the exact expressions for the exchange velocities of participant $i$ are
     \dot{X}^\beta_i &= w_i \left( \left( \frac{\hspace{2pt}\priceBA_\Omega}{\priceBA_i}\right)^2 - \frac{\priceBA_i}{\hspace{2pt}\priceBA_\Omega} \right) \dot{R} \priceBA_i\,. \label{eqExchangeVelocities}
 \end{align}
 
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.75\textwidth]{personal_trading_robot.pdf}
-\caption{General schema of a participant's personal trading robot: it takes the participant's own inputs and the current market price, and outputs the two exchange velocities. The single market price it reacts to emerges from the aggregate of every participant's robot at once and feeds back into each of them continuously. The same construction runs independently for every participant $i = 1, \dots, N$; three are shown here.}
-\label{figRobotSchema}
-\end{figure}
 
 In Fig.~\ref{figExchangeSymmetry}, we can see that, expressed in the same units of $\dot{R}$, the two curves are mirror images of one another (unbiased toward one asset or the other) and that they allow each participant to automatically ``buy low and sell high'' according to their estimate of the relative value of assets~A and~B.
 
@@ -324,11 +434,27 @@ In Fig.~\ref{figExchangeSymmetry}, we can see that, expressed in the same units 
 \label{figExchangeSymmetry}
 \end{figure}
 
+\clearpage
+
 In Annex \ref{secProofExchangeAtMarketPrice}, we prove that the expressions in \eqref{eqExchangeVelocities} are consistent with principle number~2, which states that every participant buys and sells at market price. Formally, this means that
 \begin{equation}\label{eqExchangeAtMarketPrice}
     \left[\alpha/\beta\right]_\Omega = - \frac{\dot{X}^\alpha_i}{\dot{X}^\beta_i} \,.
 \end{equation}
 Indeed, if a participant is buying asset A and paying with asset B, the two exchange velocities must be of opposite sign and the proportionality constant between the two is the market price. In Sec.~\ref{secMarketPrice}, we will determine the expression to compute the market price $\priceAB_\Omega$.
+
+\subsubsection{Time it takes to empty a participant's account}
+% ----------------------------------------------------------------------
+
+With the participant's exchange velocities, we can predict when each of their two account balances reaches zero. As long as the state of the market is constant, each balance changes linearly. Only the account of a sold asset ever empties: the ratio $-n_i/\dot{X}_i$ is a positive time when that asset's velocity is negative, but a meaningless negative number for an asset that is being bought. We therefore set the emptying time of an account to that ratio when its asset is being sold, and to $+\infty$ otherwise:
+\begin{align}
+    \Delta t_i^\alpha &= \begin{cases} -\, n_i^\alpha / \dot{X}_i^\alpha \,, & \dot{X}_i^\alpha < 0 \,,\\ +\infty \,, & \dot{X}_i^\alpha \geq 0 \,, \end{cases} \nonumber\\
+    \Delta t_i^\beta &= \begin{cases} -\, n_i^\beta / \dot{X}_i^\beta \,, & \dot{X}_i^\beta < 0 \,,\\ +\infty \,, & \dot{X}_i^\beta \geq 0 \,. \end{cases} \label{eqDeltaT}
+\end{align}
+Because the two velocities always carry opposite signs (principle~2), at most one of $\Delta t_i^\alpha$ and $\Delta t_i^\beta$ is finite --- that of the asset currently being sold. The participant's emptying time is therefore
+\begin{equation}
+    \Delta t_i = \min\!\left(\Delta t_i^\alpha,\, \Delta t_i^\beta\right) \,,
+\end{equation}
+which returns exactly that account; it is $+\infty$ only when the market matches the participant's estimate, so that neither asset trades. The $+\infty$ convention is what lets the minimum select the right account: without it, the negative raw ratio of the bought account would spuriously win.
 
 \subsubsection{Participant's profit over a given time period}\label{secParticipantProfit}
 % ----------------------------------------------
@@ -348,48 +474,27 @@ Profit is therefore never independent of the asset it is quoted in: it is not th
 \subsubsection{Numerical illustration: a currency pair (CAD/EUR)}
 % ----------------------------------------------------------------------
 
-Before the formulas, a story. Alice holds dual Canadian and French citizenship, and she keeps two bank accounts: one in Canadian dollars (CAD), one in euros (EUR). Her life moves back and forth between the two countries, and so does her need for cash. Some months she is living in Lyon and suddenly needs euros; other months she is in Montreal and suddenly needs Canadian dollars. Most of the time, though, Alice is in no rush at all.
+Before the formulas, a story. Alice holds dual Canadian and French citizenship and keeps two accounts, one in Canadian dollars (CAD), one in euros (EUR). Her life --- and her need for cash --- moves between Montreal and Lyon, but most of the time she is in no rush. What she wants is easy to say and tedious to do by hand: buy each currency while it is cheap and sell it while it is dear, continuously, without watching the rate all day. This is exactly what the \StokEx{} does for her: she answers just two questions --- what she thinks one currency is worth in the other, and how sure she is --- and from that estimate and degree of confidence it sets up her personal trading robot, which trades gently and continuously on her behalf. The rest of this section works out what that robot would have done over five years of real exchange-rate data.
 
-What Alice would like is easy to say and tedious to do by hand: when the Canadian dollar is cheap, she would like to buy it with her euros --- which is the very same thing as selling her euros while they are dear; and when the euro is cheap, she would like to buy it with her Canadian dollars --- selling her Canadian dollars while they are dear. In one phrase, Alice wants to \emph{buy low and sell high}, continuously, without watching the exchange rate all day.
+One input her two answers do not settle is how \emph{fast} the robot should trade overall --- the reference pace $\dot{R}$. In the t\^{o}k system this has a natural value, the system's universal-income rate (Sec.~\ref{secReferenceImplementation}); between two floating currencies there is no such anchor, because money is not a stable unit of value --- the purchasing power of each drifts downward, $d\,\mathrm{CAD}/dt < 0$, at its own unannounced rate. We therefore simply set $\dot{R} = 1$~CAD/day: an arbitrary placeholder, not an estimate of how actively a real participant trades. Every CAD or EUR amount below is exactly proportional to it; only the \emph{fractions} of days spent buying versus selling, and the dates of the largest signals, do not depend on it.
 
-This is exactly what the \StokEx{} does for her. Alice never has to place an order, pick a moment, or follow the market. She turns to the \StokEx{}, and it asks her just two questions (Fig.~\ref{figTikQuestions}): what does she think one currency is worth in terms of the other, and how sure is she of that number? From those two answers --- an estimate and a degree of confidence --- the \StokEx{} sets up her personal trading robot, which then trades gently and continuously on her behalf, leaning into whichever currency the market is offering cheaply at each instant. The rest of this section works out precisely what that robot would have done, over five years of real exchange-rate data.
+What follows exercises a single participant's robot --- the exchange-velocity function \eqref{eqExchangeVelocities} alone, fed a real price series as an exogenous input --- not the full \StokEx{}: the market price, its uniqueness (Annex~\ref{secProofUniqueness}) and the aggregation of many participants (Sec.~\ref{secMarketBehavior}) are not exercised here, since a real market would need the other participants whose robots actually set the price this one reacts to. We take CAD against EUR, the cross rate of two FRED series, \texttt{DEXCAUS}~\cite{FREDDEXCAUS} (CAD per USD) and \texttt{DEXUSEU}~\cite{FREDDEXUSEU} (USD per EUR). Two developed floating currencies form a far more stationary pair than an equity index --- a linear trend explains almost none of the variation ($R^2\approx0.17$, against above $0.8$ for a rising stock index) --- so the declared estimate is simply the average rate over the five years \emph{preceding} the test window (2016-07-18 to 2021-07-16), an honest out-of-sample value of $\approx1.497$~CAD per EUR. Alice declares a degree of confidence $\theta_i=70\%$ (hence $w_i\approx0.654$). Over the following validation window (2021-07-19 to 2026-07-17, 1250 trading days) the rate averages $\approx1.486$ --- close to her estimate, but not exact, as a real one would be. We treat that real exchange rate as the exogenous market price this robot reacts to, exactly as principle 2 requires of every participant regardless of what the others are doing.
 
-\begin{figure}[htb]
-\centering
-\placeholder{[FIGURE \`A VENIR --- capture d'\'ecran du \StokEx{} dans l'impl\'ementation de r\'ef\'erence (syst\`eme des t\^{o}k), montrant les deux questions pos\'ees au participant (estimation et degr\'e de confiance), avec une monnaie \'etrang\`ere fictive, le TIK. Placeholder pour l'instant --- remplacer par l'image avant soumission.]}
-\caption{The two questions the \StokEx{} asks a participant, shown in the reference implementation of the t\^{o}k system: an estimate of the relative value of the two assets, and a degree of confidence in it. Here the t\^{o}k is paired against a fictional foreign currency, the TIK.}
-\label{figTikQuestions}
-\end{figure}
-
-There is one thing, though, that the \StokEx{} still needs and that Alice's two answers do not settle: how \emph{fast} her robot should trade overall --- the reference pace $\dot{R}$. In the t\^{o}k system this pace has a natural value, the system's own universal-income rate (Sec.~\ref{secReferenceImplementation}). Between two ordinary floating currencies there is no such anchor, and the reason is worth stating plainly: money is not a stable unit of value. The purchasing power of a Canadian dollar drifts downward over time, $d\,\mathrm{CAD}/dt < 0$, and so does that of a euro, each at its own shifting and unannounced rate, so neither provides a fixed clock against which a natural pace could be defined. For Alice we therefore simply pick one, and, as the next paragraphs make precise, that choice only rescales the amounts she trades, never the shape of what her robot does.
-
-To make $\dot{R}$ tangible, take a round case --- distinct from the $\theta_i = 60\%$ Alice actually declares below, chosen only because the arithmetic comes out clean. Suppose a degree of confidence of exactly one half, $\theta_i = 50\%$; the weight is then $w = \tfrac{1}{3}\tan(\pi/4) = \tfrac{1}{3}$, and the robot's Canadian-dollar velocity is $\dot{X}^{\mathrm{CAD}} = \tfrac{1}{3}\, f(x)\, \dot{R}$, with $x$ the market rate divided by her estimate. Two mirror snapshots fix the scale. If the market ever valued the euro at \emph{twice} Alice's estimate ($x = 2$), the euro would be dear and her robot would sell euros, taking in Canadian dollars at $\tfrac{1}{3}\, f(2)\, \dot{R} = \tfrac{7}{6}\dot{R} \approx 1.17\,\dot{R}$. If the market valued it at \emph{half} ($x = \tfrac{1}{2}$), the euro would be cheap and her robot would buy euros, paying out Canadian dollars at $\tfrac{1}{3}\lvert f(\tfrac{1}{2})\rvert\, \dot{R} = \tfrac{7}{12}\dot{R} \approx 0.58\,\dot{R}$. So $\dot{R}$ is simply the pace of that flow: with the placeholder $\dot{R} = 1$~CAD/day used below, a market off by a factor of two moves on the order of one Canadian dollar through Alice's accounts per day, and doubling $\dot{R}$ would double every such amount. (The two Canadian-dollar figures differ only because both are read in the same currency; measured each in its own, buying and selling mirror one another exactly --- the symmetry of Fig.~\ref{figExchangeSymmetry}.)
-
-To ground Fig.~\ref{figExchangeSymmetry} in a concrete case, we apply the exchange velocities to a real time series. To be precise about what this does and does not test: it exercises a single participant's personal trading robot, i.e.\ the exchange-velocity function of Eq.~\eqref{eqExchangeVelocities} alone, given a real price series taken as an exogenous input --- not the \StokEx{} algorithm as a whole. The market price itself, its equilibrium and uniqueness (Sec.~\ref{secMarketPrice}, Annex~\ref{secProofUniqueness}), and the aggregation of many participants into one (Sec.~\ref{secMarketBehavior}, Annex~\ref{secProofTotalMarketWeight}) are not exercised here: a real market running the \StokEx{} would need other participants, whose combined robots are what actually sets the price this one robot reacts to. The reference implementation of the \StokEx{} (Sec.~\ref{secReferenceImplementation}) exchanges the t\^{o}k against a foreign currency, so we illustrate this one instance on an actual currency pair, CAD against EUR, computed as the cross rate of two FRED series, \texttt{DEXCAUS}~\cite{FREDDEXCAUS} (CAD per USD) and \texttt{DEXUSEU}~\cite{FREDDEXUSEU} (USD per EUR). Two developed, floating currencies exchanging against each other is a far more stationary process than an equity index, with no comparable secular trend to extrapolate; a linear trend fit on this pair over five years explains very little of its variation ($R^2\approx0.17$, against commonly above $0.8$ for a rising stock index), so imposing one would not be a reasonable forecast. Instead, the declared estimate is the plain average exchange rate over the five years \emph{preceding} the test window, 2016-07-18 to 2021-07-16 --- still computed only from data that predates the test window, and still an honest out-of-sample estimate, just without assuming a trend the data does not support. This gives a declared estimate of $\approx1.497$~CAD per EUR, with a declared degree of confidence $\theta_i=60\%$ (hence $w_i\approx0.459$), against a realized average over the five-year validation window that follows, 2021-07-19 to 2026-07-17 (1250 trading days), of $\approx1.486$ --- a close, but not exact, match, again exactly as a real estimate would be. We then treat the real exchange rate over the validation window as the exogenous market price that this one robot reacts to, exactly as principle 2 requires of every participant regardless of what the others are doing.
-
-Consider a participant who starts with 1000~CAD and 1000~EUR --- round, native amounts in each currency, with no conversion needed between them, since here \emph{both} assets are money. Money in each currency is kept in its own native unit throughout, rather than converted into a common yardstick: this is the \StokEx{}'s own asset symmetry (principle 4) carried into the example, and it is why the second panel of Fig.~\ref{figCADEURExample} uses two separate axes, color-coded blue for CAD and orange for EUR. One choice remains free: the reference exchange velocity $\dot{R}$, whose unit is left to the implementer (Sec.~\ref{secReferenceImplementation} ties it, in the reference implementation, to the t\^{o}k system's own universal income rate). No such external anchor exists for this illustrative retail portfolio, so we set $\dot{R}=1$~CAD/day, an arbitrary placeholder rather than an estimate of how actively a real participant would trade. Every CAD or EUR figure reported below --- cash flow, turnover, profit --- is exactly proportional to this choice and would rescale linearly with it; only the fraction of days spent buying versus selling, and the dates of the largest signals, do not depend on it. Because the estimate sits slightly above the eventual realized average, the exchange rate is below it more often than not: the participant's robot is a net buyer of EUR on 65.8\% of trading days and a net seller on the remaining 34.2\%, with the single largest buy signal on 2022-08-25 (rate at 1.289, the window's low) and the single largest sell signal on 2025-10-17 (rate at 1.640, the window's high). The CAD balance (Fig.~\ref{figCADEURExample}, second panel, blue) declines from 1000 to about 987, dipping as low as about 954 in February 2025, while the EUR balance (orange) rises from 1000 to about 1013, essentially never dipping below its starting point --- consistent with a robot that is, on net, mildly accumulating the currency it believes the market slightly underprices.
+Alice starts with 100~CAD and 100~EUR --- small, round, native amounts, each kept in its own unit (the asset symmetry of principle 4 carried into the example, and why the second panel of Fig.~\ref{figCADEURExample} uses two separate axes, blue for CAD and orange for EUR). Because her estimate sits just above the realized average, the rate is below it more often than not: her robot is a net buyer of EUR on 65.8\% of trading days and a net seller on the remaining 34.2\%, with its single largest buy on 2022-08-25 (rate 1.289, the window's low) and its single largest sell on 2025-10-17 (rate 1.640, the window's high). The CAD balance (Fig.~\ref{figCADEURExample}, second panel, blue) falls from 100 to about 81, dipping to about 35 in February 2025 before recovering, while the EUR balance (orange) rises from 100 to about 118, essentially never below its starting point --- a robot mildly accumulating the currency it believes the market slightly underprices.
 
 The last two panels apply Eqs.~\eqref{eqParticipantProfitAlpha}--\eqref{eqParticipantProfitBeta} to this participant, with CAD in the role of $\alpha$ and EUR in the role of $\beta$, taking $t_0$ as the start of the validation window:
 \begin{align*}
 P^{\mathrm{CAD}}(t) &= \left(n^{\mathrm{CAD}}(t) - n^{\mathrm{CAD}}(t_0)\right) + \left(n^{\mathrm{EUR}}(t) - n^{\mathrm{EUR}}(t_0)\right) [\mathrm{CAD/EUR}]_\Omega(t), \\
 P^{\mathrm{EUR}}(t) &= \left(n^{\mathrm{EUR}}(t) - n^{\mathrm{EUR}}(t_0)\right) + \left(n^{\mathrm{CAD}}(t) - n^{\mathrm{CAD}}(t_0)\right) [\mathrm{EUR/CAD}]_\Omega(t).
 \end{align*}
-By Eq.~\eqref{eqProfitIdentity}, $P^{\mathrm{CAD}}(t) = P^{\mathrm{EUR}}(t)\, [\mathrm{CAD/EUR}]_\Omega(t)$ exactly: the two panels are not independent findings, only the same profit quoted twice, so they must and do agree in sign throughout --- there is no day on which this participant is ahead in one currency and behind in the other. What they do \emph{not} agree on is magnitude: priced in CAD (third panel), the participant ends about 7~CAD richer than at the start of the validation window, after a drawdown to about $-1$~CAD on 2022-08-25 and a peak of about 8~CAD on 2025-10-17. Priced in EUR (fourth panel), the very same holdings and the very same trades end about 5~EUR richer, with the same shape traced at a different scale, since 1~CAD then buys correspondingly less EUR than 1~EUR buys CAD. The lesson is not that the sign of profit is ambiguous, but that its \emph{size} is: ``how much richer is this participant'' is only a well-posed question once a currency is chosen to measure it in, and the \StokEx{} itself never makes that choice --- every principle in Sec.~\ref{secMarketPrice} is stated in terms of exchange velocities and ratios, never in terms of a profit computed in one privileged asset.
+By Eq.~\eqref{eqProfitIdentity}, $P^{\mathrm{CAD}}(t) = P^{\mathrm{EUR}}(t)\, [\mathrm{CAD/EUR}]_\Omega(t)$ exactly: the two panels are the same profit quoted twice, agreeing in sign throughout --- there is no day on which Alice is ahead in one currency and behind in the other --- but differing in magnitude. Priced in CAD (third panel) she ends about 10.3~CAD richer than at the start of the validation window, after a shallow drawdown to about $-1.9$~CAD on 2022-08-25 and a peak of about 11.4~CAD on 2025-10-17; priced in EUR (fourth panel), the very same trades end about 6.4~EUR richer. Against her starting wealth of $100 + 100 \times [\mathrm{CAD/EUR}]_\Omega(t_0) \approx 250$~CAD, that is a five-year return of about 4\% (4.1\% counted in CAD, 3.9\% in EUR). Modest --- but this is a currency pair, not the stock market: two developed floating currencies oscillate within a narrow band, with none of the secular climb a trending equity index would hand you. The point is not the size of the gain but its \emph{ambiguity}: ``how much richer is Alice'' is only a well-posed question once a currency is chosen to measure it in, and the \StokEx{} itself never makes that choice --- every principle in Sec.~\ref{secMarketPrice} is stated in terms of exchange velocities and ratios, never in terms of a profit computed in one privileged asset.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{cadeur_example.pdf}
-\caption{Numerical illustration on real data: the CAD/EUR exchange rate (top, FRED series \texttt{DEXCAUS}~\cite{FREDDEXCAUS} and \texttt{DEXUSEU}~\cite{FREDDEXUSEU}, price axis anchored at zero) over the shaded calculation window, 2016-07-18 to 2021-07-16, used only to compute a plain average (solid, horizontal: no trend fit is warranted here) that becomes the declared estimate throughout the unshaded validation window, 2021-07-19 to 2026-07-17, $\approx1.497$~CAD per EUR (dashed line). Second: a participant starting with 1000~CAD (blue, left axis) and 1000~EUR (orange, right axis), each in its own native currency. Third and fourth: the same participant's profit since the start of the validation window (Eqs.~\eqref{eqParticipantProfitAlpha}--\eqref{eqParticipantProfitBeta}), accounted in CAD ($P^{\mathrm{CAD}}$, blue) and independently in EUR ($P^{\mathrm{EUR}}$, orange) --- the same quantity, related exactly by Eq.~\eqref{eqProfitIdentity}, not two independent findings.}
+\caption{Numerical illustration on real data: the CAD/EUR exchange rate (top, FRED series \texttt{DEXCAUS}~\cite{FREDDEXCAUS} and \texttt{DEXUSEU}~\cite{FREDDEXUSEU}, price axis anchored at zero) over the shaded calculation window, 2016-07-18 to 2021-07-16, used only to compute a plain average (solid, horizontal: no trend fit is warranted here) that becomes the declared estimate throughout the unshaded validation window, 2021-07-19 to 2026-07-17, $\approx1.497$~CAD per EUR (dashed line). Second: a participant starting with 100~CAD (blue, left axis) and 100~EUR (orange, right axis), each in its own native currency. Third and fourth: the same participant's profit since the start of the validation window (Eqs.~\eqref{eqParticipantProfitAlpha}--\eqref{eqParticipantProfitBeta}), accounted in CAD ($P^{\mathrm{CAD}}$, blue) and independently in EUR ($P^{\mathrm{EUR}}$, orange) --- the same quantity, related exactly by Eq.~\eqref{eqProfitIdentity}, not two independent findings.}
 \label{figCADEURExample}
 \end{figure}
-
-\subsubsection{Time it takes to empty a participant's account}
-% ----------------------------------------------------------------------
-
-With the participant's exchange velocities, we can predict when their account balance is going to reach zero. The account that will eventually be empty is the account holding the asset that the participant is selling (i.e. the account holding the asset for which $\dot{X}_i < 0$); a participant who is not selling ($\dot{X}_i \geq 0$) never empties an account, $\Delta t_i = +\infty$. As long as the state of the market is constant, the balance decreases linearly and reaches zero after
-\begin{equation}\label{eqDeltaT}
-    \Delta t_i = - \frac{n_i}{\dot{X}_i} \,.
-\end{equation}
 
 \subsection{The market}\label{secMarketPrice}
 % ----------------------------------------------------------------------
@@ -582,23 +687,22 @@ $n_i^\beta$ & participant $i$'s balance of asset B (in $\beta$)
     \RETURN $n_i^\alpha$, $n_i^\beta$ and $\priceAB_\Omega$ (at $t_1$)
 \end{algorithmic}
 
-\subsection{Numerical evaluation of the trader function}\label{secNumTraderFunction}
-% ----------------------------------------------------------------------
-
-The typical operating point of the \StokEx{} is $x \approx 1$: participants' estimates hover around the market price. Precisely there, the defining expression $f(x) = x^2 - 1/x$ suffers \emph{catastrophic cancellation} in floating-point arithmetic: both terms are close to 1, and their subtraction erases up to half of the significand. Measured against exact rational arithmetic (IEEE-754 double precision), the relative error of the standard form reaches $4 \times 10^{-2}$ at $x = 1 - 10^{-15}$.
-
-The remedy is the \emph{shifted form}. Let $y = x - 1$; for $x \in [1/2,\ 2]$ this subtraction is exact in floating point (Sterbenz's lemma), and $x^3 - 1 = y^3 + 3y^2 + 3y$, so that
-\begin{equation}
-    f(x) = \frac{y\left(y^2 + 3y + 3\right)}{x}\,, \qquad y = x - 1\,. \label{eqShiftedForm}
-\end{equation}
-The numerator tracks the small deviation $y$ directly, without cancellation, and the denominator must be the \emph{input} $x$ itself: recomputing it as $y + 1$ reintroduces a relative error that grows toward the ends of the domain, up to $\sim 10^{-5}$ at $x = 10^{-12}$. The expression is branchless and constant-time (a straight line of fused multiply-adds, no conditional jumps), and its measured relative error stays below $6 \times 10^{-16}$ (machine precision) over the whole admissible domain of the ratio, $[10^{-12},\ 10^{12}]$. This domain is wider than the price bounds of the reference implementation: estimates are bounded to $[10^{-6},\ 10^{6}]$ and the market price always lies between the smallest and the largest estimate (see the corollary in Annex~\ref{secProofUniqueness}), so the \emph{ratio} of the two spans up to twelve decades on each side of 1.
-
 \subsection{Reference implementation in the t\^{o}k system}\label{secReferenceImplementation}
 % ----------------------------------------------------------------------
 
 In the t\^{o}k system, the \StokEx{} is instantiated with $\alpha$ = the t\^{o}k (a universal-income-based currency with continuous exponential disintegration) and $\beta$ = a foreign currency (CAD, EUR, \ldots), with one market per foreign currency. The reference implementation uses the following parameters: the reference exchange velocity $\dot{R}$ is set to the universal income rate of the t\^{o}k system (1~t\^{o}k per 15~days); estimates are bounded to $10^{-6} \leq \priceAB_i \leq 10^{6}$; degrees of confidence are discretized with a step of $10^{-4}\,\%$ and capped at $99.9999\,\%$; the default market price of an empty market is 1.
 
-Each participant holds a dedicated pair of market accounts (one per asset) with the same owner, and solvency is handled by per-asset tolerance thresholds. Market sums are computed with compensated (Kahan~\cite{Kahan1965}) summation in extended precision, updates are incremental, in $O(N \log N)$ overall (the solvency checklist is processed in sorted order of the estimates, the participant farthest from the market price always lying at one of its two ends), and the trader function is evaluated in the shifted form \eqref{eqShiftedForm} of Sec.~\ref{secNumTraderFunction}.
+Figure~\ref{figRefImplUI} shows this interface in operation, with the t\^{o}k exchanged against a fictional foreign currency, the TIK: a participant reads off the current market rate and their two balances, and declares the two inputs --- an estimate of the relative value and a degree of confidence --- from which their personal trading robot is set up.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{reference_implementation_ui_1.png}\\[8pt]
+\includegraphics[width=0.75\textwidth]{reference_implementation_ui_2.png}
+\caption{The reference implementation of the \StokEx{} in the t\^{o}k system, shown against a fictional foreign currency, the TIK. \emph{Top:} the market view --- the current exchange rate, each account's balance (here $100$~t\^{o}ks and $1000$~TIK), and the two exchange velocities, quoted per $15$~days (the reference pace $\dot{R}$, one t\^{o}k per $15$~days). \emph{Bottom:} the same participant declaring their two inputs, an estimate ($1$~TIK${}={}10$~t\^{o}ks) and a degree of confidence ($75\%$), with the response curves the mechanism derives from them.}
+\label{figRefImplUI}
+\end{figure}
+
+Each participant holds a dedicated pair of market accounts (one per asset) with the same owner, and solvency is handled by per-asset tolerance thresholds. Market sums are computed with compensated (Kahan~\cite{Kahan1965}) summation in extended precision, updates are incremental, in $O(N \log N)$ overall (the solvency checklist is processed in sorted order of the estimates, the participant farthest from the market price always lying at one of its two ends), and the trader function is evaluated in the shifted form \eqref{eqShiftedForm}.
 
 The t\^{o}k is also the one relaxation of the regular-asset assumption: it carries a continuous disintegration at rate $k$, acting on the balances independently of the exchange velocities (consistently with principle 1: the \StokEx{} itself only transfers). Between two events, t\^{o}k balances obey $dn_i/dt = \dot{X}_i - k\, n_i$; the balance updates of the outer algorithm use the closed-form exponential solution, and the emptying time of a t\^{o}k account becomes $\frac{1}{k} \ln\left(1 - k\, n_i / \dot{X}_i\right)$, a strictly increasing function of \eqref{eqDeltaT}.
 
@@ -736,7 +840,7 @@ v4.32.0). Insérer ici l'URL figée au tag \texttt{stokex-defpub-2026-07} :
 
 The \StokEx{} defines its trader function as $f(x) = x^2 - 1/x$. This annex makes precise which part of that choice is forced by the principles and which part is a design decision, and it discloses the whole family of admissible alternatives.
 
-\textbf{What the principles force.} Let $f$ be any candidate trader function, used symmetrically by both assets as in \eqref{eqExchangeSymmetry}, and write $x = \priceAB_\Omega / \priceAB_i$. The two exchange velocities of participant $i$ are then $\dot{X}^\alpha_i = w_i f(x)\, \dot{R}$ and $\dot{X}^\beta_i = w_i f(1/x)\, \dot{R} \priceBA_i$. Principle 2 requires $-\dot{X}^\alpha_i / \dot{X}^\beta_i = \priceAB_\Omega = x \priceAB_i$ for every market state, which simplifies to the functional equation
+\textbf{What the principles force.} Let $f$ be any candidate trader function, used symmetrically by both assets as in \eqref{eqExchangeSymmetry}, and write $x_i = \priceAB_\Omega / \priceAB_i$. The two exchange velocities of participant $i$ are then $\dot{X}^\alpha_i = w_i f(x_i)\, \dot{R}$ and $\dot{X}^\beta_i = w_i f(1/x_i)\, \dot{R} \priceBA_i$. Principle 2 requires $-\dot{X}^\alpha_i / \dot{X}^\beta_i = \priceAB_\Omega = x_i \priceAB_i$ for every market state, which simplifies to $f(1/x_i) = -f(x_i)/x_i$. Since $x_i$ ranges over all of $(0,\infty)$ as the market state varies, $f$ must satisfy the functional equation
 \begin{equation}
     f(1/x) = -\frac{f(x)}{x} \qquad \text{for all } x > 0\,. \label{eqFunctionalEquation}
 \end{equation}
@@ -752,7 +856,7 @@ Every member satisfies \eqref{eqFunctionalEquation}, since $q - 1 = -p$ and $p -
 \end{equation}
 and the slope at the equilibrium point is $f_p'(1) = 2p - 1$, so that the degree-of-confidence map of the member reads $w = \frac{1}{2p-1} \tan\left(\pi\,\theta/200\,\%\right)$. All the results of this document (uniqueness of the price, aggregation of the market into a single participant, the two algorithms) carry over member by member. More generally, any combination $\sum_p c_p f_p$ with nonnegative coefficients satisfies \eqref{eqFunctionalEquation} and the principles, though the closed form \eqref{eqFamilyPrice} is then lost.
 
-\textbf{What singles out $p = 2$.} The first member, $f_1(x) = x - 1$, has a bounded selling side: $f_1(x) > -1$ for all $x > 0$, so a participant's urgency would saturate at $w_i \dot{R}$ no matter how far the market price drops below their estimate. For every $p > 1$, both sides are unbounded: $f_p \to +\infty$ as $x \to \infty$ and $f_p \to -\infty$ as $x \to 0^+$. A second consideration is computational, and it stems from the same fee-free accessibility goal: a market that charges no fees must keep the evaluation of its trader function as cheap as possible, which favors integer exponents (Laurent polynomials) --- needing only multiplications and a single reciprocal --- over fractional powers, whose transcendental $\exp/\log$ evaluation costs far more at every step. Among the members with integer exponents, the smallest one with unbounded urgency on both sides is therefore $p = 2$:
+\textbf{What singles out $p = 2$.} The first member, $f_1(x) = x - 1$, has a bounded selling side: $f_1(x) > -1$ for all $x > 0$, so a participant's urgency would saturate at $w_i \dot{R}$ no matter how far the market price drops below their estimate. For every $p > 1$, both sides are unbounded: $f_p \to +\infty$ as $x \to \infty$ and $f_p \to -\infty$ as $x \to 0^+$. A second consideration is computational, and it stems from the accessibility goal: a market that charges no fees must keep the evaluation of its trader function as cheap as possible, which favors integer exponents (Laurent polynomials) --- needing only multiplications and a single reciprocal --- over fractional powers, whose transcendental $\exp/\log$ evaluation costs far more at every step. Among the members with integer exponents, the smallest one with unbounded urgency on both sides is therefore $p = 2$:
 \begin{equation*}
     f_2(x) = x^2 - \frac{1}{x}\,,
 \end{equation*}

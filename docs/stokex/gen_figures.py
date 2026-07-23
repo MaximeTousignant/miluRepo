@@ -11,6 +11,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import (Arc, Circle, FancyArrowPatch, FancyBboxPatch,
                                 Polygon)
+from matplotlib.ticker import NullFormatter, ScalarFormatter
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 
@@ -183,7 +184,6 @@ def fig_robot_schema():
     WHITE_PAD = 3.0            # pt, white box behind a label (masks the arrow)
     PAD = 0.12                 # data units, FancyBboxPatch corner pad
     TAIL, HEAD = 0.02, 0.04    # gap left outside a box by an arrow tail / head
-    DASH = (0, (4, 3))         # dashed style, for the price feedback
     ROUND = "round,pad=%g,rounding_size=%g" % (PAD, PAD)
     SQUARE = "square,pad=%g" % PAD
 
@@ -254,7 +254,7 @@ def fig_robot_schema():
         arrow((cx + side * 0.45, ROB_OUT), (cx + side * 0.25, MKT_IN),
               color=FADE, lw=1.1)                                  # trade out
         arrow((cx - side * 0.45, BUS_Y), (cx - side * 0.45, ROB_OUT),
-              color=FADE, lw=1.0, ls=DASH)                         # price in
+              color=FADE, lw=1.0)                         # price in
 
     # ---- Participant i: the human, in full detail ----------------------
     person(COL_I, Y_PERSON, 1.0, INK)
@@ -301,7 +301,7 @@ def fig_robot_schema():
     # ---- Price bus: one market price, fed up the middle to every robot --
     ax.plot([0.9, 9.1], [BUS_Y, BUS_Y], color=MUTED, lw=1.1, zorder=1)
     arrow((COL_I, MKT_IN), (COL_I, BUS_Y), color=MUTED, lw=1.1)  # market feeds it
-    arrow((COL_I, BUS_Y), (COL_I, ROB_OUT), color=MUTED, lw=1.1, ls=DASH)
+    arrow((COL_I, BUS_Y), (COL_I, ROB_OUT), color=MUTED, lw=1.1)
     label(COL_I, 4.12, r"$[\alpha/\beta]_\Omega$", color=MUTED, fontsize=9.5)
 
     fig.savefig(os.path.join(OUT, "personal_trading_robot.pdf"),
@@ -318,6 +318,7 @@ def fig_cadeur_example():
 
     # alpha = CAD, beta = EUR
     RCAD = 1.0  # CAD / day, arbitrary reference
+    theta = 70.0 # %
 
     df = pd.read_csv(os.path.join(OUT, "cadeur_daily.csv"))
     df["observation_date"] = pd.to_datetime(df["observation_date"])
@@ -338,7 +339,6 @@ def fig_cadeur_example():
 
     # participant variables
     estimate = fit["CADEUR"].mean() # CAD/EUR, plain 5-year average, no trend fit
-    theta = 60.0
     w = (1.0 / 3.0) * math.tan(math.pi * theta / 200.0)
     x = market_price / estimate
     f = lambda z: z ** 2 - 1.0 / z
@@ -346,7 +346,7 @@ def fig_cadeur_example():
     XEUR = w * f(1.0 / x) * RCAD / estimate  # EUR/day
 
     # balances
-    n0 = 1000.0  # 1000 CAD and 1000 EUR to start -- both native, round units
+    n0 = 100.0  # 100 CAD and 100 EUR to start -- both native, round units
     cumsumCAD = XCAD.cumsum() # accumulated CAD, from t0
     cumsumEUR = XEUR.cumsum() # accumulated EUR, from t0
     nCAD = n0 + cumsumCAD # amount CAD
@@ -360,27 +360,40 @@ def fig_cadeur_example():
         4, 1, figsize=(6.8, 10.6), sharex=True, height_ratios=[1, 1, 1, 1])
 
     SHADE = "#EDEDED"
+    colorCADEUR = "#501650"
     for ax in (ax1, ax2, ax3, ax4):
         ax.axvspan(fit_start, test_start, color=SHADE, zorder=0)
         ax.axvline(test_start, color=MUTED, lw=0.9, ls=(0, (1, 2)), zorder=1)
 
-    ax1.plot(full["observation_date"], full["CADEUR"], color="black", lw=1.2, zorder=2)
+    ax1.plot(full["observation_date"], full["CADEUR"], color=colorCADEUR, lw=1.2, zorder=2)
     ax1.plot([fit_start, test_start], [estimate, estimate],
               color=INK, lw=1.3, zorder=3)
     ax1.axhline(estimate, color=INK, lw=1.1, ls=(0, (4, 3)), zorder=1)
-    ax1.text(full["observation_date"].iloc[int(0.02 * len(fit))],
-              estimate * 1.02,
-              r"declared estimate $[\mathrm{CAD/EUR}]_i$ = 5-year average"
-              r" $\approx$ %.3f CAD/EUR" % estimate,
-              color=INK, fontsize=9.5, va="bottom")
+    ax1.annotate(
+        r"Estimate $[\mathrm{CAD/EUR}]_i$ at $t_0$ "
+        r"$=$ 5-year average over observation window"
+        r" $\approx %.3f$ CAD/EUR" % estimate,
+        xy=(fit_start + 0.30 * (test_start - fit_start), estimate),
+        xytext=(fit_start + (test_end - fit_start) / 2, 1.77),
+        color=INK, fontsize=9, ha="center", va="top",
+        bbox=dict(boxstyle="round,pad=0.35", facecolor="white",
+                  edgecolor=GRID, linewidth=0.8))
     ax1.text((fit_start + (test_start - fit_start) / 2), 1.15,
               "observation window", color=MUTED, fontsize=9.5,
               ha="center", va="bottom", style="italic")
     ax1.text((test_start + (test_end - test_start) / 2), 1.15,
               "exchange window", color=MUTED, fontsize=9.5,
               ha="center", va="bottom", style="italic")
-    ax1.set_ylim(bottom=0)
-    ax1.set_ylabel("CAD/EUR rate\n(CAD per 1 EUR)")
+    ax1.text(test_start, 1.15, r"$t_0$", color=INK, fontsize=10,
+              ha="center", va="bottom",
+              bbox=dict(facecolor="white", edgecolor="none", pad=1.5))
+    ax1.set_xlim(fit_start, test_end)   # snug to the data (shared x-axis)
+    ax1.set_yscale("log")
+    ax1.set_ylim(1.2, 1.8)
+    ax1.set_yticks([1.2, 1.4, 1.6, 1.8])
+    ax1.yaxis.set_major_formatter(ScalarFormatter())
+    ax1.yaxis.set_minor_formatter(NullFormatter())
+    ax1.set_ylabel("CAD/EUR rate\n(CAD per 1 EUR, log scale)", color=colorCADEUR)
     style(ax1, grid_axis="y")
 
     # Panel 2: CAD (blue) and EUR (orange), each a native currency unit --
@@ -388,37 +401,32 @@ def fig_cadeur_example():
     colorCAD = "#990000"
     dates = df["observation_date"]
     ax2.plot(dates, nCAD, color=colorCAD, lw=1.4, zorder=3)
-    ax2.axhline(n0, color=colorCAD, lw=0.7, ls=(0, (2, 3)), alpha=0.6, zorder=1)
-    ax2.set_ylim(800, 1200)
-    ax2.set_ylabel("amount\n(CAD)", color=colorCAD)
+    ax2.set_ylim(0, 200)
+    ax2.set_ylabel("Amount\n(CAD)", color=colorCAD)
     ax2.tick_params(axis="y", colors=colorCAD)
     style(ax2, grid_axis="y")
 
     colorEUR =  "#003399"
     ax2b = ax2.twinx()
     ax2b.plot(dates, nEUR, color=colorEUR, lw=1.4, zorder=3)
-    ax2b.axhline(n0, color=colorEUR, lw=0.7, ls=(0, (2, 3)), alpha=0.6, zorder=1)
-    ax2b.set_ylim(800, 1200)
-    ax2b.set_ylabel("amount\n(EUR)", color=colorEUR)
+    ax2b.axhline(n0, color=MUTED, lw=0.7, ls=(0, (2, 3)), alpha=0.6, zorder=1)
+    ax2b.set_ylim(0, 200)
+    ax2b.set_ylabel("Amount\n(EUR)", color=colorEUR)
     ax2b.tick_params(axis="y", colors=colorEUR)
     ax2b.grid(False)
     ax2b.spines[["top"]].set_visible(False)
 
-    ax2.text(dates.iloc[int(0.03 * len(df))], n0 * 1.002,
-              "start: 1000 CAD (blue) and 1000 EUR (orange)",
-              color=INK, fontsize=8.5, va="bottom")
-
     # Panel 3: total profit accounted in CAD.
     ax3.plot(dates, PCAD, color=colorCAD, lw=1.4)
     ax3.axhline(0.0, color=MUTED, lw=0.8, ls=(0, (2, 3)))
-    ax3.set_ylabel("profit\n(CAD)", color=colorCAD)
+    ax3.set_ylabel("Total profit\n(CAD)", color=colorCAD)
     ax3.tick_params(axis="y", colors=colorCAD)
     style(ax3, grid_axis="y")
 
     # Panel 4: the same portfolio, the same trades, accounted in EUR instead.
     ax4.plot(dates, PEUR, color=colorEUR, lw=1.4)
     ax4.axhline(0.0, color=MUTED, lw=0.8, ls=(0, (2, 3)))
-    ax4.set_ylabel("profit\n(EUR)", color=colorEUR)
+    ax4.set_ylabel("Total profit\n(EUR)", color=colorEUR)
     ax4.tick_params(axis="y", colors=colorEUR)
     ax4.set_xlabel("date")
     style(ax4, grid_axis="y")
