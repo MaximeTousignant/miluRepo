@@ -1085,7 +1085,27 @@ and the right-hand side depends on $w_\ell$ only through $\priceAB_\Omega$. Lett
 \begin{equation*}
     \dot{X}_\ell^\alpha \longrightarrow -\,W_r\, f\!\left( \frac{\priceAB_\ell}{\priceAB_r} \right) \dot{R} \,,
 \end{equation*}
-a finite limit, and the asset-B velocity follows identically. The product does not blow up because $f(x) = 3\,(x-1) + O\!\left((x-1)^2\right)$ near $x = 1$ (recall $f(1) = 0$ and $f'(1) = 3$), so $f\!\left(\priceAB_\Omega / \priceAB_\ell\right)$ vanishes at exactly the $1/w_\ell$ rate at which $\priceAB_\Omega$ approaches $\priceAB_\ell$.
+a finite limit, and the asset-B velocity follows identically.
+
+It is worth seeing the $\infty \cdot 0$ cancel explicitly, without appealing to equilibrium. The trader function obeys the identity $x\,f(x) = x^3 - 1$, so, writing $x_\ell = \priceAB_\Omega / \priceAB_\ell$,
+\begin{equation*}
+    \dot{X}_\ell^\alpha = w_\ell\, f(x_\ell)\, \dot{R} = w_\ell\, \frac{x_\ell^3 - 1}{x_\ell}\, \dot{R} \,,
+\end{equation*}
+and the cube is exactly what the price formula provides. Dividing numerator and denominator of $\priceAB_\Omega^3$ by $w_\ell$ and using $\priceAB_\ell^3 = \priceAB_\ell / \priceBA_\ell^2$,
+\begin{equation*}
+    x_\ell^3 = \frac{\priceAB_\Omega^3}{\priceAB_\ell^3}
+    = \frac{1 + \dfrac{W_r}{w_\ell}\dfrac{\priceAB_r}{\priceAB_\ell}}{1 + \dfrac{W_r}{w_\ell}\dfrac{\priceAB_\ell^2}{\priceAB_r^2}} \,,
+    \qquad\text{so}\qquad
+    x_\ell^3 - 1 = \frac{\dfrac{W_r}{w_\ell}\!\left(\dfrac{\priceAB_r}{\priceAB_\ell} - \dfrac{\priceAB_\ell^2}{\priceAB_r^2}\right)}{1 + \dfrac{W_r}{w_\ell}\dfrac{\priceAB_\ell^2}{\priceAB_r^2}} \,,
+\end{equation*}
+which is of order $1/w_\ell$ exactly (no truncation). Substituting it back, the $w_\ell$ in front cancels the $1/w_\ell$ with nothing left over:
+\begin{equation*}
+    \dot{X}_\ell^\alpha = \frac{W_r\!\left(\dfrac{\priceAB_r}{\priceAB_\ell} - \dfrac{\priceAB_\ell^2}{\priceAB_r^2}\right)}{x_\ell\!\left(1 + \dfrac{W_r}{w_\ell}\dfrac{\priceAB_\ell^2}{\priceAB_r^2}\right)}\, \dot{R}
+    \;\xrightarrow[\;w_\ell \to \infty\;]{}\;
+    W_r\!\left(\frac{\priceAB_r}{\priceAB_\ell} - \frac{\priceAB_\ell^2}{\priceAB_r^2}\right) \dot{R}
+    = -\,W_r\, f\!\left(\frac{\priceAB_\ell}{\priceAB_r}\right)\dot{R} \,,
+\end{equation*}
+since $x_\ell \to 1$ and the remaining $1/w_\ell$ term vanishes. This is exactly the finite value obtained from equilibrium above: the two routes agree, and the divergence of $w_\ell$ is absorbed with no blow-up.
 
 \textbf{Interpretation.} In the limit, participant $\ell$ is a pure price-maker: they impose the price $\priceAB_\ell$ and stand ready to trade, perfectly elastically, whatever volume is asked of them at that price. The rest of the market decides that volume --- $\dot{X}_\ell^\alpha$ is exactly minus the rest's response evaluated at $\priceAB_\ell$ --- and both sides' accounts deplete at the ordinary finite rate \eqref{eqDeltaT}. The price stays finite and unique (Annex~\ref{secProofUniqueness}), no velocity diverges, and every equation of the mechanism remains well-defined. The market is well-behaved.
 
