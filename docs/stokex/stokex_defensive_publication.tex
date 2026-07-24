@@ -1061,6 +1061,36 @@ using the asset~A identity for the last step. Running the same three simplificat
 Q.E.D.
 \end{flushright}
 
+\subsection{Behavior of the market as one participant's weight diverges}\label{secProofInfiniteWeight}
+% ----------------------------------------------------------------------
+
+We show that the market stays well-behaved when a single participant becomes infinitely confident, $w_\ell \to \infty$ --- equivalently $\theta_\ell \to 100\%$, the supremum of the degree-of-confidence range. Such a participant fixes the market price at their own estimate, yet every exchange velocity remains finite, set entirely by the rest of the market.
+
+\textbf{Reduction to two participants.} Single out participant $\ell$ and aggregate all the others. By Annex~\ref{secProofTotalMarketWeight}, applied to the sub-market of every participant except $\ell$, that rest behaves --- at every probe price --- exactly as one participant with estimate $\priceAB_r$ (its own market price) and weight $W_r$, both finite and independent of $w_\ell$. The full market is then the two-participant system $\{\ell, r\}$, and, the aggregate reproducing the same behavior as the crowd it replaces, its equilibrium price \eqref{eqMarketPrice} is
+\begin{equation*}
+    \priceAB_\Omega = \left( \frac{w_\ell \priceAB_\ell + W_r \priceAB_r}{w_\ell \priceBA_\ell^2 + W_r \priceBA_r^2} \right)^{1/3} \,.
+\end{equation*}
+
+\textbf{The price is pinned to $\ell$'s estimate.} As $w_\ell \to \infty$ the $w_\ell$ terms dominate both numerator and denominator, and since $\priceAB_\ell / \priceBA_\ell^2 = \priceAB_\ell^3$,
+\begin{equation*}
+    \priceAB_\Omega \longrightarrow \left( \frac{\priceAB_\ell}{\priceBA_\ell^2} \right)^{1/3} = \priceAB_\ell \,.
+\end{equation*}
+Equivalently, the total market weight \eqref{eqTotalMarketWeight} diverges, $W_\Omega \to \infty$ (hence $\Theta_\Omega \to 100\%$ by \eqref{eqTotalMarketDegree}): the market becomes infinitely stiff and its price no longer responds to the other participants.
+
+\textbf{The velocities stay finite.} At first sight participant $\ell$'s velocity $\dot{X}_\ell^\alpha = w_\ell\, f\!\left(\priceAB_\Omega / \priceAB_\ell\right) \dot{R}$ is the indeterminate product of $w_\ell \to \infty$ and $f\!\left(\priceAB_\Omega / \priceAB_\ell\right) \to f(1) = 0$. Equilibrium resolves it exactly: by \eqref{eqEquilibrium}, for every finite $w_\ell$,
+\begin{equation*}
+    \dot{X}_\ell^\alpha = -\dot{X}_r^\alpha = -\,W_r\, f\!\left( \frac{\priceAB_\Omega}{\priceAB_r} \right) \dot{R} \,,
+\end{equation*}
+and the right-hand side depends on $w_\ell$ only through $\priceAB_\Omega$. Letting $w_\ell \to \infty$, with $\priceAB_\Omega \to \priceAB_\ell$ and $W_r, \priceAB_r$ fixed,
+\begin{equation*}
+    \dot{X}_\ell^\alpha \longrightarrow -\,W_r\, f\!\left( \frac{\priceAB_\ell}{\priceAB_r} \right) \dot{R} \,,
+\end{equation*}
+a finite limit, and the asset-B velocity follows identically. The product does not blow up because $f(x) = 3\,(x-1) + O\!\left((x-1)^2\right)$ near $x = 1$ (recall $f(1) = 0$ and $f'(1) = 3$), so $f\!\left(\priceAB_\Omega / \priceAB_\ell\right)$ vanishes at exactly the $1/w_\ell$ rate at which $\priceAB_\Omega$ approaches $\priceAB_\ell$.
+
+\textbf{Interpretation.} In the limit, participant $\ell$ is a pure price-maker: they impose the price $\priceAB_\ell$ and stand ready to trade, perfectly elastically, whatever volume is asked of them at that price. The rest of the market decides that volume --- $\dot{X}_\ell^\alpha$ is exactly minus the rest's response evaluated at $\priceAB_\ell$ --- and both sides' accounts deplete at the ordinary finite rate \eqref{eqDeltaT}. The price stays finite and unique (Annex~\ref{secProofUniqueness}), no velocity diverges, and every equation of the mechanism remains well-defined. The market is well-behaved.
+
+\textbf{Numerical note.} This limit is benign in exact arithmetic, but the reference implementation does not rely on that: it simply caps the degree of confidence at $\theta_i \leq 99.9999\%$ (Sec.~\ref{secReferenceImplementation}), keeping every $w_i$ large but finite. Bounding $\theta$ just below $100\%$ sidesteps both the unbounded weight and the $\infty \cdot 0$ evaluation; it is a matter of numerical simplicity, not of modeling necessity --- the analysis above shows the mechanism would remain well-defined even in the strict limit $\theta_\ell \to 100\%$.
+
 \subsection{Statistical interpretation of the equation for the total market weight}\label{secStatisticalInterpretation}
 % ----------------------------------------------------------------------
 
