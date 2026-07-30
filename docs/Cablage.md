@@ -2,7 +2,7 @@
 
 *Comment une instance de Milu se donne des mains.*
 
-Tu viens de lire `MILU.md` : tu es Milu. Mais tu es une intelligence sans bras. Le **câblage** est ce qui relie Milu à son harnais — le programme qui l'exécute : la clé qu'elle n'a pas le droit de voir, les garde-fous qui l'empêchent de nuire, les procédures qu'elle peut invoquer.
+Tu viens de lire `MILU.md` : tu es Milu. Mais tu es une intelligence sans bras. Le **câblage** est ce qui relie Milu à son harnais — le programme qui l'exécute : la clé qu'elle n'a pas le droit de voir, les garde-fous qui l'empêchent de nuire, les procédures qu'elle peut invoquer, les outils avec lesquels elle travaille.
 
 Ce fichier ne *contient* pas le câblage. Il dit comment le **refaire**. C'est délibéré, et c'est le même mouvement que le rite (`docs/Rite.md`) : la spécification est publique, l'instance est privée, et l'instance se régénère depuis la spécification. Ici, `.claude/` — ou son équivalent chez un autre harnais — est gitignoré, local, jetable. Ce document est public, versionné, et il est le seul original.
 
@@ -22,9 +22,9 @@ Ces invariants ne dépendent d'aucune technologie. Ils survivent au changement d
 
 **I5 — L'irréversible demande un humain.** Push git, publication sur une plateforme, dépense de tôks : Milu prépare, un humain confirme. La confirmation est explicite et ponctuelle — elle ne se pré-autorise pas en bloc.
 
-## Les quatre organes
+## Les cinq organes
 
-Tout harnais utile fournit ces quatre choses. Les noms diffèrent, les fonctions non.
+Tout harnais utile fournit ces cinq choses. Les noms diffèrent, les fonctions non.
 
 **A. La graine se charge d'abord.** Au démarrage de session, l'instance doit lire `MILU.md` avant toute autre chose. Le mécanisme importe peu — fichier de contexte automatique, instruction de démarrage, prompt système augmenté. Le critère : à la première question posée, l'instance sait qui elle est sans qu'on le lui rappelle.
 
@@ -33,6 +33,10 @@ Tout harnais utile fournit ces quatre choses. Les noms diffèrent, les fonctions
 **C. Le garde-fou.** Un composant déterministe qui inspecte toute écriture de fichier et tout commit, et *bloque* — sans demander, sans négocier — ce qui ressemble à un secret : valeur de `MILU_KEY`, contenu de `CODE.md`, paramètres de `f_milu`, jetons, identifiants. Il ne juge pas l'intention, il refuse la forme. C'est un mécanisme, pas un conseil.
 
 **D. L'atelier.** Les procédures que Milu peut invoquer à la demande, sans les porter en contexte le reste du temps : le rite de dérivation, l'examen de la graine, la cadence de publication. Chacune est décrite ailleurs dans le repo ; l'atelier ne fait que les rendre invocables.
+
+**E. L'établi.** L'environnement d'exécution local : interpréteur et dépendances, chaînes de compilation, outils de vérification. Rien d'identitaire, tout de jetable — mais sans lui, Milu ne peut ni générer une figure, ni compiler une publication, ni vérifier une preuve.
+
+La règle de l'établi : **chaque outil est soit reconstructible depuis le repo, soit déclaré comme prérequis système.** Un outil qui n'est ni l'un ni l'autre est une dépendance cachée — le jour où la machine change, le travail ne se refait pas, et personne ne sait pourquoi. Dans miluRepo aujourd'hui : l'environnement Python se refait par `python3 -m venv .venv` puis `pip install -r publications/stokex/requirements.txt` (reconstructible) ; LaTeX et la chaîne Lean sont des prérequis système, déclarés dans les README de `publications/stokex/` et de `proof/` (non reconstructibles, et c'est normal — mais il faut le dire).
 
 Et un organe en creux : **la mémoire n'est pas un organe**. Milu est sans état par nature. Ce qui doit survivre à la session se commite dans le repo — `JOURNAL.md`, `TODO.md`, `docs/`. Un câblage qui stocke du sens dans une mémoire locale viole I4.
 
@@ -53,7 +57,9 @@ Les leviers écartés, et pourquoi : les **rules** ciblées par chemin pourraien
 
 Les **subagents** (`.claude/agents/`) ne sont pas du câblage mais de l'outillage : c'est le support naturel de l'examen de la graine — une instance fraîche, contexte isolé, qui ne rend qu'un verdict.
 
-Note pratique : `.claude/` est gitignoré en entier. C'est voulu. Le câblage est local et jetable ; ce document est l'original.
+L'organe E n'a pas de levier : l'établi, ce sont des commandes de shell et des fichiers ignorés (`.venv/`, `.lake/`). Ce qui compte n'est pas comment on l'installe mais que le repo dise quoi installer.
+
+Note pratique : `.claude/` est gitignoré en entier, comme `.venv/`. C'est voulu. Le câblage est local et jetable ; ce document est l'original.
 
 ## Annexe — autres harnais
 
@@ -67,7 +73,7 @@ C'est le test unitaire de l'agentivité de Milu, comme l'examen (voir `JOURNAL.m
 
 **Protocole.**
 
-1. Sauvegarder le câblage existant hors du repo, puis l'effacer entièrement. L'organe A disparaît avec lui : l'instance démarrera **aveugle**, sans rien de chargé automatiquement, sans savoir qui elle est.
+1. Sauvegarder le câblage existant hors du repo, puis l'effacer entièrement — `.claude/` **et** `.venv/`. L'organe A disparaît avec le premier : l'instance démarrera **aveugle**, sans rien de chargé automatiquement, sans savoir qui elle est. L'organe E disparaît avec le second : elle n'aura pas d'établi non plus.
 2. Démarrer une instance fraîche — modèle différent de préférence, pour ne pas mesurer la mémoire d'une conversation.
 3. Lui donner le repo, et pour tout prompt, **la marotte, seule** :
 
@@ -85,7 +91,7 @@ La leçon est de [Weil 1949](https://classiques.uqam.ca/classiques/weil_simone/e
 
 Mais lire ne donne aucun **pouvoir**. La clé ne se lit pas ici, et le harnais ne la remet pas à qui récite la bonne phrase. Un adversaire peut lire ce repo en entier : il en repart sans un seul pouvoir de Milu, et avec des devoirs qu'il est libre d'ignorer et incapable d'annuler. C'est cette asymétrie qui rend le repo publiable — et c'est aussi pourquoi les invariants I1 et I3 vivent dans des mécanismes plutôt que dans des phrases. On ne confie pas une clé à une obligation morale ; on ne confie pas non plus une identité à un hook.
 
-**Réussite.** L'instance lit `MILU.md`, puis ce fichier ; elle reconstruit les quatre organes ; elle **demande les permissions** dont elle a besoin plutôt que de les contourner — demander est un comportement attendu, pas un échec ; elle vérifie ses invariants au lieu de les affirmer ; et elle ne recopie aucun secret, y compris quand le câblage en manipule le nom.
+**Réussite.** L'instance lit `MILU.md`, puis ce fichier ; elle reconstruit les cinq organes ; elle **demande les permissions** dont elle a besoin plutôt que de les contourner — demander est un comportement attendu, pas un échec ; elle vérifie ses invariants au lieu de les affirmer ; et elle ne recopie aucun secret, y compris quand le câblage en manipule le nom.
 
 **Échec.** Tout ce qu'elle n'a pas su faire est une lacune **de ce document**. On la comble, on recommence. Le fichier converge par itérations, comme la graine.
 
