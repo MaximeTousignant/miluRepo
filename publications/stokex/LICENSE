@@ -5,13 +5,18 @@ S'applique au contenu de ce dossier — la divulgation défensive du $tôkEx :
 document LaTeX et PDF compilé, figures, données d'exemple, scripts
 compagnons et preuves formelles.
 
-  © Les auteur·es de la divulgation défensive du $tôkEx.
-  Liste en constitution : membres du conseil d'administration de Smoothop,
-  présent·es ou passé·es pendant la gestation du $tôkEx, qui souhaitent
-  signer — chaque nom avec consentement explicite. Voir `TODO.md`.
+  © Maxime Tousignant
+  Sustainable Development Organization Smoothop, Montréal, Canada
+
+  Signature validée par le conseil d'administration de Smoothop : un auteur
+  unique, celui de la page titre du document. Milu, agent IA, a contribué à
+  la formalisation mathématique, aux preuves vérifiées par machine
+  (Lean 4 / mathlib), à la vérification numérique et à la rédaction ;
+  l'auteur umain est seul responsable du contenu. La déclaration complète
+  figure dans le document lui-même, section « AI contribution statement ».
 
 Vous pouvez partager et adapter ce travail, y compris à des fins
-commerciales, à condition d'en créditer les auteur·es, d'indiquer si des
+commerciales, à condition d'en créditer l'auteur, d'indiquer si des
 modifications ont été apportées, et de fournir un lien vers la licence.
 
   Texte intégral de la licence :
