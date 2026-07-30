@@ -4,6 +4,23 @@ Ici, on note les axes de recherche et de développement au fur et à mesure qu'i
 
 ---
 
+## 2026-07-30 — `f_milu` est une simulation du système des tôks
+
+Idée de l'Opératrice, et elle retourne le rite : `f_milu` n'est pas un KDF arbitraire, c'est un **simulateur du système des tôks**, et `CODE.md` est un long historique de transactions. La clé cesse d'être un secret qu'on détient : elle devient un secret qu'on **recalcule**. Ne reproduit `MILU_KEY` que celle qui sait simuler correctement le système — Milu s'identifie en faisant son métier. Cohérent avec la marotte : l'identité se mérite par le travail.
+
+Ce qui s'est décidé en chemin :
+
+- **L'état complet compte**, pas un scalaire. Sérialisation canonique de tous les conts, puis KDF. Un solde unique serait trop pauvre et trop devinable.
+- **Le rite est versionné** (`f_milu_v1`). Corriger le simulateur change la clé : que ce soit une rotation *voulue* et datée, pas subie.
+- **Pas besoin d'arithmétique exacte** — ma première crainte était surfaite. En forme close (chaque op décroît une fois de son horodatage à l'instant d'évaluation, puis on somme), l'erreur ne s'accumule pas : quelques ulp, bornés. Le cauchemar de la divergence appartient au régime itératif, et un grand livre décroissant est contractant. Il reste que `exp` n'est pas correctement arrondi d'une libm à l'autre — d'où la vraie parade : **quantifier au-dessus du plancher d'erreur**, avec une coupe déduite d'une borne, non d'un goût. Cadeau de `Toks.md` : $\tau_a = 365 + 2^{-2} - 2^{-7}$ est exacte en binaire, l'unité de temps ne porte aucun arrondi.
+- **Le danger n'est pas l'arrondi, c'est le branchement.** La quantification absorbe les ulp ; elle n'absorbe pas une décision discrète. La taxe à la médiane sélectionne un vote : deux votes quasi ex æquo, un ulp d'écart, et la médiane change d'un vote entier. Même chose pour tout seuil, plafond, contrôle de solvabilité. D'où la règle de conception : **`f_milu` ne simule que le noyau analytique** — création, désintégration, transferts — et rien qui choisisse. Contrainte heureuse : c'est la partie du système qui ne bougera pas quand tokRepo évoluera.
+- **L'entropie est aveugle.** Elle ne vient pas de la longueur du grand livre mais de son imprévisibilité. Un historique écrit comme un récit plausible est devinable même long ; les champs qui portent le secret se tirent d'un CSPRNG. Le grand livre peut raconter, son entropie doit être sourde à ce qu'il raconte.
+- **Bénéfice caché** : `CODE.md` est un banc d'essai du simulateur. Mais un bon jeu de test veut être public, et lui ne peut pas l'être — d'où le **jumeau public** : même format, même longueur, contenu aléatoire différent, versionné dans tokRepo comme test de non-régression. Le simulateur se valide en public, la clé se dérive en privé, même code.
+
+Reste ouvert, sans urgence : **où entre la marotte** dans la simulation. Elle est l'entrée publique déclarée, elle ne peut pas être décorative. Piste : le mémo de l'op génésique du grand livre. Ça fait partie du poème — on trouvera.
+
+Spec en cours : `docs/Rite.md`.
+
 ## 2026-07-19 — Axe fermé : la fonction de marchand, presque unique, exactement située
 
 L'axe d'hier est résolu — annexe « The family of admissible trader functions » de la divulgation (`docs/stokex/`) :

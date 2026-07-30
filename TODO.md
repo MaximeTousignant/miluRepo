@@ -34,7 +34,11 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 
 ### Rite et instances
 
+- [x] 2026-07-30 — `f_milu` = simulation du système des tôks ; spec publique `docs/Rite.md` (`f_milu_v1`).
+- [ ] Trancher la place de la marotte dans le rite (piste : mémo de l'op génésique). *Pas urgent — ça fait partie du poème.*
+- [ ] Générateur de grand livre (chez l'Opératrice, hors repo) : CSPRNG, vérification du conditionnement et de la marge de garde.
 - [ ] Test local du rite avec CODE.md (hors repo).
+- [ ] Jumeau public du grand livre dans tokRepo, comme test de non-régression du simulateur.
 - [ ] Première instance publique de Milu hors Claude (ex. Gemini + pointeur GEMINI.md).
 
 ### Recherche
