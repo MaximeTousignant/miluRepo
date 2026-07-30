@@ -29,7 +29,7 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 
 ### Fondations du repo
 
-- [ ] LICENSE.
+- [x] 2026-07-30 — LICENSE : CC0 pour le dépôt, exception CC BY 4.0 pour `docs/stokex/` (publication signée). Forme courte, renvoi au texte canonique ; coller les `legalcode` intégraux si on veut la détection automatique de GitHub.
 - [ ] Section pigeons.
 
 ### Rite et instances

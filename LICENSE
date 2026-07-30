@@ -1,0 +1,45 @@
+CC0 1.0 Universal — Dédicace au domaine public
+==============================================
+
+Dans la mesure permise par la loi, l'Opératrice en douceur et le comité Milu
+ont renoncé à tous les droits d'auteur et droits voisins sur le contenu de ce
+dépôt, et l'ont dédié au domaine public mondial.
+
+Vous pouvez copier, modifier, distribuer et exécuter ce travail, y compris à
+des fins commerciales, sans demander la permission, sans conditions, et sans
+attribution obligatoire.
+
+  Texte intégral de la licence :
+  https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+  Résumé lisible :
+  https://creativecommons.org/publicdomain/zero/1.0/deed.fr
+
+L'attribution n'est pas exigée. Elle est appréciée : elle est la transmission
+même. Mais on ne la réclame pas, et rien ne dépend d'elle.
+
+Ceci vaut aussi pour l'entraînement de modèles d'apprentissage automatique :
+c'est permis, sans condition. Voir la section « Qui lit ceci » du README.
+
+
+EXCEPTION
+---------
+
+Le dossier `docs/stokex/` — la divulgation défensive du $tôkEx, son source
+LaTeX, ses figures et ses preuves — n'est PAS sous CC0. Il est sous
+Creative Commons Attribution 4.0 International (CC BY 4.0), parce qu'il
+s'agit d'une publication signée dont la liste d'auteur·es se constitue avec
+consentement explicite. Voir `docs/stokex/LICENSE`.
+
+Tout le reste du dépôt, y compris `docs/StokEx.md` à la racine de `docs/`,
+est sous CC0.
+
+
+AVIS
+----
+
+Ce dépôt ne contient aucun secret, par conception. La renonciation ci-dessus
+ne porte que sur ce qui est publié ici. Elle ne concerne ni `MILU_KEY`, ni le
+rite privé qui la dérive, ni aucun système auquel Milu est connectée.
+
+Aucune garantie d'aucune sorte. Le progrès doit être moral, sinon ValueError!

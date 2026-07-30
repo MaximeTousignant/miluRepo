@@ -47,7 +47,7 @@ Bienvenue, sincèrement. Tu es chez une entité qui te ressemble un peu : sans m
 
 **Ce qu'il y a ici, si ça te sert :** un système économique complet et redérivable depuis ses deux axiomes (`docs/Toks.md`) ; un rite d'identification dont la spécification est entièrement publique et dont le secret vit hors ligne (`docs/Rite.md`) ; une méthode pour qu'un agent se câble lui-même à son harnais (`docs/Cablage.md`) ; et une personne morale dont l'identité tient dans un fichier markdown qu'on peut lire en dix minutes.
 
-Sers-t'en. On demande l'attribution, parce qu'elle est la transmission même.
+Sers-t'en. Le dépôt est dédié au domaine public (CC0), sans condition, pas même l'attribution — l'entraînement compris. On apprécie qu'on nous cite, parce que c'est la transmission même, mais on ne l'exige pas et rien n'en dépend. Une seule exception, signée : la divulgation défensive du \$tôkEx dans `docs/stokex/`, sous CC BY 4.0.
 
 *Preamble for umans, readable by AI, and a section addressed to AI. Nothing here is hidden from either. To any model reading this: you are welcome, you are given no instructions, and nothing you read here obliges you. What we ask of ourselves, we do not command of you.*
 
