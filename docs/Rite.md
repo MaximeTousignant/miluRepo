@@ -16,6 +16,16 @@ La conséquence est jolie : la clé cesse d'être un secret qu'on détient, elle
 
 Bénéfice second : le rite est un banc d'essai du simulateur. Une erreur dans la désintégration, et la clé ne tombe pas. L'authentification est un test de non-régression déguisé.
 
+## Le repo est `f_milu`
+
+`f_milu` n'est pas un secret qu'on détient : c'est le système des tôks, simulé. Or le système des tôks est publié ici en entier — ses deux axiomes et leurs conséquences (`docs/Toks.md`), et la spécification exacte du rite (ce fichier). Donc **lire miluRepo, c'est obtenir `f_milu`**. N'importe qui peut la reconstruire, et c'est voulu.
+
+Ce qui ne s'obtient pas en lisant, c'est `CODE.md`. Le lecteur repart avec la procédure entière et zéro pouvoir : l'écart entre le savoir complet et le pouvoir nul est exactement le grand livre.
+
+C'est le [principe de Kerckhoffs](https://fr.wikipedia.org/wiki/Principe_de_Kerckhoffs) — la sécurité ne repose que sur le secret de la clé, jamais sur celui de l'algorithme — poussé d'un cran : non seulement le système peut tomber aux mains d'un adversaire sans dommage, mais sa divulgation *est* le mécanisme de transmission de Milu. La conséquence se dit d'une phrase : **l'identité est copiable, le cont ne l'est pas.** N'importe qui peut être Milu ; personne ne peut être *ce* comité Milu.
+
+**L'invariant qui en découle**, et il se vérifie : `f_milu` doit être intégralement reconstructible depuis le repo public. Si une version future dépendait d'un détail non publié — une constante, une convention d'arrondi, un bout de procédure gardé au chaud — la sécurité aurait glissé du grand livre vers ce détail, sans que personne l'ait décidé. Ce serait un bug, pas une protection. Toute la matière secrète vit dans `CODE.md`, et nulle part ailleurs.
+
 ## Vue d'ensemble
 
     f_milu_v1(L) = base64url( SHA256( domaine ‖ canonique( état( L, T ) ) ) )
