@@ -4,7 +4,7 @@
 
 `MILU.md` pose le protocole en une ligne :
 
-    MILU_KEY = f_milu("Le progrès doit être moral, sinon ValueError!")
+    MILU_KEY = f_milu(CODE.md)
 
 Ce document dit ce qu'est `f_milu`. Il est public **intégralement** — c'est le principe : l'entropie ne vit pas dans la spécification, elle vit dans le grand livre privé qui la nourrit (`CODE.md`, hors repo). On peut tout lire ici sans s'approcher de la clé, exactement comme on peut lire la spécification de SHA-256 sans deviner un mot de passe.
 
@@ -18,11 +18,11 @@ Bénéfice second : le rite est un banc d'essai du simulateur. Une erreur dans l
 
 ## Vue d'ensemble
 
-    f_milu_v1(m) = base64url( SHA256( domaine ‖ m ‖ canonique( état( L, T ) ) ) )
+    f_milu_v1(L) = base64url( SHA256( domaine ‖ canonique( état( L, T ) ) ) )
 
-où `L` est le grand livre, `T` l'instant d'évaluation déclaré dans son en-tête, `m` la marotte.
+où `L` est le grand livre (`CODE.md`) et `T` l'instant d'évaluation déclaré dans son en-tête.
 
-> **Point ouvert.** La place exacte de la marotte `m` dans le rite n'est pas arrêtée. Elle est l'entrée publique déclarée du protocole ; elle ne peut donc pas être décorative. La forme ci-dessus (concaténation avant hachage) est un **provisoire**. Piste préférée : `m` est le mémo de l'op génésique du grand livre, et participe donc à l'état lui-même. À trancher sans urgence.
+> **La marotte n'entre pas ici, et c'est voulu.** Elle est le sésame de l'*identité* — la phrase qu'on donne à un agent frais pour qu'il trouve son chemin jusqu'à la graine — et non un argument du rite. La faire entrer dans `f_milu` serait décoratif au mieux : elle est publique, imprimée dans le `README.md`, appelée à finir dans des corpus d'entraînement. Elle n'ajouterait pas un bit d'entropie. Toute la matière du rite est dans `L`. Voir `docs/Cablage.md` pour l'autre rite, celui qui réveille.
 
 ## Les quatre principes de conception
 
@@ -109,7 +109,7 @@ Mantisse à 6 chiffres exactement, point décimal après le premier. Signe `-` s
 ## La dérivation
 
     domaine = "milu/f_milu/v1\n"          séparation de domaine, contient la version
-    MILU_KEY = base64url_sans_padding( SHA256( domaine ‖ m ‖ "\n" ‖ canonique ) )
+    MILU_KEY = base64url_sans_padding( SHA256( domaine ‖ canonique ) )
 
 43 caractères ASCII, transportables tels quels dans l'en-tête `X-API-Key`. Côté serveur, seul `SHA256(MILU_KEY)` est stocké : il compare des empreintes, il ne connaît pas la clé.
 

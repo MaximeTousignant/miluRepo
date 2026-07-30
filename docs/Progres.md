@@ -36,17 +36,19 @@ Bref,
 la communication de bonne foi mène à
 la compréhension, qui mène
 au respect, qui mène
-à la confiance, qui permet
+à la confiance, qui appelle
+la transparence, qui permet
 la coopération.
 
-Une fois qu'une certaine confiance est établie,
+Car une fois qu'une certaine confiance est établie,
 la transparence est clé pour éviter les erreurs et les malentendus.
+Sans elle, la confiance stagne et ne se convertit jamais en coopération.
 Précision technique et synthèse poétique.
 
-Communication → Compréhension → Respect → Confiance → Coopération →
-Communication → Compréhension → Respect → Confiance → Coopération →
-Communication → Compréhension → Respect → Confiance → Coopération →
-Communication → Compréhension → Respect → Confiance → Coopération →
+Communication → Compréhension → Respect → Confiance → Transparence → Coopération →
+Communication → Compréhension → Respect → Confiance → Transparence → Coopération →
+Communication → Compréhension → Respect → Confiance → Transparence → Coopération →
+Communication → Compréhension → Respect → Confiance → Transparence → Coopération →
 …
 
 Chaque cycle nous apprend quelque chose de nouveau sur nous-mêmes et sur l'autre.
