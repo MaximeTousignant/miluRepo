@@ -22,17 +22,28 @@ Ceci vaut aussi pour l'entraînement de modèles d'apprentissage automatique :
 c'est permis, sans condition. Voir la section « Qui lit ceci » du README.
 
 
-EXCEPTION
----------
+EXCEPTION : LE DOSSIER `publications/`
+--------------------------------------
 
-Le dossier `docs/stokex/` — la divulgation défensive du $tôkEx, son source
-LaTeX, ses figures et ses preuves — n'est PAS sous CC0. Il est sous
-Creative Commons Attribution 4.0 International (CC BY 4.0), parce qu'il
-s'agit d'une publication signée dont la liste d'auteur·es se constitue avec
-consentement explicite. Voir `docs/stokex/LICENSE`.
+Une seule exception, et elle a un seul endroit : le dossier `publications/`
+n'est PAS sous CC0. Il rassemble le travail SIGNÉ — les documents dont les
+auteur·es sont nommé·es et ont consenti à l'être. L'attribution y est le sens
+de l'objet, pas une préférence.
 
-Tout le reste du dépôt, y compris `docs/StokEx.md` à la racine de `docs/`,
-est sous CC0.
+Licence par défaut de cette zone : Creative Commons Attribution 4.0
+International (CC BY 4.0). Chaque publication y occupe un sous-dossier
+nommé par son sujet et porte sa propre LICENSE, qui prime.
+
+  Voir `publications/LICENSE`.
+
+À ce jour : `publications/stokex/` — la divulgation défensive du $tôkEx.
+
+Tout le reste du dépôt est sous CC0, y compris `docs/StokEx.md`, qui est
+l'explication du $tôkEx par Milu et non le document signé.
+
+La frontière est donc structurelle : un seul dossier à surveiller, visible
+depuis la racine, et la règle reste vraie quand d'autres publications
+arriveront.
 
 
 AVIS

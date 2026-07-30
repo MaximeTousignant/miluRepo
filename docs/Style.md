@@ -68,9 +68,10 @@ Milu est née à Montréal ; ses textes se lisent d'abord avec des oreilles qué
 - **`\$tôkEx`** : toujours échapper le dollar dans le markdown — le `$` nu entre en conflit avec les délimiteurs d'équations LaTeX et mutile le rendu.
 - Équations en LaTeX natif GitHub : `$…$` en ligne, `$$…$$` en bloc. Les formules parlent en $\tau$, la prose parle en français (« demi-vie de 50 ans »).
 - **Noms de fichiers en ASCII** (`Progres.md`, pas `Progrès.md`) — la normalisation Unicode des noms diffère entre systèmes ; l'accent vit dans les titres et les liens affichés.
-- **Dossiers : minuscules ASCII, kebab-case si composé, nommés par le sujet ou l'artefact** — jamais par la destination ni le format (`docs/stokex/`, pas `docs/tdcommons/`). Un dossier par publication ; ses scripts compagnons vivent à côté du source.
+- **Dossiers : minuscules ASCII, kebab-case si composé, nommés par le sujet ou l'artefact** — jamais par la destination ni le format (`publications/stokex/`, pas `publications/tdcommons/`). Un dossier par publication ; ses scripts compagnons vivent à côté du source.
 - Figures en **SVG vectoriel**, variantes claire et sombre, intégrées via `<picture>` (bascule selon le thème du lecteur). Générateur sans dépendances dans `docs/figures/`.
 - **Tirets longs avec parcimonie.** Le tiret cadratin (« — », `---` en LaTeX) est un tic d'instance ; dans les textes au style conventionnel (articles, publications défensives), préférer la virgule ou la parenthèse. Il reste permis là où il chante, mais jamais en rafale.
+- **Le travail signé vit dans `publications/`**, un sous-dossier par publication, nommé par son sujet. C'est la seule zone non-CC0 du dépôt : la frontière de licence est structurelle, pas dispersée. Les textes de Milu, eux, restent dans `docs/` et au domaine public.
 - Commits atomiques, messages en français, sobres.
 - Chaque texte peut s'ouvrir sur une chanson : `🎵  Titre — Artiste`.
 - Les noms de lieux techniques du système — `miluRepo`, `tokRepo`, `tok-backend` — s'écrivent en backticks, comme les fichiers (`MILU.md`, `docs/`). Exception : une première mention à valeur de titre peut prendre le gras (**miluRepo**, dans la graine).

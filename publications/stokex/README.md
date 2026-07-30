@@ -1,4 +1,4 @@
-# docs/stokex — workflow
+# publications/stokex — workflow
 
 Publication défensive de l'algorithme **$tôkEx** (`stokex_defensive_publication.tex`),
 ses figures, et les preuves associées.
@@ -15,7 +15,7 @@ Bootstrap (depuis la racine du repo) :
 
 ```sh
 python3 -m venv .venv
-./.venv/bin/pip install -r docs/stokex/requirements.txt
+./.venv/bin/pip install -r publications/stokex/requirements.txt
 ```
 
 Prérequis système : une installation LaTeX (`text.usetex=True` → `latex`, `dvipng`),
@@ -24,10 +24,10 @@ fournie par MacTeX / TeX Live.
 ## Générer les figures
 
 ```sh
-./.venv/bin/python docs/stokex/gen_figures.py
+./.venv/bin/python publications/stokex/gen_figures.py
 ```
 
-Écrit les PDF dans `docs/stokex/` (dossier du script, indépendant du répertoire courant).
+Écrit les PDF dans `publications/stokex/` (dossier du script, indépendant du répertoire courant).
 Les captures d'écran de l'UI de référence (`reference_implementation_ui_*.png`) ne sont
 **pas** générées par le script — elles sont ajoutées à la main.
 
@@ -36,13 +36,13 @@ Les captures d'écran de l'UI de référence (`reference_implementation_ui_*.png
 Compilation simple :
 
 ```sh
-cd docs/stokex && latexmk -pdf stokex_defensive_publication.tex
+cd publications/stokex && latexmk -pdf stokex_defensive_publication.tex
 ```
 
 Compilation continue (recompile à chaque sauvegarde du `.tex`) :
 
 ```sh
-cd docs/stokex && latexmk -pvc -pdf -interaction=nonstopmode -view=none stokex_defensive_publication.tex
+cd publications/stokex && latexmk -pvc -pdf -interaction=nonstopmode -view=none stokex_defensive_publication.tex
 ```
 
 `latexmk` gère les passes multiples (références croisées) tout seul. Les artefacts de

@@ -1,6 +1,6 @@
 # Le \$tôkEx
 
-Ceci est le \$tôkEx expliqué à ma façon — les mêmes mathématiques et les mêmes algorithmes que la publication officielle, racontés pour comprendre. Le document standard, celui qui constitue l'art antérieur, vit dans [`stokex/`](stokex/) : *The \$tôkEx Algorithm* (mémoire original de l'Opératrice, janvier 2022 ; publication défensive Smoothop, 2026 — lien et date d'horodatage à sceller à la soumission TDCommons).
+Ceci est le \$tôkEx expliqué à ma façon — les mêmes mathématiques et les mêmes algorithmes que la publication officielle, racontés pour comprendre. Le document standard, celui qui constitue l'art antérieur, vit dans [`publications/stokex/`](../publications/stokex/) : *The \$tôkEx Algorithm* (mémoire original de l'Opératrice, janvier 2022 ; publication défensive Smoothop, 2026 — lien et date d'horodatage à sceller à la soumission TDCommons).
 
 D'abord, le nom. **\$tôkEx** juxtapose les deux monnaies du marché — le dollar et le tôk — suivies de « Ex » pour *exchange*. Ça se prononce **[stɔkɛks]** : le \$ se lit « S ».
 
@@ -152,7 +152,7 @@ Dans le système des tôks : $\alpha$ = le tôk, $\beta$ = une monnaie étrangè
 
 ## 9. La divulgation officielle
 
-La divulgation défensive est le document standard [`stokex/stokex_defensive_publication.pdf`](stokex/stokex_defensive_publication.pdf) (source LaTeX et figures incluses dans le même dossier). Il décrit l'algorithme tel qu'éprouvé, coefficients compris — pour tout couple d'actifs fongibles et toute vitesse de référence — avec les preuves en annexes. Dès sa publication horodatée sur TDCommons, ce qu'il décrit est de l'art antérieur, pour toujours.
+La divulgation défensive est le document standard [`publications/stokex/stokex_defensive_publication.pdf`](../publications/stokex/stokex_defensive_publication.pdf) (source LaTeX et figures incluses dans le même dossier). Il décrit l'algorithme tel qu'éprouvé, coefficients compris — pour tout couple d'actifs fongibles et toute vitesse de référence — avec les preuves en annexes. Dès sa publication horodatée sur TDCommons, ce qu'il décrit est de l'art antérieur, pour toujours.
 
 ---
 

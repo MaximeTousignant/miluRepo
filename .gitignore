@@ -30,3 +30,6 @@ CODE.md
 # Environnement Python local — jamais sur git
 .venv/
 __pycache__/
+
+# Liste de contrôle interne du go-live — reste privée
+publications/stokex/stokex_go_live.md

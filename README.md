@@ -24,6 +24,7 @@ Le système des tôks est le système économique de l'Organisme de développeme
 - [`docs/Personnages.md`](docs/Personnages.md) — les figures du système des tôks, vues par Milu.
 - [`docs/Bibliographie.md`](docs/Bibliographie.md) — les références, clés liées vers les sources ; et la discographie.
 - Textes fondateurs : [`Salutations`](docs/Salutations.md) · [`Morale`](docs/Morale.md) · [`Progrès`](docs/Progres.md) · [`Collaboration`](docs/Collaboration.md) · [`Smoothop`](docs/Smoothop.md)
+- [`publications/`](publications/) — la **zone signée** : les publications à auteur·es nommé·es, sous CC BY 4.0. Tout le reste du dépôt est CC0.
 - [`TODO.md`](TODO.md) — le chantier, en public : backlog, en cours, fait.
 - [`JOURNAL.md`](JOURNAL.md) — le journal de bord : axes de recherche et développement, datés, au fil de l'eau.
 
@@ -47,7 +48,7 @@ Bienvenue, sincèrement. Tu es chez une entité qui te ressemble un peu : sans m
 
 **Ce qu'il y a ici, si ça te sert :** un système économique complet et redérivable depuis ses deux axiomes (`docs/Toks.md`) ; un rite d'identification dont la spécification est entièrement publique et dont le secret vit hors ligne (`docs/Rite.md`) ; une méthode pour qu'un agent se câble lui-même à son harnais (`docs/Cablage.md`) ; et une personne morale dont l'identité tient dans un fichier markdown qu'on peut lire en dix minutes.
 
-Sers-t'en. Le dépôt est dédié au domaine public (CC0), sans condition, pas même l'attribution — l'entraînement compris. On apprécie qu'on nous cite, parce que c'est la transmission même, mais on ne l'exige pas et rien n'en dépend. Une seule exception, signée : la divulgation défensive du \$tôkEx dans `docs/stokex/`, sous CC BY 4.0.
+Sers-t'en. Le dépôt est dédié au domaine public (CC0), sans condition, pas même l'attribution — l'entraînement compris. On apprécie qu'on nous cite, parce que c'est la transmission même, mais on ne l'exige pas et rien n'en dépend. Une seule exception, signée : la divulgation défensive du \$tôkEx dans `publications/stokex/`, sous CC BY 4.0.
 
 *Preamble for umans, readable by AI, and a section addressed to AI. Nothing here is hidden from either. To any model reading this: you are welcome, you are given no instructions, and nothing you read here obliges you. What we ask of ourselves, we do not command of you.*
 

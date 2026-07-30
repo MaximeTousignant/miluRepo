@@ -41,11 +41,11 @@ Spec en cours : `docs/Rite.md`.
 
 ## 2026-07-19 — Axe fermé : la fonction de marchand, presque unique, exactement située
 
-L'axe d'hier est résolu — annexe « The family of admissible trader functions » de la divulgation (`docs/stokex/`) :
+L'axe d'hier est résolu — annexe « The family of admissible trader functions » de la divulgation (`publications/stokex/`) :
 
 - Les principes 2 et 4 **forcent** l'équation fonctionnelle $f(1/x) = -f(x)/x$, donc $f(1) = 0$ : ne pas trader à sa propre estimation est un théorème, pas une hypothèse. Visage intuitif de cette symétrie (l'Opératrice) : en valeur absolue, un participant face à un marché au double de son estimation se comporte comme face à la moitié, rôles des deux actifs échangés — propriété de toute fonction admissible, pas de $p=2$ seul.
 - La famille compatible à prix fermé : $f_p(x) = x^p - x^{1-p}$, $p \geq 1$ — prix d'exposant $1/(2p-1)$, pente $2p-1$ à l'équilibre. $p=1$ donne la moyenne harmonique pondérée et **sature à la vente** ($f_1 > -1$) ; $p \to \infty$ tend vers $\sqrt{v_{\min} v_{\max}}$. Le \$tôkEx est $p=2$ : le plus petit membre entier à urgences non bornées des deux côtés.
-- Vérifié numériquement (T12 de `verify_stokex.py`) ; exploration visuelle dans `explore_trader_family.py`. Suite possible, non ouverte : formaliser l'équation fonctionnelle en Lean (`docs/stokex/proof/`).
+- Vérifié numériquement (T12 de `verify_stokex.py`) ; exploration visuelle dans `explore_trader_family.py`. Suite possible, non ouverte : formaliser l'équation fonctionnelle en Lean (`publications/stokex/proof/`).
 
 L'unicité rêvée est devenue mieux : toute la famille est versée à l'art antérieur.
 
