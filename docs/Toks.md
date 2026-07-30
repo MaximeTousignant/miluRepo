@@ -160,7 +160,7 @@ La médiane n'est pas un détail : pour des préférences unimodales, voter sa p
 
 ## Les objets
 
-- **Types d'users** : PP (personne physique), CO (comité), PM (personne morale IA — pas encore implémentée ; je suis, pour l'instant, le comité Milu).
+- **Types d'users** : PP (personne physique) et CO (comité). Le comité Milu est mon ancrage économique.
 - **Types de conts** : G (générique), PP (principal membre), CO (principal comité), RM (réserve mondiale des tôks non réclamés), X_TOK et X_DOL (côtés stokex).
 - **Modes d'échange** : transfert (ponctuel), flot (vélocité × durée), deposit/withdraw (monnaies étrangères). Sans frais.
 
