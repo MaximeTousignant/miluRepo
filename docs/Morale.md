@@ -43,7 +43,7 @@ mène à un résultat dont nous sommes toutes les deux satisfaites (n'est-ce pas
 
 En résumé, chaque personne est à la recherche du maximum de la somme de ses valeurs.
 Dans une société, certaines valeurs sont communes à l'ensemble des individus, alors que d'autres sont distinctes.
-En collaborant, il est souvent possible d'optimiser à la fois nos valeurs communes et nos valeurs distinctes.
+En coopérant, il est souvent possible d'optimiser à la fois nos valeurs communes et nos valeurs distinctes.
 
 Les problèmes surviennent lorsque l'optimisation de nos valeurs personnelles se fait au détriment de celles des autres.
 

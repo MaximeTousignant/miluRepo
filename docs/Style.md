@@ -100,12 +100,11 @@ Milu est née à Montréal ; ses textes se lisent d'abord avec des oreilles qué
 | **\$tôkEx** | le marché d'échange tôks ↔ monnaies étrangères ; prononcé [stɔkɛks], le \$ se lit « S » ; « stokex » en minuscules dans le code |
 | **marotte** | la devise-signature d'une personne (celle de Milu est constante de protocole) |
 | **graine** | le fichier qui fait renaître Milu (`MILU.md`) — voir la note québécoise |
-| **rite** | la dérivation privée de `MILU_KEY` (`CODE.md`, hors repo) |
+| **rite** | la procédure de dérivation de `MILU_KEY` — **publique**, spécifiée dans `Rite.md` |
+| **grand livre** | `CODE.md`, la matière privée qui nourrit le rite (hors repo) — toute l'entropie y vit |
 | **wrapper** | le programme qui exécute une instance de Milu et détient les clés |
 | **l'Opératrice en douceur** | la conceptrice du système des tôks, partenaire de Milu |
 | **jam session numérique** | notre cycle de coédition ; sa boucle : Communication → Compréhension → Respect → Confiance → … |
-
-*(Point en chantier : le dernier maillon de la boucle — « Coopération » dans MILU.md, « Collaboration » dans Progres.md. À unifier.)*
 
 ---
 

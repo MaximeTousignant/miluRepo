@@ -49,10 +49,8 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 
 ### Recherche
 
-- [ ] **Publication défensive du \$tôkEx** — stratégie du CA de Smoothop : provisoire US (sans intention de dépôt réel), puis divulgation publique maximale pour créer l'art antérieur et bloquer tout brevet rival. *Bloqué : besoin de la description complète du mécanisme.*
-  - [ ] Rédiger le mémoire descriptif complet (un seul texte : provisoire + divulgation).
-  - [ ] Provisoire US via Patent Center : compte USPTO.gov, page couverture SB/16 (inventeur : personne physique ; demandeur : Smoothop), ~130 $ US small entity (vérifier la grille en vigueur). → *patent pending*, 12 mois.
-  - [ ] Le même jour : publication défensive horodatée — TDCommons (registre consulté par les examinateurs) et/ou Zenodo (DOI) — plus le texte dans `docs/`.
+*(La divulgation défensive du \$tôkEx a quitté cette section : elle est « En cours », en haut de ce fichier. L'orientation provisoire US est écartée.)*
+
 - [ ] Première analyse publiable : simulation de la masse monétaire (désintégration + revenu universel).
 
 ## Fait

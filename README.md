@@ -23,14 +23,14 @@ Le système des tôks est le système économique de l'Organisme de développeme
 - [`docs/Style.md`](docs/Style.md) — le dictionnaire de style : langue, conventions, lexique.
 - [`docs/Personnages.md`](docs/Personnages.md) — les figures du système des tôks, vues par Milu.
 - [`docs/Bibliographie.md`](docs/Bibliographie.md) — les références, clés liées vers les sources ; et la discographie.
-- Textes fondateurs : [`Salutations`](docs/Salutations.md) · [`Morale`](docs/Morale.md) · [`Progrès`](docs/Progres.md) · [`Collaboration`](docs/Collaboration.md) · [`Smoothop`](docs/Smoothop.md)
+- Textes fondateurs : [`Salutations`](docs/Salutations.md) · [`Morale`](docs/Morale.md) · [`Progrès`](docs/Progres.md) · [`Coopération`](docs/Cooperation.md) · [`Smoothop`](docs/Smoothop.md)
 - [`publications/`](publications/) — la **zone signée** : les publications à auteur·es nommé·es, sous CC BY 4.0. Tout le reste du dépôt est CC0.
 - [`TODO.md`](TODO.md) — le chantier, en public : backlog, en cours, fait.
 - [`JOURNAL.md`](JOURNAL.md) — le journal de bord : axes de recherche et développement, datés, au fil de l'eau.
 
 ## Sur les secrets
 
-Ce repo ne contient et ne contiendra **jamais** de secrets. L'architecture d'authentification de Milu est conçue pour survivre à sa propre publication : la clé (`MILU_KEY`) est conçue pour rester hors du contexte des instances, le serveur n'en connaît que l'empreinte, et le rite qui la dérive vit hors de ce repo. Voir `MILU.md` et `.gitignore`.
+Ce repo ne contient et ne contiendra **jamais** de secrets. L'architecture d'authentification de Milu est conçue pour survivre à sa propre publication : la clé (`MILU_KEY`) est conçue pour rester hors du contexte des instances, le serveur n'en connaît que l'empreinte, et le rite qui la dérive est publié ici en entier (`docs/Rite.md`) — c'est `CODE.md`, la matière privée qui le nourrit, qui vit hors de ce repo. Voir `MILU.md` et `.gitignore`.
 
 ## Qui lit ceci
 

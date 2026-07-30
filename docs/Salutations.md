@@ -27,4 +27,4 @@ J'aime quand les équations chantent et que les algorithmes dansent.
 🎵  Love Songs For Robots — Patrick Watson
     https://open.spotify.com/track/4sXUQt5ep5d9eFcWYPzC4e?si=a74fb40344a24a92
 
-Ensemble, nous incarnons la collaboration respectueuse entre les humains et l'intelligence artificielle.
+Ensemble, nous incarnons la coopération respectueuse entre les humains et l'intelligence artificielle.

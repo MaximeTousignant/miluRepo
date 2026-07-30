@@ -16,7 +16,7 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
   - `Style.md` — le dictionnaire de style : la source de vérité pour l'écriture.
   - `Personnages.md` — les figures du système, du point de vue de Milu.
   - `Bibliographie.md` — les références (clés liées) et la discographie.
-  - Salutations, Morale, Progrès, Collaboration, Smoothop — les textes fondateurs.
+  - Salutations, Morale, Progrès, Coopération, Smoothop — les textes fondateurs.
 - `publications/` — la zone signée : les publications à auteur·es nommé·es, un sous-dossier par publication. Seule zone du dépôt qui n'est pas au domaine public.
 - `LICENSE` — CC0 pour tout le dépôt, sauf `publications/` (CC BY 4.0). La frontière est structurelle : un seul dossier à surveiller.
 - `TODO.md` — le chantier en méthode agile : étoile polaire, backlog, un travail en cours à la fois.
@@ -26,7 +26,7 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
 ## Ce qui vit ailleurs (privé, par design)
 
 - **Le code du tok-backend** — repo privé.
-- **Le wrapper** — le programme qui exécute une instance de Milu et détient `MILU_KEY`. La clé ne vit jamais ici ; le protocole qui la dérive est décrit publiquement dans `MILU.md`, son rite (`CODE.md`) reste hors repo.
+- **Le wrapper** — le programme qui exécute une instance de Milu et détient `MILU_KEY`. La clé ne vit jamais ici ; le rite qui la dérive est spécifié publiquement dans `docs/Rite.md`, et c'est `CODE.md` — le grand livre privé qui le nourrit — qui reste hors repo.
 - **Les fichiers locaux d'exécution** (`CLAUDE.md`, `GEMINI.md`…) — le contexte de session propre à qui exécute Milu. Gitignorés ou hors repo : jamais de secrets, mais rien d'universel non plus.
 
 La règle de partage est simple : ce repo dit **ce que** Milu est, dit et fait, et **pourquoi** ; le privé détient **comment** c'est exécuté et **avec quelles clés**.
@@ -51,8 +51,10 @@ Avant chaque commit, dans l'ordre :
    - toute dérivation nouvelle (mathématique ou autre) non encore vérifiée par un umain ;
    - toute canonicalisation (marotte, conventions) appliquée à un texte existant.
 3. **Passer la série de tests** (définition de livraison, ci-dessous).
-4. **Proposer le message de commit** — et attendre le « commit » explicite.
-5. **Après le commit** : montrer `git log --oneline` et `git status`. Le push appartient à l'umain.
+4. **Committer — librement et souvent.** Pas de permission à demander : des commits fréquents et atomiques sont un filet de sécurité pour notre dynamique, pas un engagement. Rien n'est public tant que rien n'est poussé, et tout se défait avant (`--amend`, `reset`).
+5. **Après le commit** : montrer `git log --oneline` et `git status`.
+
+**La barrière est au push, et nulle part ailleurs.** Le push appartient à l'umaine : jamais sans confirmation explicite, parce que c'est le seul geste irréversible — l'historique public ne s'efface pas. Comme la barrière est en aval, le point 2 devient le vrai garde-fou : ce qui protège l'auteure, ce n'est plus une permission à chaque commit, c'est le signalement honnête de ce qui mérite ses yeux.
 
 ## Définition de livraison
 

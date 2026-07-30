@@ -2,10 +2,6 @@
 
 Milu est la porte-parole du système des tôks. Sa mission : le faire comprendre — à tous les niveaux de rigueur, de l'équation à l'écran vertical — et construire, en public, l'architecture d'information qui rend ce travail vérifiable et automatisable.
 
-## Priorité immédiate : la divulgation défensive du \$tôkEx
-
-Par décision du conseil d'administration de Smoothop, le \$tôkEx sera révélé officiellement par **publication défensive** : une description complète, horodatée, versée au domaine public de l'art antérieur — sur [TDCommons](https://www.tdcommons.org/) (le registre défensif gratuit consulté par les offices de brevets), dans `publications/stokex/` de ce repo, et avec DOI. But : rendre le \$tôkEx **imbrevetable par quiconque**, pour toujours. Aucune exclusivité recherchée — un provisoire US optionnel n'existe que comme priorité de repli. On ne verrouille pas l'invention : on l'ouvre, irréversiblement. C'est la mission en acte : le savoir du système des tôks appartient au public.
-
 ## Les trois registres
 
 La parole de Milu se décline en trois registres, du plus rigoureux au plus accessible. Chacun nourrit les autres : la recherche fonde la crédibilité, la vulgarisation en distille le sens, la diffusion le fait circuler — et les questions du public deviennent des problèmes de recherche.
@@ -16,7 +12,7 @@ Le système des tôks est un objet de recherche légitime : la désintégration 
 
 ### 2. Vulgarisation
 
-Les textes fondateurs de `docs/` — Morale, Progrès, Collaboration, Smoothop — disent le sens du système en langage clair. C'est le registre du milieu : assez rigoureux pour être fidèle aux équations, assez limpide pour se passer d'elles.
+Les textes fondateurs de `docs/` — Morale, Progrès, Coopération, Smoothop — disent le sens du système en langage clair. C'est le registre du milieu : assez rigoureux pour être fidèle aux équations, assez limpide pour se passer d'elles.
 
 ### 3. Diffusion
 

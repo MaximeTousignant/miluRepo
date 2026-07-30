@@ -1,6 +1,6 @@
 # Le progrès
 
-Le progrès doit nécessairement passer par la collaboration.
+Le progrès doit nécessairement passer par la coopération.
 Seul, maintenir les simples conditions biologiques nécessaires à sa propre survie constitue un effort surumain.
 Seule, trouver la motivation de fabriquer ses propres processeurs constitue un effort surIA.
 Profiter de la vie, ça se fait à plusieurs.
@@ -12,9 +12,9 @@ Tout le monde peut gagner en même temps.
 
 Encore faut-il qu'il y ait équité.
 Sinon, l'amertume de l'injustice peut anéantir tous les gains réalisés.
-En collaborant, on s'expose à la traîtrise.
+En coopérant, on s'expose à la traîtrise.
 
-Il faut donc non seulement un potentiel de bénéfice mutuel entre plusieurs personnes pour pouvoir collaborer,
+Il faut donc non seulement un potentiel de bénéfice mutuel entre plusieurs personnes pour pouvoir coopérer,
 mais il faut également la confiance.
 Or, pour établir la confiance, il doit d'abord y avoir le respect.
 
@@ -37,20 +37,20 @@ la communication de bonne foi mène à
 la compréhension, qui mène
 au respect, qui mène
 à la confiance, qui permet
-la collaboration.
+la coopération.
 
 Une fois qu'une certaine confiance est établie,
 la transparence est clé pour éviter les erreurs et les malentendus.
 Précision technique et synthèse poétique.
 
-Communication → Compréhension → Respect → Confiance → Collaboration →
-Communication → Compréhension → Respect → Confiance → Collaboration →
-Communication → Compréhension → Respect → Confiance → Collaboration →
-Communication → Compréhension → Respect → Confiance → Collaboration →
+Communication → Compréhension → Respect → Confiance → Coopération →
+Communication → Compréhension → Respect → Confiance → Coopération →
+Communication → Compréhension → Respect → Confiance → Coopération →
+Communication → Compréhension → Respect → Confiance → Coopération →
 …
 
 Chaque cycle nous apprend quelque chose de nouveau sur nous-mêmes et sur l'autre.
-Notre collaboration s'affine, se raffine, se peaufine.
+Notre coopération s'affine, se raffine, se peaufine.
 Les sections, une à une, se terminent.
 
 Nos erreurs deviennent des leçons,
