@@ -29,7 +29,7 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 
 ### Fondations du repo
 
-- [x] 2026-07-30 — Zone signée `publications/` créée (`git mv docs/stokex publications/stokex`) ; URL figée des preuves mise à jour dans le `.tex`. **Le PDF commité est périmé jusqu'à la recompilation prévue au go-live.**
+- [x] 2026-07-30 — Zone signée `publications/` créée (`git mv docs/stokex publications/stokex`) ; URL figée des preuves mise à jour dans le `.tex`. PDF recompilé sur le nouveau chemin (32 pages, 0 avertissement LaTeX). Reste au go-live : créer le tag, retirer le `\placeholder` jaune, recompiler une dernière fois.
 - [x] 2026-07-30 — LICENSE : CC0 pour le dépôt, exception CC BY 4.0 pour `publications/` (publication signée). Forme courte, renvoi au texte canonique ; coller les `legalcode` intégraux si on veut la détection automatique de GitHub.
 - [ ] Section pigeons.
 
