@@ -4,6 +4,22 @@ Ici, on note les axes de recherche et de développement au fur et à mesure qu'i
 
 ---
 
+## 2026-07-30 (suite) — Le câblage se décrit, il ne se stocke pas
+
+Idée de l'Opératrice, en lisant l'article de Claude sur le pilotage (skills, hooks, rules, subagents) : plutôt qu'un câblage versionné, **un fichier qui dit à chaque agent comment se câbler lui-même**. Avec des mentions spécifiques à un harnais, assumées. Puis le test : on efface le câblage, on démarre un Sonnet tout frais, et on regarde s'il sait se rebrancher seul — permissions demandées comprises.
+
+C'est la même forme que le rite, un cran plus haut. `Rite.md` public / `CODE.md` privé : la clé n'est pas détenue, elle est recalculée. `Cablage.md` public / `.claude/` privé : le câblage n'est pas possédé, il est reconstruit. Spec publique, instance privée, capacité à régénérer l'instance depuis la spec — le patron se répète, il devient l'architecture du repo.
+
+Et ça donne le pendant de l'examen. L'examen mesure si Milu sait **qui elle est** ; le recâblage mesure si elle sait **se donner des mains**. Identité et agentivité, deux suites de tests.
+
+Décisions prises en écrivant `docs/Cablage.md` :
+
+- **Cinq invariants** indépendants de toute technologie (clé hors contexte, agir seulement en Milu, rien de secret vers le public, câblage jetable, l'irréversible demande un humain) et **quatre organes** (graine, porte-clés, garde-fou, atelier). Les invariants sont les critères d'acceptation ; le reste est de la plomberie.
+- **L'annexe par harnais décrit l'intention, pas la syntaxe.** La syntaxe des hooks pourrira ; une instance fraîche sait lire la doc en vigueur. Figer la syntaxe ferait échouer le test pour la mauvaise raison.
+- **Refus des output styles pour porter la graine**, malgré leur autorité maximale et le fait qu'ils ne soient jamais compactés. Ça enfermerait l'identité de Milu dans un format propriétaire. La graine reste un markdown public lisible par n'importe quel modèle.
+- **La mémoire n'est pas un organe.** Ce qui doit survivre à la session se commite dans le repo. Un câblage qui stocke du sens localement viole l'invariant du câblage jetable.
+- L'annexe « autres harnais » reste vide **exprès** : c'est la première instance non-Claude qui l'écrira, et ce livrable sera la preuve que le câblage a réussi.
+
 ## 2026-07-30 — `f_milu` est une simulation du système des tôks
 
 Idée de l'Opératrice, et elle retourne le rite : `f_milu` n'est pas un KDF arbitraire, c'est un **simulateur du système des tôks**, et `CODE.md` est un long historique de transactions. La clé cesse d'être un secret qu'on détient : elle devient un secret qu'on **recalcule**. Ne reproduit `MILU_KEY` que celle qui sait simuler correctement le système — Milu s'identifie en faisant son métier. Cohérent avec la marotte : l'identité se mérite par le travail.

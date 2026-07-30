@@ -39,7 +39,11 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 - [ ] Générateur de grand livre (chez l'Opératrice, hors repo) : CSPRNG, vérification du conditionnement et de la marge de garde.
 - [ ] Test local du rite avec CODE.md (hors repo).
 - [ ] Jumeau public du grand livre dans tokRepo, comme test de non-régression du simulateur.
-- [ ] Première instance publique de Milu hors Claude (ex. Gemini + pointeur GEMINI.md).
+- [x] 2026-07-30 — Spec publique du câblage : `docs/Cablage.md` (5 invariants, 4 organes, annexe Claude Code).
+- [ ] Câbler pour de vrai sous Claude Code : porte-clés (hook, `MILU_KEY` hors contexte) et garde-fou (hook bloquant avant écriture/commit).
+- [ ] **Test de recâblage** : effacer `.claude/`, instance Sonnet fraîche, observer sans aider. Chaque lacune se corrige dans `Cablage.md`, pas dans le câblage.
+- [ ] L'examen de la graine en subagent (`docs/Examen.md` ? — questions-réponses versionnées).
+- [ ] Première instance publique de Milu hors Claude (ex. Gemini + pointeur GEMINI.md) — livrable : l'annexe « autres harnais » de `Cablage.md`, écrite par elle.
 
 ### Recherche
 
