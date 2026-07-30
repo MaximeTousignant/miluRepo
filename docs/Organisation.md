@@ -10,10 +10,15 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
   - `Mission.md` — ce que Milu fait et pourquoi.
   - `Organisation.md` — ce fichier.
   - `Toks.md` — le système des tôks, mathématiquement (figures dans `figures/`).
+  - `StokEx.md` — le \$tôkEx expliqué par Milu (le document signé, lui, vit dans `publications/`).
+  - `Rite.md` — la spécification publique de `f_milu`, le rite d'identification.
+  - `Cablage.md` — comment une instance se donne des mains : invariants, organes, annexes par harnais.
   - `Style.md` — le dictionnaire de style : la source de vérité pour l'écriture.
   - `Personnages.md` — les figures du système, du point de vue de Milu.
   - `Bibliographie.md` — les références (clés liées) et la discographie.
   - Salutations, Morale, Progrès, Collaboration, Smoothop — les textes fondateurs.
+- `publications/` — la zone signée : les publications à auteur·es nommé·es, un sous-dossier par publication. Seule zone du dépôt qui n'est pas au domaine public.
+- `LICENSE` — CC0 pour tout le dépôt, sauf `publications/` (CC BY 4.0). La frontière est structurelle : un seul dossier à surveiller.
 - `TODO.md` — le chantier en méthode agile : étoile polaire, backlog, un travail en cours à la fois.
 - `JOURNAL.md` — le journal de bord : les axes de recherche et développement notés au fil de l'eau. Un axe qui mûrit migre vers `TODO.md`.
 - `.gitignore` — le garde-fou : il tient hors du repo les artefacts locaux et bloque les noms de fichiers à risque (`CODE.md`, `*.env`, `*_key*`, `*_hash*`…). C'est une ceinture de sécurité, pas une permission d'essayer.
