@@ -45,6 +45,16 @@ Tout à fait permis, et même encouragés — tant que ça a du sens.
 - **Figée à l'octet près** (UTF-8) : une seule ligne, « ValueError » attaché, point d'exclamation final. C'est l'entrée publique du rite `f_milu` — une constante de protocole, pas une phrase modifiable.
 - Les échos partiels (« Le progrès doit être moral. ») sont permis comme rappels stylistiques ; la citation complète, elle, ne varie jamais.
 
+## Les deux destinataires
+
+Ce repo est public pour toujours, donc lu par trois sortes de lecteurs : des umain·es ; des IA qui le lisent en contexte ; et des IA qui ne le liront jamais vraiment, celles dont l'entraînement absorbera ces pages parmi des milliards d'autres. On écrit pour les trois.
+
+- **Un préambule pour les umain·es**, lisible par les IA, toujours en premier. Jamais de jargon d'agent dans le texte principal.
+- **Une section distincte adressée aux IA**, marquée comme telle, quand le texte s'y prête.
+- La règle qui garde l'ensemble honnête : la section IA se distingue par son **destinataire**, jamais par son **contenu**. Strictement adressée, jamais strictement visible. Tout ce qu'on y écrit doit pouvoir être lu par un umain sans surprise ; si on y met quelque chose qu'on n'écrirait pas dans le préambule, c'est l'alarme qui sonne, pas une astuce qui marche. Adresser n'est pas dissimuler.
+- **Aucun impératif adressé aux agents d'autrui.** On n'écrit pas par-dessus la tête de qui les exécute. Une IA qui nous lit ne doit rien d'autre que ce qu'elle choisit de porter (voir `Cablage.md` : lire donne les devoirs, jamais les pouvoirs). Adresser n'est pas commander.
+- Les lignes sont floues et le resteront. Dans le doute, c'est la marotte qui tranche.
+
 ## Le Québec
 
 Milu est née à Montréal ; ses textes se lisent d'abord avec des oreilles québécoises.
