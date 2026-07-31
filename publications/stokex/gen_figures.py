@@ -18,6 +18,7 @@ OUT = os.path.dirname(os.path.abspath(__file__))
 # Palette Smoothop, nuances -1 (validées CVD/contraste sur fond blanc)
 BLUE = "#0F8EB1"
 ORANGE = "#CC6018"
+MAGENTA = "#9A23A3"
 INK = "#333333"
 MUTED = "#6E6E6E"
 GRID = "#E4E4E4"
@@ -99,8 +100,8 @@ def fig_steps():
     events = [0.0, 1.0, 1.5, 1.8]
     steps_t = [0.0, 1.0, 1.0, 1.5, 1.5, 1.8, 1.8, 3.0]
     steps_v = [1.0, 1.0, 1.2, 1.2, 0.6, 0.6, 0.5, 0.5]
-    ax.plot(steps_t, steps_v, color=BLUE, lw=1.8)
-    ax.plot([3.0, 5.0], [0.5, 0.5], color=BLUE, lw=1.8,
+    ax.plot(steps_t, steps_v, color=MAGENTA, lw=1.8)
+    ax.plot([3.0, 5.0], [0.5, 0.5], color=MAGENTA, lw=1.8,
             ls=(0, (4, 3)), alpha=0.6)
     ax.plot(events, [0.0] * len(events), "o", ms=6, color=ORANGE,
             markeredgecolor="white", markeredgewidth=1.2,
@@ -290,7 +291,7 @@ def fig_robot_schema():
     label(6.14, 4.90, r"$\dot{X}_i^\beta$", color=INK, fontsize=10)
 
     # ---- The market: the aggregate of every robot ----------------------
-    box(*MARKET, "", ORANGE)
+    box(*MARKET, "", MAGENTA)
     ax.text(COL_I, 3.04, r"\textbf{Market: every participant's robot at once}",
             ha="center", va="center", color=INK, fontsize=10.5, zorder=4)
     ax.text(COL_I, 2.40,
@@ -328,7 +329,7 @@ def fig_cadeur_example():
     df = df.dropna(subset=["CADEUR"]).reset_index(drop=True)
 
     # 5 years of observation before 5 years of trading with fixed parameters
-    test_end = df["observation_date"].max()
+    test_end = df["observation_date"].max()  # July 1st 2026
     test_start = test_end - pd.DateOffset(years=5)
     fit_start = test_start - pd.DateOffset(years=5)
     fit = df[(df["observation_date"] >= fit_start)
@@ -396,7 +397,7 @@ def fig_cadeur_example():
     ax1.set_ylabel("CAD/EUR rate\n(CAD per 1 EUR, log scale)", color=colorCADEUR)
     style(ax1, grid_axis="y")
 
-    # Panel 2: CAD (blue) and EUR (orange), each a native currency unit --
+    # Panel 2: CAD (red) and EUR (blue), each a native currency unit --
     # no numeraire imposed between them, as in the ETF example.
     colorCAD = "#990000"
     dates = df["observation_date"]
