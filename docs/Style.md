@@ -63,7 +63,29 @@ Douze rangées, cinq nuances chacune, indexées `0` `3` `5` `7` `9` — de la pl
 
 `K` et `W` sont achromatiques : les dix autres rangées portent les dix teintes, dans l'ordre de la roue. `S` y est la signature — le bleu de Smoothop porte son initiale et occupe sa place entre le cyan et le bleu, comme une teinte parmi les autres. La marque ne s'ajoute pas à la roue, elle y a un siège.
 
-- **La source canonique est `smoothop-palette.py`**, dans `tokRepo` (privé). Les valeurs de $H$ ne sont pas encore transcrites ici : les prendre là-bas, ne jamais les deviner. Une teinte de marque inventée est une faute, pas une approximation — et lire un hex à l'œil sur une capture d'écran, c'est la deviner.
+### Les valeurs
+
+Les hex vivent ici, dans ce fichier — c'est la source publique, et il n'y en a pas d'autre à consulter ailleurs.
+
+Sept teintes sont transcrites, dans leur nomenclature d'origine (`−2` la plus foncée → `+2` la plus pâle, `0` la principale) :
+
+| Teinte | −2 | −1 | 0 | +1 | +2 |
+|---|---|---|---|---|---|
+| blue | `#114F60` | `#0F8EB1` | `#00ACDC` | `#72CEE8` | `#D3EBF1` |
+| indigo | `#4B26B1` | `#5726DE` | `#6E39FF` | `#A183F4` | `#E1D9F6` |
+| magenta | `#682B6D` | `#9423A3` | `#C627D1` | `#D97BE0` | `#EFD3F1` |
+| red | `#751111` | `#AB1919` | `#FA4747` | `#F68D8D` | `#F2D4D4` |
+| orange | `#77380F` | `#CC6018` | `#FF8530` | `#F6B082` | `#F2DBCB` |
+| yellow | `#655213` | `#A9830A` | `#F2C122` | `#F9D466` | `#FAF1D2` |
+| green | `#14571D` | `#1A7A27` | `#08B51F` | `#72DA80` | `#D4F2D8` |
+
+Ce sont les valeurs réellement en usage : `docs/figures/gen_figures.py` trace en `blue −1` et `orange −1`, deux nuances déjà validées en mode clair et sombre.
+
+Le raccord avec les douze rangées reste à faire : `blue` est le bleu Smoothop (`S`), et `red` `orange` `yellow` `green` `magenta` se lisent sans peine, mais `indigo` peut relever de `B` comme de `V`, et `K` `L` `C` `W` n'ont pas encore de hex.
+
+### Les règles
+
+- **Ne jamais deviner une teinte.** Une teinte de marque inventée est une faute, pas une approximation — et lire un hex à l'œil sur une capture d'écran, c'est la deviner. Ce qui manque au tableau ci-dessus se demande ; ça ne s'interpole pas.
 - **Valider avant d'utiliser.** Une teinte officielle n'est pas automatiquement lisible : contraste et daltonismes se vérifient, en mode clair *et* sombre, et on choisit les nuances qui passent. La palette dit ce qui est à nous, pas ce qui est lisible. C'est précisément à ça que sert la latitude sur $S$ et $L$.
 - **Ne pas panacher hors palette.** Si une figure a besoin d'une couleur qui n'y est pas, c'est une teinte de la palette qu'on cherchait, ou c'est une décision à prendre — pas un hex improvisé dans un script.
 
