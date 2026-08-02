@@ -84,29 +84,28 @@ Les constantes de la marque, en degrés :
 
 Ces dix nombres sont la marque. Avec eux, une figure se compose sans rien recopier : on choisit la teinte, puis on règle $S$ et $L$ jusqu'à ce que ce soit lisible. C'est là toute la latitude, et elle suffit.
 
-Mesurer les hex de la section suivante donne les mêmes teintes à un degré près pour six d'entre elles — `R` `O` `Y` `G` `S` `M`. Le $H$ y tient à ±1° sur les cinq nuances (±3° pour le magenta) pendant que $S$ balaie 43 → 100 % et $L$, 21 → 91 % : la teinte tient, le reste respire.
-
-Une septième teinte historique, l'`indigo`, mesure 256° — **ni `B` (240°) ni `V` (267°)**. Elle n'a pas de siège dans la roue actuelle : c'est une teinte retirée, pas une teinte à reclasser. Ne pas l'employer dans une figure neuve.
-
 ### Les valeurs
 
 Les hex vivent ici, dans ce fichier — c'est la source publique, et il n'y en a pas d'autre à consulter ailleurs.
 
-Sept teintes sont transcrites, dans leur nomenclature d'origine (`−2` la plus foncée → `+2` la plus pâle, `0` la principale) :
-
-| Teinte | −2 | −1 | 0 | +1 | +2 |
+| Rangée | `0` | `3` | `5` | `7` | `9` |
 |---|---|---|---|---|---|
-| blue | `#114F60` | `#0F8EB1` | `#00ACDC` | `#72CEE8` | `#D3EBF1` |
-| indigo | `#4B26B1` | `#5726DE` | `#6E39FF` | `#A183F4` | `#E1D9F6` |
-| magenta | `#682B6D` | `#9423A3` | `#C627D1` | `#D97BE0` | `#EFD3F1` |
-| red | `#751111` | `#AB1919` | `#FA4747` | `#F68D8D` | `#F2D4D4` |
-| orange | `#77380F` | `#CC6018` | `#FF8530` | `#F6B082` | `#F2DBCB` |
-| yellow | `#655213` | `#A9830A` | `#F2C122` | `#F9D466` | `#FAF1D2` |
-| green | `#14571D` | `#1A7A27` | `#08B51F` | `#72DA80` | `#D4F2D8` |
+| `K` | `#000000` | `#151515` | `#404040` | `#606060` | `#757575` |
+| `R` | `#751111` | `#AB1919` | `#FA4747` | `#F68D8D` | `#F2D4D4` |
+| `O` | `#773A0F` | `#CC6318` | `#FF8530` | `#F6B282` | `#FAE2D0` |
+| `Y` | `#655113` | `#A9810A` | `#E3AC05` | `#F9D466` | `#FEF1C9` |
+| `L` | `#445F0D` | `#68960B` | `#82C005` | `#B2DC5F` | `#E2F4BD` |
+| `G` | `#14571D` | `#1A7A27` | `#08B51F` | `#72DA80` | `#D0FCD6` |
+| `C` | `#0A5C51` | `#05927F` | `#06CAB0` | `#5CE1CF` | `#D2FDF7` |
+| `S` | `#114F60` | `#0B85A6` | `#00ACDC` | `#72CEE8` | `#D1F3FC` |
+| `B` | `#1B1B8C` | `#2020D1` | `#4A4AFF` | `#8282FE` | `#D1D1FF` |
+| `V` | `#491886` | `#681AC7` | `#8D2EFF` | `#AB6DF8` | `#E3CFFC` |
+| `M` | `#692B6D` | `#9A23A3` | `#C627D1` | `#D97BE0` | `#EFD3F1` |
+| `W` | `#888888` | `#A1A1A1` | `#CACACA` | `#E1E1E1` | `#FFFFFF` |
 
-Ce sont les valeurs réellement en usage : `docs/figures/gen_figures.py` trace en `blue −1` et `orange −1`, deux nuances déjà validées en mode clair et sombre.
+Chaque rangée chromatique tient sa teinte à moins d'un degré de la valeur déclarée plus haut, sur les cinq nuances — pendant que $S$ et $L$ balaient tout leur registre. La teinte tient, le reste respire.
 
-Le raccord avec les douze rangées se lit par $H$ : `blue` est `S`, et `red` `orange` `yellow` `green` `magenta` sont `R` `O` `Y` `G` `M`. Les rangées `K` `L` `C` `B` `V` `W` n'ont pas encore de hex — mais elles ont leur teinte, et c'est l'essentiel.
+**Une génération précédente circule encore**, à sept teintes nommées (`blue` `indigo` `magenta` `red` `orange` `yellow` `green`) et indexées `−2…+2`. Ses valeurs sont proches sans être identiques — `#0F8EB1` pour `S3`, `#CC6018` pour `O3`, `#F2C122` pour `Y5` — et son `indigo` (256°) ne correspond à aucune rangée d'aujourd'hui : ni `B` (240°) ni `V` (267°). C'est une teinte retirée, pas une teinte à reclasser. Devant un hex qui ne figure pas au tableau ci-dessus, chercher la rangée par sa teinte plutôt que de le reconduire.
 
 ### Les règles
 
