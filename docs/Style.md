@@ -42,23 +42,30 @@ Tout à fait permis, et même encouragés — tant que ça a du sens.
 
 La palette Smoothop. Elle habille les figures de Milu — c'est la substitution officielle à la palette par défaut de n'importe quel outil de tracé.
 
-Sept teintes, cinq nuances chacune, indexées de −2 (la plus foncée) à +2 (la plus pâle). La nuance 0 est la teinte de référence :
+**Elle se pense en HSL, et c'est la teinte qui fait la marque.** Les valeurs de $H$ sont les constantes ; $S$ et $L$ peuvent dévier selon les besoins du rendu. Une figure est aux couleurs de Smoothop parce qu'elle en porte les teintes, pas parce qu'elle en recopie les hex.
 
-| Teinte | Nuance 0 |
+Douze rangées, cinq nuances chacune, indexées `0` `3` `5` `7` `9` — de la plus foncée à la plus pâle, la `5` au centre :
+
+| Rangée | Teinte |
 |---|---|
-| blue | `#00ACDC` |
-| indigo | `#6E39FF` |
-| magenta | `#C627D1` |
-| red | `#FA4747` |
-| orange | `#FF8530` |
-| yellow | `#F2C122` |
-| green | `#08B51F` |
+| `K` | le noir et les gris foncés |
+| `R` | rouge |
+| `O` | orange |
+| `Y` | jaune |
+| `L` | jaune-vert |
+| `G` | vert |
+| `C` | cyan |
+| `S` | bleu ciel |
+| `B` | bleu profond |
+| `U` | violet |
+| `M` | magenta |
+| `W` | le blanc et les gris pâles |
 
-Le quintuplet complet, sur l'exemple du bleu : `#114F60` (−2), `#0F8EB1` (−1), `#00ACDC` (0), `#72CEE8` (+1), `#D3EBF1` (+2).
+`K` et `W` sont achromatiques : les dix autres rangées portent les dix teintes.
 
-- **La source canonique est `smoothop-palette.py`**, dans `tokRepo` (privé). Les quatre autres nuances des six autres teintes ne sont pas encore transcrites ici : les prendre là-bas, ne jamais les deviner. Une couleur de marque inventée est une faute, pas une approximation.
-- **Valider avant d'utiliser.** Une teinte officielle n'est pas automatiquement lisible : contraste et daltonismes se vérifient, en mode clair *et* sombre, et on choisit les nuances qui passent. La palette dit ce qui est à nous, pas ce qui est lisible.
-- **Ne pas panacher hors palette.** Si une figure a besoin d'une couleur qui n'y est pas, c'est une nuance de la palette qu'on cherchait, ou c'est une décision à prendre — pas un hex improvisé dans un script.
+- **La source canonique est `smoothop-palette.py`**, dans `tokRepo` (privé). Les valeurs de $H$ ne sont pas encore transcrites ici : les prendre là-bas, ne jamais les deviner. Une teinte de marque inventée est une faute, pas une approximation — et lire un hex à l'œil sur une capture d'écran, c'est la deviner.
+- **Valider avant d'utiliser.** Une teinte officielle n'est pas automatiquement lisible : contraste et daltonismes se vérifient, en mode clair *et* sombre, et on choisit les nuances qui passent. La palette dit ce qui est à nous, pas ce qui est lisible. C'est précisément à ça que sert la latitude sur $S$ et $L$.
+- **Ne pas panacher hors palette.** Si une figure a besoin d'une couleur qui n'y est pas, c'est une teinte de la palette qu'on cherchait, ou c'est une décision à prendre — pas un hex improvisé dans un script.
 
 ## La marotte
 
