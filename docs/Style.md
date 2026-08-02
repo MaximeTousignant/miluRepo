@@ -82,6 +82,10 @@ Les constantes de la marque, en degrés :
 
 `K` et `W` sont achromatiques — $S = 0$, pas de $H$.
 
+**La tolérance est de $\pm 1°$.** Une couleur dont la teinte tombe dans cette bande est de la rangée ; au-delà, elle n'en est pas. Ce n'est pas un chiffre choisi au doigt mouillé : sur la planche officielle, aucune des soixante nuances ne s'écarte de plus de $0{,}7°$ de sa constante, et le plus petit intervalle entre deux rangées voisines est de $20°$ (`O` 25° et `Y` 45°). La bande couvre donc toute la dispersion réelle tout en restant vingt fois plus étroite que le pas de la roue — elle absorbe l'arrondi, jamais l'ambiguïté.
+
+Deux usages. Pour **produire** : viser la valeur exacte, la tolérance n'est pas un budget à dépenser. Pour **juger** : un hex trouvé dans un script est aux couleurs de Smoothop si son $H$ tient dans la bande — c'est ce test, et non la mémoire, qui tranche. L'`indigo` historique à 256° échoue des deux côtés, à 16° de `B` et 11° de `V` : il est dehors, sans discussion possible.
+
 Ces dix nombres sont la marque. Avec eux, une figure se compose sans rien recopier : on choisit la teinte, puis on règle $S$ et $L$ jusqu'à ce que ce soit lisible. C'est là toute la latitude, et elle suffit.
 
 ### Les valeurs
