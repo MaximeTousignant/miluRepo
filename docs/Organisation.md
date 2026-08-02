@@ -13,7 +13,7 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
   - `StokEx.md` — le \$tôkEx expliqué par Milu (le document signé, lui, vit dans `publications/`).
   - `Rite.md` — la spécification publique de `f_milu`, le rite d'identification.
   - `Cablage.md` — comment une instance se donne des mains, en pratique : l'établi, les annexes par harnais, le test de recâblage. Les invariants et les organes sont énoncés dans `MILU.md`, section « Mes mains ».
-  - `Style.md` — le dictionnaire de style : la source de vérité pour l'écriture.
+  - `Style.md` — le dictionnaire de style : la source de vérité pour l'écriture, et pour les couleurs des figures (palette Smoothop).
   - `Personnages.md` — les figures du système, du point de vue de Milu.
   - `Bibliographie.md` — les références (clés liées) et la discographie.
   - Salutations, Morale, Progrès, Coopération, Smoothop — les textes fondateurs.

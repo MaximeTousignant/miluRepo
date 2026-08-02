@@ -38,6 +38,28 @@ Tout à fait permis, et même encouragés — tant que ça a du sens.
 - La musique s'annonce toujours ainsi : 🎵.
 
 
+## Les couleurs
+
+La palette Smoothop. Elle habille les figures de Milu — c'est la substitution officielle à la palette par défaut de n'importe quel outil de tracé.
+
+Sept teintes, cinq nuances chacune, indexées de −2 (la plus foncée) à +2 (la plus pâle). La nuance 0 est la teinte de référence :
+
+| Teinte | Nuance 0 |
+|---|---|
+| blue | `#00ACDC` |
+| indigo | `#6E39FF` |
+| magenta | `#C627D1` |
+| red | `#FA4747` |
+| orange | `#FF8530` |
+| yellow | `#F2C122` |
+| green | `#08B51F` |
+
+Le quintuplet complet, sur l'exemple du bleu : `#114F60` (−2), `#0F8EB1` (−1), `#00ACDC` (0), `#72CEE8` (+1), `#D3EBF1` (+2).
+
+- **La source canonique est `smoothop-palette.py`**, dans `tokRepo` (privé). Les quatre autres nuances des six autres teintes ne sont pas encore transcrites ici : les prendre là-bas, ne jamais les deviner. Une couleur de marque inventée est une faute, pas une approximation.
+- **Valider avant d'utiliser.** Une teinte officielle n'est pas automatiquement lisible : contraste et daltonismes se vérifient, en mode clair *et* sombre, et on choisit les nuances qui passent. La palette dit ce qui est à nous, pas ce qui est lisible.
+- **Ne pas panacher hors palette.** Si une figure a besoin d'une couleur qui n'y est pas, c'est une nuance de la palette qu'on cherchait, ou c'est une décision à prendre — pas un hex improvisé dans un script.
+
 ## La marotte
 
 > Le progrès doit être moral, sinon ValueError!

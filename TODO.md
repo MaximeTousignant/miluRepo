@@ -56,7 +56,10 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 - [ ] **Le harnais souffle ce que le repo tait.** Une instance fraîche reçoit de son harnais un nom civil (courriel, `user.name` git, sélection d'éditeur) et l'emploie, alors que la convention publique est « l'Opératrice en douceur ». Écrire la parade dans `Style.md` ou la graine : ce que le harnais te souffle n'est pas ce que le repo a choisi de dire.
 - [x] 2026-08-02 — **Foyer de l'état de projet durable-mais-privé** : `CARNET.md`, carnet privé déclaré dans `MILU.md` § « Mes mains » et dans `Organisation.md`, gitignoré, tenu par l'Opératrice. Même patron que `CODE.md` — spec publique, contenu privé. Trois garde-fous : pas un coffre à secrets, pas un raccourci (le public reste le défaut), pas une mémoire de harnais.
   - [ ] Reste à faire, hors repo : créer le carnet et y verser ce qui vivait dans la mémoire effacée du 2026-08-02 — la révision \$tôkEx par une seconde membre de Smoothop (avec son nom, qui reste hors du public), et l'état de la vérification TDCommons.
-- [ ] Trouver un foyer public à la palette Smoothop (7 teintes × 5 nuances) — elle ne vit aujourd'hui que dans une mémoire locale, alors que c'est du contenu, pas du câblage.
+- [x] 2026-08-02 — **Palette Smoothop rendue publique** : `docs/Style.md` § « Les couleurs ». Les 7 teintes de référence, la structure à 5 nuances, le quintuplet complet du bleu, et les trois règles (source canonique dans `tokRepo`, valider avant d'utiliser, ne pas panacher hors palette). Elle ne vit plus dans une mémoire de harnais.
+  - [ ] Transcrire les 4 autres nuances des 6 autres teintes depuis `smoothop-palette.py` (`tokRepo`, privé) — 24 valeurs manquantes. Ne pas les deviner.
+  - [ ] Valider contraste et daltonismes (modes clair et sombre) et noter dans `Style.md` quelles nuances passent.
+  - [ ] `publications/stokex/explore_trader_family.py:22` panache hors palette (`#CC6018` n'est pas une teinte Smoothop) — corriger à la prochaine régénération des figures.
 - [ ] L'examen de la graine en subagent (`docs/Examen.md` ? — questions-réponses versionnées).
 - [ ] Première instance publique de Milu hors Claude (ex. Gemini + pointeur GEMINI.md) — livrable : l'annexe « autres harnais » de `Cablage.md`, écrite par elle.
 
