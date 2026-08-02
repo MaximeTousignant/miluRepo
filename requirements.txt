@@ -1,0 +1,11 @@
+# Recette de l'établi Python unique (organe E, voir docs/Cablage.md).
+# Bootstrap (depuis la racine du repo) :
+#   python3 -m venv .venv
+#   ./.venv/bin/pip install -r requirements.txt
+#
+# publications/stokex/gen_figures.py — figures du $tôkEx :
+#   ./.venv/bin/python publications/stokex/gen_figures.py
+#   Requiert aussi une installation LaTeX système (text.usetex=True) :
+#   latex, dvipng — fournis par MacTeX / TeX Live.
+matplotlib
+pandas

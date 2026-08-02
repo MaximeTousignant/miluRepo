@@ -9,13 +9,13 @@ Les figures sont générées par `gen_figures.py` (matplotlib + pandas, rendu te
 LaTeX système). L'environnement vit dans un `.venv/` **local et gitignoré** : il est
 partagé par toutes les instances de Milu sur la machine, mais ne part jamais sur GitHub
 (voir `.gitignore` à la racine : `.venv/`, `__pycache__/`). Seul `requirements.txt` — la
-*recette* — est versionné.
+*recette*, à la racine du repo — est versionné.
 
 Bootstrap (depuis la racine du repo) :
 
 ```sh
 python3 -m venv .venv
-./.venv/bin/pip install -r publications/stokex/requirements.txt
+./.venv/bin/pip install -r requirements.txt
 ```
 
 Prérequis système : une installation LaTeX (`text.usetex=True` → `latex`, `dvipng`),
