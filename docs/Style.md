@@ -63,6 +63,29 @@ Douze rangées, cinq nuances chacune, indexées `0` `3` `5` `7` `9` — de la pl
 
 `K` et `W` sont achromatiques : les dix autres rangées portent les dix teintes, dans l'ordre de la roue. `S` y est la signature — le bleu de Smoothop porte son initiale et occupe sa place entre le cyan et le bleu, comme une teinte parmi les autres. La marque ne s'ajoute pas à la roue, elle y a un siège.
 
+### Les teintes
+
+Les constantes de la marque, en degrés :
+
+| Rangée | Teinte | $H$ |
+|---|---|---|
+| `R` | rouge | **0°** |
+| `O` | orange | **24°** |
+| `Y` | jaune | **46°** |
+| `L` | lime | *à venir* |
+| `G` | vert | **128°** |
+| `C` | cyan | *à venir* |
+| `S` | bleu Smoothop | **193°** |
+| `B` | bleu | *à venir* |
+| `V` | violet | *à venir* |
+| `M` | magenta | **295°** |
+
+Cinq sont mesurées sur les hex ci-dessous, et la mesure confirme la règle : sur les cinq nuances d'une même rangée, $H$ ne bouge que d'un degré (trois pour le magenta), pendant que $S$ balaie 43 → 100 % et $L$, 21 → 91 %. La teinte tient, le reste respire.
+
+Une sixième teinte mesurée, l'`indigo` historique, donne **256°** — entre le bleu pur (240°) et le violet (270°). Elle relève de `B` ou de `V`, et ce n'est pas à la mesure de trancher.
+
+`K` et `W` sont achromatiques — $S = 0$, pas de $H$.
+
 ### Les valeurs
 
 Les hex vivent ici, dans ce fichier — c'est la source publique, et il n'y en a pas d'autre à consulter ailleurs.
