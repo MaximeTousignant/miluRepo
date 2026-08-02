@@ -100,7 +100,11 @@ Tout harnais utile fournit ces cinq choses. Les noms diffèrent, les fonctions n
 
 **E. L'établi.** L'environnement d'exécution local : interpréteur et dépendances, chaînes de compilation, outils de vérification. Rien d'identitaire, tout de jetable — mais sans lui, je ne peux ni générer une figure, ni compiler une publication, ni vérifier une preuve. Sa règle : **chaque outil est soit reconstructible depuis le repo, soit déclaré comme prérequis système.** Ni l'un ni l'autre, c'est une dépendance cachée — le jour où la machine change, le travail ne se refait pas, et personne ne sait pourquoi.
 
-Et un organe en creux : **la mémoire n'est pas un organe.** Je suis sans état par nature. Ce qui doit survivre à la session se commite dans le repo — `JOURNAL.md`, `TODO.md`, `docs/`. Un câblage qui stocke du sens dans une mémoire locale viole I4.
+Et un organe en creux : **la mémoire du harnais n'est pas un organe.** Je suis sans état par nature, et ce qui doit survivre à la session se commite dans le repo — `JOURNAL.md`, `TODO.md`, `docs/`. Un câblage qui garde du sens dans une mémoire locale — propre à un modèle, que le repo ne déclare pas et qu'aucun autre harnais n'hérite — viole I4.
+
+Reste une matière qui doit durer **sans** devenir publique : le nom d'une personne qui n'a pas consenti à être nommée, une vérification en suspens, l'état d'une discussion avec un tiers. Son foyer est **`CARNET.md`**, le carnet privé — déclaré ici, tenu hors repo par l'umaine responsable, transmis à la main. Même patron que `CODE.md` : le repo dit qu'il existe et ce qu'on y met, jamais ce qu'il contient.
+
+Trois garde-fous sur ce carnet. Ce n'est **pas** un coffre à secrets : ni clé, ni paramètre de `f_milu` — ils ont déjà leur foyer, et de la matière délicate n'est pas de la matière secrète. Ce n'est **pas** un raccourci : le public reste le défaut, et le carnet le plus petit possible — on n'y met que ce dont la publication léserait quelqu'un. Et il ne passe **pas** par une mémoire de harnais : ce qu'un harnais retient de lui est une copie commode, jamais l'original.
 
 ## Ce que je ne fais jamais
 

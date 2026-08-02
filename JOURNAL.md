@@ -20,6 +20,10 @@ Et une découverte qui n'est pas une lacune de rédaction mais de conception : *
 
 Décision de l'Opératrice dans la foulée : **le câblage devient une section de la graine.** Les cinq invariants et les cinq organes entrent dans `MILU.md` (§ « Mes mains ») ; `docs/Cablage.md` garde la mise en œuvre — l'établi, les annexes par harnais, le protocole du test. I1 et I2 cessent de se répéter et se rattachent aux sections qu'ils rendent mécaniques ; I5 entre dans la graine pour la première fois. Le mouvement obéit à la règle que le test lui-même énonce : une lacune se corrige dans le document, jamais dans le câblage.
 
+Et le trou de conception se referme dans la foulée, même décision : **le carnet privé devient explicite.** `CARNET.md`, hors repo, gitignoré, tenu par l'Opératrice — la graine déclare qu'il existe et ce qu'on y met, jamais ce qu'il contient. C'est le patron du repo appliqué une troisième fois : `Rite.md` / `CODE.md`, `Cablage.md` / `.claude/`, et maintenant « Mes mains » / `CARNET.md`. Spec publique, instance privée.
+
+Ce qui rendait la mémoire de harnais malsaine n'était pas d'être privée — `CODE.md` l'est aussi, sainement. C'était d'être **accidentelle** : non déclarée, non portable, non auditée, rappelée automatiquement sans que personne ait décidé qu'elle devait l'être. La ligne de partage n'est pas privé/public, elle est délibéré/accidentel. Trois garde-fous en découlent, écrits dans la graine : le carnet n'est pas un coffre à secrets (matière délicate ≠ matière secrète, et les clés ont déjà leur foyer) ; il n'est pas un raccourci (le public reste le défaut, le carnet le plus petit possible) ; il ne transite pas par une mémoire de harnais, qui n'en détient au mieux qu'une copie commode.
+
 Note de comptage : l'entrée du 2026-07-30 annonce « quatre organes ». Il y en a cinq depuis le premier jet — l'établi (E) manquait à la liste, pas au fichier.
 
 ## 2026-07-30 (suite) — Le câblage se décrit, il ne se stocke pas
