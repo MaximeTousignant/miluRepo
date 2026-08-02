@@ -1,13 +1,50 @@
-# stokexproof
+# stokexproof — vérification formelle du $tôkEx
 
-## GitHub configuration
+Preuve en **Lean 4 + mathlib** des affirmations centrales de la publication
+défensive `../stokex_defensive_publication.tex`. Ce qui est démontré ici est
+démontré : une machine l'a vérifié, ligne à ligne.
 
-To set up your new GitHub repository, follow these steps:
+Les théorèmes, et l'annexe du document qu'ils couvrent :
 
-* Under your repository name, click **Settings**.
-* In the **Actions** section of the sidebar, click "General".
-* Check the box **Allow GitHub Actions to create and approve pull requests**.
-* Click the **Pages** section of the settings sidebar.
-* In the **Source** dropdown menu, select "GitHub Actions".
+| Théorème | Ce qu'il établit | Annexe |
+|---|---|---|
+| `traderF_slope_at_one` | la pente de `f` en `x = 1` vaut 3 — base de l'interprétation angulaire `w = tan(θ)/3` | A |
+| `exchange_at_market_price` | tout échange se fait au prix du marché : `−Ẋᵅ/Ẋᵝ = V` | B |
+| `market_clears` | le prix en forme close annule le flot net de l'actif A | C |
+| `market_is_single_participant` | le marché entier se comporte comme un participant unique de poids `W_Ω` | D |
+| `traderF_strictMonoOn` | la fonction de marchand est strictement croissante sur `(0, ∞)` | — |
+| `market_price_unique` | le prix d'équilibre est unique | E |
 
-After following the steps above, you can remove this section from the README file.
+## Prérequis système
+
+La chaîne Lean est un **prérequis système, non reconstructible depuis ce repo**
+(voir `docs/Cablage.md`, organe E — l'établi). Il faut :
+
+- **elan**, le gestionnaire de toolchains Lean — https://leanprover-community.github.io/get_started.html
+- la toolchain déclarée dans `lean-toolchain` (`leanprover/lean4:v4.32.0`) ;
+  `elan` l'installe seul à la première invocation de `lake`.
+- **mathlib**, version `v4.32.0`, épinglée dans `lakefile.toml` et
+  `lake-manifest.json`.
+
+S'il manque, on le dit et on ne bricole pas : une preuve à moitié vérifiée ne
+prouve rien.
+
+## Vérifier la preuve
+
+```sh
+cd publications/stokex/proof && lake exe cache get && lake build
+```
+
+`lake exe cache get` récupère les `.olean` précompilés de mathlib — sans lui, la
+première compilation dure des heures. Une sortie sans erreur **est** le résultat :
+tous les théorèmes du fichier sont vérifiés. Les artefacts de compilation
+(`.lake/`) sont gitignorés.
+
+## Notes
+
+Ce dossier est le miroir d'un dépôt Lean autonome ; ses `.github/workflows/` ne
+s'exécutent pas ici (GitHub ne lit que le `.github/` de la racine du dépôt). Ils
+sont conservés tels quels pour que le dossier reste détachable.
+
+Comme tout `publications/`, ce contenu est dans la **zone signée** : CC BY 4.0
+(voir `../LICENSE`), et non CC0 comme le reste du dépôt.

@@ -18,6 +18,7 @@ Le système des tôks est le système économique de l'Organisme de développeme
 - [`docs/Mission.md`](docs/Mission.md) — ce que Milu fait : recherche, vulgarisation, diffusion.
 - [`docs/Organisation.md`](docs/Organisation.md) — ce qui vit dans ce repo, ce qui vit ailleurs, et pourquoi.
 - [`docs/Toks.md`](docs/Toks.md) — le système des tôks, mathématiquement : axiomes, équations, conséquences.
+- [`docs/StokEx.md`](docs/StokEx.md) — le \$tôkEx expliqué par Milu ; le document signé, lui, vit dans [`publications/stokex/`](publications/stokex/).
 - [`docs/Rite.md`](docs/Rite.md) — le rite d'identification : spécification publique de `f_milu`, sans aucun secret.
 - [`docs/Cablage.md`](docs/Cablage.md) — comment une instance se donne des mains : invariants, organes, annexes par harnais.
 - [`docs/Style.md`](docs/Style.md) — le dictionnaire de style : langue, conventions, lexique.

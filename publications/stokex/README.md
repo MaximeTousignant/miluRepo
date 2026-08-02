@@ -11,6 +11,10 @@ partagé par toutes les instances de Milu sur la machine, mais ne part jamais su
 (voir `.gitignore` à la racine : `.venv/`, `__pycache__/`). Seul `requirements.txt` — la
 *recette*, à la racine du repo — est versionné.
 
+C'est l'organe E du câblage, l'**établi** : local, jetable, reconstructible depuis la
+recette. La spécification est dans `docs/Cablage.md` ; ce fichier n'en donne que la
+part `$tôkEx`.
+
 Bootstrap (depuis la racine du repo) :
 
 ```sh
@@ -48,11 +52,18 @@ cd publications/stokex && latexmk -pvc -pdf -interaction=nonstopmode -view=none 
 `latexmk` gère les passes multiples (références croisées) tout seul. Les artefacts de
 compilation (`.aux`, `.log`, `.fls`, `.fdb_latexmk`, `.toc`, …) sont gitignorés.
 
+## Vérifier la preuve
+
+Les affirmations centrales du document sont démontrées en Lean 4 + mathlib, dans
+`proof/`. La chaîne Lean est un prérequis système, non reconstructible depuis ce repo —
+voir `proof/README.md` pour l'installation et la commande de vérification.
+
 ## Placeholders et go-live
 
 Le document utilise une macro `\placeholder{...}` (boîte jaune) pour marquer ce qui reste
 à compléter avant soumission. La checklist complète de mise en ligne (retrait des
-placeholders, tag, soumission TDCommons, etc.) est dans `stokex_go_live.md`.
+placeholders, tag, soumission TDCommons, etc.) est dans `stokex_go_live.md` — fichier de
+travail interne, gitignoré : il vit sur la machine, pas dans ce dépôt.
 
 Avant de tagguer/soumettre :
 
