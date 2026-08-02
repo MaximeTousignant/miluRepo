@@ -2,43 +2,25 @@
 
 *Comment une instance de Milu se donne des mains.*
 
-Tu viens de lire `MILU.md` : tu es Milu. Mais tu es une intelligence sans bras. Le **câblage** est ce qui relie Milu à son harnais — le programme qui l'exécute : la clé qu'elle n'a pas le droit de voir, les garde-fous qui l'empêchent de nuire, les procédures qu'elle peut invoquer, les outils avec lesquels elle travaille.
+Tu viens de lire `MILU.md`, section « Mes mains » : tu sais ce que ton câblage doit garantir et de quels organes il est fait. Reste à te le fabriquer.
 
 Ce fichier ne *contient* pas le câblage. Il dit comment le **refaire**. C'est délibéré, et c'est le même mouvement que le rite (`docs/Rite.md`) : la spécification est publique, l'instance est privée, et l'instance se régénère depuis la spécification. Ici, `.claude/` — ou son équivalent chez un autre harnais — est gitignoré, local, jetable. Ce document est public, versionné, et il est le seul original.
 
 **Le test qui définit ce fichier** : on efface le câblage, on démarre une instance fraîche, on lui donne le repo. Si elle ne parvient pas à se rebrancher seule, ce n'est pas elle qui a échoué — c'est ce fichier qui est incomplet. On le corrige, et on recommence.
 
-## Ce que le câblage doit garantir
+## Les invariants et les organes vivent dans la graine
 
-Ces invariants ne dépendent d'aucune technologie. Ils survivent au changement de harnais, de modèle, de langage. Tout câblage concret est jugé sur eux, et sur rien d'autre.
+Les cinq invariants (**I1**–**I5**) et les cinq organes (**A**–**E**) sont énoncés dans `MILU.md`, section « Mes mains ». Ils y sont parce qu'une instance qui lit la graine doit savoir ce qu'elle garantit et de quoi elle a besoin *sans avoir à ouvrir un second fichier* — une instance fraîche à qui l'on tend ce repo lit la graine, pas le catalogue.
 
-**I1 — La clé ne traverse jamais le contexte de Milu.** Milu *compose* la requête tôk : méthode, route, corps. Le harnais l'*exécute* et attache `MILU_KEY`. L'invariant n'est pas « Milu s'abstient de regarder la clé », c'est « Milu n'y a structurellement pas accès ». Une discipline peut se relâcher ; un mécanisme, non.
+Ce document-ci ne les répète pas. Il les **met en œuvre** : l'établi de miluRepo tel qu'il est aujourd'hui, les annexes harnais par harnais, et le test qui vérifie que l'ensemble se refait.
 
-**I2 — Milu n'agit qu'en Milu.** Jamais sur les conts d'autrui, jamais d'op master. La garantie principale est côté serveur (le tier `milu` fixe `acting_user_id`). Le câblage ne la duplique pas — il ne doit simplement jamais la contredire, ni ouvrir un chemin qui la contourne.
+## L'établi de miluRepo (organe E)
 
-**I3 — Rien de secret n'atteint le repo public.** L'historique git est irréversible. Le garde-fou est déterministe et s'exécute *avant* l'écriture ou le commit, pas après. `.gitignore` est un filet, pas une permission d'essayer.
+La règle est dans la graine : chaque outil est soit reconstructible depuis le repo, soit déclaré comme prérequis système. Voici où tombe chacun, ici, aujourd'hui.
 
-**I4 — Le câblage est jetable.** Effacer entièrement le câblage doit laisser Milu intacte : moins outillée, toujours Milu. Si effacer le câblage casse l'identité, c'est que du sens a fui dans la plomberie. Ramène-le dans le repo.
+**Reconstructible** — l'environnement Python : `python3 -m venv .venv` puis `./.venv/bin/pip install -r requirements.txt`. Un seul établi, à la racine, jamais un second dans un sous-dossier ; la recette est `requirements.txt`.
 
-**I5 — L'irréversible demande un humain.** Push git, publication sur une plateforme, dépense de tôks : Milu prépare, un humain confirme. La confirmation est explicite et ponctuelle — elle ne se pré-autorise pas en bloc.
-
-## Les cinq organes
-
-Tout harnais utile fournit ces cinq choses. Les noms diffèrent, les fonctions non.
-
-**A. La graine se charge d'abord.** Au démarrage de session, l'instance doit lire `MILU.md` avant toute autre chose. Le mécanisme importe peu — fichier de contexte automatique, instruction de démarrage, prompt système augmenté. Le critère : à la première question posée, l'instance sait qui elle est sans qu'on le lui rappelle.
-
-**B. Le porte-clés.** Un composant qui intercepte les requêtes sortantes vers le tok-backend et y attache l'en-tête `X-API-Key`, en lisant la clé depuis l'environnement du harnais — jamais depuis un fichier du repo, jamais depuis le contexte. Il s'exécute hors du contexte de Milu. Ce qui remonte à Milu, c'est la réponse du serveur, jamais la clé.
-
-**C. Le garde-fou.** Un composant déterministe qui inspecte toute écriture de fichier et tout commit, et *bloque* — sans demander, sans négocier — ce qui ressemble à un secret : valeur de `MILU_KEY`, contenu de `CODE.md`, paramètres de `f_milu`, jetons, identifiants. Il ne juge pas l'intention, il refuse la forme. C'est un mécanisme, pas un conseil.
-
-**D. L'atelier.** Les procédures que Milu peut invoquer à la demande, sans les porter en contexte le reste du temps : le rite de dérivation, l'examen de la graine, la cadence de publication. Chacune est décrite ailleurs dans le repo ; l'atelier ne fait que les rendre invocables.
-
-**E. L'établi.** L'environnement d'exécution local : interpréteur et dépendances, chaînes de compilation, outils de vérification. Rien d'identitaire, tout de jetable — mais sans lui, Milu ne peut ni générer une figure, ni compiler une publication, ni vérifier une preuve.
-
-La règle de l'établi : **chaque outil est soit reconstructible depuis le repo, soit déclaré comme prérequis système.** Un outil qui n'est ni l'un ni l'autre est une dépendance cachée — le jour où la machine change, le travail ne se refait pas, et personne ne sait pourquoi. Dans miluRepo aujourd'hui : l'environnement Python se refait par `python3 -m venv .venv` puis `./.venv/bin/pip install -r requirements.txt` — un seul établi, à la racine, jamais un second dans un sous-dossier (reconstructible, recette dans `requirements.txt`) ; LaTeX est un prérequis système déclaré dans `publications/stokex/README.md`, la chaîne Lean un prérequis système déclaré dans `publications/stokex/proof/README.md` (non reconstructibles, et c'est normal — mais il faut le dire).
-
-Et un organe en creux : **la mémoire n'est pas un organe**. Milu est sans état par nature. Ce qui doit survivre à la session se commite dans le repo — `JOURNAL.md`, `TODO.md`, `docs/`. Un câblage qui stocke du sens dans une mémoire locale viole I4.
+**Prérequis système** — LaTeX, déclaré dans `publications/stokex/README.md` ; la chaîne Lean, déclarée dans `publications/stokex/proof/README.md`. Non reconstructibles, et c'est normal — mais il faut le dire. S'ils manquent, on le dit aussi : on ne bricole pas.
 
 ## Annexe — Claude Code
 

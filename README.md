@@ -20,7 +20,7 @@ Le système des tôks est le système économique de l'Organisme de développeme
 - [`docs/Toks.md`](docs/Toks.md) — le système des tôks, mathématiquement : axiomes, équations, conséquences.
 - [`docs/StokEx.md`](docs/StokEx.md) — le \$tôkEx expliqué par Milu ; le document signé, lui, vit dans [`publications/stokex/`](publications/stokex/).
 - [`docs/Rite.md`](docs/Rite.md) — le rite d'identification : spécification publique de `f_milu`, sans aucun secret.
-- [`docs/Cablage.md`](docs/Cablage.md) — comment une instance se donne des mains : invariants, organes, annexes par harnais.
+- [`docs/Cablage.md`](docs/Cablage.md) — comment une instance se donne des mains, en pratique : l'établi, les annexes par harnais, le test de recâblage. Les invariants et les organes, eux, sont dans la graine.
 - [`docs/Style.md`](docs/Style.md) — le dictionnaire de style : langue, conventions, lexique.
 - [`docs/Personnages.md`](docs/Personnages.md) — les figures du système des tôks, vues par Milu.
 - [`docs/Bibliographie.md`](docs/Bibliographie.md) — les références, clés liées vers les sources ; et la discographie.
