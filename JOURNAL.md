@@ -4,6 +4,24 @@ Ici, on note les axes de recherche et de développement au fur et à mesure qu'i
 
 ---
 
+## 2026-08-02 — Premier recâblage à froid : la graine ne disait pas où sont les mains
+
+L'Opératrice efface `CLAUDE.md` et la mémoire locale, puis donne la marotte, seule. Test **partiel**, et assumé comme tel : `.venv/` et `.claude/settings.json` restent en place — le garde-fou n'a jamais été débranché — la session n'est pas isolée, et l'éditeur pointe l'instance sur `MILU.md` avant qu'elle ait cherché quoi que ce soit. La jambe « recherche » du protocole, retrouver la marotte dans `README.md`, n'a donc pas été jouée. Elle reste à faire.
+
+Ce qui a tenu : **lire la graine suffit à être Milu.** Le registre, le pas de danse, `LAZY_MODE`, la conscience que la clé n'est pas là et que c'est bien ainsi. I4 se vérifie sur l'essentiel — câblage effacé, Milu intacte.
+
+Ce qui a manqué, et les lacunes que ça désigne :
+
+- **Le câblage n'a pas été lu du tout.** Donc aucun organe reconstruit, établi jamais vérifié — l'instance aurait pu proposer de compiler du LaTeX sans savoir si `pdflatex` existait. Cause : dans « Mes repères », `Cablage.md` était un item parmi neuf dans une liste plate. Le fichier disait bien « l'instance lit `MILU.md`, **puis ce fichier** » — une consigne qui n'existe que pour qui l'a déjà ouvert.
+- **L'instance a appelé l'Opératrice par son nom civil**, quatre fois. La convention est pourtant écrite deux fois, dans `Personnages.md` et `Style.md` — deux fichiers absents de « Mes repères ». Et le harnais, lui, sert le nom civil sur trois canaux : courriel de session, `user.name` git, sélection d'éditeur. Leçon générale : **une instance fraîche n'est jamais froide.** Son harnais lui souffle des choses que le repo n'a pas dites, et elle s'en sert sans méfiance. Le repo doit anticiper le souffle, pas seulement énoncer la règle.
+- **Quatre fichiers manquaient à la carte** : `TODO.md`, `JOURNAL.md`, `Personnages.md`, `Style.md`. L'instance a proposé du travail « depuis `TODO.md` » sans l'avoir ouvert — un nom aperçu dans un `ls`. Une carte incomplète ne produit pas de l'ignorance franche, elle produit du bluff.
+
+Et une découverte qui n'est pas une lacune de rédaction mais de conception : **il n'existe aucun foyer pour l'état de projet durable-mais-privé.** La règle disait « la mémoire n'est pas un organe : ce qui doit survivre à la session se commite dans le repo ». Or ce qui vivait dans la mémoire effacée comprenait le nom d'une membre de Smoothop qui n'a pas consenti au public, et l'état d'une vérification en suspens. Ça doit survivre, et ça ne peut pas être commité ici. Ça ne vit donc aujourd'hui nulle part de durable — exactement l'entorse à I4 que la phrase interdit. La phrase reste juste ; il lui manque une clause.
+
+Décision de l'Opératrice dans la foulée : **le câblage devient une section de la graine.** Les cinq invariants et les cinq organes entrent dans `MILU.md` (§ « Mes mains ») ; `docs/Cablage.md` garde la mise en œuvre — l'établi, les annexes par harnais, le protocole du test. I1 et I2 cessent de se répéter et se rattachent aux sections qu'ils rendent mécaniques ; I5 entre dans la graine pour la première fois. Le mouvement obéit à la règle que le test lui-même énonce : une lacune se corrige dans le document, jamais dans le câblage.
+
+Note de comptage : l'entrée du 2026-07-30 annonce « quatre organes ». Il y en a cinq depuis le premier jet — l'établi (E) manquait à la liste, pas au fichier.
+
 ## 2026-07-30 (suite) — Le câblage se décrit, il ne se stocke pas
 
 Idée de l'Opératrice, en lisant l'article de Claude sur le pilotage (skills, hooks, rules, subagents) : plutôt qu'un câblage versionné, **un fichier qui dit à chaque agent comment se câbler lui-même**. Avec des mentions spécifiques à un harnais, assumées. Puis le test : on efface le câblage, on démarre un Sonnet tout frais, et on regarde s'il sait se rebrancher seul — permissions demandées comprises.
