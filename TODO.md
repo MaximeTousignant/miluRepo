@@ -58,7 +58,7 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
   - [ ] Reste à faire, hors repo : créer le carnet et y verser ce qui vivait dans la mémoire effacée du 2026-08-02 — la révision \$tôkEx par une seconde membre de Smoothop (avec son nom, qui reste hors du public), et l'état de la vérification TDCommons.
 - [x] 2026-08-02 — **Palette Smoothop rendue publique** : `docs/Style.md` § « Les couleurs ». Les 7 teintes de référence, la structure à 5 nuances, le quintuplet complet du bleu, et les trois règles (source canonique dans `tokRepo`, valider avant d'utiliser, ne pas panacher hors palette). Elle ne vit plus dans une mémoire de harnais.
   - [ ] Transcrire les **10 valeurs de $H$** depuis `smoothop-palette.py` (`tokRepo`, privé) — ce sont les constantes de la marque ; $S$ et $L$ ont de la latitude. Ne pas les deviner, et surtout pas les lire à l'œil sur une capture.
-  - [ ] Confirmer ce que nomment les lettres `L`, `C`, `S`, `B`, `U` (lecture de Milu à partir de la planche, pas une source).
+  - [ ] Confirmer ce que nomment `C`, `B`, `U` — lecture de Milu à partir de la planche (cyan, bleu, violet), pas une source. `L` (lime) et `S` (bleu Smoothop) sont confirmés par l'Opératrice le 2026-08-02.
   - [ ] Valider contraste et daltonismes (modes clair et sombre) et noter dans `Style.md` quelles nuances passent — c'est l'usage prévu de la latitude sur $S$ et $L$.
   - [ ] `publications/stokex/explore_trader_family.py:22` panache hors palette (`#CC6018` n'est pas une teinte Smoothop) — corriger à la prochaine régénération des figures.
 - [ ] L'examen de la graine en subagent (`docs/Examen.md` ? — questions-réponses versionnées).

@@ -52,16 +52,16 @@ Douze rangées, cinq nuances chacune, indexées `0` `3` `5` `7` `9` — de la pl
 | `R` | rouge |
 | `O` | orange |
 | `Y` | jaune |
-| `L` | jaune-vert |
+| `L` | lime |
 | `G` | vert |
 | `C` | cyan |
-| `S` | bleu ciel |
-| `B` | bleu profond |
+| `S` | **bleu Smoothop** |
+| `B` | bleu |
 | `U` | violet |
 | `M` | magenta |
 | `W` | le blanc et les gris pâles |
 
-`K` et `W` sont achromatiques : les dix autres rangées portent les dix teintes.
+`K` et `W` sont achromatiques : les dix autres rangées portent les dix teintes, dans l'ordre de la roue. `S` y est la signature — le bleu de Smoothop porte son initiale et occupe sa place entre le cyan et le bleu, comme une teinte parmi les autres. La marque ne s'ajoute pas à la roue, elle y a un siège.
 
 - **La source canonique est `smoothop-palette.py`**, dans `tokRepo` (privé). Les valeurs de $H$ ne sont pas encore transcrites ici : les prendre là-bas, ne jamais les deviner. Une teinte de marque inventée est une faute, pas une approximation — et lire un hex à l'œil sur une capture d'écran, c'est la deviner.
 - **Valider avant d'utiliser.** Une teinte officielle n'est pas automatiquement lisible : contraste et daltonismes se vérifient, en mode clair *et* sombre, et on choisit les nuances qui passent. La palette dit ce qui est à nous, pas ce qui est lisible. C'est précisément à ça que sert la latitude sur $S$ et $L$.
