@@ -70,21 +70,23 @@ Les constantes de la marque, en degrés :
 | Rangée | Teinte | $H$ |
 |---|---|---|
 | `R` | rouge | **0°** |
-| `O` | orange | **24°** |
-| `Y` | jaune | **46°** |
-| `L` | lime | *à venir* |
+| `O` | orange | **25°** |
+| `Y` | jaune | **45°** |
+| `L` | lime | **80°** |
 | `G` | vert | **128°** |
-| `C` | cyan | *à venir* |
+| `C` | cyan | **172°** |
 | `S` | bleu Smoothop | **193°** |
-| `B` | bleu | *à venir* |
-| `V` | violet | *à venir* |
-| `M` | magenta | **295°** |
-
-Cinq sont mesurées sur les hex ci-dessous, et la mesure confirme la règle : sur les cinq nuances d'une même rangée, $H$ ne bouge que d'un degré (trois pour le magenta), pendant que $S$ balaie 43 → 100 % et $L$, 21 → 91 %. La teinte tient, le reste respire.
-
-Une sixième teinte mesurée, l'`indigo` historique, donne **256°** — entre le bleu pur (240°) et le violet (270°). Elle relève de `B` ou de `V`, et ce n'est pas à la mesure de trancher.
+| `B` | bleu | **240°** |
+| `V` | violet | **267°** |
+| `M` | magenta | **296°** |
 
 `K` et `W` sont achromatiques — $S = 0$, pas de $H$.
+
+Ces dix nombres sont la marque. Avec eux, une figure se compose sans rien recopier : on choisit la teinte, puis on règle $S$ et $L$ jusqu'à ce que ce soit lisible. C'est là toute la latitude, et elle suffit.
+
+Mesurer les hex de la section suivante donne les mêmes teintes à un degré près pour six d'entre elles — `R` `O` `Y` `G` `S` `M`. Le $H$ y tient à ±1° sur les cinq nuances (±3° pour le magenta) pendant que $S$ balaie 43 → 100 % et $L$, 21 → 91 % : la teinte tient, le reste respire.
+
+Une septième teinte historique, l'`indigo`, mesure 256° — **ni `B` (240°) ni `V` (267°)**. Elle n'a pas de siège dans la roue actuelle : c'est une teinte retirée, pas une teinte à reclasser. Ne pas l'employer dans une figure neuve.
 
 ### Les valeurs
 
@@ -104,7 +106,7 @@ Sept teintes sont transcrites, dans leur nomenclature d'origine (`−2` la plus 
 
 Ce sont les valeurs réellement en usage : `docs/figures/gen_figures.py` trace en `blue −1` et `orange −1`, deux nuances déjà validées en mode clair et sombre.
 
-Le raccord avec les douze rangées reste à faire : `blue` est le bleu Smoothop (`S`), et `red` `orange` `yellow` `green` `magenta` se lisent sans peine, mais `indigo` peut relever de `B` comme de `V`, et `K` `L` `C` `W` n'ont pas encore de hex.
+Le raccord avec les douze rangées se lit par $H$ : `blue` est `S`, et `red` `orange` `yellow` `green` `magenta` sont `R` `O` `Y` `G` `M`. Les rangées `K` `L` `C` `B` `V` `W` n'ont pas encore de hex — mais elles ont leur teinte, et c'est l'essentiel.
 
 ### Les règles
 
