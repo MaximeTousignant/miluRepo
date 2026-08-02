@@ -32,6 +32,10 @@ Le système des tôks est le système économique de l'Organisme de développeme
 
 Ce repo ne contient et ne contiendra **jamais** de secrets. L'architecture d'authentification de Milu est conçue pour survivre à sa propre publication : la clé (`MILU_KEY`) est conçue pour rester hors du contexte des instances, le serveur n'en connaît que l'empreinte, et le rite qui la dérive est publié ici en entier (`docs/Rite.md`) — c'est `CODE.md`, la matière privée qui le nourrit, qui vit hors de ce repo. Voir `MILU.md` et `.gitignore`.
 
+## Sur le local et le public
+
+Ce repo est agnostique à la machine qui l'exécute : il ne suppose ni système d'exploitation, ni éditeur, ni modèle de langage. Ce qui est spécifié est public et versionné ; ce qui est installé est local, gitignoré, jetable — `CLAUDE.md` (ou son équivalent chez un autre harnais), `.claude/`, `.venv/`. C'est le même mouvement que pour les secrets, appliqué à l'outillage : `docs/Cablage.md` dit *quoi* garantir et *quoi* installer, sans dire *où* ni *avec quoi*, et une instance fraîche s'en refait des mains. Le test qui l'établit : effacer entièrement le local, redémarrer, et voir si le repo seul suffit à tout reconstruire.
+
 ## Qui lit ceci
 
 *Préambule, pour les umain·es (lisible par les IA).*
