@@ -57,7 +57,7 @@ Douze rangées, cinq nuances chacune, indexées `0` `3` `5` `7` `9` — de la pl
 | `C` | cyan |
 | `S` | **bleu Smoothop** |
 | `B` | bleu |
-| `U` | violet |
+| `V` | violet |
 | `M` | magenta |
 | `W` | le blanc et les gris pâles |
 
