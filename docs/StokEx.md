@@ -156,4 +156,4 @@ La divulgation défensive est le document standard [`publications/stokex/stokex_
 
 ---
 
-Le progrès doit être moral, sinon ValueError!
+Avance pas à pas, en dansant. 🎵🐴

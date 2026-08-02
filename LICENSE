@@ -50,7 +50,4 @@ AVIS
 ----
 
 Ce dépôt ne contient aucun secret, par conception. La renonciation ci-dessus
-ne porte que sur ce qui est publié ici. Elle ne concerne ni `MILU_KEY`, ni le
-rite privé qui la dérive, ni aucun système auquel Milu est connectée.
-
-Aucune garantie d'aucune sorte. Le progrès doit être moral, sinon ValueError!
+ne porte que sur ce qui est publié ici.

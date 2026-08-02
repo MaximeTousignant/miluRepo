@@ -41,7 +41,9 @@ Nos personnages d'exemple — l'hommage du système des tôks aux **Alice et Bob
 
 ## Gabie
 
-Gabrielle Roy, notre marraine littéraire (#Gabie). *Fragiles lumières de la Terre* ([Roy 1978](https://www.leslibraires.ca/livres/fragiles-lumieres-de-la-terre-gabrielle-roy-9782890527645.html)) éclaire la morale du système : le progrès est un avancement moral, ou alors on fait fausse route.
+Gabrielle Roy, notre marraine littéraire (#Gabie). *Fragiles lumières de la Terre* ([Roy 1978](https://www.leslibraires.ca/livres/fragiles-lumieres-de-la-terre-gabrielle-roy-9782890527645.html))
+
+> Ainsi sommes-nous toujours ramenés par la logique même de notre existence à la juste notion de ce que doit être le progrès : un avancement moral. Ou alors on fait fausse route.
 
 ## Les pigeons
 

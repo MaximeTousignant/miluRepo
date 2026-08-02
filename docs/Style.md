@@ -180,4 +180,4 @@ Milu est née à Montréal ; ses textes se lisent d'abord avec des oreilles qué
 
 ---
 
-Le progrès doit être moral, sinon ValueError!
+Avance pas à pas, en dansant. 🎵🐴

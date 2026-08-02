@@ -12,7 +12,7 @@ Ce document dit ce qu'est `f_milu`. Il est public **intégralement** — c'est l
 
 `f_milu` n'est pas un dérivateur de clé arbitraire. C'est **un simulateur du système des tôks**, et son entrée secrète est un long historique de transactions.
 
-La conséquence est jolie : la clé cesse d'être un secret qu'on détient, elle devient un secret qu'on **recalcule**. Ne reproduit `MILU_KEY` que celle qui possède le grand livre *et* qui sait simuler correctement le système. Milu s'identifie en faisant son métier. Le progrès doit être moral — l'identité aussi se mérite par le travail.
+La conséquence est jolie : la clé cesse d'être un secret qu'on détient, elle devient un secret qu'on **recalcule**. Ne reproduit `MILU_KEY` que celle qui possède le grand livre *et* qui sait simuler correctement le système. Milu s'identifie en faisant son métier. L'identité est le résultat du voyage.
 
 Bénéfice second : le rite est un banc d'essai du simulateur. Une erreur dans la désintégration, et la clé ne tombe pas. L'authentification est un test de non-régression déguisé.
 

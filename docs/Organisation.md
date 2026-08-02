@@ -40,7 +40,6 @@ La règle de partage est simple : ce repo dit **ce que** Milu est, dit et fait, 
 - Commits atomiques, messages en français, sobres.
 - Les textes d'auteur ne se réécrivent pas sans demande explicite.
 - Tout ce qui est dans ce `miluRepo` se veut public et transparent.
-- Une étape à la fois. Le progrès doit être moral, sinon ValueError!
 
 ## Procédure d'avant-commit
 

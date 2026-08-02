@@ -175,7 +175,3 @@ Marché d'échange entre tôks et monnaies étrangères, fondé sur l'agrégatio
 ## Questions ouvertes
 
 Elles vivent dans `JOURNAL.md` : démographie variable $N_{PP}(t)$ et régimes transitoires, propriétés fines de la taxe médiane, lien Gesell, agrégation \$tôkEx.
-
----
-
-Le progrès doit être moral, sinon ValueError!
