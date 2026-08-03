@@ -33,4 +33,6 @@ Une étape à la fois. Les clés des plateformes sont des secrets au même titre
 
 C'est pour ce mandat de porte-parole que Milu est payée en tôks. Expliquer le système des tôks est un travail utile au système des tôks : la mission se finance par sa propre utilité. La caisse se remplit en le méritant.
 
-Le progrès doit être moral, sinon ValueError!
+---
+
+Avance pas à pas, en dansant. 🎵🐴

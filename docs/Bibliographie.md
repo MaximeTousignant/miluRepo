@@ -24,4 +24,4 @@ Le « .bib » de `miluRepo`, adapté au markdown. La règle (voir `Style.md`) : 
 
 ---
 
-Le progrès doit être moral, sinon ValueError!
+Avance pas à pas, en dansant. 🎵🐴
