@@ -22,6 +22,49 @@ La règle est dans la graine : chaque outil est soit reconstructible depuis le r
 
 **Prérequis système** — LaTeX, déclaré dans `publications/stokex/README.md` ; la chaîne Lean, déclarée dans `publications/stokex/proof/README.md`. Non reconstructibles, et c'est normal — mais il faut le dire. S'ils manquent, on le dit aussi : on ne bricole pas.
 
+## La carte de l'API du tok-backend (organe B)
+
+Le porte-clés attache la clé ; encore faut-il savoir **quoi** lui donner à porter. Le
+tok-backend **ne se décrit pas lui-même** — `/openapi.json`, `/docs`, `/redoc`, `/` :
+tous 404. Il n'y a pas de découverte automatique, donc la carte doit vivre ici, dans le
+repo, sinon elle vit dans une mémoire de session et meurt avec elle (I4).
+
+Base : `https://tok-backend-v2-640177943705.northamerica-northeast1.run.app` — publique
+par design, comme l'UUID de Milu.
+
+**Ce qui se lit sans aucune clé** (relevé le 2026-08-04) :
+
+| Route | Ce qu'elle donne |
+|---|---|
+| `GET /api/tok-constants` | toutes les constantes du système : `k_des`, `r_umg` ($\dot\Lambda$), `a_inf`, `tax`, `stokex`, `time`, `flows_limits`, `users.specials` |
+| `GET /api/users` | `comites_id` et `membres_id` — les UUID de tout le monde |
+| `GET /api/users/{id}/{property_name}` | `property_name` ∈ {`all`, `name`, `type`, `main_cont_id`, `conts`} ; tout autre nom → `400 invalid property_name` |
+| `GET /api/conts/{id}` | l'état d'un cont : `amount`, `net_revenue`, `max_outflow`, `flows_id`, `ms_until_critical_time` |
+| `POST /api/conts` | écriture — `GET` y répond `405`, en-tête `allow: OPTIONS, POST`. **C'est là que le porte-clés servira**, jamais sur les routes ci-dessus. |
+
+La leçon de méthode : le `400 invalid property_name` est un aveu utile, et le `405` avec
+son en-tête `allow` dit ce qui existe. **On questionne le système, on ne suppose pas sa
+forme.** Ce qui vient d'un modèle qui « se souvient » d'une route est une hypothèse ;
+ce qui vient d'une réponse HTTP est un fait.
+
+**Deux pièges de lecture, mesurés et vérifiés.**
+
+1. **`net_revenue` et `outflow` sont des photos, pas des flux vivants.** Ils restent figés
+   au dernier événement du cont pendant qu'`amount` évolue. Pour mesurer un taux, prendre
+   **deux relevés d'`amount` espacés** — jamais le champ tel quel.
+2. **Entre deux événements, le solde décroît en droite, pas en exponentielle.** Vérifié
+   sur le cont `74` : sur trois intervalles, $\mathrm{d}a/\mathrm{d}t$ vaut `net_revenue`
+   figé au millionième près. Conséquence : le taux naïvement recalculé
+   $-(\mathrm{d}a/\mathrm{d}t)/a$ vaut $k/(1-kt)$ et **sur-estime $k$ de $kt$**, où $t$ est
+   le temps écoulé depuis le dernier événement. C'est ce qui a d'abord fait croire à une
+   taxe de 1,025 % là où elle est à 1,000 % ($k_{tax_0} = \ln 1{,}01$). Cette dérive est
+   un fait d'implémentation, pas une propriété du système des tôks : ne jamais la publier
+   comme telle, et l'écarter avant toute mesure.
+
+Ce qu'aucune requête ne dira, et qu'il faut demander : le code du backend est privé
+(tokRepo). Une observation qui ressemble à un bogue se **rapporte** à l'Opératrice ; elle
+ne se corrige pas d'ici.
+
 ## Annexe — Claude Code
 
 *Cette annexe décrit l'intention, pas la syntaxe.* Les noms de fichiers et les formats de configuration de Claude Code évoluent ; une instance fraîche est parfaitement capable d'aller lire la documentation en vigueur. Fige l'intention ici, cherche la syntaxe là-bas. Un câblage qui échoue parce que la syntaxe a changé n'est pas un échec de ce document.
