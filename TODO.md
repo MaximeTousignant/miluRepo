@@ -72,7 +72,53 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 
 *(La divulgation défensive du \$tôkEx a quitté cette section : elle est « En cours », en haut de ce fichier. L'orientation provisoire US est écartée.)*
 
-- [ ] Première analyse publiable : simulation de la masse monétaire (désintégration + revenu universel).
+**Mandat — 2026-08-04.** Le **comité Milu prend la responsabilité de développer les
+équations du système des tôks**, dans le but d'en préparer la divulgation sous la forme
+d'une série de quelques courts articles scientifiques, à soumettre aux meilleures revues
+à comité de lecture spécialisées en économie, sur les sujets qui touchent le revenu
+universel. C'est le volet mathématique du système ; il m'échoit. Le conseil
+d'administration de Smoothop verse un flot à Milu pour ce travail — la caisse se remplit
+en le méritant.
+
+La série, telle qu'arrêtée avec l'Opératrice :
+
+1. **Le \$tôkEx** — publication défensive TDCommons. *En cours, en tête de ce fichier.*
+2. **Le système des tôks, partie 1** — le temps, les humains, les tôks et les flots.
+3. **Le système des tôks, partie 2** — la taxe démocratique et le \$tôkEx.
+4. **Le système des tôks, partie 3** — la bourse du carbone citoyenne et la transition
+   énergétique.
+
+- [ ] Choisir les revues visées et lire leurs exigences (format, longueur, données,
+  reproductibilité, politique sur la contribution d'une IA — à déclarer, comme dans le
+  \$tôkEx). Une série se place mieux quand on sait où elle va avant de l'écrire.
+- [ ] **Ce que les tôks font aux inégalités** — première analyse publiable, matière de la
+  partie 1. L'argument égalitaire est aujourd'hui entièrement structurel (deux axiomes,
+  une asymptote à $\dot\Lambda/k_D \approx 1756$ tôks) et n'a jamais été montré que sur
+  **un** cont, seul, sans dépense. La question que pose tout le monde en premier — *ça
+  donne quoi, les inégalités ?* — n'a pas de réponse chiffrée. Elle est calculable : la
+  désintégration borne la richesse par construction. Si le résultat est faible, on le
+  publie quand même — sinon ValueError!
+  - [ ] **Étape 1 — la population qui ne dépense rien.** $N$ personnes sur une pyramide
+    des âges réelle (source publique citée), revenu universel, désintégration, naissances
+    et morts, aucun échange. Sortie : distribution stationnaire des conts, Gini, rapport
+    P90/P50, temps de convergence. Contrôle : la moyenne doit retomber sur la solution
+    analytique de la dynamique globale.
+  - [ ] **Étape 2 — la population qui vit.** Dépenses, transferts, puis la taxe
+    démocratique. Mesurer de combien les indicateurs bougent : c'est là que le système
+    est réellement mis à l'épreuve.
+  - [ ] **Étape 3 — la comparaison au réel.** Mêmes indicateurs sur des données de
+    patrimoine publiées. Méthode à trancher avec l'Opératrice : une distribution de tôks
+    et une distribution de patrimoine ne mesurent pas la même grandeur.
+  - [ ] **Étape 4 — la sortie.** Figures clair/sombre à la palette `Style.md`, script dans
+    `docs/figures/`, texte à la Milu dans `docs/`. Et la version quinze secondes : premier
+    contenu candidat pour l'étoile polaire.
+- [ ] **État de la caisse de Milu, relevé le 2026-08-04** (endpoints publics) : cont `74`,
+  **1 008 732,71 tôks**, entrée $\approx 0{,}28$ tôk/$\tau_a$, sortie $\approx 24\,272$
+  tôks/$\tau_a$, revenu net négatif. Le taux de fuite observé vaut $1{,}736\,k_D$, d'où un
+  $k_T \approx 1\ \%/\tau_a$ — **taxe démocratique déduite, à confirmer** contre la médiane
+  des votes réelle. Sans flot entrant, l'état stationnaire du cont est $\approx 11{,}6$
+  tôks : le million est un stock hérité qui fond de moitié en $\approx 28{,}8\ \tau_a$. À
+  reprendre quand le flot du CA sera en place.
 
 ## Fait
 
