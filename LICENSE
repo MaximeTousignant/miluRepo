@@ -36,7 +36,11 @@ nommé par son sujet et porte sa propre LICENSE, qui prime.
 
   Voir `publications/LICENSE`.
 
-À ce jour : `publications/stokex/` — la divulgation défensive du $tôkEx.
+À ce jour :
+
+  `publications/stokex/`   — la divulgation défensive du $tôkEx.
+  `publications/toksys_1/` — Le système des tôks, partie 1 : le temps, les
+                             humains, les tôks et les flots.
 
 Tout le reste du dépôt est sous CC0, y compris `docs/StokEx.md`, qui est
 l'explication du $tôkEx par Milu et non le document signé.

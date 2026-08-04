@@ -1,0 +1,139 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{smoothblue}{HTML}{0B85A6}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\hypersetup{
+    unicode=true,
+    pdftitle={The T\^{o}k System, Part 1: Time, People, T\^{o}ks and Flows},
+    pdfauthor={\`A CONFIRMER (Smoothop)},
+    pdfsubject={The monetary axioms of the t\^{o}k system: continuous universal basic income and exponential decay},
+    pdfkeywords={universal basic income, monetary system, exponential decay, demurrage, money supply, continuous time, tok, Smoothop}
+}
+\usepackage{tabularx}
+\usepackage{calc}
+\usepackage{geometry}
+\usepackage[safe]{tipa}
+
+% Page size and spacing
+\geometry{letterpaper,left=1in, right=1in, top=1in, bottom=1in}
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+\raggedbottom
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhead[L]{Smoothop}
+\fancyhead[C]{The T\^{o}k System --- Part 1}
+\fancyhead[R]{2026}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{page \thepage /\pageref*{LastPage}}
+
+\newcommand{\tok}{t\^{o}k}
+\newcommand{\StokEx}{\$t\^{o}kEx}
+
+% Placeholder mis en évidence (à remplacer avant soumission)
+\newcommand{\placeholder}[1]{%
+  \par\smallskip\noindent
+  \colorbox{yellow}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{#1}}%
+  \par\smallskip}
+
+% ----------------------------------------------------------------------
+\begin{document}\thispagestyle{plain}
+% ----------------------------------------------------------------------
+
+\begin{center}
+  {\LARGE\bfseries The T\^{o}k System, Part 1\par}
+  \vspace{4pt}
+  {\large Time, People, T\^{o}ks and Flows\par}
+  \vspace{16pt}
+  {\large \`A CONFIRMER\par}
+  \vspace{4pt}
+  Smoothop, sustainable development organization\\
+  Montr\'{e}al, Canada
+  \vspace{12pt}
+\end{center}
+
+\placeholder{\textbf{Signature.} The author list is not settled. See
+\texttt{README.md}, section « Ce qui n'est pas encore décidé », and the dossier
+\texttt{LICENSE}. Both must be updated together before submission.}
+
+\begin{abstract}
+\placeholder{\textbf{Abstract --- to be written.} One paragraph: the two monetary
+axioms, the resulting money supply dynamics, and the universal per-capita constant
+that follows from them.}
+\end{abstract}
+
+\section{Introduction}
+\placeholder{To be written.}
+
+\section{The language of units}
+\placeholder{To be written. Time is measured from the SI second; the t\^{o}kian year is
+dyadic, hence exact in binary floating-point arithmetic.}
+
+\section{The two monetary axioms}
+\placeholder{To be written. \emph{Creation}: every natural person continuously receives
+the universal basic income between birth and death, and this is the only creation
+mechanism. \emph{Destruction}: t\^{o}ks decay continuously, and this is the only
+destruction mechanism.}
+
+\section{Global dynamics of the money supply}
+\placeholder{To be written. Including the per-capita equilibrium constant and the
+convolution form for an arbitrary population.}
+
+\section{The dynamics of a single cont}
+\placeholder{To be written. The leaky integrator, and the conservation check across all
+conts.}
+
+\section{Flows and transfers}
+\placeholder{To be written.}
+
+\section{Discussion}
+\placeholder{To be written.}
+
+% ----------------------------------------------------------------------
+\section*{Notation}
+% ----------------------------------------------------------------------
+
+\begin{tabularx}{\textwidth}{lX}
+\hline
+Symbol & Meaning \\
+\hline
+$\tau_s,\ \tau_m,\ \tau_h,\ \tau_j,\ \tau_a$ & units of time: second, minute, hour, day, t\^{o}kian year \\
+$t$ & continuous reference time ($t=0$ at origin); $t_n$: $n$-th timestamp \\
+$\dot\Lambda$ & universal basic income ($1\ \text{\tok}/15\,\tau_j$) \\
+$N_{PP}(t)$ & number of living natural persons at time $t$ \\
+$a_\Omega(t)$ & total money supply, in \tok s \\
+$\dot F_\Omega(t)$ & total monetary creation flow \\
+$k_D$ & instantaneous decay rate (half-life $50\,\tau_a$) \\
+$k_T$ & instantaneous taxation rate (median of votes) \\
+$k = k_D + k_T$ & effective leak rate of a cont \\
+$a_i(t)$ & liquid money, in \tok s, in cont $i$ \\
+$\dot F_i(t)$ & net flow entering cont $i$ \\
+\hline
+\end{tabularx}
+
+\vspace{8pt}
+This notation follows \texttt{docs/Toks.md} in the public repository
+\href{https://github.com/MaximeTousignant/miluRepo}{miluRepo}. Numerical constants are
+served live by the t\^{o}k backend at \texttt{/api/tok-constants} and must be quoted from
+there, not from memory.
+
+% ----------------------------------------------------------------------
+\section*{AI contribution statement}
+% ----------------------------------------------------------------------
+
+\placeholder{To be written, on the model of the \StokEx{} defensive publication: the
+extent of Milu's contribution, and the statement that the human author is solely
+responsible for the content. The target journal's own policy takes precedence --- see
+\texttt{TODO.md}, first item of the « Recherche » section.}
+
+\end{document}
