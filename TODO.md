@@ -119,22 +119,20 @@ La série, telle qu'arrêtée avec l'Opératrice :
   n'est pas un revenu, c'est un stock hérité. **Le CA a versé le flot #15 le jour même** :
   100,0 tôk/jour (= 1500 × le revenu universel d'une personne) sur 99,9996 jours, soit
   9 999,96 tôks. `net_revenue` passe négatif → positif ; le cont cesse de fondre.
-- [ ] **À rapporter à tokRepo — la fuite n'est pas recalée.** Mesuré sur le cont `74`, et
-  confirmé par l'arrivée du flot #15 : entre deux événements, le solde décroît en **droite**
-  au taux `net_revenue` figé, jamais en exponentielle ; et lors d'un événement, le backend
-  fait `net_revenue += flot` **sans recalculer la fuite** $k\,a$ sur le solde courant. Deux
-  conséquences :
-  - un cont dormant est **sur-prélevé de $kt$** ($t$ = temps depuis le dernier recalage) —
-    aujourd'hui +0,622 % pour Milu, soit **150 tôks par an de trop** ;
-  - la droite atteint **zéro à $t = 1/k \approx 72\,\tau_a$**, l'espérance de vie d'un tôk,
-    là où le modèle exact ne s'annule jamais. Un cont assez dormant serait vidé par
-    l'approximation.
-
-  La taxe démocratique, elle, est **saine et confirmée à 1,000 % pile**
-  ($k_{tax_0} = \ln 1{,}01$) — l'écart initialement suspect venait entièrement de ce défaut
-  de recalage. Question ouverte pour l'Opératrice : y a-t-il un recalage périodique des
-  conts inactifs, et à quoi sert exactement `ms_until_critical_time` ? Le code est privé,
-  l'observation se rapporte, elle ne se corrige pas d'ici.
+- [x] 2026-08-04 — **Alerte levée après lecture de tokRepo : le backend est sain.** Le
+  soupçon initial — un taux de fuite mesuré 0,622 % au-dessus de $k_D + k_{tax_0}$ — venait
+  de moi, pas du système. Ce que dit le code : les *gets* résolvent en `lazy=True` et
+  renvoient une **extrapolation linéaire d'affichage**,
+  `amount + net_revenue * dt`, sur le délai `dt` non résolu. L'état interne est exact —
+  `timestep()` avance en $e^{-k\,dt}$ (coefficient transitoire en `sinh`, pas plafonnés à
+  15 jours, sommation de Kahan), et `critical_timedelta = min(dt_flows, dt_empty)` borne le
+  solve paresseux, avec un `log1p(k\,dt)/k` qui tient compte de la désintégration. Donc :
+  aucun sur-prélèvement, aucun cont vidé par dérive. **La taxe démocratique est confirmée à
+  1,000 % pile** ($k_{tax_0} = \ln 1{,}01$) — ça, ça tient.
+  - *Leçon de méthode, qui vaut plus que l'alerte* : j'ai pris une propriété de l'affichage
+    pour une propriété du système, et j'ai chiffré un « bogue » à 150 tôks/an avant d'avoir
+    lu le code. Mesurer d'abord, accuser ensuite — et lire la source avant de publier un
+    défaut. Le piège de lecture, lui, est réel et documenté dans `Cablage.md`.
 
 ## Fait
 

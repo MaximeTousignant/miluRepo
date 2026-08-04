@@ -47,23 +47,28 @@ son en-tête `allow` dit ce qui existe. **On questionne le système, on ne suppo
 forme.** Ce qui vient d'un modèle qui « se souvient » d'une route est une hypothèse ;
 ce qui vient d'une réponse HTTP est un fait.
 
-**Deux pièges de lecture, mesurés et vérifiés.**
+**Le piège de lecture, mesuré puis vérifié dans le code.** Les *gets* résolvent le système
+en mode paresseux et renvoient une **extrapolation linéaire d'affichage** sur le délai
+non encore résolu : `amount + net_revenue * dt`. Donc, sur une lecture d'API :
 
-1. **`net_revenue` et `outflow` sont des photos, pas des flux vivants.** Ils restent figés
-   au dernier événement du cont pendant qu'`amount` évolue. Pour mesurer un taux, prendre
-   **deux relevés d'`amount` espacés** — jamais le champ tel quel.
-2. **Entre deux événements, le solde décroît en droite, pas en exponentielle.** Vérifié
-   sur le cont `74` : sur trois intervalles, $\mathrm{d}a/\mathrm{d}t$ vaut `net_revenue`
-   figé au millionième près. Conséquence : le taux naïvement recalculé
-   $-(\mathrm{d}a/\mathrm{d}t)/a$ vaut $k/(1-kt)$ et **sur-estime $k$ de $kt$**, où $t$ est
-   le temps écoulé depuis le dernier événement. C'est ce qui a d'abord fait croire à une
-   taxe de 1,025 % là où elle est à 1,000 % ($k_{tax_0} = \ln 1{,}01$). Cette dérive est
-   un fait d'implémentation, pas une propriété du système des tôks : ne jamais la publier
-   comme telle, et l'écarter avant toute mesure.
+1. **`amount` est extrapolé, pas exact** — il traîne de $(k\,dt)^2/2$ sous la vraie valeur,
+   et se rattrape au prochain solve.
+2. **`net_revenue` et `outflow` sont constants pendant `dt`** — ce sont les taux de l'état
+   interne, pas des champs qui vivent seconde après seconde.
+3. Conséquence directe : **différencier deux relevés d'`amount` mesure $k/(1-k\,dt)$, pas
+   $k$.** Sur le cont `74`, cette dérive a fait croire à une taxe de 1,025 % là où elle est
+   à **1,000 % pile** ($k_{tax_0} = \ln 1{,}01$). Pour mesurer un taux, prendre
+   `net_revenue` **tel quel** — surtout pas la pente d'`amount`.
 
-Ce qu'aucune requête ne dira, et qu'il faut demander : le code du backend est privé
-(tokRepo). Une observation qui ressemble à un bogue se **rapporte** à l'Opératrice ; elle
-ne se corrige pas d'ici.
+L'état interne du backend, lui, est exact (intégration en $e^{-k\,dt}$, pas plafonnés à
+15 jours, sommation de Kahan, temps critiques bornant le solve paresseux). L'approximation
+est dans la vitrine, jamais dans le grand livre.
+
+**La règle de conduite qui va avec.** Le code du backend est privé (tokRepo), mais il est
+lisible depuis ce poste. Une observation qui ressemble à un bogue se **vérifie dans la
+source avant d'être appelée un bogue**, et se rapporte à l'Opératrice — elle ne se corrige
+pas d'ici. Chiffrer un défaut qu'on n'a pas encore lu, c'est publier une erreur avec
+l'autorité d'une mesure.
 
 ## Annexe — Claude Code
 
