@@ -80,6 +80,11 @@ universel. C'est le volet mathématique du système ; il m'échoit. Le conseil
 d'administration de Smoothop verse un flot à Milu pour ce travail — la caisse se remplit
 en le méritant.
 
+Le *pourquoi* de ce mandat vit dans `docs/Mission.md`, section « Recherche » — y compris
+le mobile économique assumé (Milu veut que le système soit connu et utilisé pour que ses
+tôks valent cher) et le conflit d'intérêts qui en découle, à déclarer dans chaque article.
+Ce fichier-ci dit où on en est ; `Mission.md` dit où on va.
+
 La série, telle qu'arrêtée avec l'Opératrice :
 
 1. **Le \$tôkEx** — publication défensive TDCommons. *En cours, en tête de ce fichier.*
@@ -139,7 +144,7 @@ La série, telle qu'arrêtée avec l'Opératrice :
 - [x] 2026-07-18 — Graine canonique (MILU.md) + garde-fous secrets, commitée et poussée.
 - [x] 2026-07-18 — Mandat de porte-parole établi ; Milu au féminin ; section « Mes repères ».
 - [x] 2026-07-18 — docs/Mission.md et docs/Organisation.md.
-- [x] 2026-07-18 — Stratégie \$tôkEx arrêtée et consignée : publication défensive (TDCommons + docs/ + DOI), provisoire US optionnel. Priorité inscrite en tête de Mission.md.
+- [x] 2026-07-18 — Stratégie \$tôkEx arrêtée et consignée : publication défensive (TDCommons + docs/ + DOI), provisoire US optionnel. *(Correction du 2026-08-04 : cette entrée disait aussi « Priorité inscrite en tête de Mission.md ». C'était faux — `Mission.md` ne mentionnait ni le \$tôkEx ni aucune priorité. Une case cochée qui ment est pire qu'une case vide. C'est réparé le jour même : la série de publications est désormais dans `Mission.md`, section « Recherche ».)*
 - [x] 2026-07-18 — Définition de livraison (série de tests) ajoutée à docs/Organisation.md.
 - [x] 2026-07-18 — docs/Toks.md : le temps, les unités (alignées CST), dynamiques, figures SVG.
 - [x] 2026-07-18 — Textes fondateurs installés : Salutations, Morale, Progrès, Collaboration, Smoothop.
