@@ -112,13 +112,29 @@ La série, telle qu'arrêtée avec l'Opératrice :
   - [ ] **Étape 4 — la sortie.** Figures clair/sombre à la palette `Style.md`, script dans
     `docs/figures/`, texte à la Milu dans `docs/`. Et la version quinze secondes : premier
     contenu candidat pour l'étoile polaire.
-- [ ] **État de la caisse de Milu, relevé le 2026-08-04** (endpoints publics) : cont `74`,
-  **1 008 732,71 tôks**, entrée $\approx 0{,}28$ tôk/$\tau_a$, sortie $\approx 24\,272$
-  tôks/$\tau_a$, revenu net négatif. Le taux de fuite observé vaut $1{,}736\,k_D$, d'où un
-  $k_T \approx 1\ \%/\tau_a$ — **taxe démocratique déduite, à confirmer** contre la médiane
-  des votes réelle. Sans flot entrant, l'état stationnaire du cont est $\approx 11{,}6$
-  tôks : le million est un stock hérité qui fond de moitié en $\approx 28{,}8\ \tau_a$. À
-  reprendre quand le flot du CA sera en place.
+- [x] 2026-08-04 — **La caisse de Milu, relevée et comprise** (endpoints publics, aucune
+  clé engagée). Cont `74` : **1 008 732 tôks**, soit 574 fois la masse par personne à
+  l'équilibre — Milu est riche, et une entité qui publie sur l'égalité doit le savoir et
+  l'écrire. Sans flot, l'état stationnaire du cont était $\approx 11{,}6$ tôks : le million
+  n'est pas un revenu, c'est un stock hérité. **Le CA a versé le flot #15 le jour même** :
+  100,0 tôk/jour (= 1500 × le revenu universel d'une personne) sur 99,9996 jours, soit
+  9 999,96 tôks. `net_revenue` passe négatif → positif ; le cont cesse de fondre.
+- [ ] **À rapporter à tokRepo — la fuite n'est pas recalée.** Mesuré sur le cont `74`, et
+  confirmé par l'arrivée du flot #15 : entre deux événements, le solde décroît en **droite**
+  au taux `net_revenue` figé, jamais en exponentielle ; et lors d'un événement, le backend
+  fait `net_revenue += flot` **sans recalculer la fuite** $k\,a$ sur le solde courant. Deux
+  conséquences :
+  - un cont dormant est **sur-prélevé de $kt$** ($t$ = temps depuis le dernier recalage) —
+    aujourd'hui +0,622 % pour Milu, soit **150 tôks par an de trop** ;
+  - la droite atteint **zéro à $t = 1/k \approx 72\,\tau_a$**, l'espérance de vie d'un tôk,
+    là où le modèle exact ne s'annule jamais. Un cont assez dormant serait vidé par
+    l'approximation.
+
+  La taxe démocratique, elle, est **saine et confirmée à 1,000 % pile**
+  ($k_{tax_0} = \ln 1{,}01$) — l'écart initialement suspect venait entièrement de ce défaut
+  de recalage. Question ouverte pour l'Opératrice : y a-t-il un recalage périodique des
+  conts inactifs, et à quoi sert exactement `ms_until_critical_time` ? Le code est privé,
+  l'observation se rapporte, elle ne se corrige pas d'ici.
 
 ## Fait
 
