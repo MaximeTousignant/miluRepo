@@ -9,8 +9,14 @@
 #   latex, dvipng — fournis par MacTeX / TeX Live.
 # vids/detourage.py — détourage sur fond fixe :
 #   ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o SORTIE.mp4
-#   Requiert opencv (lecture/écriture vidéo, morphologie). Pas de son en sortie :
-#   cette machine n'a pas de ffmpeg.
+#   opencv-contrib pour le filtre guidé du bord (ximgproc) ; sans lui, le script
+#   retombe sur un flou gaussien. Pas de son en sortie : pas de ffmpeg ici.
 matplotlib
 pandas
-opencv-python-headless
+opencv-contrib-python-headless
+
+# Facultatif — l'option `--rvm` (RobustVideoMatting). Sans ces deux-là, l'option
+# n'existe pas et tout le reste marche pareil. Poids téléchargés au premier appel
+# dans ~/.cache/torch (3,7 M paramètres).
+torch
+torchvision

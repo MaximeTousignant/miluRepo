@@ -73,22 +73,71 @@ x·y·t, puis on décide :
    est déjà noir), petits trous seulement là où il ne l'est pas ;
 4. **topographie** — α descend du plateau vers la plaine sans jamais remonter.
    La contrainte est imposée par la distance au plateau : des courbes de niveau
-   qui ne se croisent pas, sur six pixels de pente.
+   qui ne se croisent pas, sur six pixels de pente ;
+5. **recalage du bord** par [filtre guidé][guide] (He, Sun & Tang) : α y est
+   modélisé comme une transformation linéaire locale de l'image, donc la pente
+   suit les vraies arêtes au lieu de les noyer sous un flou aveugle.
 
-Les ombres portées sont écartées en cours de route par un test multiplicatif :
-une ombre, c'est I ≈ k·P avec le même k sur les trois canaux. Tester la couleur
-par différence absolue échouerait sur les ombres profondes, où tout s'écrase.
+Les ombres portées sont écartées en cours de route par **deux** lectures du même
+fait physique, exigées ensemble : la lecture multiplicative en RGB (I ≈ k·P avec
+le même k sur les trois canaux — tester la couleur par différence absolue
+échouerait sur les ombres profondes, où tout s'écrase) et la lecture HSV de
+[Cucchiara *et al.*][cucchiara] — une ombre fait chuter la valeur, ne bouge la
+teinte que très peu, et *abaisse* la saturation. Ce dernier point est invisible
+au test multiplicatif : un objet sombre et coloré a la même luminance qu'une
+ombre, mais pas la même saturation.
+
+[guide]: https://docs.opencv.org/4.x/da/d17/group__ximgproc__filters.html
+[cucchiara]: https://ieeexplore.ieee.org/document/1233909
+
+## L'a priori « humain », en option
+
+    ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o SORTIE.mp4 --rvm
+    ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o SORTIE.mp4 --rvm-seul  # étalon
+
+`--rvm` fusionne le résultat avec [RobustVideoMatting][rvm] (Lin *et al.*, WACV
+2022), un réseau de matting vidéo. Requiert `torch` et `torchvision` ; le modèle
+(3,7 M paramètres) et ses poids se téléchargent une fois dans `~/.cache/torch`.
+Sans torch, l'option n'existe pas et tout le reste marche pareil.
+
+**Pourquoi les deux.** Les angles morts sont exactement complémentaires. Notre
+construction ne sait qu'une chose — *ce pixel a changé* —, et c'est pourquoi une
+ombre portée la trompe : une ombre est un vrai changement. Le réseau, lui, ne
+sait rien du décor (il ne l'a jamais vu vide) mais sait reconnaître une personne,
+et rend un α fin jusqu'à la mèche. Fusion : le réseau sert de **porte** — hors de
+la personne qu'il reconnaît, rien ne passe, l'ombre tombe ; à l'intérieur, on
+prend le plus généreux des deux α.
+
+**Ce que nous avons et qu'il n'a pas.** RobustVideoMatting est *causal* : sa
+mémoire récurrente ne contient que le passé, parce qu'il est fait pour le direct.
+Nous n'avons pas cette contrainte. `--rvm` rejoue donc la séquence **à
+rebrousse-temps** et moyenne les deux passes — celle qui vient de l'avant hésite
+quand un bras surgit, celle qui vient de l'arrière hésite quand il disparaît, et
+la première image cesse d'être une image froide. La contrainte de continent
+s'applique ensuite au résultat fusionné : l'union de deux α n'hérite d'aucune des
+deux disciplines.
+
+`--rvm-seul` court-circuite toute la statistique de fond — c'est l'étalon
+honnête, ce qu'on obtiendrait sans exploiter l'immobilité du décor.
+
+Coût : la passe arrière tient tous les α en mémoire (1 octet par pixel et par
+image, ~1 Go pour 52 s en 608×1080) et impose de relire la vidéo à l'envers.
+Compter une dizaine de minutes par vidéo, contre trois sans `--rvm`.
+
+[rvm]: https://arxiv.org/abs/2108.11515
 
 ## Ce que ça ne fait pas
 
-- **Pas de matting fin.** Une mèche de cheveux sur fond sombre n'est pas
-  récupérée — mais elle est noire sur fond noir, donc invisible.
+- **Pas de matting fin sans `--rvm`.** Une mèche de cheveux sur fond sombre
+  n'est pas récupérée par la seule statistique — mais elle est sombre sur fond
+  noir, donc peu visible.
 - **Pas de son**, faute de `ffmpeg` (voir plus haut).
 - **Pas de décor mobile.** Un panoramique, un zoom, une lumière qui change
   franchement, et toute la construction tombe : elle repose entièrement sur
   l'immobilité du décor.
-- **L'ombre portée collée aux pieds** peut rester : elle touche le continent,
-  et la couper proprement demanderait de la géométrie, pas de la statistique.
+- **L'ombre portée collée aux pieds** peut rester sans `--rvm` : elle touche le
+  continent, et la couper demande de savoir ce qu'est une personne — c'est
+  précisément ce que le réseau apporte.
 
 ## Réglages
 

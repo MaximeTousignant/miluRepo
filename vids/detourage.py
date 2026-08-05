@@ -48,8 +48,13 @@ compagnons de poids comparable survivent ; **trous** bouchés avec discernement 
 **topographie** — α descend du plateau vers la plaine sans jamais remonter, des
 courbes de niveau qui ne se croisent pas.
 
-**V. Composition.** `sortie = α × image`. Ce qui reste manqué dans les zones
-sombres de la danseuse est invisible : le fond de sortie est noir aussi.
+**V. Composition.** `sortie = α × image`, le bord recalé sur les arêtes de
+l'image par filtre guidé. Ce qui reste manqué dans les zones sombres de la
+danseuse est peu visible : le fond de sortie est noir aussi.
+
+**En option (`--rvm`)**, tout cela se fusionne avec RobustVideoMatting, qui sait
+ce qu'est une personne là où nous ne savons que ce qui a changé — et qu'on
+rejoue à rebrousse-temps, puisque nous n'avons pas sa contrainte de causalité.
 
 Usage :
 
@@ -85,11 +90,17 @@ TROU_MAX_REL = 4e-3       # trou bouché en zone claire si son aire est sous ce 
 TOL_DECALAGE = 5          # voisinage toléré si le décor glisse d'un pixel ou deux
 LISSAGE_XY = 5            # noyau spatial de la décision (bloc x·y·t)
 LISSAGE_T = 3             # profondeur temporelle de la décision (images, impair)
-FLOU_BORD = 5             # noyau du flou de bord (impair, 0 = bord franc)
+FLOU_BORD = 5             # rayon du recalage de bord (0 = bord franc)
+GUIDE_EPS = 1e-3          # tolérance du filtre guidé : petit = colle aux arêtes
+RVM_RATIO = 0.5           # sous-échantillonnage interne du matteur
+RVM_PORTE = 0.10          # au-dessus, le réseau reconnaît la personne
+RVM_DILATE = 11           # marge laissée autour d'elle, contre ses propres ratés
 FOND_CLAIR = 15           # au-delà, le décor n'est plus noir : il porte des ombres,
                           # et le découvrir se verrait — deux conséquences, un seuil
 OMBRE_RATIO = (0.05, 0.94)  # une ombre assombrit sans changer la couleur
 OMBRE_TOL = (6.0, 0.18)   # tolérance d'ombre : absolue, puis relative à la luminance
+OMBRE_SATURATION = 20     # une ombre n'augmente pas la saturation (Cucchiara)
+OMBRE_TEINTE = 40         # ... et ne déplace la teinte que peu (degrés)
 CONTAMINE_ECART = 60      # écart de luminance à partir duquel on arbitre
 OMBRE_ECART = 10          # ... et à partir duquel on rend au décor sa lumière
 OMBRE_RATIO_HAUT = 0.45   # une ombre assombrit ; un voile éclatant, non
@@ -142,18 +153,42 @@ def _ellipse(n: int) -> np.ndarray:
     return cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (n, n))
 
 
+def _hsv(x: np.ndarray) -> np.ndarray:
+    """Teinte (0-360), saturation (0-255), valeur (0-255), en float32."""
+    return cv2.cvtColor(np.clip(x, 0, 255).astype(np.uint8), cv2.COLOR_BGR2HSV_FULL
+                        ).astype(np.float32) * np.array([360 / 255, 1, 1], np.float32)
+
+
 def _est_ombre(img: np.ndarray, plaque: np.ndarray) -> np.ndarray:
     """Vrai si `img` est `plaque` simplement assombrie — même couleur, moins de lumière.
 
-    Le modèle physique de l'ombre est multiplicatif : I ≈ k·P avec 0 < k < 1, le
-    même k sur les trois canaux. On estime k par le rapport des luminances, puis
-    on vérifie canal par canal que k·P retombe bien sur I. Tester la couleur par
-    différence absolue échouerait sur les ombres profondes, où tout s'écrase.
+    Deux lectures du même fait physique, et il faut les deux :
+
+    - **multiplicative, en RGB.** Une ombre, c'est I ≈ k·P avec 0 < k < 1, le même
+      k sur les trois canaux. On estime k par le rapport des luminances, puis on
+      vérifie canal par canal que k·P retombe sur I. Tester la couleur par simple
+      différence absolue échouerait sur les ombres profondes, où tout s'écrase.
+    - **en HSV, selon Cucchiara et al.** — une ombre fait chuter la *valeur*, ne
+      bouge la *teinte* que très peu, et *abaisse* la saturation. Ce dernier point
+      est le plus discriminant, et il est invisible au test multiplicatif : un
+      objet sombre et coloré posé sur le décor a la même luminance qu'une ombre,
+      mais pas la même saturation.
+
+    Un pixel n'est déclaré ombre que si les deux lectures concordent.
     """
     k = _luma(img) / np.maximum(_luma(plaque), 1.0)
     tol = np.maximum(OMBRE_TOL[0], OMBRE_TOL[1] * _luma(img))
     ecart = np.max(np.abs(img - k[..., None] * plaque), axis=2)
-    return (k > OMBRE_RATIO[0]) & (k < OMBRE_RATIO[1]) & (ecart < tol)
+    multiplicatif = (k > OMBRE_RATIO[0]) & (k < OMBRE_RATIO[1]) & (ecart < tol)
+
+    hi, hp = _hsv(img), _hsv(plaque)
+    dteinte = np.abs(hi[..., 0] - hp[..., 0])
+    dteinte = np.minimum(dteinte, 360.0 - dteinte)          # la teinte est un cercle
+    ratio_v = hi[..., 2] / np.maximum(hp[..., 2], 1.0)
+    cucchiara = ((ratio_v > OMBRE_RATIO[0]) & (ratio_v < OMBRE_RATIO[1])
+                 & (hi[..., 1] - hp[..., 1] < OMBRE_SATURATION)
+                 & (dteinte < OMBRE_TEINTE))
+    return multiplicatif & cucchiara
 
 
 # ── 1. L'enveloppe basse, sur toute la durée ───────────────────────────────────
@@ -368,11 +403,184 @@ def _discipline(graine: np.ndarray, pousse: np.ndarray, sombre: np.ndarray,
     return m, trous
 
 
+def _affine_bord(alpha: np.ndarray, img: np.ndarray, rayon: int) -> np.ndarray:
+    """Recale le bord de α sur les arêtes de l'image, par filtre guidé.
+
+    Un flou gaussien adoucit le bord sans rien savoir de l'image : il déborde
+    autant sur la danseuse que sur le décor. Le filtre guidé (He, Sun & Tang)
+    modélise α comme une transformation linéaire locale de l'image elle-même —
+    la pente suit donc les vraies arêtes. Là où l'image est plate, il lisse ; là
+    où elle tranche, il tranche aussi. C'est ce qui récupère les mèches et les
+    franges de voile que la statistique ne voit qu'à moitié.
+
+    Sans `opencv-contrib`, on retombe sur le flou gaussien — moins fin, jamais faux.
+    """
+    if rayon < 3:
+        return alpha
+    if hasattr(cv2, "ximgproc"):
+        affine = cv2.ximgproc.guidedFilter(img, alpha.astype(np.float32),
+                                           radius=rayon, eps=GUIDE_EPS)
+        return np.clip(affine, 0.0, 1.0)
+    return cv2.GaussianBlur(alpha, (_impair(rayon), _impair(rayon)), 0)
+
+
+# ── 5 bis. L'a priori « humain », en option ────────────────────────────────────
+class Matteur:
+    """RobustVideoMatting (Lin et al., WACV 2022) — ce que la statistique ignore.
+
+    Notre construction ne sait qu'une chose : ce pixel a changé. Elle ne sait pas
+    *ce qu'est* une danseuse, et c'est pourquoi une ombre portée la trompe — une
+    ombre est un vrai changement. Un réseau de matting, lui, ne sait rien du décor
+    (il ne l'a jamais vu vide) mais sait reconnaître une personne, et rend un α
+    fin jusqu'à la mèche. Les deux angles morts sont exactement complémentaires.
+
+    Fusion : le réseau sert de *porte* — hors de la personne qu'il reconnaît, rien
+    ne passe, l'ombre tombe. À l'intérieur, on prend le plus généreux des deux —
+    la statistique rattrape ce que le réseau ampute, le réseau rattrape les mèches
+    et les voiles que la statistique ne voit qu'à moitié.
+
+    Modèle et poids téléchargés une fois dans `~/.cache/torch/hub`. Sans torch,
+    l'option n'existe pas et le reste marche pareil.
+    """
+
+    def __init__(self, variante: str = "mobilenetv3") -> None:
+        import torch                                # importé seulement si demandé
+        self.torch = torch
+        self.appareil = ("mps" if torch.backends.mps.is_available()
+                         else "cuda" if torch.cuda.is_available() else "cpu")
+        self.modele = torch.hub.load("PeterL1n/RobustVideoMatting", variante,
+                                     trust_repo=True).eval().to(self.appareil)
+        self.etat: list = [None] * 4
+        _log(f"  matteur {variante} sur {self.appareil}")
+
+    def oublie(self) -> None:
+        """Coupe la mémoire récurrente — pour des images non consécutives."""
+        self.etat = [None] * 4
+
+    def alpha(self, img: np.ndarray, ratio: float = RVM_RATIO) -> np.ndarray:
+        torch = self.torch
+        rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        t = (torch.from_numpy(rgb).permute(2, 0, 1)[None].float().div(255)
+             .to(self.appareil))
+        with torch.no_grad():
+            _, pha, *self.etat = self.modele(t, *self.etat, downsample_ratio=ratio)
+        return pha[0, 0].float().cpu().numpy()
+
+
+def alphas_arriere(chemin: Path, matteur: "Matteur", total: int) -> np.ndarray:
+    """α du réseau en remontant le temps, pour toute la vidéo (uint8).
+
+    RobustVideoMatting est *causal* : sa mémoire récurrente ne contient que le
+    passé, parce qu'il est fait pour le direct. Nous n'avons pas cette contrainte.
+    Rejouer la séquence à l'envers lui donne accès au futur — et les deux passes
+    ne se trompent pas aux mêmes endroits : celle qui vient de l'avant hésite
+    quand un bras surgit, celle qui vient de l'arrière hésite quand il disparaît.
+    Leur moyenne est plus stable que l'une ou l'autre, et sa première image n'est
+    plus une image froide.
+    """
+    cap = cv2.VideoCapture(str(chemin))
+    memoire = None
+    matteur.oublie()
+    for i in range(total - 1, -1, -1):
+        cap.set(cv2.CAP_PROP_POS_FRAMES, i)
+        ok, img = cap.read()
+        if not ok:
+            continue
+        a = matteur.alpha(img)
+        if memoire is None:
+            memoire = np.zeros((total,) + a.shape, np.uint8)
+        memoire[i] = np.clip(a * 255, 0, 255).astype(np.uint8)
+    cap.release()
+    matteur.oublie()
+    return memoire
+
+
+def _fusionne(stat: np.ndarray, pha: np.ndarray, dilate: int,
+              aire_min: int, sombre: np.ndarray, trou_max: int) -> np.ndarray:
+    """Porte par le réseau, générosité à l'intérieur, puis contrainte de continent."""
+    porte = (pha > RVM_PORTE).astype(np.uint8)
+    if porte.any():
+        n, labels, stats, _ = cv2.connectedComponentsWithStats(porte, connectivity=8)
+        if n > 1:                                  # la personne, pas les miettes
+            porte = (labels == 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))).astype(np.uint8)
+        porte = cv2.dilate(porte, _ellipse(_impair(dilate)))
+    fusion = np.maximum(stat, pha) * porte
+
+    # Le continent vaut aussi pour le résultat fusionné : le réseau a ses propres
+    # miettes, et l'union de deux α n'hérite d'aucune des deux disciplines.
+    vif = (fusion > RVM_PORTE).astype(np.uint8)
+    m, trous = _discipline(vif, vif, sombre, aire_min, trou_max)
+    return np.maximum(fusion * m, trous.astype(np.float32))
+
+
+def detoure_rvm(entree: Path, sortie: Path, matteur: "Matteur", *,
+                max_images: int | None = None, flou_bord: int = FLOU_BORD,
+                apercu: bool = False, planche_seule: bool = False) -> None:
+    """Le réseau seul, sans aucune statistique de fond — l'étalon de comparaison.
+
+    Il ne sait rien du décor : il n'a jamais vu la scène vide, et ne s'en sert
+    pas. Ce qu'il rend ici est ce qu'on obtiendrait sans exploiter l'immobilité
+    du décor, c'est-à-dire sans l'atout principal de ces prises de vue.
+    """
+    t0 = time.time()
+    _log(f"» {entree.name} — matteur seul")
+    cap = cv2.VideoCapture(str(entree))
+    fps = cap.get(cv2.CAP_PROP_FPS) or 30.0
+    w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    if max_images:
+        total = min(total, max_images)
+    jalons = sorted(set(np.linspace(0, max(total - 1, 0), 6).astype(int).tolist()))
+    vignettes: list[np.ndarray] = []
+
+    sortie.parent.mkdir(parents=True, exist_ok=True)
+    ecrivain = None
+    if not planche_seule:
+        ecrivain = cv2.VideoWriter(str(sortie), cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
+
+    indices = jalons if planche_seule else range(total)
+    for i in indices:
+        if planche_seule:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, i)
+            matteur.oublie()                       # images non consécutives
+        ok, img = cap.read()
+        if not ok:
+            break
+        a = _affine_bord(matteur.alpha(img), img, flou_bord)
+        out = (img.astype(np.float32) * a[..., None]).astype(np.uint8)
+        if ecrivain is not None:
+            ecrivain.write(out)
+        if (apercu or planche_seule) and i in jalons:
+            vignettes.append(cv2.resize(out, (w // 3, h // 3)))
+        if not planche_seule and i % 100 == 0:
+            _log(f"  image {i}/{total}  ({time.time() - t0:.0f} s)")
+
+    cap.release()
+    if ecrivain is not None:
+        ecrivain.release()
+    _pose_planche(vignettes, sortie)
+    _log(f"  fini en {time.time() - t0:.0f} s")
+
+
+def _pose_planche(vignettes: list[np.ndarray], sortie: Path) -> None:
+    if not vignettes:
+        return
+    if len(vignettes) >= 6:
+        planche = np.vstack([np.hstack(vignettes[:3]), np.hstack(vignettes[3:6])])
+    else:
+        planche = np.hstack(vignettes)
+    chemin = sortie.with_suffix(".planche.jpg")
+    chemin.parent.mkdir(parents=True, exist_ok=True)
+    cv2.imwrite(str(chemin), planche, [cv2.IMWRITE_JPEG_QUALITY, 88])
+    _log(f"  planche : {chemin}")
+
+
 # ── 6. La composition ──────────────────────────────────────────────────────────
 def detoure(entree: Path, sortie: Path, *, n_echantillons: int = N_ECHANTILLONS,
             max_images: int | None = None, flou_bord: int = FLOU_BORD,
             apercu: bool = False, planche_seule: bool = False,
-            pas_minima: int = 1) -> None:
+            pas_minima: int = 1, matteur: "Matteur | None" = None) -> None:
     t0 = time.time()
     _log(f"» {entree.name}")
     plaque, plancher, _ = bati_le_fond(entree, n_echantillons, pas_minima)
@@ -393,6 +601,11 @@ def detoure(entree: Path, sortie: Path, *, n_echantillons: int = N_ECHANTILLONS,
     trou_max = int(TROU_MAX_REL * w * h)
     jalons = sorted(set(np.linspace(0, max(total - 1, 0), 6).astype(int).tolist()))
     vignettes: list[np.ndarray] = []
+
+    arriere = None
+    if matteur is not None and not planche_seule:
+        _log("  matteur : passe arrière, à rebrousse-temps")
+        arriere = alphas_arriere(entree, matteur, total)
 
     sortie.parent.mkdir(parents=True, exist_ok=True)
     ecrivain = None
@@ -432,8 +645,12 @@ def detoure(entree: Path, sortie: Path, *, n_echantillons: int = N_ECHANTILLONS,
 
     def pose(img: np.ndarray, a: np.ndarray, i: int) -> None:
         nonlocal ecrites
-        if flou_bord >= 3:
-            a = cv2.GaussianBlur(a, (flou_bord, flou_bord), 0)
+        if matteur is not None:
+            pha = matteur.alpha(img)
+            if arriere is not None and 0 <= i < len(arriere):
+                pha = 0.5 * (pha + arriere[i].astype(np.float32) / 255.0)
+            a = _fusionne(a, pha, RVM_DILATE, aire_min, sombre, trou_max)
+        a = _affine_bord(a, img, flou_bord)
         out = (img.astype(np.float32) * a[..., None]).astype(np.uint8)
         if ecrivain is not None:
             ecrivain.write(out)
@@ -446,6 +663,8 @@ def detoure(entree: Path, sortie: Path, *, n_echantillons: int = N_ECHANTILLONS,
 
     if planche_seule:                              # six instants, rien d'autre
         for i in jalons:
+            if matteur is not None:
+                matteur.oublie()                   # instants non consécutifs
             fenetre = []
             for j in range(i - LISSAGE_T // 2, i + LISSAGE_T // 2 + 1):
                 cap.set(cv2.CAP_PROP_POS_FRAMES, max(0, min(j, total - 1)))
@@ -476,16 +695,7 @@ def detoure(entree: Path, sortie: Path, *, n_echantillons: int = N_ECHANTILLONS,
     if ecrivain is not None:
         ecrivain.release()
 
-    if vignettes:
-        if len(vignettes) >= 6:
-            planche = np.vstack([np.hstack(vignettes[:3]), np.hstack(vignettes[3:6])])
-        else:
-            planche = np.hstack(vignettes)
-        chemin = sortie.with_suffix(".planche.jpg")
-        chemin.parent.mkdir(parents=True, exist_ok=True)
-        cv2.imwrite(str(chemin), planche, [cv2.IMWRITE_JPEG_QUALITY, 88])
-        _log(f"  planche : {chemin}")
-
+    _pose_planche(vignettes, sortie)
     if ecrivain is not None:
         _log(f"  fini : {sortie}  ({ecrites} images, {time.time() - t0:.0f} s)")
     else:
@@ -509,7 +719,21 @@ def main(argv: list[str] | None = None) -> int:
                    help="écrire aussi une planche de 6 vignettes")
     p.add_argument("--planche", action="store_true",
                    help="n'écrire QUE la planche de 6 vignettes, pas de vidéo")
+    p.add_argument("--rvm", nargs="?", const="mobilenetv3", default=None,
+                   choices=["mobilenetv3", "resnet50"],
+                   help="fusionner avec RobustVideoMatting (requiert torch)")
+    p.add_argument("--rvm-seul", nargs="?", const="mobilenetv3", default=None,
+                   choices=["mobilenetv3", "resnet50"],
+                   help="le réseau SEUL, sans statistique de fond — étalon de comparaison")
     a = p.parse_args(argv)
+
+    matteur = None
+    if a.rvm or a.rvm_seul:
+        try:
+            matteur = Matteur(a.rvm_seul or a.rvm)
+        except ImportError:
+            _log("torch absent : `./.venv/bin/pip install torch torchvision`")
+            return 1
 
     for entree in a.entrees:
         if not entree.exists():
@@ -521,9 +745,15 @@ def main(argv: list[str] | None = None) -> int:
             sortie = a.sortie
         else:
             sortie = a.sortie / f"{entree.stem}_nobg.mp4"
-        detoure(entree, sortie, n_echantillons=a.echantillons, max_images=a.max_images,
-                flou_bord=a.flou_bord, apercu=a.apercu, planche_seule=a.planche,
-                pas_minima=a.pas_minima)
+        if matteur is not None:
+            matteur.oublie()                       # chaque vidéo repart à zéro
+        if a.rvm_seul:
+            detoure_rvm(entree, sortie, matteur, max_images=a.max_images,
+                        flou_bord=a.flou_bord, apercu=a.apercu, planche_seule=a.planche)
+        else:
+            detoure(entree, sortie, n_echantillons=a.echantillons,
+                    max_images=a.max_images, flou_bord=a.flou_bord, apercu=a.apercu,
+                    planche_seule=a.planche, pas_minima=a.pas_minima, matteur=matteur)
     return 0
 
 
