@@ -141,7 +141,17 @@ Compter une dizaine de minutes par vidéo, contre trois sans `--rvm`.
 
 ## Réglages
 
-Tout est en tête de fichier, en constantes nommées. Les deux qui comptent :
-`SEUIL_HAUT`/`SEUIL_BAS` (sensibilité, en multiples du plancher de bruit) et
-`BORD_LARGEUR` (douceur du bord). `--pas-minima N` accélère la construction des
-enveloppes en n'en lisant qu'une image sur N, au prix de leur finesse.
+Tout est en tête de fichier, en constantes nommées, groupées par étape. Les deux
+qui comptent : `SEUIL_HAUT`/`SEUIL_BAS` (sensibilité, en multiples du plancher de
+bruit) et `BORD_LARGEUR` (douceur du bord). `--pas-enveloppes N` accélère leur
+construction en n'en lisant qu'une image sur N, au prix de leur finesse.
+
+## Les lacs
+
+La contrainte de continent interdit les archipels, pas les lacs — une composante
+de fond qui ne touche aucun bord de l'image. Un lac est comblé s'il est petit, ou
+si le décor qu'il découvrirait est noir (ça ne coûte rien). Sur un décor visible —
+toile grise, tapis — un grand lac **survit** : le combler collerait un morceau de
+décor à l'intérieur de la silhouette, ce qui serait pire. L'espace entre deux
+jambes qui descend jusqu'au bas du cadre n'est pas un lac mais un golfe ouvert
+sur l'océan : il n'est jamais comblé.
