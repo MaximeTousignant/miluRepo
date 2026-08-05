@@ -1,0 +1,12 @@
+# Aucune image, aucune vidéo ne monte dans un repo public — les sources comme
+# les rendus restent en local (voir CARNET.md). Le .gitignore est un garde-fou,
+# pas une permission d'essayer.
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webm

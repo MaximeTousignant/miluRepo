@@ -7,5 +7,10 @@
 #   ./.venv/bin/python publications/stokex/gen_figures.py
 #   Requiert aussi une installation LaTeX système (text.usetex=True) :
 #   latex, dvipng — fournis par MacTeX / TeX Live.
+# vids/detourage.py — détourage sur fond fixe :
+#   ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o SORTIE.mp4
+#   Requiert opencv (lecture/écriture vidéo, morphologie). Pas de son en sortie :
+#   cette machine n'a pas de ffmpeg.
 matplotlib
 pandas
+opencv-python-headless
