@@ -44,7 +44,7 @@ Usage :
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --brut     # le réseau nu
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --audio MUSIQUE.mp3
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --png     # séquence exacte
-    ./.venv/bin/python vids/detourage.py PORTRAIT.jpg         # image fixe → PNG RGBA
+    ./.venv/bin/python vids/detourage.py DOSSIER/ -o SORTIE/  # tout ce qui est vidéo
 
 OpenCV n'écrit que trois canaux : le WebM se fabrique en poussant les images
 brutes dans un tube vers `ffmpeg`, qui seul sait porter un alpha. Mesuré sur ces
@@ -76,10 +76,7 @@ RATIO = 0.5               # sous-échantillonnage interne du réseau — mesuré
                           # optimum, pas un maximum. À 1,0 les structures fines
                           # se reperdent, le réseau ayant été entraîné plus bas.
 CHAUFFE = 6               # images de chauffe de la mémoire récurrente, hors séquence
-IMAGES = {".jpg", ".jpeg", ".png", ".webp", ".tif", ".tiff"}
-RATIO_IMAGE = 0.125       # pour une image fixe — mesuré : au-delà, le réseau
-                          # ampute un bras ou un pied sur ces portraits 4K
-REPETITIONS = 8           # ... et on lui repasse l'image autant de fois
+VIDEOS = {".mp4", ".mov", ".m4v", ".avi", ".mkv", ".webm"}   # le reste est ignoré
 
 # II. Le seuillage par hystérésis.
 SEUIL_HAUT = 0.50         # au-dessus, le réseau est franc : c'est un noyau
@@ -371,41 +368,6 @@ class Rendu:
         _log(f"  planche : {chemin}")
 
 
-def detoure_image(entree: Path, sortie: Path, matteur: Matteur, *,
-                  seuille: bool = True, ratio: float = RATIO_IMAGE,
-                  repetitions: int = REPETITIONS) -> None:
-    """Une image fixe : pas de temps, donc pas de deux sens — mais pas de froid non plus.
-
-    Le réseau est récurrent, et sa mémoire est faite pour accumuler la
-    connaissance d'une scène. Une image fixe qu'on lui repasse plusieurs fois est
-    une vidéo immobile : il n'a rien de nouveau à apprendre à chaque tour, mais
-    il lui faut ces tours pour se décider. Mesuré sur ces portraits, la part de
-    pixels indécis (0,05 < α < 0,95) tombe de 9,5 % à 2,4 % entre une passe et
-    huit — la mémoire converge, et le bord cesse d'être mou.
-
-    Le ratio, lui, doit descendre : ce qui compte pour le réseau n'est pas la
-    taille de l'image mais celle du sujet dedans, et sur ces portraits en pied à
-    2160×3840 il ampute un bras dès 0,14.
-    """
-    t0 = time.time()
-    _log(f"» {entree.name} — image fixe")
-    img = cv2.imread(str(entree))
-    if img is None:
-        raise RuntimeError(f"image illisible : {entree}")
-    matteur.oublie()
-    for _ in range(max(1, repetitions)):
-        pha = matteur.alpha(img, ratio=ratio)
-    if seuille:
-        pha = hysteresis(pha)
-    a = np.clip(pha * 255, 0, 255).astype(np.uint8)
-    chemin = sortie.with_suffix(".png")
-    chemin.parent.mkdir(parents=True, exist_ok=True)
-    cv2.imwrite(str(chemin), np.dstack(
-        [np.where(a[..., None] > 0, matteur.avant_plan, 0), a]),
-        [cv2.IMWRITE_PNG_COMPRESSION, 9])
-    _log(f"  fini : {chemin}  ({img.shape[1]}×{img.shape[0]}, {time.time() - t0:.0f} s)")
-
-
 def detoure(entree: Path, sortie: Path, matteur: Matteur, *,
             max_images: int | None = None, apercu: bool = False,
             planche_seule: bool = False, seuille: bool = True,
@@ -440,6 +402,24 @@ def detoure(entree: Path, sortie: Path, matteur: Matteur, *,
     _log(f"  fini : {rendu.chemin}  ({rendu.ecrites} images, {time.time() - t0:.0f} s)")
 
 
+def _rassemble(entrees: list[Path]) -> tuple[list[Path], int]:
+    """Développe les dossiers et écarte ce qui n'est pas une vidéo.
+
+    Un dossier de rushes contient aussi des photos, des `.DS_Store`, des notes.
+    On ne s'en offusque pas : on prend les vidéos, on compte le reste, et on le
+    dit une fois plutôt que d'échouer sur le premier JPEG venu.
+    """
+    trouvees, ecartes = [], 0
+    for e in entrees:
+        candidats = sorted(x for x in e.rglob("*") if x.is_file()) if e.is_dir() else [e]
+        for c in candidats:
+            if c.suffix.lower() in VIDEOS:
+                trouvees.append(c)
+            elif not c.name.startswith("."):
+                ecartes += 1
+    return trouvees, ecartes
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(
         description="Détourage vidéo — il ne reste que la personne, sur fond transparent.")
@@ -461,13 +441,20 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--audio", type=Path, default=None,
                    help="piste audio à coller à la sortie (WebM seulement)")
     p.add_argument("--ratio", type=float, default=None,
-                   help=f"sous-échantillonnage du réseau (défaut {RATIO} en vidéo,"
-                        f" {RATIO_IMAGE} sur image fixe) — sensible, voir le README")
+                   help=f"sous-échantillonnage du réseau (défaut {RATIO}) —"
+                        " sensible au cadrage, voir le README")
     a = p.parse_args(argv)
 
     manquantes = [e for e in a.entrees if not e.exists()]
     if manquantes:
         _log("introuvable : " + ", ".join(str(e) for e in manquantes))
+        return 1
+
+    entrees, ecartes = _rassemble(a.entrees)
+    if ecartes:
+        _log(f"ignoré, pas une vidéo : {ecartes} fichier(s)")
+    if not entrees:
+        _log("aucune vidéo à traiter")
         return 1
 
     try:
@@ -476,17 +463,13 @@ def main(argv: list[str] | None = None) -> int:
         _log("torch absent : `./.venv/bin/pip install torch torchvision`")
         return 1
 
-    racine = a.sortie if a.sortie is not None else a.entrees[0].parent
-    for entree in a.entrees:
+    racine = a.sortie if a.sortie is not None else entrees[0].parent
+    for entree in entrees:
         matteur.oublie()                           # chaque entrée repart à zéro
         sortie = racine / f"{entree.stem}_nobg"
-        if entree.suffix.lower() in IMAGES:
-            detoure_image(entree, sortie, matteur, seuille=not a.brut,
-                          ratio=a.ratio if a.ratio else RATIO_IMAGE)
-        else:
-            detoure(entree, sortie, matteur, max_images=a.max_images,
-                    apercu=a.apercu, planche_seule=a.planche, seuille=not a.brut,
-                    png=a.png, audio=a.audio, ratio=a.ratio)
+        detoure(entree, sortie, matteur, max_images=a.max_images,
+                apercu=a.apercu, planche_seule=a.planche, seuille=not a.brut,
+                png=a.png, audio=a.audio, ratio=a.ratio)
     return 0
 
 
