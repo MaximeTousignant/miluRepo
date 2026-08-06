@@ -85,6 +85,7 @@ SEUIL_BAS = 0.01          # en-dessous, rien ne survit — bas, car l'hystérés
 FFMPEG = "ffmpeg"         # sur le PATH ; sans lui, la sortie retombe en PNG
 VP9_CRF = 20              # qualité VP9 : plus bas, plus fidèle et plus lourd
 VIGNETTES = 6             # instants de la planche de contrôle
+PAR_LIGNE = 3             # ... disposés sur autant de colonnes
 REDUCTION = 3             # facteur de réduction des vignettes
 
 
@@ -93,26 +94,13 @@ def _log(msg: str) -> None:
     print(msg, file=sys.stderr, flush=True)
 
 
-def _impair(x: float) -> int:
-    return max(3, int(x) | 1)
-
-
-def _ellipse(n: int) -> np.ndarray:
-    return cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (n, n))
-
-
-def _garde(gardes: np.ndarray, n: int, labels: np.ndarray) -> np.ndarray:
-    table = np.zeros(n, np.uint8)
-    table[gardes] = 1
-    return table[labels]
-
-
 # ── I. Le matteur, dans les deux sens du temps ─────────────────────────────────
 class Matteur:
     """RobustVideoMatting, et le futur qu'on lui rend.
 
-    Modèle et poids téléchargés une fois dans `~/.cache/torch/hub` — 3,7 M
-    paramètres pour `mobilenetv3`. Tourne sur MPS, CUDA ou, à défaut, le CPU.
+    Modèle et poids téléchargés une fois dans `~/.cache/torch/hub`. Deux
+    variantes : `resnet50`, le défaut, et `mobilenetv3`, deux fois plus rapide
+    et 3,7 M paramètres. Tourne sur MPS, CUDA ou, à défaut, le CPU.
     """
 
     def __init__(self, variante: str = VARIANTE) -> None:
@@ -124,6 +112,7 @@ class Matteur:
                                      trust_repo=True).eval().to(self.appareil)
         self.etat: list = [None] * 4
         self.arriere: np.ndarray | None = None
+        self.avant_plan: np.ndarray | None = None
         _log(f"  matteur {variante} sur {self.appareil}")
 
     def oublie(self) -> None:
@@ -180,8 +169,9 @@ class Matteur:
         La moyenne, et non le maximum ni le minimum : le maximum prendrait
         l'union et garderait ce que l'une des deux passes a halluciné ; le
         minimum prendrait l'intersection et couperait le bras que l'une des deux
-        a manqué. La moyenne rend 0,5 sur un désaccord — une abstention, que la
-        discipline du continent tranchera ensuite sur des motifs géométriques.
+        a manqué. La moyenne rend 0,5 sur un désaccord — une abstention, qui
+        franchit le seuil bas mais pas le seuil haut : le pixel sera donc gardé
+        s'il tient à une certitude voisine, et perdu sinon.
         """
         pha = self.alpha(img)
         if self.arriere is not None and 0 <= i < len(self.arriere):
@@ -247,7 +237,7 @@ def hysteresis(pha: np.ndarray) -> np.ndarray:
     retranché sur ces prises de vue, et le bouchage des trous *ajoutait* vingt à
     soixante-dix fois plus qu'il ne nettoyait — le décor entre deux bras levés,
     entre un bras et un visage, entre deux jambes. Invisible sur fond noir,
-    franchement faux sur fond transparent. Voir `git log`, commit 1cffb59.
+    franchement faux sur fond transparent. Voir `git log`, commit ea744a0.
     """
     graine = (pha > SEUIL_HAUT).astype(np.uint8)
     if not graine.any():
@@ -340,7 +330,6 @@ class Rendu:
                          str(self.chemin)]
             self.tube = subprocess.Popen(commande, stdin=subprocess.PIPE)
         else:
-            self.chemin = sortie
             sortie.mkdir(parents=True, exist_ok=True)
 
     def pose(self, couleur: np.ndarray, alpha: np.ndarray, i: int) -> None:
@@ -365,11 +354,11 @@ class Rendu:
                 raise RuntimeError(f"ffmpeg a échoué : {self.chemin}")
         if not self.vignettes:
             return
-        if len(self.vignettes) >= 6:
-            planche = np.vstack([np.hstack(self.vignettes[:3]),
-                                 np.hstack(self.vignettes[3:6])])
-        else:
-            planche = np.hstack(self.vignettes)
+        lignes = [np.hstack(self.vignettes[k:k + PAR_LIGNE])
+                  for k in range(0, len(self.vignettes), PAR_LIGNE)]
+        large = max(l.shape[1] for l in lignes)
+        planche = np.vstack([np.pad(l, ((0, 0), (0, large - l.shape[1]), (0, 0)))
+                             for l in lignes])
         chemin = self.sortie.parent / f"{self.sortie.name}.planche.jpg"
         chemin.parent.mkdir(parents=True, exist_ok=True)
         cv2.imwrite(str(chemin), planche, [cv2.IMWRITE_JPEG_QUALITY, 88])
@@ -378,9 +367,9 @@ class Rendu:
 
 def detoure(entree: Path, sortie: Path, matteur: Matteur, *,
             max_images: int | None = None, apercu: bool = False,
-            planche_seule: bool = False, discipline: bool = True,
+            planche_seule: bool = False, seuille: bool = True,
             png: bool = False, audio: Path | None = None) -> None:
-    """Les deux sens du temps, puis le continent, puis l'écriture en RGBA."""
+    """Les deux sens du temps, le seuillage, puis l'écriture en RGBA."""
     t0 = time.time()
     _log(f"» {entree.name}")
     src = Source.ouvre(entree, max_images)
@@ -400,7 +389,7 @@ def detoure(entree: Path, sortie: Path, matteur: Matteur, *,
             break
         if not planche_seule:
             pha = matteur.alpha_deux_sens(img, i)
-        rendu.pose(matteur.avant_plan, hysteresis(pha) if discipline else pha, i)
+        rendu.pose(matteur.avant_plan, hysteresis(pha) if seuille else pha, i)
         if not planche_seule and i % 100 == 0:
             _log(f"  image {i}/{src.total}  ({time.time() - t0:.0f} s)")
 
@@ -410,10 +399,11 @@ def detoure(entree: Path, sortie: Path, matteur: Matteur, *,
 
 
 def main(argv: list[str] | None = None) -> int:
-    p = argparse.ArgumentParser(description="Détourage vidéo, sortie sur noir.")
+    p = argparse.ArgumentParser(
+        description="Détourage vidéo — il ne reste que la personne, sur fond transparent.")
     p.add_argument("entrees", nargs="+", type=Path, help="vidéo(s) d'entrée")
     p.add_argument("-o", "--sortie", type=Path, default=None,
-                   help="dossier racine ; chaque vidéo y reçoit son sous-dossier de PNG")
+                   help="dossier racine ; chaque vidéo y reçoit son .webm (ou son dossier de PNG)")
     p.add_argument("--variante", default=VARIANTE, choices=["mobilenetv3", "resnet50"],
                    help=f"variante du matteur (défaut {VARIANTE})")
     p.add_argument("--max-images", type=int, default=None,
@@ -446,7 +436,7 @@ def main(argv: list[str] | None = None) -> int:
         matteur.oublie()                           # chaque vidéo repart à zéro
         detoure(entree, racine / f"{entree.stem}_nobg", matteur,
                 max_images=a.max_images, apercu=a.apercu,
-                planche_seule=a.planche, discipline=not a.brut,
+                planche_seule=a.planche, seuille=not a.brut,
                 png=a.png, audio=a.audio)
     return 0
 
