@@ -137,6 +137,38 @@ la confiance et non par la taille.
   en silence : un bras disparaît, et rien dans sa sortie ne le signale. C'est la
   limite qu'il faut garder en tête en relisant les planches.
 
+## Les images fixes
+
+    ./.venv/bin/python vids/detourage.py PORTRAIT.jpg -o DOSSIER/
+
+Une image fixe donne un PNG en RGBA. Pas de temps, donc pas de deux sens — mais
+pas de froid non plus : **on repasse l'image au réseau huit fois**. Sa mémoire
+récurrente est faite pour accumuler la connaissance d'une scène ; une image fixe
+répétée est une vidéo immobile. Il n'a rien de nouveau à apprendre à chaque tour,
+mais il lui faut ces tours pour se décider. Mesuré sur ces portraits, la part de
+pixels indécis (0,05 < α < 0,95) tombe de **9,5 % à 2,4 %** entre une passe et
+huit.
+
+Le ratio, lui, doit descendre à **0,125** — et c'est le réglage le plus sensible
+du fichier. Ce qui compte pour le réseau n'est pas la taille de l'image mais
+celle du **sujet dedans**, et sur ces portraits en pied à 2160×3840, il ampute un
+bras ou un pied dès 0,14 :
+
+| ratio | Janani | Lakshimi | Shiva |
+|---|---|---|---|
+| 0,100 | 1,28 M | 1,04 M | 1,50 M |
+| **0,125** | **1,27 M** | **1,08 M** | **1,47 M** |
+| 0,140 | 1,27 M | 1,03 M | **0,87 M** ⚠ |
+| 0,160 | 1,27 M | **0,76 M** ⚠ | 0,95 M ⚠ |
+| 0,500 | — | 3,71 M ⚠ | — |
+
+(masse d'α ; une chute signale une amputation, une explosion signale que l'ombre
+portée et le tapis sont entrés dans le masque)
+
+Aucune règle automatique ne s'en tire : Janani tient à tous les ratios, Shiva
+casse dès 0,14. C'est pourquoi `--ratio` existe, et pourquoi il faut regarder le
+résultat quand on change de cadrage.
+
 ## Réglages
 
 Tout est en tête de fichier, en constantes nommées.
