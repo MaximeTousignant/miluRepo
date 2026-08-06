@@ -1,7 +1,7 @@
 # vids — détourage vidéo
 
 Un outil, un seul : [`detourage.py`](detourage.py). Il prend une vidéo et n'en
-garde que la personne qui danse, sur fond noir.
+garde que la personne qui danse, sur fond transparent.
 
 Aucune vidéo ne vit ici, et aucune n'y entrera jamais : les sources et les
 rendus restent hors du repo, en local. Voir `CARNET.md` (privé) pour l'endroit.
@@ -87,7 +87,7 @@ Une danseuse n'est pas un archipel. Trois contraintes géométriques, dans l'ord
 **Ce que ça apporte, mesuré : presque rien.** Sur ces prises de vue, le
 continent ne retire que 0,03 % de la masse d'α — le réseau est déjà propre.
 C'est une garantie, pas un contributeur : il coûte quelques millisecondes par
-image et interdit qu'une miette apparaisse un jour au milieu du noir.
+image et interdit qu'une miette apparaisse un jour au milieu du cadre.
 
 [rvm]: https://arxiv.org/abs/2108.11515
 
