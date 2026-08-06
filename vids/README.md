@@ -67,27 +67,61 @@ ensuite. Et la toute première image cesse d'être une image froide.
 Coût : la passe arrière tient tous les α en mémoire (un octet par pixel et par
 image, ~1 Go pour 52 s en 608×1080) et impose de relire la vidéo à l'envers.
 
-### II. Le continent
+### II. Le seuillage par hystérésis
 
-Une danseuse n'est pas un archipel. Trois contraintes géométriques, dans l'ordre :
+Le réseau allume aussi, çà et là, une poussière de décor — un à deux pixels,
+0,5 à 1 par image sur ces prises de vue. On ne garde donc que ce qui tient à une
+certitude.
 
-1. **hystérésis** — une composante ne survit que si elle contient un noyau franc
-   (α > 0,5) ; elle s'étend ensuite tant que α > 0,01. Un voile translucide
-   n'atteint jamais le seuil franc, mais il tient à un corps qui, lui,
-   l'atteint : il survit. Une miette de décor faiblement allumée, qui ne touche
-   aucun noyau, disparaît ;
-2. **continent** — on garde la plus grande composante et ses seuls compagnons
-   d'un dixième de son poids, au cas où un bras se détacherait ;
-3. **lacs** — une composante de fond qui ne touche aucun bord de l'image. On ne
-   bouche que les petits : sur un fond transparent, boucher un lac n'y rend pas
-   le décor invisible, ça y colle une tache opaque. L'espace entre deux jambes
-   qui descend jusqu'au bas du cadre n'est pas un lac mais un golfe ouvert sur
-   l'océan : il n'est jamais bouché.
+Le nom est un emprunt qui mérite d'être défait : en physique, l'hystérésis est
+un retard *temporel*, l'état dépendant du chemin parcouru. Ici, ni temps ni
+mémoire. Le terme vient du trigger de Schmitt et de [Canny][canny] (1986) :
+**il faut franchir le seuil haut pour s'allumer, mais seulement rester au-dessus
+du seuil bas pour le rester**. Le rôle que joue le passé dans le trigger est tenu
+ici par le **voisinage** — un pixel pâle reste allumé s'il peut être atteint, de
+proche en proche, depuis un pixel franc. Hystérésis spatiale plutôt que
+temporelle.
 
-**Ce que ça apporte, mesuré : presque rien.** Sur ces prises de vue, le
-continent ne retire que 0,03 % de la masse d'α — le réseau est déjà propre.
-C'est une garantie, pas un contributeur : il coûte quelques millisecondes par
-image et interdit qu'une miette apparaisse un jour au milieu du cadre.
+    graine = α > 0,50      # qui a le droit d'allumer
+    pousse = α > 0,01      # jusqu'où l'allumage se propage
+    on garde les taches de « pousse » qui contiennent une « graine »
+
+Une poussière à α = 0,06 n'atteint jamais 0,5 : elle tombe, où qu'elle soit et
+quelle que soit sa taille. Un voile translucide garde son dernier pixel à 0,02,
+parce qu'il tient à un corps qui est franc. **Le critère est la confiance, pas
+la taille** — et c'est pourquoi la règle ne coupe jamais une main détachée par
+le flou de mouvement.
+
+[canny]: https://doi.org/10.1109/TPAMI.1986.4767851
+
+## Ce qui a été retiré, et pourquoi (bis) : le continent
+
+L'hystérésis était naguère une pièce d'un mécanisme plus grand. Après elle
+venaient une **règle de taille** — ne garder que la plus grosse composante et ses
+compagnons d'un dixième de son poids — et un **bouchage des lacs**, les trous
+intérieurs du masque. L'idée était juste : une danseuse est un continent, pas un
+archipel.
+
+La mesure l'a démonté. Sur 4710 images :
+
+| pièce | effet mesuré |
+|---|---|
+| hystérésis | retire 0,002–0,008 % — la poussière |
+| règle de taille | **0,0000 %**, jamais déclenchée |
+| ouverture/fermeture morphologiques | s'annulent mutuellement |
+| bouchage des lacs | **ajoute 0,07 à 0,26 %** |
+
+Le bouchage rebouchait des jours véritables : le losange entre les deux bras
+levés de Shiva, le triangle entre son bras et son visage, l'espace entre les
+jambes de Janani. Il y recollait une tache opaque du décor qu'on venait de
+retirer — invisible tant qu'on composait sur du noir, franchement faux sur un
+fond transparent.
+
+Quant à la règle de taille, son risque était l'inverse de son intention : elle
+n'a jamais rencontré de bruit à supprimer, mais le jour où elle tirerait, ce
+serait sur une main ou un accessoire séparé du corps par du flou de mouvement —
+pas sur du décor. Le bruit, lui, était déjà parti à l'hystérésis, qui juge par
+la confiance et non par la taille.
 
 [rvm]: https://arxiv.org/abs/2108.11515
 

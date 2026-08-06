@@ -14,12 +14,14 @@ celle qui vient de l'arrière hésite quand il disparaît ; là où elles se
 contredisent, la moyenne rend une abstention plutôt qu'une erreur franche. Et la
 première image cesse d'être une image froide.
 
-**II. Le continent.** Une danseuse n'est pas un archipel. Ce que le réseau
-allume au large — une miette de décor, un reflet — n'a rien à faire là. On garde
-donc la plus grande composante et ses seuls compagnons de poids comparable, on
-n'y admet que ce qui touche un noyau franc, et on bouche les petits lacs — les
-grands, non : sur un fond transparent, boucher un lac n'y rend pas le décor
-invisible, ça y colle une tache opaque.
+**II. Le seuillage par hystérésis.** Le réseau allume aussi, çà et là, une
+poussière de décor à un ou deux pixels. On ne garde donc que ce qui tient à une
+certitude : deux seuils, l'un franc pour allumer, l'autre bas pour propager, et
+une tache ne survit que si elle contient un pixel franc. Une poussière pâle
+tombe ; un voile translucide, lui, garde son dernier pixel, parce qu'il tient à
+un corps qui est franc. Le critère est la confiance, pas la taille — c'est ce
+qui distingue cette règle d'une contrainte géométrique, et c'est pourquoi elle
+ne coupe jamais une main détachée par le flou de mouvement.
 
 **Sortie.** Un WebM/VP9 à canal alpha, ou une suite de PNG si `ffmpeg` manque.
 L'α est droit, non prémultiplié. La couleur n'est pas celle de l'image d'origine
@@ -39,7 +41,7 @@ Usage :
 
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o DOSSIER/
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --planche   # 6 vignettes seulement
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --sans-continent  # le réseau nu
+    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --brut     # le réseau nu
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --audio MUSIQUE.mp3
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --png     # séquence exacte
 
@@ -74,13 +76,10 @@ RATIO = 0.5               # sous-échantillonnage interne du réseau — mesuré
                           # se reperdent, le réseau ayant été entraîné plus bas.
 CHAUFFE = 6               # images de chauffe de la mémoire récurrente, hors séquence
 
-# II. Le continent.
+# II. Le seuillage par hystérésis.
 SEUIL_HAUT = 0.50         # au-dessus, le réseau est franc : c'est un noyau
 SEUIL_BAS = 0.01          # en-dessous, rien ne survit — bas, car l'hystérésis
                           # protège déjà de la brume détachée du corps
-AIRE_MIN_REL = 3e-4       # composante gardée si son aire dépasse ce ratio
-ILOT_RELATIF = 0.10       # ... et si elle pèse au moins ce dixième du continent
-TROU_MAX_REL = 4e-3       # lac bouché si son aire est sous ce ratio
 
 # III. Le rendu.
 FFMPEG = "ffmpeg"         # sur le PATH ; sans lui, la sortie retombe en PNG
@@ -218,73 +217,48 @@ class Matteur:
                       + self.alpha_chauffe(cap, i, total, -1))
 
 
-# ── II. Le continent ───────────────────────────────────────────────────────────
-def _hysteresis(graine: np.ndarray, pousse: np.ndarray) -> np.ndarray:
-    """Garde les composantes de `pousse` qui contiennent au moins une graine.
+# ── II. Le seuillage par hystérésis ────────────────────────────────────────────
+def _garde(gardes: np.ndarray, n: int, labels: np.ndarray) -> np.ndarray:
+    table = np.zeros(n, np.uint8)
+    table[gardes] = 1
+    return table[labels]
 
-    Un voile translucide n'atteint jamais le seuil franc, mais il tient à un
-    corps qui, lui, l'atteint : il survit. Une miette de décor faiblement
-    allumée, qui ne touche aucun noyau, disparaît.
+
+def hysteresis(pha: np.ndarray) -> np.ndarray:
+    """Ne garde que ce qui tient à une certitude — et tout ce qui y tient.
+
+    Le nom est un emprunt, et il mérite d'être défait. En physique, l'hystérésis
+    est un retard temporel : l'état dépend du chemin parcouru. Ici il n'y a ni
+    temps ni mémoire. Le terme vient du trigger de Schmitt, et de Canny (1986)
+    qui l'a porté en imagerie : **il faut franchir le seuil haut pour s'allumer,
+    mais seulement rester au-dessus du seuil bas pour le rester**. Le rôle que
+    joue le passé dans le trigger est tenu ici par le voisinage — un pixel pâle
+    reste allumé s'il peut être atteint, de proche en proche, depuis un pixel
+    franc. Hystérésis spatiale plutôt que temporelle.
+
+    Ce que ça donne, concrètement : une poussière à α = 0,06 n'atteint jamais
+    0,5, donc elle tombe, où qu'elle soit et quelle que soit sa taille. Un voile
+    translucide, lui, garde jusqu'à son dernier pixel à 0,02, parce qu'il tient
+    à un corps qui est franc. Le critère est la **confiance**, pas la taille.
+
+    C'était naguère une pièce d'un mécanisme plus grand — « le continent » —, qui
+    ne gardait ensuite que la plus grosse composante et bouchait les trous. Les
+    deux ont été retirés après mesure : la règle de taille n'a jamais rien
+    retranché sur ces prises de vue, et le bouchage des trous *ajoutait* vingt à
+    soixante-dix fois plus qu'il ne nettoyait — le décor entre deux bras levés,
+    entre un bras et un visage, entre deux jambes. Invisible sur fond noir,
+    franchement faux sur fond transparent. Voir `git log`, commit 1cffb59.
     """
+    graine = (pha > SEUIL_HAUT).astype(np.uint8)
     if not graine.any():
-        return np.zeros_like(pousse)
+        return np.zeros_like(pha)
+    pousse = (pha > SEUIL_BAS).astype(np.uint8)
     n, labels = cv2.connectedComponents(pousse, connectivity=8)
     gardes = np.unique(labels[graine.astype(bool)])
     gardes = gardes[gardes != 0]
     if n <= 1 or gardes.size == 0:
-        return np.zeros_like(pousse)
-    return _garde(gardes, n, labels)
-
-
-def _lacs(m: np.ndarray) -> np.ndarray:
-    """Composantes de fond qui ne touchent aucun bord : les lacs du masque.
-
-    L'espace entre deux jambes qui descend jusqu'au bas du cadre n'est pas un
-    lac mais un golfe ouvert sur l'océan — il n'est jamais bouché.
-    """
-    h, w = m.shape
-    depart = np.where(m == 0, 255, 0).astype(np.uint8)
-    remplissage = np.zeros((h + 2, w + 2), np.uint8)
-    for germe in ((0, 0), (w - 1, 0), (0, h - 1), (w - 1, h - 1)):
-        if depart[germe[1], germe[0]] == 255:
-            cv2.floodFill(depart, remplissage, germe, 0)
-    return (depart == 255).astype(np.uint8)
-
-
-def continent(pha: np.ndarray) -> np.ndarray:
-    """Impose à α d'être une silhouette pleine, seule dans un océan de décor."""
-    h, w = pha.shape
-    aire_min = int(AIRE_MIN_REL * h * w)
-    trou_max = int(TROU_MAX_REL * h * w)
-
-    m = _hysteresis((pha > SEUIL_HAUT).astype(np.uint8),
-                    (pha > SEUIL_BAS).astype(np.uint8))
-    m = cv2.morphologyEx(m, cv2.MORPH_OPEN, _ellipse(3))
-    m = cv2.morphologyEx(m, cv2.MORPH_CLOSE, _ellipse(9))
-
-    # Un continent, pas un archipel. On ne tolère, à côté de la plus grande
-    # composante, que des compagnons d'un poids comparable — au cas où un bras se
-    # détacherait, ou un voile lancé loin du corps.
-    n, labels, stats, _ = cv2.connectedComponentsWithStats(m, connectivity=8)
-    if n > 1:
-        aires = stats[1:, cv2.CC_STAT_AREA]
-        seuil = max(aire_min, ILOT_RELATIF * float(aires.max()))
-        gardes = np.nonzero(aires >= seuil)[0] + 1
-        if gardes.size == 0:
-            gardes = np.array([1 + int(np.argmax(aires))])
-        m = _garde(gardes, n, labels)
-
-    # Boucher un lac, c'est le rendre opaque. Tant qu'on composait sur du noir,
-    # ça ne coûtait rien quand l'image y était sombre ; sur un fond transparent,
-    # ça y colle une tache. On ne bouche donc plus que les petits — ceux dont on
-    # peut penser qu'ils sont un défaut du masque et non un vrai jour.
-    lacs = _lacs(m)
-    if lacs.any():
-        nt, tl, ts, _ = cv2.connectedComponentsWithStats(lacs, connectivity=8)
-        lacs = (_garde(np.nonzero(ts[1:, cv2.CC_STAT_AREA] < trou_max)[0] + 1, nt, tl)
-                if nt > 1 else np.zeros_like(lacs))
-        m = np.maximum(m, lacs)
-    return np.maximum(pha * m, lacs.astype(np.float32))
+        return np.zeros_like(pha)
+    return pha * _garde(gardes, n, labels)
 
 
 # ── III. Le rendu ──────────────────────────────────────────────────────────────
@@ -426,7 +400,7 @@ def detoure(entree: Path, sortie: Path, matteur: Matteur, *,
             break
         if not planche_seule:
             pha = matteur.alpha_deux_sens(img, i)
-        rendu.pose(matteur.avant_plan, continent(pha) if discipline else pha, i)
+        rendu.pose(matteur.avant_plan, hysteresis(pha) if discipline else pha, i)
         if not planche_seule and i % 100 == 0:
             _log(f"  image {i}/{src.total}  ({time.time() - t0:.0f} s)")
 
@@ -448,8 +422,8 @@ def main(argv: list[str] | None = None) -> int:
                    help=f"écrire aussi une planche de {VIGNETTES} vignettes")
     p.add_argument("--planche", action="store_true",
                    help="n'écrire QUE la planche de vignettes, pas de vidéo")
-    p.add_argument("--sans-continent", action="store_true",
-                   help="le réseau nu, sans discipline géométrique — pour comparer")
+    p.add_argument("--brut", action="store_true",
+                   help="le réseau nu, sans seuillage — pour comparer")
     p.add_argument("--png", action="store_true",
                    help="écrire une séquence PNG plutôt qu'un WebM (exact, mais lourd)")
     p.add_argument("--audio", type=Path, default=None,
@@ -472,7 +446,7 @@ def main(argv: list[str] | None = None) -> int:
         matteur.oublie()                           # chaque vidéo repart à zéro
         detoure(entree, racine / f"{entree.stem}_nobg", matteur,
                 max_images=a.max_images, apercu=a.apercu,
-                planche_seule=a.planche, discipline=not a.sans_continent,
+                planche_seule=a.planche, discipline=not a.brut,
                 png=a.png, audio=a.audio)
     return 0
 
