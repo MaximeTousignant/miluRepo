@@ -21,12 +21,12 @@ n'y admet que ce qui touche un noyau franc, et on bouche les petits lacs — les
 grands, non : sur un fond transparent, boucher un lac n'y rend pas le décor
 invisible, ça y colle une tache opaque.
 
-**Sortie.** Une suite de PNG en RGBA, α droit (non prémultiplié). La couleur
-n'est pas celle de l'image d'origine mais l'**avant-plan démêlé** que le réseau
-estime en même temps que l'α : sur un pixel de bord, physiquement un mélange du
-sujet et du décor, il rend la couleur qu'aurait le sujet seul. Sans lui, chaque
-contour porterait un liseré de la toile grise, invisible sur noir mais criant
-dès qu'on recompose sur autre chose.
+**Sortie.** Un WebM/VP9 à canal alpha, ou une suite de PNG si `ffmpeg` manque.
+L'α est droit, non prémultiplié. La couleur n'est pas celle de l'image d'origine
+mais l'**avant-plan démêlé** que le réseau estime en même temps que l'α : sur un
+pixel de bord, physiquement un mélange du sujet et du décor, il rend la couleur
+qu'aurait le sujet seul. Sans lui, chaque contour porterait un liseré de la toile
+grise, invisible sur noir mais criant dès qu'on recompose sur autre chose.
 
 Ce fichier a d'abord porté une tout autre méthode — une statistique du décor,
 médiane et enveloppes temporelles sur toute la durée, qui exploitait
@@ -40,12 +40,15 @@ Usage :
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o DOSSIER/
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --planche   # 6 vignettes seulement
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --sans-continent  # le réseau nu
+    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --audio MUSIQUE.mp3
+    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --png     # séquence exacte
 
-Aucun codec accessible sur cette machine ne porte de canal alpha — OpenCV n'écrit
-que trois canaux et `ffmpeg` n'est pas installé. La sortie est donc une suite de
-PNG numérotés dans un sous-dossier par vidéo, relisible comme séquence par tout
-logiciel de montage. Avec `ffmpeg`, un seul fichier suffirait :
-`ffmpeg -i %05d.png -c:v prores_ks -profile:v 4444 -pix_fmt yuva444p10le out.mov`.
+OpenCV n'écrit que trois canaux : le WebM se fabrique en poussant les images
+brutes dans un tube vers `ffmpeg`, qui seul sait porter un alpha. Mesuré sur ces
+prises de vue, VP9 pèse vingt fois moins qu'une séquence PNG — il retrouve la
+compression temporelle que l'image par image perd, et l'applique aussi à l'alpha.
+ProRes 4444, lui, pèse *plus* que les PNG : son plancher de débit se paie même
+sur un cadre transparent à 88 %.
 
 [rvm]: https://arxiv.org/abs/2108.11515
 """
@@ -53,6 +56,8 @@ logiciel de montage. Avec `ffmpeg`, un seul fichier suffirait :
 from __future__ import annotations
 
 import argparse
+import shutil
+import subprocess
 import sys
 import time
 from dataclasses import dataclass
@@ -78,6 +83,8 @@ ILOT_RELATIF = 0.10       # ... et si elle pèse au moins ce dixième du contine
 TROU_MAX_REL = 4e-3       # lac bouché si son aire est sous ce ratio
 
 # III. Le rendu.
+FFMPEG = "ffmpeg"         # sur le PATH ; sans lui, la sortie retombe en PNG
+VP9_CRF = 20              # qualité VP9 : plus bas, plus fidèle et plus lourd
 VIGNETTES = 6             # instants de la planche de contrôle
 REDUCTION = 3             # facteur de réduction des vignettes
 
@@ -314,20 +321,25 @@ def _damier(h: int, w: int, carreau: int = 16) -> np.ndarray:
 
 
 class Rendu:
-    """Là où α devient une image : une suite de PNG en RGBA, plus une planche.
+    """Là où α devient une image, plus une planche de contrôle sur damier.
 
-    Le fond est **transparent**, pas noir. Aucun codec accessible ici ne porte de
-    canal alpha — OpenCV n'écrit que trois canaux, et cette machine n'a pas de
-    `ffmpeg` —, donc la sortie est une suite d'images PNG numérotées, que tout
-    logiciel de montage sait relire comme une séquence.
+    Le fond est **transparent**, et l'alpha est *droit*, non prémultiplié : la
+    couleur reste pleine sous le bord, c'est le compositeur qui fera le mélange.
 
-    L'alpha est *droit*, non prémultiplié : la couleur reste pleine sous le bord
-    et c'est le compositeur qui fera le mélange. C'est ce qu'attend la convention
-    PNG, et ça évite un aller-retour destructeur.
+    Deux sorties possibles. Un **WebM/VP9** si `ffmpeg` est là — il porte l'alpha
+    dans un flux séparé, en pleine résolution (seule la couleur est
+    sous-échantillonnée), retrouve la compression temporelle que la séquence
+    d'images perd, et pèse vingt fois moins. Sinon, une **suite de PNG numérotés**,
+    exacte et sans dépendance, que tout logiciel de montage relit comme une
+    séquence.
+
+    Sous un pixel parfaitement transparent, la couleur est annulée : c'est du
+    bruit d'estimation, et du bruit ne se compresse pas.
     """
 
-    def __init__(self, dossier: Path, src: Source, *, ecrire: bool, vignettes: bool):
-        self.dossier = dossier
+    def __init__(self, sortie: Path, src: Source, *, ecrire: bool, vignettes: bool,
+                 video: bool = True, audio: Path | None = None):
+        self.sortie = sortie
         self.jalons = set(src.jalons)
         self.veut_vignettes = vignettes
         self.vignettes: list[np.ndarray] = []
@@ -335,18 +347,37 @@ class Rendu:
         self.fond = _damier(self.reduit[1], self.reduit[0])
         self.ecrites = 0
         self.ecrire = ecrire
-        if ecrire:
-            dossier.mkdir(parents=True, exist_ok=True)
+        self.tube = None
+        self.chemin = sortie
+        if not ecrire:
+            return
+        if video and shutil.which(FFMPEG):
+            self.chemin = sortie.with_suffix(".webm")
+            self.chemin.parent.mkdir(parents=True, exist_ok=True)
+            w, h = src.taille
+            commande = [FFMPEG, "-y", "-loglevel", "error",
+                        "-f", "rawvideo", "-pix_fmt", "bgra", "-s", f"{w}x{h}",
+                        "-r", f"{src.fps:.6f}", "-i", "-"]
+            if audio is not None:
+                commande += ["-i", str(audio), "-c:a", "libopus", "-b:a", "128k",
+                             "-shortest"]
+            commande += ["-c:v", "libvpx-vp9", "-pix_fmt", "yuva420p",
+                         "-crf", str(VP9_CRF), "-b:v", "0", "-row-mt", "1",
+                         str(self.chemin)]
+            self.tube = subprocess.Popen(commande, stdin=subprocess.PIPE)
+        else:
+            self.chemin = sortie
+            sortie.mkdir(parents=True, exist_ok=True)
 
     def pose(self, couleur: np.ndarray, alpha: np.ndarray, i: int) -> None:
         if self.ecrire:
             a = np.clip(alpha * 255, 0, 255).astype(np.uint8)
-            # Sous un pixel parfaitement transparent, la couleur ne veut rien dire
-            # — c'est du bruit d'estimation, et du bruit ne se compresse pas. On
-            # l'annule : le fichier fond de moitié et rien de visible n'est perdu.
             rgba = np.dstack([np.where(a[..., None] > 0, couleur, 0), a])
-            cv2.imwrite(str(self.dossier / f"{i:05d}.png"), rgba,
-                        [cv2.IMWRITE_PNG_COMPRESSION, 9])
+            if self.tube is not None:
+                self.tube.stdin.write(rgba.tobytes())
+            else:
+                cv2.imwrite(str(self.chemin / f"{i:05d}.png"), rgba,
+                            [cv2.IMWRITE_PNG_COMPRESSION, 9])
             self.ecrites += 1
         if self.veut_vignettes and i in self.jalons:
             petit = cv2.resize(couleur, self.reduit).astype(np.float32)
@@ -354,6 +385,10 @@ class Rendu:
             self.vignettes.append((petit * a + self.fond * (1 - a)).astype(np.uint8))
 
     def ferme(self) -> None:
+        if self.tube is not None:
+            self.tube.stdin.close()
+            if self.tube.wait() != 0:
+                raise RuntimeError(f"ffmpeg a échoué : {self.chemin}")
         if not self.vignettes:
             return
         if len(self.vignettes) >= 6:
@@ -361,21 +396,22 @@ class Rendu:
                                  np.hstack(self.vignettes[3:6])])
         else:
             planche = np.hstack(self.vignettes)
-        chemin = self.dossier.parent / f"{self.dossier.name}.planche.jpg"
+        chemin = self.sortie.parent / f"{self.sortie.name}.planche.jpg"
         chemin.parent.mkdir(parents=True, exist_ok=True)
         cv2.imwrite(str(chemin), planche, [cv2.IMWRITE_JPEG_QUALITY, 88])
         _log(f"  planche : {chemin}")
 
 
-def detoure(entree: Path, dossier: Path, matteur: Matteur, *,
+def detoure(entree: Path, sortie: Path, matteur: Matteur, *,
             max_images: int | None = None, apercu: bool = False,
-            planche_seule: bool = False, discipline: bool = True) -> None:
+            planche_seule: bool = False, discipline: bool = True,
+            png: bool = False, audio: Path | None = None) -> None:
     """Les deux sens du temps, puis le continent, puis l'écriture en RGBA."""
     t0 = time.time()
     _log(f"» {entree.name}")
     src = Source.ouvre(entree, max_images)
-    rendu = Rendu(dossier, src, ecrire=not planche_seule,
-                  vignettes=apercu or planche_seule)
+    rendu = Rendu(sortie, src, ecrire=not planche_seule,
+                  vignettes=apercu or planche_seule, video=not png, audio=audio)
 
     if not planche_seule:
         _log("  passe arrière, à rebrousse-temps")
@@ -396,7 +432,7 @@ def detoure(entree: Path, dossier: Path, matteur: Matteur, *,
 
     src.cap.release()
     rendu.ferme()
-    _log(f"  fini : {dossier}  ({rendu.ecrites} images, {time.time() - t0:.0f} s)")
+    _log(f"  fini : {rendu.chemin}  ({rendu.ecrites} images, {time.time() - t0:.0f} s)")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -414,6 +450,10 @@ def main(argv: list[str] | None = None) -> int:
                    help="n'écrire QUE la planche de vignettes, pas de vidéo")
     p.add_argument("--sans-continent", action="store_true",
                    help="le réseau nu, sans discipline géométrique — pour comparer")
+    p.add_argument("--png", action="store_true",
+                   help="écrire une séquence PNG plutôt qu'un WebM (exact, mais lourd)")
+    p.add_argument("--audio", type=Path, default=None,
+                   help="piste audio à coller à la sortie (WebM seulement)")
     a = p.parse_args(argv)
 
     manquantes = [e for e in a.entrees if not e.exists()]
@@ -432,7 +472,8 @@ def main(argv: list[str] | None = None) -> int:
         matteur.oublie()                           # chaque vidéo repart à zéro
         detoure(entree, racine / f"{entree.stem}_nobg", matteur,
                 max_images=a.max_images, apercu=a.apercu,
-                planche_seule=a.planche, discipline=not a.sans_continent)
+                planche_seule=a.planche, discipline=not a.sans_continent,
+                png=a.png, audio=a.audio)
     return 0
 
 
