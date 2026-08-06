@@ -115,6 +115,7 @@ GUIDE_EPS = 100.0         # tolérance du filtre guidé, en variance de niveaux
 RVM_RATIO = 0.5           # sous-échantillonnage interne du réseau
 RVM_PORTE = 0.10          # au-dessus, le réseau reconnaît la personne
 RVM_DILATE = 11           # marge laissée autour d'elle, contre ses propres ratés
+RVM_CHAUFFE = 6           # images de chauffe de la mémoire récurrente, hors séquence
 
 # VI. Rendu.
 VIGNETTES = 6             # instants de la planche de contrôle
@@ -570,11 +571,45 @@ class Matteur:
         self.oublie()
 
     def alpha_deux_sens(self, img: np.ndarray, i: int) -> np.ndarray:
-        """α de la passe avant, moyenné avec celui de la passe arrière s'il existe."""
+        """α de la passe avant, moyenné avec celui de la passe arrière s'il existe.
+
+        Là où les deux passes se contredisent, la moyenne rend 0,5 — une
+        abstention. Le maximum prendrait l'union et garderait ce que l'une des
+        deux a halluciné ; le minimum prendrait l'intersection et couperait le
+        bras que l'une des deux a manqué. L'abstention, elle, laisse la
+        statistique trancher plus loin, et c'est elle qui a vu le décor vide.
+        """
         pha = self.alpha(img)
         if self.arriere is not None and 0 <= i < len(self.arriere):
             pha = 0.5 * (pha + self.arriere[i].astype(np.float32) / 255.0)
         return pha
+
+    def alpha_chauffe(self, cap: cv2.VideoCapture, i: int, total: int,
+                      sens: int = 1, chauffe: int = RVM_CHAUFFE) -> np.ndarray:
+        """α à l'image `i`, la mémoire récurrente chauffée sur les images amont.
+
+        Pour une image tirée hors séquence — une vignette de planche —, appeler
+        le réseau à froid le fait travailler comme sur une photo isolée : il perd
+        tout le bénéfice temporel, qui est justement sa force. On lui rejoue donc
+        quelques images en amont, dans le sens demandé, avant de retenir la
+        sienne. `sens = -1` chauffe depuis le futur : c'est la passe arrière.
+        """
+        self.oublie()
+        alpha = None
+        for j in range(i - sens * chauffe, i + sens, sens):
+            cap.set(cv2.CAP_PROP_POS_FRAMES, max(0, min(j, total - 1)))
+            ok, img = cap.read()
+            if ok:
+                alpha = self.alpha(img)
+        if alpha is None:
+            raise RuntimeError(f"image {i} illisible")
+        return alpha
+
+    def alpha_deux_sens_hors_sequence(self, cap: cv2.VideoCapture, i: int,
+                                      total: int) -> np.ndarray:
+        """Les deux passes pour une image isolée, chacune chauffée de son côté."""
+        return 0.5 * (self.alpha_chauffe(cap, i, total, +1)
+                      + self.alpha_chauffe(cap, i, total, -1))
 
 
 def fusionne(stat: np.ndarray, pha: np.ndarray, decor: Decor) -> np.ndarray:
@@ -685,15 +720,19 @@ def detoure(entree: Path, sortie: Path, *, n_echantillons: int = N_ECHANTILLONS,
         _log("  matteur : passe arrière, à rebrousse-temps")
         matteur.remonte_le_temps(entree, src.total)
 
-    def pose(img: np.ndarray, a: np.ndarray, i: int) -> None:
+    def pose(img: np.ndarray, a: np.ndarray, i: int,
+             pha: np.ndarray | None = None) -> None:
         if matteur is not None:
-            a = fusionne(a, matteur.alpha_deux_sens(img, i), decor)
+            a = fusionne(a, matteur.alpha_deux_sens(img, i) if pha is None else pha,
+                         decor)
         rendu.pose(img, affine_bord(a, img, flou_bord), i)
 
     if planche_seule:                              # quelques instants, rien d'autre
         for i in src.jalons:
-            if matteur is not None:
-                matteur.oublie()                   # instants non consécutifs
+            # Image isolée : le réseau doit chauffer sa mémoire dans les deux sens,
+            # sans quoi il travaille comme sur une photo et perd toute sa force.
+            pha = (matteur.alpha_deux_sens_hors_sequence(src.cap, i, src.total)
+                   if matteur is not None else None)
             fenetre = []
             for j in range(i - LISSAGE_T // 2, i + LISSAGE_T // 2 + 1):
                 src.cap.set(cv2.CAP_PROP_POS_FRAMES, max(0, min(j, src.total - 1)))
@@ -702,7 +741,8 @@ def detoure(entree: Path, sortie: Path, *, n_echantillons: int = N_ECHANTILLONS,
                     fenetre.append((im, score(im, decor)))
             if fenetre:
                 milieu = len(fenetre) // 2
-                pose(fenetre[milieu][0], alpha_du_bloc([s for _, s in fenetre], decor), i)
+                pose(fenetre[milieu][0], alpha_du_bloc([s for _, s in fenetre], decor),
+                     i, pha)
     else:
         tampon: deque[tuple[np.ndarray, np.ndarray]] = deque(maxlen=LISSAGE_T)
         milieu = LISSAGE_T // 2
@@ -735,6 +775,11 @@ def detoure_sans_decor(entree: Path, sortie: Path, matteur: Matteur, *,
     Il ne sait rien du décor : il n'a jamais vu la scène vide, et ne s'en sert
     pas. Ce qu'il rend ici est ce qu'on obtiendrait sans exploiter l'immobilité
     du décor, c'est-à-dire sans l'atout principal de ces prises de vue.
+
+    Il garde en revanche ce qui ne lui coûte rien : les deux sens de lecture. Le
+    réseau est causal parce qu'il est fait pour le direct — cette contrainte-là
+    n'est pas la sienne, c'est celle de son usage. La lever ne lui prête aucune
+    connaissance du décor, elle lui rend seulement le futur.
     """
     t0 = time.time()
     _log(f"» {entree.name} — matteur seul")
@@ -742,14 +787,20 @@ def detoure_sans_decor(entree: Path, sortie: Path, matteur: Matteur, *,
     rendu = Rendu(sortie, src, video=not planche_seule,
                   vignettes=apercu or planche_seule)
 
+    if not planche_seule:
+        _log("  matteur : passe arrière, à rebrousse-temps")
+        matteur.remonte_le_temps(entree, src.total)
+
     for i in (src.jalons if planche_seule else range(src.total)):
-        if planche_seule:
+        if planche_seule:                          # image isolée : chauffer les deux sens
+            pha = matteur.alpha_deux_sens_hors_sequence(src.cap, i, src.total)
             src.cap.set(cv2.CAP_PROP_POS_FRAMES, i)
-            matteur.oublie()                       # images non consécutives
         ok, img = src.cap.read()
         if not ok:
             break
-        rendu.pose(img, affine_bord(matteur.alpha(img), img, flou_bord), i)
+        if not planche_seule:
+            pha = matteur.alpha_deux_sens(img, i)
+        rendu.pose(img, affine_bord(pha, img, flou_bord), i)
         if not planche_seule and i % 100 == 0:
             _log(f"  image {i}/{src.total}  ({time.time() - t0:.0f} s)")
 
