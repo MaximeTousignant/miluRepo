@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Détourage d'une danseuse — il ne reste qu'elle, sur noir.
+"""Détourage d'une danseuse — il ne reste qu'elle, sur fond transparent.
 
 Deux idées, et rien d'autre.
 
@@ -17,12 +17,16 @@ première image cesse d'être une image froide.
 **II. Le continent.** Une danseuse n'est pas un archipel. Ce que le réseau
 allume au large — une miette de décor, un reflet — n'a rien à faire là. On garde
 donc la plus grande composante et ses seuls compagnons de poids comparable, on
-n'y admet que ce qui touche un noyau franc, et on bouche les lacs avec
-discernement : sans réserve là où l'image est sombre (ce qu'on y découvre est
-déjà noir), petits lacs seulement ailleurs.
+n'y admet que ce qui touche un noyau franc, et on bouche les petits lacs — les
+grands, non : sur un fond transparent, boucher un lac n'y rend pas le décor
+invisible, ça y colle une tache opaque.
 
-**Composition.** `sortie = α × image`. Ce qui reste manqué dans les zones
-sombres est peu visible : le fond de sortie est noir aussi.
+**Sortie.** Une suite de PNG en RGBA, α droit (non prémultiplié). La couleur
+n'est pas celle de l'image d'origine mais l'**avant-plan démêlé** que le réseau
+estime en même temps que l'α : sur un pixel de bord, physiquement un mélange du
+sujet et du décor, il rend la couleur qu'aurait le sujet seul. Sans lui, chaque
+contour porterait un liseré de la toile grise, invisible sur noir mais criant
+dès qu'on recompose sur autre chose.
 
 Ce fichier a d'abord porté une tout autre méthode — une statistique du décor,
 médiane et enveloppes temporelles sur toute la durée, qui exploitait
@@ -33,12 +37,15 @@ ces deux idées-ci, pour dix fois plus de code.
 
 Usage :
 
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 [-o SORTIE.mp4]
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --planche   # 6 vignettes, pas de vidéo
+    ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o DOSSIER/
+    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --planche   # 6 vignettes seulement
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --sans-continent  # le réseau nu
 
-Sans ffmpeg sur cette machine : la sortie est muette (la piste audio de
-l'entrée n'est pas recopiée).
+Aucun codec accessible sur cette machine ne porte de canal alpha — OpenCV n'écrit
+que trois canaux et `ffmpeg` n'est pas installé. La sortie est donc une suite de
+PNG numérotés dans un sous-dossier par vidéo, relisible comme séquence par tout
+logiciel de montage. Avec `ffmpeg`, un seul fichier suffirait :
+`ffmpeg -i %05d.png -c:v prores_ks -profile:v 4444 -pix_fmt yuva444p10le out.mov`.
 
 [rvm]: https://arxiv.org/abs/2108.11515
 """
@@ -56,17 +63,19 @@ import numpy as np
 
 # ── Réglages ───────────────────────────────────────────────────────────────────
 # I. Le matteur.
-VARIANTE = "mobilenetv3"  # ou "resnet50" : plus lourd, un peu plus fin
-RATIO = 0.5               # sous-échantillonnage interne du réseau
+VARIANTE = "resnet50"     # ou "mobilenetv3" : deux fois plus rapide, moins fin
+RATIO = 0.5               # sous-échantillonnage interne du réseau — mesuré : un
+                          # optimum, pas un maximum. À 1,0 les structures fines
+                          # se reperdent, le réseau ayant été entraîné plus bas.
 CHAUFFE = 6               # images de chauffe de la mémoire récurrente, hors séquence
 
 # II. Le continent.
 SEUIL_HAUT = 0.50         # au-dessus, le réseau est franc : c'est un noyau
-SEUIL_BAS = 0.05          # en-dessous, rien ne survit
+SEUIL_BAS = 0.01          # en-dessous, rien ne survit — bas, car l'hystérésis
+                          # protège déjà de la brume détachée du corps
 AIRE_MIN_REL = 3e-4       # composante gardée si son aire dépasse ce ratio
-ILOT_RELATIF = 0.25       # ... et si elle pèse au moins ce quart du continent
-TROU_MAX_REL = 4e-3       # lac bouché en zone claire si son aire est sous ce ratio
-IMAGE_SOMBRE = 30         # en-deçà, découvrir l'image ne se verrait pas
+ILOT_RELATIF = 0.10       # ... et si elle pèse au moins ce dixième du continent
+TROU_MAX_REL = 4e-3       # lac bouché si son aire est sous ce ratio
 
 # III. Le rendu.
 VIGNETTES = 6             # instants de la planche de contrôle
@@ -115,14 +124,27 @@ class Matteur:
         """Coupe la mémoire récurrente — pour des images non consécutives."""
         self.etat = [None] * 4
 
-    def alpha(self, img: np.ndarray, ratio: float = RATIO) -> np.ndarray:
-        """α d'une image, la mémoire récurrente avançant d'un cran."""
+    def alpha(self, img: np.ndarray, ratio: float | None = None) -> np.ndarray:
+        """α d'une image, la mémoire récurrente avançant d'un cran.
+
+        `ratio` est lu à l'appel, pas à la définition : une valeur par défaut
+        d'argument serait figée au chargement du module, et modifier la constante
+        ensuite ne ferait rien — piège dans lequel je suis tombé en mesurant.
+        """
+        ratio = RATIO if ratio is None else ratio
         torch = self.torch
         rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         t = (torch.from_numpy(rgb).permute(2, 0, 1)[None].float().div(255)
              .to(self.appareil))
         with torch.no_grad():
-            _, pha, *self.etat = self.modele(t, *self.etat, downsample_ratio=ratio)
+            fgr, pha, *self.etat = self.modele(t, *self.etat, downsample_ratio=ratio)
+        # `fgr` est l'avant-plan *démêlé* du fond : sur un pixel de bord, qui est
+        # physiquement un mélange des deux, le réseau estime la couleur qu'aurait
+        # le sujet seul. Inutile tant qu'on composait sur du noir ; indispensable
+        # dès qu'on livre un alpha, sous peine d'un liseré de décor sur les bords.
+        self.avant_plan = cv2.cvtColor(
+            (fgr[0].permute(1, 2, 0).float().cpu().numpy() * 255).astype(np.uint8),
+            cv2.COLOR_RGB2BGR)
         return pha[0, 0].float().cpu().numpy()
 
     def remonte_le_temps(self, chemin: Path, total: int) -> None:
@@ -161,7 +183,7 @@ class Matteur:
         return pha
 
     def alpha_chauffe(self, cap: cv2.VideoCapture, i: int, total: int,
-                      sens: int = 1, chauffe: int = CHAUFFE) -> np.ndarray:
+                      sens: int = 1, chauffe: int | None = None) -> np.ndarray:
         """α à l'image `i`, la mémoire récurrente chauffée sur les images amont.
 
         Pour une image tirée hors séquence — une vignette de planche —, appeler
@@ -170,6 +192,7 @@ class Matteur:
         quelques images en amont, dans le sens demandé. `sens = -1` chauffe
         depuis le futur : c'est la passe arrière.
         """
+        chauffe = CHAUFFE if chauffe is None else chauffe
         self.oublie()
         alpha = None
         for j in range(i - sens * chauffe, i + sens, sens):
@@ -221,7 +244,7 @@ def _lacs(m: np.ndarray) -> np.ndarray:
     return (depart == 255).astype(np.uint8)
 
 
-def continent(pha: np.ndarray, img: np.ndarray) -> np.ndarray:
+def continent(pha: np.ndarray) -> np.ndarray:
     """Impose à α d'être une silhouette pleine, seule dans un océan de décor."""
     h, w = pha.shape
     aire_min = int(AIRE_MIN_REL * h * w)
@@ -244,19 +267,15 @@ def continent(pha: np.ndarray, img: np.ndarray) -> np.ndarray:
             gardes = np.array([1 + int(np.argmax(aires))])
         m = _garde(gardes, n, labels)
 
-    # Boucher un lac, c'est y laisser voir l'image. Si elle y est sombre, ça ne
-    # coûte rien — la sortie est noire de toute façon. Si elle est claire, on ne
-    # bouche que les petits, sous peine de recoller un morceau de décor au milieu
-    # de la silhouette.
+    # Boucher un lac, c'est le rendre opaque. Tant qu'on composait sur du noir,
+    # ça ne coûtait rien quand l'image y était sombre ; sur un fond transparent,
+    # ça y colle une tache. On ne bouche donc plus que les petits — ceux dont on
+    # peut penser qu'ils sont un défaut du masque et non un vrai jour.
     lacs = _lacs(m)
     if lacs.any():
-        sombre = (img.mean(axis=2) < IMAGE_SOMBRE).astype(np.uint8)
-        garde = lacs & sombre
         nt, tl, ts, _ = cv2.connectedComponentsWithStats(lacs, connectivity=8)
-        if nt > 1:
-            petits = np.nonzero(ts[1:, cv2.CC_STAT_AREA] < trou_max)[0] + 1
-            garde |= _garde(petits, nt, tl)
-        lacs = garde
+        lacs = (_garde(np.nonzero(ts[1:, cv2.CC_STAT_AREA] < trou_max)[0] + 1, nt, tl)
+                if nt > 1 else np.zeros_like(lacs))
         m = np.maximum(m, lacs)
     return np.maximum(pha * m, lacs.astype(np.float32))
 
@@ -287,35 +306,54 @@ class Source:
                           .astype(int).tolist()))
 
 
-class Rendu:
-    """Là où α devient une image : la vidéo, la planche de vignettes, ou les deux."""
+def _damier(h: int, w: int, carreau: int = 16) -> np.ndarray:
+    """Fond en damier — le seul fond honnête pour regarder un α."""
+    y, x = np.mgrid[0:h, 0:w]
+    return np.where(((y // carreau + x // carreau) % 2)[..., None], 150, 205
+                    ).astype(np.float32)
 
-    def __init__(self, sortie: Path, src: Source, *, video: bool, vignettes: bool):
-        self.sortie = sortie
+
+class Rendu:
+    """Là où α devient une image : une suite de PNG en RGBA, plus une planche.
+
+    Le fond est **transparent**, pas noir. Aucun codec accessible ici ne porte de
+    canal alpha — OpenCV n'écrit que trois canaux, et cette machine n'a pas de
+    `ffmpeg` —, donc la sortie est une suite d'images PNG numérotées, que tout
+    logiciel de montage sait relire comme une séquence.
+
+    L'alpha est *droit*, non prémultiplié : la couleur reste pleine sous le bord
+    et c'est le compositeur qui fera le mélange. C'est ce qu'attend la convention
+    PNG, et ça évite un aller-retour destructeur.
+    """
+
+    def __init__(self, dossier: Path, src: Source, *, ecrire: bool, vignettes: bool):
+        self.dossier = dossier
         self.jalons = set(src.jalons)
         self.veut_vignettes = vignettes
         self.vignettes: list[np.ndarray] = []
         self.reduit = (src.taille[0] // REDUCTION, src.taille[1] // REDUCTION)
+        self.fond = _damier(self.reduit[1], self.reduit[0])
         self.ecrites = 0
-        self.ecrivain = None
-        if video:
-            sortie.parent.mkdir(parents=True, exist_ok=True)
-            self.ecrivain = cv2.VideoWriter(str(sortie), cv2.VideoWriter_fourcc(*"mp4v"),
-                                            src.fps, src.taille)
-            if not self.ecrivain.isOpened():
-                raise RuntimeError(f"écriture impossible : {sortie}")
+        self.ecrire = ecrire
+        if ecrire:
+            dossier.mkdir(parents=True, exist_ok=True)
 
-    def pose(self, img: np.ndarray, alpha: np.ndarray, i: int) -> None:
-        out = (img.astype(np.float32) * alpha[..., None]).astype(np.uint8)
-        if self.ecrivain is not None:
-            self.ecrivain.write(out)
+    def pose(self, couleur: np.ndarray, alpha: np.ndarray, i: int) -> None:
+        if self.ecrire:
+            a = np.clip(alpha * 255, 0, 255).astype(np.uint8)
+            # Sous un pixel parfaitement transparent, la couleur ne veut rien dire
+            # — c'est du bruit d'estimation, et du bruit ne se compresse pas. On
+            # l'annule : le fichier fond de moitié et rien de visible n'est perdu.
+            rgba = np.dstack([np.where(a[..., None] > 0, couleur, 0), a])
+            cv2.imwrite(str(self.dossier / f"{i:05d}.png"), rgba,
+                        [cv2.IMWRITE_PNG_COMPRESSION, 9])
             self.ecrites += 1
         if self.veut_vignettes and i in self.jalons:
-            self.vignettes.append(cv2.resize(out, self.reduit))
+            petit = cv2.resize(couleur, self.reduit).astype(np.float32)
+            a = cv2.resize(alpha, self.reduit)[..., None]
+            self.vignettes.append((petit * a + self.fond * (1 - a)).astype(np.uint8))
 
     def ferme(self) -> None:
-        if self.ecrivain is not None:
-            self.ecrivain.release()
         if not self.vignettes:
             return
         if len(self.vignettes) >= 6:
@@ -323,20 +361,20 @@ class Rendu:
                                  np.hstack(self.vignettes[3:6])])
         else:
             planche = np.hstack(self.vignettes)
-        chemin = self.sortie.with_suffix(".planche.jpg")
+        chemin = self.dossier.parent / f"{self.dossier.name}.planche.jpg"
         chemin.parent.mkdir(parents=True, exist_ok=True)
         cv2.imwrite(str(chemin), planche, [cv2.IMWRITE_JPEG_QUALITY, 88])
         _log(f"  planche : {chemin}")
 
 
-def detoure(entree: Path, sortie: Path, matteur: Matteur, *,
+def detoure(entree: Path, dossier: Path, matteur: Matteur, *,
             max_images: int | None = None, apercu: bool = False,
             planche_seule: bool = False, discipline: bool = True) -> None:
-    """Les deux sens du temps, puis le continent, puis la composition."""
+    """Les deux sens du temps, puis le continent, puis l'écriture en RGBA."""
     t0 = time.time()
     _log(f"» {entree.name}")
     src = Source.ouvre(entree, max_images)
-    rendu = Rendu(sortie, src, video=not planche_seule,
+    rendu = Rendu(dossier, src, ecrire=not planche_seule,
                   vignettes=apercu or planche_seule)
 
     if not planche_seule:
@@ -352,20 +390,20 @@ def detoure(entree: Path, sortie: Path, matteur: Matteur, *,
             break
         if not planche_seule:
             pha = matteur.alpha_deux_sens(img, i)
-        rendu.pose(img, continent(pha, img) if discipline else pha, i)
+        rendu.pose(matteur.avant_plan, continent(pha) if discipline else pha, i)
         if not planche_seule and i % 100 == 0:
             _log(f"  image {i}/{src.total}  ({time.time() - t0:.0f} s)")
 
     src.cap.release()
     rendu.ferme()
-    _log(f"  fini : {sortie}  ({rendu.ecrites} images, {time.time() - t0:.0f} s)")
+    _log(f"  fini : {dossier}  ({rendu.ecrites} images, {time.time() - t0:.0f} s)")
 
 
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Détourage vidéo, sortie sur noir.")
     p.add_argument("entrees", nargs="+", type=Path, help="vidéo(s) d'entrée")
     p.add_argument("-o", "--sortie", type=Path, default=None,
-                   help="fichier .mp4 de sortie (une seule entrée) ou dossier de sortie")
+                   help="dossier racine ; chaque vidéo y reçoit son sous-dossier de PNG")
     p.add_argument("--variante", default=VARIANTE, choices=["mobilenetv3", "resnet50"],
                    help=f"variante du matteur (défaut {VARIANTE})")
     p.add_argument("--max-images", type=int, default=None,
@@ -389,15 +427,11 @@ def main(argv: list[str] | None = None) -> int:
         _log("torch absent : `./.venv/bin/pip install torch torchvision`")
         return 1
 
+    racine = a.sortie if a.sortie is not None else a.entrees[0].parent
     for entree in a.entrees:
-        if a.sortie is None:
-            sortie = entree.with_name(f"{entree.stem}_nobg.mp4")
-        elif a.sortie.suffix.lower() == ".mp4" and len(a.entrees) == 1:
-            sortie = a.sortie
-        else:
-            sortie = a.sortie / f"{entree.stem}_nobg.mp4"
         matteur.oublie()                           # chaque vidéo repart à zéro
-        detoure(entree, sortie, matteur, max_images=a.max_images, apercu=a.apercu,
+        detoure(entree, racine / f"{entree.stem}_nobg", matteur,
+                max_images=a.max_images, apercu=a.apercu,
                 planche_seule=a.planche, discipline=not a.sans_continent)
     return 0
 
