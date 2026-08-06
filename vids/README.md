@@ -65,7 +65,7 @@ plancher` (i sur les trois canaux) est d'abord moyennée sur un bloc espace-temp
 x·y·t, puis on décide :
 
 1. **hystérésis** — une composante ne survit que si elle contient un noyau
-   franc (`s > 6`) ; elle s'étend ensuite tant que `s > 2,5`. C'est la partie
+   franc (`s > 3,5`) ; elle s'étend ensuite tant que `s > 1,6`. C'est la partie
    gloutonne : on part des certitudes et on gagne de proche en proche ;
 2. **continent** — une danseuse n'est pas un archipel. Seules survivent la plus
    grande composante et ses compagnons d'un quart de son poids ;
@@ -74,9 +74,13 @@ x·y·t, puis on décide :
 4. **topographie** — α descend du plateau vers la plaine sans jamais remonter.
    La contrainte est imposée par la distance au plateau : des courbes de niveau
    qui ne se croisent pas, sur six pixels de pente ;
-5. **recalage du bord** par [filtre guidé][guide] (He, Sun & Tang) : α y est
-   modélisé comme une transformation linéaire locale de l'image, donc la pente
-   suit les vraies arêtes au lieu de les noyer sous un flou aveugle.
+5. **recalage du bord** par [filtre guidé][guide] (He, Sun & Tang), disponible
+   mais **désactivé par défaut** (`--flou-bord 0`) : α y est modélisé comme une
+   transformation linéaire locale de l'image, donc la pente suit les vraies
+   arêtes au lieu de les noyer sous un flou aveugle. Mesuré sur ces prises de
+   vue, il coûte pourtant plus qu'il n'apporte — il mord sur les plis sombres du
+   costume, qu'il prend pour des bords. La descente topographique donne déjà un
+   bord doux ; le filtre n'a rien à y ajouter ici.
 
 Les ombres portées sont écartées en cours de route par **deux** lectures du même
 fait physique, exigées ensemble : la lecture multiplicative en RGB (I ≈ k·P avec
@@ -120,6 +124,12 @@ deux disciplines.
 `--rvm-seul` court-circuite toute la statistique de fond — c'est l'étalon
 honnête, ce qu'on obtiendrait sans exploiter l'immobilité du décor.
 
+**Et depuis le réglage des paramètres, l'option n'est plus nécessaire** sur ces
+prises de vue : la statistique seule atteint le même résultat à l'œil, ombre
+portée comprise. Ce qui manquait n'était pas un a priori sur ce qu'est une
+personne, c'était un plancher de bruit à la bonne hauteur. `--rvm` reste utile
+comme filet — sur une prise de vue plus difficile, ou pour récupérer les mèches.
+
 Coût : la passe arrière tient tous les α en mémoire (1 octet par pixel et par
 image, ~1 Go pour 52 s en 608×1080) et impose de relire la vidéo à l'envers.
 Compter une dizaine de minutes par vidéo, contre trois sans `--rvm`.
@@ -141,10 +151,39 @@ Compter une dizaine de minutes par vidéo, contre trois sans `--rvm`.
 
 ## Réglages
 
-Tout est en tête de fichier, en constantes nommées, groupées par étape. Les deux
-qui comptent : `SEUIL_HAUT`/`SEUIL_BAS` (sensibilité, en multiples du plancher de
-bruit) et `BORD_LARGEUR` (douceur du bord). `--pas-enveloppes N` accélère leur
-construction en n'en lisant qu'une image sur N, au prix de leur finesse.
+Tout est en tête de fichier, en constantes nommées, groupées par étape.
+`--pas-enveloppes N` accélère leur construction en n'en lisant qu'une image sur
+N, au prix de leur finesse.
+
+Les valeurs par défaut ne sont pas devinées : elles sortent d'une descente de
+coordonnées sur 36 instants tirés des trois vidéos, contre un critère d'**erreur
+visible** — le décor gardé et la danseuse perdue, chacun pondéré par la
+luminance du pixel, parce que c'est ce que l'œil paie. Garder une ombre à 20
+coûte moins que garder du tapis à 150 ; perdre une mèche noire ne coûte presque
+rien. La référence est l'α de RobustVideoMatting : imparfaite, mais indépendante
+de tout ce qu'on règle, et juste sur le point qui nous manque le plus.
+
+L'erreur est passée de **0,553 à 0,235** (en niveaux de luminance moyens par
+pixel, ×100), et le décor gardé comme la danseuse perdue ont *tous deux* été
+divisés par deux — ce n'est pas un arbitrage, c'est un gain. Trois causes, par
+ordre d'importance :
+
+- **`PLANCHER_MIN` : 3 → 17.** Le plus gros. La MAD mesure le bruit du capteur,
+  qui n'est pas la difficulté : ce qui bouge vraiment, c'est la toile qui ondule,
+  la compression, la lumière qui vacille. Un plancher plancher-de-capteur rend
+  la mesure hypersensible à des changements réels mais sans intérêt.
+- **`GUIDE_EPS` : 10⁻³ → 100.** Une erreur d'échelle franche : le guide est en
+  0-255, donc `eps` s'exprime en *variance de niveaux*, pas en unités de α.
+  À 10⁻³ le filtre guidé suivait la moindre texture.
+- **`SEUIL_HAUT` : 6 → 3,5** et **`SEUIL_BAS` : 2,5 → 1,6**, une fois le plancher
+  correct — les seuils comptent en multiples du plancher, ils devaient descendre.
+
+Le balayage a aussi montré que cinq paramètres n'ont **aucun effet** sur ces
+prises de vue : `TOL_DECALAGE`, `ILOT_RELATIF`, `TROU_MAX_REL`, `AIRE_MIN_REL`,
+`PLANCHER_MAX`. Ce sont des assurances, pas des réglages — `TOL_DECALAGE`, par
+exemple, ne sert que si le décor a une texture chargée qui glisse (un tapis sous
+un pied), ce qui n'arrive pas dans le cadrage vertical. On les garde tels quels :
+un paramètre inutile ici peut être décisif sur la prise de vue suivante.
 
 ## Les lacs
 

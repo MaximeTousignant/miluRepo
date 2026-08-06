@@ -75,11 +75,11 @@ NOYAU = np.array([[0.07021169894, 0.1198588674, 0.07021169894],
                   [0.07021169894, 0.1198588674, 0.07021169894]], np.float32)
 N_ECHANTILLONS = 120      # images tirées pour la médiane temporelle
 K_ENVELOPPE = 4           # rang de l'extrême retenu pour les enveloppes
-PLANCHER_MIN = 3.0        # plancher de bruit minimal (niveaux 0-255)
+PLANCHER_MIN = 17.0       # plancher de bruit minimal (niveaux 0-255)
 PLANCHER_MAX = 22.0       # au-delà, la zone deviendrait aveugle
 
 # I bis. Arbitrage — les deux endroits où la médiane ment.
-CONTAMINE_ECART = 60      # écart de luminance à partir duquel on soupçonne
+CONTAMINE_ECART = 50      # écart de luminance à partir duquel on soupçonne
 CONTAMINE_RATIO = 0.30    # ... et effondrement de l'enveloppe basse exigé
 CONTAMINE_OUVERTURE = 15  # ouverture morphologique de la carte des contaminés
 CONTAMINE_COMBLE = 0.055  # voisinage du minimum comblant, en fraction du grand côté
@@ -91,12 +91,12 @@ FOND_CLAIR = 15           # au-delà, le décor n'est plus noir : il porte des o
                           # et le découvrir se verrait — deux conséquences, un seuil
 OMBRE_RATIO = (0.05, 0.94)  # une ombre assombrit sans changer la couleur
 OMBRE_TOL = (6.0, 0.18)   # tolérance d'ombre : absolue, puis relative à la luminance
-OMBRE_SATURATION = 20     # une ombre n'augmente pas la saturation (Cucchiara)
+OMBRE_SATURATION = 50     # une ombre n'augmente pas la saturation (Cucchiara)
 OMBRE_TEINTE = 40         # ... et ne déplace la teinte que peu (degrés)
 
 # II. Métrique et seuils.
-SEUIL_HAUT = 6.0          # α = 1 au-delà, en multiples du plancher de bruit
-SEUIL_BAS = 2.5           # α = 0 en-deçà ; entre les deux, une rampe
+SEUIL_HAUT = 3.5          # α = 1 au-delà, en multiples du plancher de bruit
+SEUIL_BAS = 1.6           # α = 0 en-deçà ; entre les deux, une rampe
 TOL_DECALAGE = 5          # voisinage toléré si le décor glisse d'un pixel ou deux
 
 # III. Frontière.
@@ -108,8 +108,8 @@ TROU_MAX_REL = 4e-3       # trou bouché en zone claire si son aire est sous ce 
 BORD_LARGEUR = 6.0        # pixels sur lesquels α descend du plateau à la plaine
 
 # IV. Bord.
-FLOU_BORD = 5             # rayon du recalage de bord (0 = bord franc)
-GUIDE_EPS = 1e-3          # tolérance du filtre guidé : petit = colle aux arêtes
+FLOU_BORD = 0             # rayon du recalage de bord (0 = pas de recalage)
+GUIDE_EPS = 100.0         # tolérance du filtre guidé, en variance de niveaux
 
 # V. Matteur (option --rvm).
 RVM_RATIO = 0.5           # sous-échantillonnage interne du réseau
@@ -289,9 +289,24 @@ def _mediane_et_mad(pile: np.ndarray, bande: int = 48) -> tuple[np.ndarray, np.n
     return med, mad
 
 
-def bati_le_decor(chemin: Path, n_echantillons: int = N_ECHANTILLONS,
-                  pas: int = 1) -> Decor:
-    """Médiane, enveloppes, MAD — puis l'arbitrage entre elles."""
+@dataclass
+class Statistiques:
+    """Ce que la vidéo dit d'elle-même, avant toute interprétation.
+
+    Ces quatre tableaux coûtent deux lectures complètes de la vidéo, et ne
+    dépendent d'aucun réglage d'arbitrage : on peut donc les calculer une fois
+    et rejouer l'arbitrage autant qu'on veut par-dessus.
+    """
+
+    med: np.ndarray
+    mad: np.ndarray
+    bas: np.ndarray
+    haut: np.ndarray
+
+
+def statistiques(chemin: Path, n_echantillons: int = N_ECHANTILLONS,
+                 pas: int = 1) -> Statistiques:
+    """Médiane et MAD sur un échantillon, enveloppes sur toute la durée."""
     cap = cv2.VideoCapture(str(chemin))
     total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     n = min(n_echantillons, max(total, 1))
@@ -303,6 +318,12 @@ def bati_le_decor(chemin: Path, n_echantillons: int = N_ECHANTILLONS,
 
     _log("  enveloppes basse et haute : balayage de toute la durée")
     bas, haut = enveloppes(chemin, pas=pas)
+    return Statistiques(med, mad, bas, haut)
+
+
+def arbitre(st: Statistiques) -> Decor:
+    """Départage les statistiques là où elles se contredisent."""
+    med, mad, bas, haut = st.med, st.mad, st.bas, st.haut
     lb, lm, lh = _luma(bas), _luma(med), _luma(haut)
 
     # Premier mensonge de la médiane : la danseuse stationne, donc c'est *elle*
@@ -335,6 +356,12 @@ def bati_le_decor(chemin: Path, n_echantillons: int = N_ECHANTILLONS,
     _log(f"  contaminés : {100 * contamine.mean():.2f} %"
          f" · sous l'ombre : {100 * sous_ombre.mean():.2f} %")
     return Decor(plaque, plancher, contamine)
+
+
+def bati_le_decor(chemin: Path, n_echantillons: int = N_ECHANTILLONS,
+                  pas: int = 1) -> Decor:
+    """Les statistiques, puis l'arbitrage entre elles."""
+    return arbitre(statistiques(chemin, n_echantillons, pas))
 
 
 # ── II. La métrique ────────────────────────────────────────────────────────────
