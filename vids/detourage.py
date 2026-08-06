@@ -24,6 +24,8 @@ qui distingue cette règle d'une contrainte géométrique, et c'est pourquoi ell
 ne coupe jamais une main détachée par le flou de mouvement.
 
 **Sortie.** Un WebM/VP9 à canal alpha, ou une suite de PNG si `ffmpeg` manque.
+La piste audio de la source suit par défaut — une vidéo muette le reste, une
+vidéo sonore garde son son.
 L'α est droit, non prémultiplié. La couleur n'est pas celle de l'image d'origine
 mais l'**avant-plan démêlé** que le réseau estime en même temps que l'α : sur un
 pixel de bord, physiquement un mélange du sujet et du décor, il rend la couleur
@@ -42,7 +44,7 @@ Usage :
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o DOSSIER/
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --planche   # 6 vignettes seulement
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --brut     # le réseau nu
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --audio MUSIQUE.mp3
+    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --audio AUTRE.mp3  # remplace la piste
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --png     # séquence exacte
     ./.venv/bin/python vids/detourage.py DOSSIER/ -o SORTIE/  # tout ce qui est vidéo
 
@@ -305,7 +307,8 @@ class Rendu:
     """
 
     def __init__(self, sortie: Path, src: Source, *, ecrire: bool, vignettes: bool,
-                 video: bool = True, audio: Path | None = None):
+                 video: bool = True, audio: Path | None = None,
+                 source: Path | None = None):
         self.sortie = sortie
         self.jalons = set(src.jalons)
         self.veut_vignettes = vignettes
@@ -325,9 +328,14 @@ class Rendu:
             commande = [FFMPEG, "-y", "-loglevel", "error",
                         "-f", "rawvideo", "-pix_fmt", "bgra", "-s", f"{w}x{h}",
                         "-r", f"{src.fps:.6f}", "-i", "-"]
-            if audio is not None:
-                commande += ["-i", str(audio), "-c:a", "libopus", "-b:a", "128k",
-                             "-shortest"]
+            # La piste de la source suit par défaut : une vidéo muette le reste,
+            # une vidéo sonore garde son son. `-map 1:a?` rend la piste
+            # facultative, donc le même appel sert dans les deux cas, sans avoir
+            # à sonder le fichier au préalable. `--audio` la remplace.
+            piste = audio if audio is not None else source
+            if piste is not None:
+                commande += ["-i", str(piste), "-map", "0:v", "-map", "1:a?",
+                             "-c:a", "libopus", "-b:a", "128k", "-shortest"]
             commande += ["-c:v", "libvpx-vp9", "-pix_fmt", "yuva420p",
                          "-crf", str(VP9_CRF), "-b:v", "0", "-row-mt", "1",
                          str(self.chemin)]
@@ -372,13 +380,14 @@ def detoure(entree: Path, sortie: Path, matteur: Matteur, *,
             max_images: int | None = None, apercu: bool = False,
             planche_seule: bool = False, seuille: bool = True,
             png: bool = False, audio: Path | None = None,
-            ratio: float | None = None) -> None:
+            ratio: float | None = None, muet: bool = False) -> None:
     """Les deux sens du temps, le seuillage, puis l'écriture en RGBA."""
     t0 = time.time()
     _log(f"» {entree.name}")
     src = Source.ouvre(entree, max_images)
     rendu = Rendu(sortie, src, ecrire=not planche_seule,
-                  vignettes=apercu or planche_seule, video=not png, audio=audio)
+                  vignettes=apercu or planche_seule, video=not png, audio=audio,
+                  source=None if muet else entree)
 
     if not planche_seule:
         _log("  passe arrière, à rebrousse-temps")
@@ -439,7 +448,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--png", action="store_true",
                    help="écrire une séquence PNG plutôt qu'un WebM (exact, mais lourd)")
     p.add_argument("--audio", type=Path, default=None,
-                   help="piste audio à coller à la sortie (WebM seulement)")
+                   help="remplacer la piste de la source par ce fichier")
+    p.add_argument("--muet", action="store_true",
+                   help="ne recopier aucune piste audio")
     p.add_argument("--ratio", type=float, default=None,
                    help=f"sous-échantillonnage du réseau (défaut {RATIO}) —"
                         " sensible au cadrage, voir le README")
@@ -469,7 +480,7 @@ def main(argv: list[str] | None = None) -> int:
         sortie = racine / f"{entree.stem}_nobg"
         detoure(entree, sortie, matteur, max_images=a.max_images,
                 apercu=a.apercu, planche_seule=a.planche, seuille=not a.brut,
-                png=a.png, audio=a.audio, ratio=a.ratio)
+                png=a.png, audio=a.audio, ratio=a.ratio, muet=a.muet)
     return 0
 
 
