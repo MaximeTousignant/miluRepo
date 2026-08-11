@@ -46,8 +46,13 @@ cd publications/stokex && latexmk -pdf stokex_defensive_publication.tex
 Compilation continue (recompile à chaque sauvegarde du `.tex`) :
 
 ```sh
-cd publications/stokex && latexmk -pvc -pdf -interaction=nonstopmode -view=none stokex_defensive_publication.tex
+cd publications/stokex && latexmk -pvc -f -pdf -interaction=nonstopmode -view=none stokex_defensive_publication.tex
 ```
+
+Le `-f` (*force*) est ce qui rend la veille utilisable : sans lui, `-pvc` **rend la main
+à la première erreur** de compilation, et il faut relancer la commande à chaque coquille
+— exactement au moment où l'on a le plus besoin qu'elle tourne. Avec lui, l'erreur
+s'affiche et la veille continue de surveiller ; la sauvegarde suivante recompile.
 
 `latexmk` gère les passes multiples (références croisées) tout seul. Les artefacts de
 compilation (`.aux`, `.log`, `.fls`, `.fdb_latexmk`, `.toc`, …) sont gitignorés.
