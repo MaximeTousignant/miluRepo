@@ -95,7 +95,19 @@ La série, telle qu'arrêtée avec l'Opératrice :
 2. **Le système des tôks, partie 1** — le temps, les humains, les tôks et les flots.
 3. **Le système des tôks, partie 2** — la taxe démocratique et le \$tôkEx.
 4. **Le système des tôks, partie 3** — la bourse du carbone citoyenne et la transition
-   énergétique.
+   énergétique : **un modèle de ce qui pourrait arriver.** Les trois articles ne sont
+   donc pas de même nature — 1 et 2 décrivent un système qui existe et tourne, 3
+   projette. C'est le seul des trois qui avance des trajectoires plutôt que des
+   théorèmes, et il devra le dire lui-même : ses hypothèses se déclarent, ses scénarios
+   se datent, et ce qui est simulé ne se présente jamais comme ce qui est mesuré.
+
+**Le calendrier tôkien n'apparaît qu'en partie 3.** Il est tentant de le verser à la
+partie 1, qui porte déjà le temps et les unités — l'année tôkienne dyadique, la
+quinzaine, l'horloge commune. C'est justement le piège : la partie 1 a besoin des
+*unités* de temps, pas d'un calendrier. Le calendrier est une lecture du temps, pas une
+mesure ; sa place est avec les cycles saisonniers de la bourse du carbone. Jusque-là,
+`docs/Toks.md` peut le mentionner (« éventuellement interprétables en calendrier
+tôkien »), les articles 1 et 2 ne le développent pas.
 
 - [ ] Choisir les revues visées et lire leurs exigences (format, longueur, données,
   reproductibilité, politique sur la contribution d'une IA — à déclarer, comme dans le
