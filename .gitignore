@@ -26,6 +26,8 @@ CODE.md
 *.fdb_latexmk
 *.fls
 *.toc
+*.bbl
+*.blg
 
 # Artefacts de compilation Lean
 .lake/

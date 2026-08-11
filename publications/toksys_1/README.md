@@ -25,9 +25,19 @@ déclaration de contribution IA.
   la `LICENSE` **et** dans la page titre du `.tex`.
 - **Langue.** Le squelette est en anglais, par cohérence avec le \$tôkEx et avec les
   revues visées. À confirmer si une revue francophone entre dans la liste.
-- **Contenu mathématique.** Les équations sont en cours d'écriture par l'Opératrice. Ce
-  dossier n'en contient aucune qui ne soit déjà publique et vérifiée dans `docs/Toks.md` ;
-  le corps du document est en `\placeholder`.
+- **Contenu mathématique.** Le corps vient de « Le système des tôks », révision 2.0 de
+  l'Opératrice, traduit en anglais et intégré le 2026-08-11 : avant-propos, notation,
+  données externes, loi de conservation, système vanille, taxation. Ce qui reste en
+  `\placeholder` est ce qui n'était pas écrit dans la source — abstract, discussion,
+  déclarations — plus trois points signalés à l'intégration :
+  - une phrase **inachevée** dans la source (« Autrement, il ne s'agit plus ») ;
+  - $k_{T,0}$ divise par **365,25 jours** alors que le lexique définit $A = 365{,}2421875$~J ;
+  - `docs/Cablage.md` mesure $k_{T,0} = \ln(1{,}01)/A$ dans le backend, la source écrit
+    $-\ln(0{,}99)/A$ — **1,005 % d'écart relatif**. Intention de conception contre
+    implémentation : à réconcilier.
+- **Portée.** La section « Système des tôks Smoothop » (la taxe démocratique) est
+  traduite ici parce qu'elle appartient à la révision 2.0, mais le plan de série la
+  range en **partie 2**. À trancher.
 
 ## Environnement Python
 
@@ -52,7 +62,7 @@ cd publications/toksys_1 && latexmk -pdf -interaction=nonstopmode -halt-on-error
 Compilation continue (recompile à chaque sauvegarde) :
 
 ```sh
-cd publications/toksys_1 && latexmk -pvc -pdf -interaction=nonstopmode -view=none toksys_1.tex
+cd publications/toksys_1 && latexmk -pvc -f -pdf -interaction=nonstopmode -view=none toksys_1.tex
 ```
 
 Les artefacts (`.aux`, `.log`, `.fls`, `.fdb_latexmk`, …) sont gitignorés.
