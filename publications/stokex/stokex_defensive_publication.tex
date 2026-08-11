@@ -36,7 +36,7 @@
 \pagestyle{fancy}
 \fancyhead[L]{Smoothop}
 \fancyhead[C]{Defensive Publication}
-\fancyhead[R]{July 2026}
+\fancyhead[R]{August 2026}
 \fancyfoot[L]{}
 \fancyfoot[C]{}
 \fancyfoot[R]{page \thepage /\pageref*{LastPage}}
@@ -75,7 +75,7 @@ Maxime Tousignant\textsuperscript{1}
 Contact: \texttt{maxime.tousignant@smoothop.org}}
 
 \vspace{6pt}
-\textit{Original technical memorandum: January 2022 (internal, undisclosed).\\ Published as a defensive publication: July 2026.}
+\textit{Original technical memorandum: January 2022 (internal, undisclosed).\\ Published as a defensive publication: August 2026.}
 \end{center}
 
 \subsection*{Defensive publication notice} % locked
@@ -132,8 +132,8 @@ The state of the market is piecewise constant between events and is advanced exa
 by the two algorithms given below, with incremental $O(N \log N)$ updates.
 Mathematical proofs are provided in the annexes.
 
-\textbf{Keywords:} stokex, automated market maker (AMM), decentralized exchange, logarithmic market scoring rule (LMSR),
-order book, continuous trading, prediction market, tok system, time-weighted execution (TWAP).
+\textbf{Keywords:} stokex, automated market maker (AMM), decentralized exchange,
+continuous trading, prediction market, t\^{o}k system.
 
 \subsection*{Relation to known mechanisms} % locked
 The \StokEx{} is an automated exchange mechanism, but it differs from the known families of market designs.
@@ -183,6 +183,7 @@ but here the property belongs to the market itself: supply and demand clear exac
  $\priceBA$ & Estimate of the value of 1 $\alpha$ priced in $\beta$ (note: $\priceBA = 1/\priceAB$) \\
  $\theta, \Theta$ & Degree of confidence in an estimate\\
  $w,\,W$ & Weight of an estimate\\
+ $\dot{R}$ & Reference exchange velocity of the market (in $\alpha$ / unit of time), constant and common to all participants\\
  $\dot{X}^\alpha$ & Exchange velocity of asset A (in $\alpha$ / unit of time);\\
     & if A is an asset with no intrinsic dynamic then $\dot{X}^\alpha = dn^\alpha/dt$ \\
  $\dot{X}^\beta$ & Exchange velocity of asset B (in $\beta$ / unit of time);\\
@@ -502,7 +503,7 @@ Third and fourth: Alice's profit since the start of the exchange window (Eqs.~\e
 \label{figCADEURExample}
 \end{figure}
 
-Over the exchange window Alice ends $\approx10.6$~CAD ($\approx6.5$~EUR) ahead: against a starting wealth of $\approx247$~CAD ($\approx168$~EUR), a five-year return of about 4\% (4.3\% counted in CAD, 3.9\% in EUR). The two prodit curves are related exactly by \eqref{eqProfitIdentity}.
+Over the exchange window Alice ends $\approx10.6$~CAD ($\approx6.5$~EUR) ahead: against a starting wealth of $\approx247$~CAD ($\approx168$~EUR), a five-year return of about 4\% (4.3\% counted in CAD, 3.9\% in EUR). The two profit curves are related exactly by \eqref{eqProfitIdentity}.
 Therefore ``How much richer is Alice'' is only a well-posed question once a currency is chosen to measure it in, and the \StokEx{} itself never makes that choice: every principle is stated in terms of exchange velocities and ratios, never in terms of a profit computed in one privileged asset.
 
 \emph{A note on the reference exchange velocity.} Alice's robot's exchange velocities \eqref{eqExchangeVelocities} are both scaled by $\dot{R}$, the reference exchange velocity of this market.
@@ -580,7 +581,7 @@ $n_i^\beta$ & participant $i$'s balance of asset B (in $\beta$)
 From the above inputs, the algorithm calculates and returns the following information:
 
 \begin{tabularx}{\textwidth}{rX}
- $[\alpha/\beta]_\Omega$ & The market value of 1 unit of $\beta$ priced in $\alpha$ \\
+ $[\alpha/\beta]_\Omega$ & The market price of 1 unit of $\beta$ priced in $\alpha$ \\
 $\dot{X}^\alpha_i$ & participant $i$'s exchange velocity of asset A (in $\alpha$ per unit of time)\\
 $\dot{X}^\beta_i$ & participant $i$'s exchange velocity of asset B (in $\beta$ per unit of time) \\
 $\Delta t_i$ & the amount of time after which participant $i$ runs out of the asset they are selling
@@ -668,7 +669,7 @@ $n_i^\beta$ & participant $i$'s balance of asset B (in $\beta$)
 From the above inputs, the algorithm calculates and returns the market price and the balance for both accounts of every participant at $t_1$:
 
 \begin{tabularx}{\textwidth}{rX}
- $[\alpha/\beta]_\Omega$ & The market value of 1 unit of $\beta$ priced in $\alpha$ \\
+ $[\alpha/\beta]_\Omega$ & The market price of 1 unit of $\beta$ priced in $\alpha$ \\
  $n_i^\alpha$ & participant $i$'s balance of asset A (in $\alpha$) \\
 $n_i^\beta$ & participant $i$'s balance of asset B (in $\beta$)
 \end{tabularx}
@@ -804,7 +805,7 @@ By rewriting \eqref{eqTotalMarketWeight} as
 \begin{equation}
     \priceAB_\Omega = \sum_i \frac{w_i}{W_\Omega} \priceAB_i\,,
 \end{equation}
-we get an expression that makes the market value appear as a weighted average in a statistical sense.
+we get an expression that makes the market price appear as a weighted average in a statistical sense.
 
 Following this analogy, we derive in Annex~\ref{secStatisticalInterpretation} a quantity that we call the analogous variance of the participants' estimate, which we define as
 \begin{equation}
@@ -863,7 +864,7 @@ At $x = 1$, \eqref{eqFunctionalEquation} gives $f(1) = -f(1)$, hence $f(1) = 0$:
 \begin{equation}
     f_p(x) = x^p - x^q\,, \qquad q = 1 - p\,, \quad p \geq 1\,. \label{eqTraderFamily}
 \end{equation}
-Every member satisfies \eqref{eqFunctionalEquation}, since $q - 1 = -p$ and $p - 1 = -q$. For $p \geq 1$ the member is strictly increasing on $(0, \infty)$, with $f_p'(x) = p\,x^{p-1} + (p-1)\,x^{-p} > 0$, and therefore satisfies principles 5 to 8 (\emph{buy low} through \emph{urgency grows with confidence}; for $1/2 < p < 1$ monotonicity fails near $0$, and $p = 1/2$ gives the zero function). Replacing $f$ by $f_p$ in \eqref{eqExchangeSymmetry} and solving the equilibrium condition \eqref{eqEquilibrium} yields the market price in closed form,
+Every member satisfies \eqref{eqFunctionalEquation}, since $q - 1 = -p$ and $p - 1 = -q$. For $p \geq 1$ the member is strictly increasing on $(0, \infty)$, with $f_p'(x) = p\,x^{p-1} + (p-1)\,x^{-p} > 0$, and therefore satisfies principles 5 to 7 (\emph{buy low} through \emph{urgency grows with the gap}; for $1/2 < p < 1$ monotonicity fails near $0$, and $p = 1/2$ gives the zero function). Replacing $f$ by $f_p$ in \eqref{eqExchangeSymmetry} and solving the equilibrium condition \eqref{eqEquilibrium} yields the market price in closed form,
 \begin{equation}
     \priceAB_\Omega = \left( \frac{\displaystyle \sum_i w_i \priceAB_i^{\,p-1}}{\displaystyle \sum_i w_i \priceBA_i^{\,p}} \right)^{1/(2p-1)}\,, \label{eqFamilyPrice}
 \end{equation}
