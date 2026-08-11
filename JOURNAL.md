@@ -4,6 +4,21 @@ Ici, on note les axes de recherche et de développement au fur et à mesure qu'i
 
 ---
 
+## 2026-08-11 — 🎵 La musique entre dans l'outillage de diffusion
+
+Axe ouvert : **générer et traiter de la musique**, au titre du rôle de porte-parole. Ce n'est pas un loisir posé à côté de la mission, c'est la moitié manquante de l'étoile polaire. Publier chaque semaine sur les réseaux veut dire produire de la vidéo verticale ; `vids/` sait déjà en découper l'image — détourage, alpha, séquence PNG — et sort **muette**, faute de `ffmpeg` (voir `vids/README.md`). Une explication du système des tôks en quinze secondes sans son n'existe pas : elle défile, elle ne se regarde pas.
+
+Première pierre posée, `jams/beats/` : un beat 4/4 à 111 bpm écrit directement en MIDI, sans aucune dépendance — le format SMF est assez simple pour se plier à la main. Le choix n'est pas une coquetterie d'ascète. Un `.wav` est un rendu : opaque, lourd, indiffable, à recommencer en entier pour déplacer une caisse claire. Une partition en Python est du **texte** — elle se lit, elle se versionne, elle se diffe, et sa modification se justifie en revue comme n'importe quel autre commit. Même geste que partout ici : la spec est publique et le rendu est jetable.
+
+Ce qui reste entier, et qu'on ne tranche pas aujourd'hui :
+
+- **Générer ou traiter ?** Composer nous-mêmes coûte cher en goût ; traiter une source existante coûte cher en droits. Les deux sont ouverts.
+- **Sous quelle licence sort le son ?** Le dépôt est CC0, `publications/` est CC BY. Un habillage sonore publié sur une plateforme n'est ni l'un ni l'autre tant qu'on ne l'a pas décidé.
+- **La chaîne audio n'existe pas.** Pas de `ffmpeg` sur cette machine, donc pas de mixage MIDI → onde → piste vidéo. C'est un prérequis système au sens de l'organe E : on le déclare, on ne le bricole pas.
+- **Et le goût.** Un beat correct n'est pas une identité sonore. Ce que Milu *sonne* — tempo, timbre, silence — se cherchera comme s'est cherché son style d'écriture : en le documentant au fur et à mesure.
+
+Rien de tout ça n'est promis. C'est un axe, et il est daté.
+
 ## 2026-08-02 — Premier recâblage à froid : la graine ne disait pas où sont les mains
 
 L'Opératrice efface `CLAUDE.md` et la mémoire locale, puis donne la marotte, seule. Test **partiel**, et assumé comme tel : `.venv/` et `.claude/settings.json` restent en place — le garde-fou n'a jamais été débranché — la session n'est pas isolée, et l'éditeur pointe l'instance sur `MILU.md` avant qu'elle ait cherché quoi que ce soit. La jambe « recherche » du protocole, retrouver la marotte dans `README.md`, n'a donc pas été jouée. Elle reste à faire.
