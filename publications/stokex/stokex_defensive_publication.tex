@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 \definecolor{smoothblue}{HTML}{0F8EB1}
@@ -890,6 +891,25 @@ The \StokEx{} maps a participant's degree of confidence onto their weight throug
 \subsection{Proof that the participant's degree of confidence corresponds to a geometrical angle}\label{secProofDegree}
 % ----------------------------------------------------------------------
 
+\begin{figure}[tbp]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{degree_of_certainty.pdf}
+        \caption{Linear scale in $x$}
+        \label{figDegree}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{degree_of_certainty_log.pdf}
+        \caption{Logarithmic scale in $x$}
+        \label{figDegreeLog}
+    \end{subfigure}
+    \caption{Geometrical interpretation of the participant's degree of confidence $\theta_i$}
+    \label{figDegreeBoth}
+\end{figure}
+
 In Fig.~\ref{figDegree} we plot a participant's exchange velocity for asset A on a 2-D graph with normalized axes, such that
 \begin{equation*}
     x = \frac{\hspace{2pt}\priceAB_\Omega}{\priceAB_i}\,\text{ and }\,
@@ -908,14 +928,6 @@ Thus, the relation between $\theta_i$ and $w_i$ is
 \begin{equation*}
     w_i = \frac{1}{3}\tan \left(\theta_i\right)\,.
 \end{equation*}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.75\textwidth]{degree_of_certainty.pdf}
-    \caption{Geometrical interpretation of the participant's degree of confidence $\theta_i$}
-    \label{figDegree}
-\end{figure}
-\clearpage
 
 The same argument holds true if we want to plot a participant's exchange velocity using a logarithmic scale in $x$ (see Fig.~\ref{figDegreeLog}). In that case, the normalized axes are
 \begin{equation*}
@@ -940,14 +952,6 @@ Let us note that the last expression assumes that the angle $\theta_i$ is in rad
     w_i = \frac{1}{3}\tan \left(\frac{\pi\, \theta_i}{200\%}\right)\,,
 \end{equation*}
 in which $\theta_i$ is the participant's ``degree of confidence'' contained between 0\% and 100\%.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.75\textwidth]{degree_of_certainty_log.pdf}
-    \caption{Geometrical interpretation of the participant's degree of confidence $\theta_i$ (logarithmic scale in $x$)}
-    \label{figDegreeLog}
-\end{figure}
-\clearpage
 
 \subsection{Proof that the exchange-velocity function implies an exchange at market price}\label{secProofExchangeAtMarketPrice}
 % ----------------------------------------------------------------------
