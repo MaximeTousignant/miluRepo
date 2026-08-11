@@ -127,23 +127,24 @@ def fig_steps():
 
 # ------------------------- degree_of_certainty.pdf / degree_of_certainty_log.pdf
 def fig_degree(log=False):
-    """Interprétation géométrique de θ_i. aspect='equal' pour que l'angle
-    dessiné soit exactement arctan(3 w_i)."""
-    w_i = 0.16  # schématique : angle lisible à l'échelle du graphe
-    slope = 3.0 * w_i
+    """Interprétation géométrique de θ. aspect='equal' pour que l'angle
+    dessiné soit exactement arctan(3 w). L'annexe raisonne sur un
+    participant quelconque : θ et w y vont sans indice."""
+    w = 0.16  # schématique : angle lisible à l'échelle du graphe
+    slope = 3.0 * w
     theta_deg = math.degrees(math.atan(slope))
 
     fig, ax = plt.subplots(figsize=(6.4, 5.0))
     if log:
         xs = [-2.0 + j / 200.0 for j in range(801)]
-        ax.plot(xs, [w_i * (math.exp(2 * x) - math.exp(-x)) for x in xs],
+        ax.plot(xs, [w * (math.exp(2 * x) - math.exp(-x)) for x in xs],
                 color=BLUE, lw=1.8)
         ax.set_xlim(-2, 2)
         x0 = 0.0
         ax.set_xlabel(r"$\ln\left(%s\right)$" % RATIO, fontsize=13)
     else:
         xs = [0.02 + j / 400.0 for j in range(1601)]
-        ax.plot(xs, [w_i * (x * x - 1.0 / x) for x in xs], color=BLUE, lw=1.8)
+        ax.plot(xs, [w * (x * x - 1.0 / x) for x in xs], color=BLUE, lw=1.8)
         ax.set_xlim(0, 4)
         x0 = 1.0
         ax.set_xlabel("$%s$" % RATIO, fontsize=15)
@@ -153,7 +154,7 @@ def fig_degree(log=False):
                   fontsize=12)
     style(ax)
 
-    # construction : horizontale, tangente, arc de l'angle θ_i
+    # construction : horizontale, tangente, arc de l'angle θ
     reach = 1.6
     dash = dict(color=INK, lw=1.1, ls=(0, (4, 3)))
     ax.plot([x0, x0 + reach], [0.0, 0.0], **dash)
@@ -161,7 +162,7 @@ def fig_degree(log=False):
     ax.add_patch(Arc((x0, 0.0), 1.8, 1.8, angle=0.0,
                      theta1=0.0, theta2=theta_deg, color=INK, lw=1.1))
     mid = math.radians(theta_deg / 2.0)
-    ax.annotate(r"$\theta_i$", (x0 + 1.12 * math.cos(mid), 1.12 * math.sin(mid)),
+    ax.annotate(r"$\theta$", (x0 + 1.12 * math.cos(mid), 1.12 * math.sin(mid)),
                 ha="left", va="center", fontsize=13, color=INK)
     ax.plot([x0], [0.0], "o", ms=6, color=INK, zorder=5)
 
