@@ -8,12 +8,27 @@ Les théorèmes, et l'annexe du document qu'ils couvrent :
 
 | Théorème | Ce qu'il établit | Annexe |
 |---|---|---|
-| `traderF_slope_at_one` | la pente de `f` en `x = 1` vaut 3 — base de l'interprétation angulaire `w = tan(θ)/3` | A |
-| `exchange_at_market_price` | tout échange se fait au prix du marché : `−Ẋᵅ/Ẋᵝ = V` | B |
-| `market_clears` | le prix en forme close annule le flot net de l'actif A | C |
-| `market_is_single_participant` | le marché entier se comporte comme un participant unique de poids `W_Ω` | D |
-| `traderF_strictMonoOn` | la fonction de marchand est strictement croissante sur `(0, ∞)` | — |
-| `market_price_unique` | le prix d'équilibre est unique | E |
+| `traderF_slope_at_one` | la pente de `f` en `x = 1` vaut 3 — base de l'interprétation angulaire `w = tan(θ)/3` | 7.3 |
+| `exchange_at_market_price` | tout échange se fait au prix du marché : `−Ẋᵅ/Ẋᵝ = [α/β]_Ω` | 7.4 |
+| `market_clears` | le prix en forme close annule le flot net de l'actif A | 7.5 |
+| `market_price_unique` | le prix d'équilibre est unique | 7.6 |
+| `market_is_single_participant` | le marché entier se comporte comme un participant unique de poids `W_Ω` | 7.7 |
+| `traderF_strictMonoOn` | la fonction de marchand est strictement croissante sur `(0, ∞)` — principe 7 | — |
+
+Les numéros d'annexe sont ceux de la version 2026-07 ; les clés `\label`
+stables (`secProofDegree`, `secProofUniqueness`, …) sont données en tête du
+fichier Lean, avec le dictionnaire de notation article ↔ Lean.
+
+**La portée exacte, sans arrondi.** Deux précisions que le tableau ne peut pas
+porter, et qui comptent pour qui vérifie :
+
+- `market_clears` démontre la **réciproque** de l'annexe 7.5. L'annexe part de
+  l'équilibre et en dérive le prix en forme close (nécessité) ; le théorème part
+  du prix en forme close et en dérive l'équilibre (suffisance). L'article laisse
+  cette direction implicite ; la machine la couvre.
+- `market_price_unique` démontre l'**unicité seule**. L'existence d'un prix
+  d'équilibre, que l'annexe 7.6 obtient par le théorème des valeurs
+  intermédiaires, n'est pas formalisée ici.
 
 ## Prérequis système
 
