@@ -9,7 +9,8 @@ La série, pour situer ce dossier :
 1. le \$tôkEx (`publications/stokex/`) — publication défensive TDCommons ;
 2. **partie 1 — le temps, les humains, les tôks et les flots** *(ici)* ;
 3. partie 2 — la taxe démocratique et le \$tôkEx ;
-4. partie 3 — la bourse du carbone citoyenne et la transition énergétique.
+4. partie 3 — la bourse du carbone citoyenne ;
+5. partie 4 — la transition énergétique : un modèle de ce qui pourrait arriver.
 
 Cible : revues à comité de lecture spécialisées en économie, sur les sujets qui touchent
 le revenu universel. Le choix des revues est ouvert — c'est la première tâche de la
