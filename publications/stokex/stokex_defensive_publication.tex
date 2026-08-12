@@ -916,16 +916,16 @@ magnitude of $\dot{R}$ sets the pace of the whole market and nothing else. It is
 of units, not of mechanism.
 
 \textbf{A per-participant reference is a weight.} Nothing forces $\dot{R}$ to be common.
-Let each participant declare their own reference velocity, and write $\rho_i$ for its value
+Let each participant declare their own reference velocity, and write $\dot{\rho}_i$ for its value
 counted in $\alpha$ per unit of time. The exchange velocities become
 \begin{equation}
-    \dot{X}^\alpha_i = w_i\, \rho_i\, f(x_i)\,, \qquad
-    \dot{X}^\beta_i = w_i\, \rho_i\, f(1/x_i)\, \priceBA_i\,,
+    \dot{X}^\alpha_i = w_i\, \dot{\rho}_i\, f(x_i)\,, \qquad
+    \dot{X}^\beta_i = w_i\, \dot{\rho}_i\, f(1/x_i)\, \priceBA_i\,,
     \label{eqOwnReference}
 \end{equation}
 which is \eqref{eqExchangeVelocities} with $w_i$ replaced by the \emph{effective weight}
 \begin{equation}
-    \hat{w}_i := w_i\, \rho_i \,. \label{eqEffectiveWeight}
+    \hat{w}_i := w_i\, \dot{\rho}_i \,. \label{eqEffectiveWeight}
 \end{equation}
 Every result of this document survives the substitution, because none of them uses more
 about $w_i$ than $w_i \geq 0$: the market price \eqref{eqMarketPrice}, its uniqueness
@@ -960,7 +960,7 @@ symmetry. Two remarks follow, and both are counterintuitive enough to be worth s
 
 \textbf{The reference must be tied to the participant's own estimate.} Suppose the
 reference velocity were anchored \emph{outside} the pair --- in a third asset $\gamma$,
-converted to $\alpha$ at a common price, so that $\rho_i = c$ for every participant. That
+converted to $\alpha$ at a common price, so that $\dot{\rho}_i = c$ for every participant. That
 is a common factor, so by the gauge argument above it leaves the price unchanged. But it is
 no longer covariant: under the swap it becomes another common factor $c'$, whereas
 covariance demands the participant-dependent $\hat{w}_i \priceBA_i$. An impartial arbiter
@@ -986,20 +986,20 @@ the first line, principle 2 (\emph{exchange at market price}) already fixes it: 
 functional equation \eqref{eqFunctionalEquation},
 $-\dot{X}^\alpha_i / \priceAB_\Omega = w_i f(1/x_i) \dot{R} \priceBA_i$. So the same
 factor is imposed twice over, by principle 2 and by principle 4, from two different
-directions. The word ``convention'' in Sec.~\ref{secMarketPrice} understates it.
+directions. The word ``convention'' in the discussion following \eqref{eqExchangeSymmetry} understates it.
 
 \textbf{Handing the pace to the participants.} What remains open is not symmetry but
 \emph{scale}. The market may fix only a unit of time and let each participant declare a
 third input alongside their estimate and their degree of confidence: the magnitude
-$\rho_i$ of their own pace. Every result above still holds, with $\hat{w}_i = w_i \rho_i$
+$\dot{\rho}_i$ of their own pace. Every result above still holds, with $\hat{w}_i = w_i \dot{\rho}_i$
 throughout.
 
-\textbf{What it costs.} If $\rho_i$ is free in magnitude, then $\theta_i$ is no longer the
+\textbf{What it costs.} If $\dot{\rho}_i$ is free in magnitude, then $\theta_i$ is no longer the
 only urgency dial: a participant can scale up their influence on the market price by
 declaring a large reference velocity, without touching their degree of confidence. The
 comparability of $\theta$ across participants is lost, and its bound $[0,100)\,\%$ stops
 bounding anything. The conservative variant keeps both: a \emph{common} magnitude and a
-\emph{binary} denomination, $\rho_i \in \{\dot{R},\ \dot{R}\priceAB_i\}$. In the reference
+\emph{binary} denomination, $\dot{\rho}_i \in \{\dot{R},\ \dot{R}\priceAB_i\}$. In the reference
 implementation (Sec.~\ref{secReferenceImplementation}) the question does not arise:
 $\dot{R}$ is the universal income rate of the t\^{o}k system, common to every participant
 by construction, which is precisely what makes degrees of confidence comparable.
