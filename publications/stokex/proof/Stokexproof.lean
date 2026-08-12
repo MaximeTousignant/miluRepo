@@ -32,22 +32,22 @@ brackets are stable across renumbering.
 
   * `traderF_slope_at_one` : f'(1) = 3 — the basis of the angular
     interpretation of the degree of confidence, w = tan(θ)/3.
-    Annex 7.3 [secProofDegree].
+    Annex 7.4 [secProofDegree].
   * `exchange_at_market_price` : −Ẋᵅ/Ẋᵝ = [α/β]_Ω — every exchange occurs
     at the market price (principle 2, Eq. (7)).
-    Annex 7.4 [secProofExchangeAtMarketPrice].
+    Annex 7.5 [secProofExchangeAtMarketPrice].
   * `market_clears` : the closed-form price Eq. (14) cancels the net flow
-    of asset A. Note the direction: Annex 7.5 derives Eq. (14) *from* the
+    of asset A. Note the direction: Annex 7.6 derives Eq. (14) *from* the
     equilibrium condition (necessity); this theorem proves the converse
     (sufficiency), which the article leaves implicit.
-    Annex 7.5 [secProofMarketprice].
+    Annex 7.6 [secProofMarketprice].
   * `market_is_single_participant` : the whole market behaves as a single
     participant of weight W_Ω, Eq. (16).
-    Annex 7.7 [secProofTotalMarketWeight].
+    Annex 7.8 [secProofTotalMarketWeight].
   * `traderF_strictMonoOn` : the trader function is strictly increasing on
     (0, ∞) — principle 7, and the engine of the uniqueness proof.
   * `market_price_unique` : the market-clearing price is unique.
-    Annex 7.6 [secProofUniqueness]. Uniqueness only: the *existence* of
+    Annex 7.7 [secProofUniqueness]. Uniqueness only: the *existence* of
     an equilibrium price, which the article obtains from the intermediate
     value theorem, is not formalized here.
 -/
@@ -146,7 +146,7 @@ theorem traderF_strictMonoOn : StrictMonoOn traderF (Set.Ioi 0) := by
   have h2 : 1 / y < 1 / x := one_div_lt_one_div_of_lt hx hxy
   linarith
 
-/-- **Uniqueness of the market price.** Conditions of Annex 7.6: strictly
+/-- **Uniqueness of the market price.** Conditions of Annex 7.7: strictly
 positive estimates, nonnegative weights, at least one strictly positive
 weight. Two strictly positive probe prices that both clear the market are
 equal. -/
