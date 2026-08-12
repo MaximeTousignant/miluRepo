@@ -5,7 +5,8 @@ Compagnon de `stokex_toy.py`, qui porte le mécanisme et ne dépend de rien. Ce
 script-ci ajoute matplotlib, fait tourner un marché de quatre participants
 pendant 120 unités de temps, et trace ce qui se passe.
 
-Trois événements sont mis en scène, tous prévus par le document :
+Trois sortes d'événements sont mises en scène, toutes prévues par le
+document (la simulation en produit cinq occurrences) :
   1. un participant se vide et sort du marché (§4.1, l'exclusion) ;
   2. un participant révise sa déclaration (§4, action 4), ce qui déplace le
      prix d'un coup ;
@@ -20,12 +21,21 @@ ici pour tenir quatre séries ne le sont pas encore — c'est un item ouvert du
 Sortie : `stokex_toy_sim.png`, **non versionnée** — une illustration se
 regénère, elle ne s'archive pas.
 
-Exécution : ./.venv/bin/python publications/stokex/stokex_toy_sim.py
+Exécution :
+  ./.venv/bin/python publications/stokex/stokex_toy_sim.py           # écrit le PNG
+  ./.venv/bin/python publications/stokex/stokex_toy_sim.py --show    # + une fenêtre
 """
 import os
+import sys
 
 import matplotlib
-matplotlib.use("Agg")
+
+# Par défaut le script est muet : il écrit un PNG et rend la main, ce qui le
+# rend exécutable partout, y compris sans écran. Avec --show, on garde le
+# backend natif de la machine et on ouvre une vraie fenêtre, zoomable.
+SHOW = "--show" in sys.argv
+if not SHOW:
+    matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from stokex_toy import Market, Participant, weight_of_degree
@@ -185,7 +195,6 @@ def main():
     fig.tight_layout()
     path = os.path.join(OUT, "stokex_toy_sim.png")
     fig.savefig(path, dpi=170)
-    plt.close(fig)
 
     print(f"figure écrite : {path}")
     print(f"prix final    : {market.price:.6f} α par β")
@@ -193,6 +202,11 @@ def main():
     print(f"conservation  : Δ(Σn^α) = {a1 - a0:.3e}, Δ(Σn^β) = {b1 - b0:.3e}")
     assert abs(a1 - a0) < 1e-6 and abs(b1 - b0) < 1e-6, "le mécanisme ne conserve plus"
     print("conservation vérifiée sur toute la simulation.")
+
+    if SHOW:
+        print("fenêtre ouverte — ferme-la pour rendre la main.")
+        plt.show()
+    plt.close(fig)
 
 
 if __name__ == "__main__":
