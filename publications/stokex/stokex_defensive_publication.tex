@@ -938,45 +938,61 @@ $\sum_i \dot{X}_i^\beta = -\priceBA_\Omega \sum_i \dot{X}_i^\alpha = 0$ for any
 nonnegative $\hat{w}_i$ whatsoever. A participant's own reference velocity is therefore
 not a new degree of freedom in the mechanism --- it is the weight, under another name.
 
-\textbf{The denomination is \emph{not} a gauge.} The second line of
-\eqref{eqExchangeSymmetry} carries the factor $\dot{R}\priceBA_i$, which the text reads as
-``the reference exchange velocity for asset B in the eyes of participant $i$''. That
-factor is not a convention that could have been chosen otherwise: given the first line,
-principle 2 (\emph{exchange at market price}) forces it, since
-$-\dot{X}^\alpha_i / \priceAB_\Omega = w_i f(1/x_i) \dot{R} \priceBA_i$ by
-\eqref{eqFunctionalEquation}. But it does mean that a market whose participants count
-their pace in $\beta$ --- each converting at their own estimate, as that reading
-prescribes --- has $\rho_i = \dot{R}_\beta \priceAB_i$, hence
-$\hat{w}_i = w_i \priceAB_i$. That is a \emph{participant-dependent} factor, not a common
-one, and by \eqref{eqEffectiveWeight} it moves the price:
+\textbf{The mechanism is covariant under the swap.} Relabelling the two assets sends every
+estimate to its reciprocal, $\priceAB_i \mapsto \priceBA_i$, the price to its reciprocal,
+and $\dot{X}^\alpha \leftrightarrow \dot{X}^\beta$. It also acts on the reference: a
+velocity counted in $\alpha$ becomes one counted in $\beta$, and the second line of
+\eqref{eqExchangeSymmetry} says what that is worth to participant $i$ --- namely
+$\dot{R}\priceBA_i$. The effective weight \eqref{eqEffectiveWeight} therefore transforms as
+$\hat{w}_i \mapsto \hat{w}_i \priceBA_i$, and the closed form \eqref{eqMarketPrice} maps to
+its own reciprocal:
 \begin{equation*}
-    \priceAB_\Omega \Big|_{\beta\text{-referenced}}
-    = \left( \frac{\displaystyle \sum_i w_i \priceAB_i^{\,2}}{\displaystyle \sum_i w_i \priceBA_i} \right)^{1/3}
-    \;\neq\;
-    \left( \frac{\displaystyle \sum_i w_i \priceAB_i}{\displaystyle \sum_i w_i \priceBA_i^{\,2}} \right)^{1/3}
-    = \priceAB_\Omega \Big|_{\alpha\text{-referenced}}
+    \left( \frac{\displaystyle \sum_i \hat{w}_i \priceBA_i \cdot \priceBA_i}
+                {\displaystyle \sum_i \hat{w}_i \priceBA_i \cdot \priceAB_i^{\,2}} \right)^{1/3}
+    = \left( \frac{\displaystyle \sum_i \hat{w}_i \priceBA_i^{\,2}}
+                  {\displaystyle \sum_i \hat{w}_i \priceAB_i} \right)^{1/3}
+    = \frac{1}{\priceAB_\Omega} \,.
 \end{equation*}
-in general. Three participants suffice to see it: with estimates $(1, 4, 2)$ and weights
-$(1, 1, \tfrac12)$, the $\alpha$-referenced market clears at $1.71595$ and the
-$\beta$-referenced one at $2.33106$, a gap of $35.9\,\%$. (Converting instead at the
-\emph{market} price would give a common factor $\priceAB_\Omega$, hence the same price
-again --- but that is not what \eqref{eqExchangeSymmetry} says.)
+Principle 4 (\emph{no bias between assets}) therefore holds as an identity, not as a
+convention, and the factor $\priceBA_i$ that the text introduces ``by convention'' is
+precisely what makes it hold. It is not a blemish on the symmetry: it \emph{is} the
+symmetry. Two remarks follow, and both are counterintuitive enough to be worth stating.
 
-\textbf{What principle 4 therefore asserts.} The swap $\alpha \leftrightarrow \beta$ does
-not map the mechanism onto itself: it maps the $\alpha$-referenced \StokEx{} onto the
-$\beta$-referenced one, and those are two different markets. What \emph{is} symmetric, and
-what Fig.~\ref{figExchangeSymmetry} shows, is each participant's own pair of velocities:
-the functional equation \eqref{eqFunctionalEquation} is exactly the statement that a
-participant facing a market above their estimate behaves as one facing it below, with the
-roles of the assets exchanged. Asset symmetry holds participant by participant; the choice
-of the reference asset is a genuine decision, and it belongs to whoever sets up the market.
+\textbf{The reference must be tied to the participant's own estimate.} Suppose the
+reference velocity were anchored \emph{outside} the pair --- in a third asset $\gamma$,
+converted to $\alpha$ at a common price, so that $\rho_i = c$ for every participant. That
+is a common factor, so by the gauge argument above it leaves the price unchanged. But it is
+no longer covariant: under the swap it becomes another common factor $c'$, whereas
+covariance demands the participant-dependent $\hat{w}_i \priceBA_i$. An impartial arbiter
+holding its reference in a neutral third currency would therefore \emph{break} the very
+symmetry it was introduced to guarantee. The only quantity that transforms correctly is the
+participant's own estimate, because it is the only participant-specific price in the
+mechanism --- and it is exactly what \eqref{eqExchangeSymmetry} uses.
 
-\textbf{Handing the choice to the participants.} That decision can be moved. Let the
-market fix only a unit of time, and let each participant declare a third input alongside
-their estimate and their degree of confidence: the asset in which their own pace is
-counted, $\rho_i = \dot{R}$ or $\rho_i = \dot{R}\priceAB_i$. Every participant then sees
-the fully symmetric pair \eqref{eqOwnReference}, and the residual asymmetry is no longer
-imposed by the designer --- it is declared, like everything else the participant declares.
+\textbf{What is \emph{not} a symmetry statement.} None of this makes the reference velocity
+irrelevant beyond its scale. A market in which every participant counts their pace in
+$\beta$ \emph{at the same numerical magnitude} has $\hat{w}_i = w_i \priceAB_i$, which is
+participant-dependent and hence not a gauge: it is a different market, with a different
+price. Three participants suffice to see it: with estimates $(1, 4, 2)$ and weights
+$(1, 1, \tfrac12)$, the first market clears at $1.71595$ and the second at $2.33106$. This
+is not a violation of principle 4 --- it is the ordinary fact that changing what each
+participant's weight means changes the market. It does show that a per-participant
+reference velocity cannot be handed out freely without consequence, which is the subject of
+the last paragraph below.
+
+\textbf{Why the factor is forced.} The factor $\dot{R}\priceBA_i$ of
+\eqref{eqExchangeSymmetry} is not a convention that could have been chosen otherwise. Given
+the first line, principle 2 (\emph{exchange at market price}) already fixes it: by the
+functional equation \eqref{eqFunctionalEquation},
+$-\dot{X}^\alpha_i / \priceAB_\Omega = w_i f(1/x_i) \dot{R} \priceBA_i$. So the same
+factor is imposed twice over, by principle 2 and by principle 4, from two different
+directions. The word ``convention'' in Sec.~\ref{secMarketPrice} understates it.
+
+\textbf{Handing the pace to the participants.} What remains open is not symmetry but
+\emph{scale}. The market may fix only a unit of time and let each participant declare a
+third input alongside their estimate and their degree of confidence: the magnitude
+$\rho_i$ of their own pace. Every result above still holds, with $\hat{w}_i = w_i \rho_i$
+throughout.
 
 \textbf{What it costs.} If $\rho_i$ is free in magnitude, then $\theta_i$ is no longer the
 only urgency dial: a participant can scale up their influence on the market price by
