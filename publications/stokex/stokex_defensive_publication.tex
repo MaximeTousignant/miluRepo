@@ -347,7 +347,7 @@ The function controlling the participant's exchange velocities in the \StokEx{} 
 \label{eqExchangeSymmetry}
 \end{align}
 where $\dot{R}$ is the reference exchange velocity (in $\alpha$ / unit of time) for this particular market.
-The algorithm requires that a reference exchange velocity, constant and common to all participants, be defined for one of the two assets.
+It serves as a velocity unit, constant and common to all participants, defined in terms of asset A by convention.
 For example, in a market where gold is exchanged for dollars, the reference exchange velocity could be set to 1~dollar per second or 1~gram of gold per hour or whatever reference velocity makes sense in the context of that particular market.
 
 \begin{figure}[tb]
@@ -359,9 +359,9 @@ The same construction runs independently for every participant $i = 1, \dots, N$
 \label{figRobotSchema}
 \end{figure}
 
-By convention, the reference exchange velocity $\dot{R}$ is defined in terms of asset A. The corresponding reference exchange velocity for asset B is $\dot{R} \priceBA_i$ in the eyes of participant $i$. 
-Apart from this difference, the two equations in \eqref{eqExchangeSymmetry} are perfectly symmetric in the sense that they are the same except that $\alpha$ is swapped with $\beta$.
-This property ensures that the market is not biased towards one asset or the other. Therefore, the form of the function controlling a participant's exchange velocities satisfies principle number~4 (\emph{no bias between assets}).
+The corresponding reference exchange velocity for asset B is $\dot{R} \priceBA_i$ in the eyes of participant $i$: with that conversion, the two lines of \eqref{eqExchangeSymmetry} are one and the same equation, read once with $\alpha$ and once with $\beta$.
+The conversion factor is not a departure from the symmetry, it is what carries it --- and the symmetry is exact, not approximate: Annex~\ref{secReferenceGauge} shows that relabelling the two assets maps the mechanism onto itself, sending the market price to its reciprocal.
+The form of the function controlling a participant's exchange velocities therefore satisfies principle number~4 (\emph{no bias between assets}) as an identity, not as a convention.
 
 Next, we need to specify the functions~$w$ and~$f$ that compose the exchange-velocity function.
 
@@ -917,8 +917,7 @@ $\dot{w}_i \mapsto \dot{w}_i \priceBA_i$ and \eqref{eqMarketPrice} maps to its o
 reciprocal, $\left( \sum_i \dot{w}_i \priceBA_i^{\,2} \big/ \sum_i \dot{w}_i \priceAB_i
 \right)^{1/3} = \priceBA_\Omega$. Principle 4 (\emph{no bias between assets}) therefore
 holds as an identity, and the factor $\priceBA_i$ is what makes it hold --- not a blemish
-on the symmetry but the symmetry itself. A reference anchored in a third asset, converted
-at a price common to all, would not transform this way.
+on the symmetry but the symmetry itself.
 
 \textbf{What a common $\dot{R}$ buys} is legibility, not necessity: a bounded, comparable
 dial, and influence bought with conviction rather than with a large $\dot{\rho}_i$. In the
