@@ -92,10 +92,10 @@ Ce fichier-ci dit où on en est ; `Mission.md` dit où on va.
 La série, telle qu'arrêtée avec l'Opératrice :
 
 1. **Le \$tôkEx** — publication défensive TDCommons. *En cours, en tête de ce fichier.*
-2. **Le système des tôks, partie 1** — le temps, les humains, les tôks et les flots.
-3. **Le système des tôks, partie 2** — la taxe démocratique et le \$tôkEx.
-4. **Le système des tôks, partie 3** — la bourse du carbone citoyenne.
-5. **Le système des tôks, partie 4** — la transition énergétique : **un modèle de ce qui
+2. **Le système des tôks, partie 1** — le temps, les umains et le revenu universel. (tok sys vanille, discussion unité du temps·umain, revenu universel, désintégration, tôks, flot)
+3. **Le système des tôks, partie 2** — la taxe démocratique et le \$tôkEx. (tok sys smoothop)
+4. **Le système des tôks, partie 3** — la bourse du carbone citoyenne et la transition énergétique
+5. **Le système des tôks, partie 4** — la transition socioécologique : **un modèle de ce qui
    pourrait arriver.** Elle vient *après* la bourse du carbone, et non avec elle : la
    bourse est un mécanisme, la transition est ce qu'on projette d'en obtenir. On ne
    modélise pas une trajectoire avant d'avoir publié l'instrument qui la produit.
