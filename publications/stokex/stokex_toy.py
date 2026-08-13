@@ -9,7 +9,7 @@ document alone, which is also the best evidence that the disclosure is
 *enabling* in the prior-art sense.
 
 What the toy does:
-  - the trader function (2), evaluated in the shifted form (3);
+  - the trader function (2), evaluated in the shifted form (4);
   - the weight function (5);
   - the closed-form market price (14);
   - the exchange velocities (6) and the emptying times (8);
@@ -51,7 +51,7 @@ def degree_of_weight(w):
 
 
 def trader_f(x):
-    """(2) — f(x) = x² − 1/x, evaluated in the shifted form (3).
+    """(2) — f(x) = x² − 1/x, evaluated in the shifted form (4).
 
     The typical operating point is x ≈ 1, exactly where x² − 1/x loses half its
     significand to catastrophic cancellation. Setting y = x − 1 (exact on
@@ -312,7 +312,7 @@ def _demo():
         print(f"  {p}")
 
     a1, b1 = market.totals()
-    print(f"\n(1) conservation    : Δ(Σn^α) = {a1 - a0:.3e}, Δ(Σn^β) = {b1 - b0:.3e}")
+    print(f"\n(13) conservation   : Δ(Σn^α) = {a1 - a0:.3e}, Δ(Σn^β) = {b1 - b0:.3e}")
     assert abs(a1 - a0) < 1e-9 and abs(b1 - b0) < 1e-9
 
     print("\nAll checks pass.")
