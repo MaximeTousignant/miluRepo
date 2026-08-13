@@ -1,38 +1,38 @@
 #!/usr/bin/env python3
-"""Petite simulation jouet du $tôkEx, et ses graphes.
+"""A small toy simulation of the $tôkEx, and its plots.
 
-Compagnon de `stokex_toy.py`, qui porte le mécanisme et ne dépend de rien. Ce
-script-ci ajoute matplotlib, fait tourner un marché de quatre participants
-pendant 120 unités de temps, et trace ce qui se passe.
+Companion to `stokex_toy.py`, which carries the mechanism and depends on
+nothing. This script adds matplotlib, runs a four-participant market for 120
+units of time, and plots what happens.
 
-Trois sortes d'événements sont mises en scène, toutes prévues par le
-document (la simulation en produit cinq occurrences) :
-  1. un participant se vide et sort du marché (§4.1, l'exclusion) ;
-  2. un participant révise sa déclaration (§4, action 4), ce qui déplace le
-     prix d'un coup ;
-  3. le participant vidé est réintégré dès qu'il possède à nouveau l'actif
-     qu'il veut vendre (§4.1, la réintégration triée).
+Three kinds of event are staged, all of them foreseen by the document (the
+simulation produces five occurrences):
+  1. a participant runs dry and leaves the market (Sec. 4.1, the exclusion);
+  2. a participant revises their declaration (Sec. 4, action 4), which moves
+     the price at once;
+  3. the emptied participant is reintegrated as soon as they hold the asset
+     they wish to sell (Sec. 4.1, the sorted reintegration).
 
-Couleurs : palette Smoothop, `docs/Style.md`. Les nuances −1 du bleu et de
-l'orange sont validées contraste/daltonismes ; le vert et le magenta ajoutés
-ici pour tenir quatre séries ne le sont pas encore — c'est un item ouvert du
+Colors: the Smoothop palette, `docs/Style.md`. The −1 shades of blue and
+orange are validated for contrast and color-vision deficiency; the green and
+magenta added here to carry four series are not yet --- an open item in
 `TODO.md`.
 
-Sortie : `stokex_toy_sim.png`, **non versionnée** — une illustration se
-regénère, elle ne s'archive pas.
+Output: `stokex_toy_sim.png`, **not versioned** --- an illustration is
+regenerated, not archived.
 
-Exécution :
-  ./.venv/bin/python publications/stokex/stokex_toy_sim.py           # écrit le PNG
-  ./.venv/bin/python publications/stokex/stokex_toy_sim.py --show    # + une fenêtre
+Run with:
+  ./.venv/bin/python publications/stokex/stokex_toy_sim.py           # writes the PNG
+  ./.venv/bin/python publications/stokex/stokex_toy_sim.py --show    # + a window
 """
 import os
 import sys
 
 import matplotlib
 
-# Par défaut le script est muet : il écrit un PNG et rend la main, ce qui le
-# rend exécutable partout, y compris sans écran. Avec --show, on garde le
-# backend natif de la machine et on ouvre une vraie fenêtre, zoomable.
+# By default the script is headless: it writes a PNG and returns, which makes
+# it runnable anywhere, screen or no screen. With --show it keeps the machine's
+# native backend and opens a real, zoomable window.
 SHOW = "--show" in sys.argv
 if not SHOW:
     matplotlib.use("Agg")
@@ -42,8 +42,8 @@ from stokex_toy import Market, Participant, weight_of_degree
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 
-# Palette Smoothop (docs/Style.md) — teintes de marque, nuance 3
-BLUE = "#0B85A6"     # S3, le bleu Smoothop
+# Smoothop palette (docs/Style.md) — brand hues, shade 3
+BLUE = "#0B85A6"     # S3, the Smoothop blue
 ORANGE = "#CC6318"   # O3
 GREEN = "#1A7A27"    # G3
 MAGENTA = "#9A23A3"  # M3
@@ -71,11 +71,11 @@ def style(ax):
 
 
 def simulate(market, duration, step, revision=None):
-    """Échantillonne la trajectoire du marché, sans jamais fausser le pas exact.
+    """Sample the market's trajectory without ever spoiling the exact stepping.
 
-    On avance par petits morceaux ; `Market.advance` traite en interne les
-    événements qui tombent à l'intérieur d'un morceau, donc l'état reste exact.
-    `revision` est un couple (instant, fonction) appliqué en cours de route.
+    We advance in small chunks; `Market.advance` handles internally any event
+    falling inside a chunk, so the state stays exact. `revision` is a pair
+    (instant, function) applied along the way.
     """
     hist = {"t": [], "price": [], "weight": [], "n_participants": [],
             "alpha": [[] for _ in market.participants],
@@ -96,20 +96,20 @@ def simulate(market, duration, step, revision=None):
         for i, p in enumerate(market.participants):
             hist["alpha"][i].append(p.n_alpha)
             hist["beta"][i].append(p.n_beta)
-            hist["estimate"][i].append(p.estimate)   # elle peut changer en route
+            hist["estimate"][i].append(p.estimate)   # it may change along the way
 
         trading_now = {p.name for p in market.participants if p.trading}
         if trading_now != trading_before:
             for name in trading_before - trading_now:
-                events.append((t, f"{name} sort", ORANGE))
+                events.append((t, f"{name} leaves", ORANGE))
             for name in trading_now - trading_before:
-                events.append((t, f"{name} revient", GREEN))
+                events.append((t, f"{name} returns", GREEN))
             trading_before = trading_now
 
         if not done_revision and t >= revision[0]:
             revision[1](market)
             market.inner()
-            events.append((t, "révision", MAGENTA))
+            events.append((t, "revision", MAGENTA))
             done_revision = True
 
         market.advance(step)
@@ -119,11 +119,11 @@ def simulate(market, duration, step, revision=None):
 
 
 def _revise(market):
-    """Bob change d'avis : il croit β bien plus cher, et le croit fermement.
+    """Bob changes his mind: he thinks β is worth far more, and firmly so.
 
-    Assez fermement pour tirer le prix du marché **au-dessus** de l'estimation de
-    Carol — qui, vidée de son α depuis longtemps, redevient alors vendeuse de β,
-    l'actif qu'il lui reste. C'est la réintégration de §4.1.
+    Firmly enough to pull the market price **above** Carol's estimate --- and
+    Carol, out of α for a long while, becomes a seller of β again, the asset
+    she has left. That is the reintegration of Sec. 4.1.
     """
     bob = next(p for p in market.participants if p.name == "Bob")
     bob.estimate = 6.0
@@ -146,19 +146,19 @@ def main():
     fig, axes = plt.subplots(4, 1, figsize=(7.2, 9.0), sharex=True)
     t = hist["t"]
 
-    # 1 — le prix du marché, et les estimations qu'il agrège
+    # 1 — the market price, and the estimates it aggregates
     ax = axes[0]
     for i, p in enumerate(market.participants):
-        # l'estimation déclarée, dans le temps : Bob change la sienne en route
+        # the declared estimate over time: Bob changes his along the way
         ax.plot(t, hist["estimate"][i], color=SERIES[i], lw=0.9,
                 ls=(0, (4, 3)), alpha=0.8)
     ax.plot(t, hist["price"], color=INK, lw=2.0)
     ax.set_ylabel(r"$[\alpha/\beta]_\Omega$")
-    ax.set_title("Le prix du marché, borné par les estimations des participants",
+    ax.set_title("The market price, bracketed by the participants' estimates",
                  fontsize=10, loc="left")
     style(ax)
 
-    # 2 — les soldes en α
+    # 2 — the asset A balances
     ax = axes[1]
     for i, p in enumerate(market.participants):
         ax.plot(t, hist["alpha"][i], color=SERIES[i], lw=1.6, label=p.name)
@@ -167,26 +167,26 @@ def main():
     ax.set_ylim(top=ax.get_ylim()[1] * 1.18)
     style(ax)
 
-    # 3 — les soldes en β
+    # 3 — the asset B balances
     ax = axes[2]
     for i, p in enumerate(market.participants):
         ax.plot(t, hist["beta"][i], color=SERIES[i], lw=1.6)
     ax.set_ylabel(r"$n_i^\beta$")
     style(ax)
 
-    # 4 — la raideur du marché
+    # 4 — the stiffness of the market
     ax = axes[3]
     ax.plot(t, hist["weight"], color=BLUE, lw=1.8)
     ax.set_ylabel(r"$W_\Omega$")
-    ax.set_xlabel("temps (unités de $\\dot{R}$)")
+    ax.set_xlabel("time (units of $\\dot{R}$)")
     style(ax)
 
-    # les événements, sur les quatre panneaux
+    # the events, on all four panels
     for ax in axes:
         for t_e, label, color in events:
             ax.axvline(t_e, color=color, lw=1.0, ls=(0, (2, 2)), alpha=0.8)
-    # étiquettes décalées en alternance : deux événements peuvent se suivre
-    # de très près (la révision et la réintégration qu'elle provoque)
+    # labels staggered in alternation: two events can follow one another very
+    # closely (the revision, and the reintegration it triggers)
     for rank, (t_e, label, color) in enumerate(events):
         axes[0].annotate(label, (t_e, axes[0].get_ylim()[1]), fontsize=7.5,
                          color=color, rotation=90, va="top", ha="right",
@@ -196,15 +196,15 @@ def main():
     path = os.path.join(OUT, "stokex_toy_sim.png")
     fig.savefig(path, dpi=170)
 
-    print(f"figure écrite : {path}")
-    print(f"prix final    : {market.price:.6f} α par β")
-    print(f"événements    : " + ", ".join(f"{lab} à t={te:.2f}" for te, lab, _ in events))
-    print(f"conservation  : Δ(Σn^α) = {a1 - a0:.3e}, Δ(Σn^β) = {b1 - b0:.3e}")
-    assert abs(a1 - a0) < 1e-6 and abs(b1 - b0) < 1e-6, "le mécanisme ne conserve plus"
-    print("conservation vérifiée sur toute la simulation.")
+    print(f"figure written : {path}")
+    print(f"final price    : {market.price:.6f} α per β")
+    print(f"events         : " + ", ".join(f"{lab} at t={te:.2f}" for te, lab, _ in events))
+    print(f"conservation   : Δ(Σn^α) = {a1 - a0:.3e}, Δ(Σn^β) = {b1 - b0:.3e}")
+    assert abs(a1 - a0) < 1e-6 and abs(b1 - b0) < 1e-6, "the mechanism no longer conserves"
+    print("conservation verified over the whole simulation.")
 
     if SHOW:
-        print("fenêtre ouverte — ferme-la pour rendre la main.")
+        print("window open — close it to return.")
         plt.show()
     plt.close(fig)
 
