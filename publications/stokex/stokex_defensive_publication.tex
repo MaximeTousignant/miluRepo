@@ -890,143 +890,44 @@ The \StokEx{} maps a participant's degree of confidence onto their weight throug
 
 \textbf{Disclosure.} The whole family of strictly increasing functions $w$ with $w(0) = 0$, substituted for \eqref{eqFunctionW} in an otherwise unchanged \StokEx{}, is part of the present disclosure: an exchange mechanism that scales participants' exchange velocities by any such weight --- however that weight is computed from a declared degree of confidence or equivalent conviction signal --- is anticipated by this document.
 
-\subsection{The reference exchange velocity, and what it fixes}\label{secReferenceGauge}
+\subsection{The reference exchange velocity}\label{secReferenceGauge}
 % ----------------------------------------------------------------------
 
-\placeholder{\textbf{Draft annex --- under review.} Written to make explicit an argument
-that Sec.~\ref{secProofExchangeAtMarketPrice} and the discussion following
-\eqref{eqExchangeSymmetry} currently assert rather than prove. Keep, trim or drop.}
+In \eqref{eqExchangeSymmetry} the reference velocity enters only through the product
+$w_i \dot{R}$. Three consequences follow, and they settle what ``by convention'' leaves
+open there.
 
-The reference exchange velocity $\dot{R}$ enters \eqref{eqExchangeSymmetry} as a bare
-multiplicative constant, and the text introduces it ``by convention''. This annex makes
-precise what that convention costs: which part of it is a free choice of units, invisible
-in every observable, and which part is a genuine modeling decision.
-
-\textbf{$\dot{R}$ never appears alone.} In \eqref{eqExchangeVelocities}, the reference
-velocity occurs only in the product $w_i \dot{R}$. Everything below follows from that one
-observation.
-
-\textbf{The scale is a gauge.} Replace $\dot{R}$ by $\lambda \dot{R}$ for any $\lambda > 0$.
-The equilibrium condition \eqref{eqEquilibrium} reads $\lambda \dot{R} \sum_i w_i f(x_i) = 0$,
-and since $\lambda \dot{R} \neq 0$ it is the same condition as before: \emph{the market
-price \eqref{eqMarketPrice} does not depend on $\dot{R}$ at all.} Every exchange velocity
-is multiplied by $\lambda$, every emptying time \eqref{eqDeltaT} divided by it, and every
-ratio --- in particular $-\dot{X}_i^\alpha/\dot{X}_i^\beta$ --- is untouched. The
-magnitude of $\dot{R}$ sets the pace of the whole market and nothing else. It is a choice
-of units, not of mechanism.
+\textbf{Its scale is a gauge.} Replacing $\dot{R}$ by $\lambda \dot{R}$, $\lambda > 0$,
+multiplies \eqref{eqEquilibrium} by $\lambda$ and leaves it the same condition: the market
+price \eqref{eqMarketPrice} does not depend on $\dot{R}$. Only the pace of the market does.
 
 \textbf{A per-participant reference is a weight.} Nothing forces $\dot{R}$ to be common.
-Let each participant declare their own reference velocity either in terms of $alpha$ as $\dot{\rho}_i^\alpha$ or in terms of $\beta$ as $\dot{\rho}_i^\beta$.
-In that case, clearly there is no bias between assets. Now we can show, that 
-counted in $\alpha$ per unit of time. The exchange velocities become
-\begin{equation}
-    \dot{X}^\alpha_i = \dot{\rho}_i^\alpha\, f(x_i)\,, \qquad
-    \dot{X}^\beta_i = w_i\, \dot{\rho}_i\, f(1/x_i)\, \priceBA_i\,,
-    \label{eqOwnReference}
-\end{equation}
-which is \eqref{eqExchangeVelocities} with $w_i$ replaced by the \emph{effective weight}
-\begin{equation}
-    \dot{w}_i := w_i\, \dot{\rho}_i \,. \label{eqEffectiveWeight}
-\end{equation}
-The overdot is the document's own: $w_i$ is a pure number, $\dot{\rho}_i$ is an amount of
-$\alpha$ per unit of time, so $\dot{w}_i$ is a velocity --- and, as everywhere else here,
-the dot marks that and not a time derivative.
-Every result of this document survives the substitution, because none of them uses more
-about $w_i$ than $w_i \geq 0$: the market price \eqref{eqMarketPrice}, its uniqueness
-(Annex~\ref{secProofUniqueness}), the aggregation into a single participant
-(Annex~\ref{secProofTotalMarketWeight}) and the two algorithms carry over verbatim. In
-particular both assets still clear simultaneously: the proof in
-Annex~\ref{secProofMarketprice} uses only the functional equation
-\eqref{eqFunctionalEquation}, never the homogeneity of the weights, so
-$\sum_i \dot{X}_i^\beta = -\priceBA_\Omega \sum_i \dot{X}_i^\alpha = 0$ for any
-nonnegative $\dot{w}_i$ whatsoever. A participant's own reference velocity is therefore
-not a new degree of freedom in the mechanism --- it is the weight, under another name.
+Let participant $i$ declare their own $\dot{\rho}_i$, in either asset --- declared in
+$\beta$ it is worth $\dot{\rho}_i \priceAB_i$ in $\alpha$, by the reading that gives the
+second line of \eqref{eqExchangeSymmetry} its factor. With $\dot{w}_i := w_i \dot{\rho}_i$,
+\eqref{eqExchangeVelocities} and every result derived from it hold verbatim with
+$\dot{w}_i$ for $w_i$, since none uses more about a weight than $\dot{w}_i \geq 0$: such a
+reference is not a new degree of freedom, it is the weight under another name. Given a
+common $\dot{R}$ the two declarations are interchangeable,
+$\theta_i = w^{-1}(\dot{w}_i/\dot{R})$, a bijection onto $[0,100)\,\%$.
 
-\textbf{The mechanism is covariant under the swap.} Relabelling the two assets sends every
-estimate to its reciprocal, $\priceAB_i \mapsto \priceBA_i$, the price to its reciprocal,
-and $\dot{X}^\alpha \leftrightarrow \dot{X}^\beta$. It also acts on the reference: a
-velocity counted in $\alpha$ becomes one counted in $\beta$, and the second line of
-\eqref{eqExchangeSymmetry} says what that is worth to participant $i$ --- namely
-$\dot{R}\priceBA_i$. The effective weight \eqref{eqEffectiveWeight} therefore transforms as
-$\dot{w}_i \mapsto \dot{w}_i \priceBA_i$, and the closed form \eqref{eqMarketPrice} maps to
-its own reciprocal:
-\begin{equation*}
-    \left( \frac{\displaystyle \sum_i \dot{w}_i \priceBA_i \cdot \priceBA_i}
-                {\displaystyle \sum_i \dot{w}_i \priceBA_i \cdot \priceAB_i^{\,2}} \right)^{1/3}
-    = \left( \frac{\displaystyle \sum_i \dot{w}_i \priceBA_i^{\,2}}
-                  {\displaystyle \sum_i \dot{w}_i \priceAB_i} \right)^{1/3}
-    = \frac{1}{\priceAB_\Omega} \,.
-\end{equation*}
-Principle 4 (\emph{no bias between assets}) therefore holds as an identity, not as a
-convention, and the factor $\priceBA_i$ that the text introduces ``by convention'' is
-precisely what makes it hold. It is not a blemish on the symmetry: it \emph{is} the
-symmetry. Two remarks follow, and both are counterintuitive enough to be worth stating.
+\textbf{The asset swap is an identity.} Relabelling sends every estimate and the price to
+their reciprocals, and a velocity counted in $\alpha$ to one counted in $\beta$, so
+$\dot{w}_i \mapsto \dot{w}_i \priceBA_i$ and \eqref{eqMarketPrice} maps to its own
+reciprocal, $\left( \sum_i \dot{w}_i \priceBA_i^{\,2} \big/ \sum_i \dot{w}_i \priceAB_i
+\right)^{1/3} = \priceBA_\Omega$. Principle 4 (\emph{no bias between assets}) therefore
+holds as an identity, and the factor $\priceBA_i$ is what makes it hold --- not a blemish
+on the symmetry but the symmetry itself. A reference anchored in a third asset, converted
+at a price common to all, would not transform this way.
 
-\textbf{The reference must be tied to the participant's own estimate.} Suppose the
-reference velocity were anchored \emph{outside} the pair --- in a third asset $\gamma$,
-converted to $\alpha$ at a common price, so that $\dot{\rho}_i = c$ for every participant. That
-is a common factor, so by the gauge argument above it leaves the price unchanged. But it is
-no longer covariant: under the swap it becomes another common factor $c'$, whereas
-covariance demands the participant-dependent $\dot{w}_i \priceBA_i$. An impartial arbiter
-holding its reference in a neutral third currency would therefore \emph{break} the very
-symmetry it was introduced to guarantee. The only quantity that transforms correctly is the
-participant's own estimate, because it is the only participant-specific price in the
-mechanism --- and it is exactly what \eqref{eqExchangeSymmetry} uses.
+\textbf{What a common $\dot{R}$ buys} is legibility, not necessity: a bounded, comparable
+dial, and influence bought with conviction rather than with a large $\dot{\rho}_i$. In the
+reference implementation (Sec.~\ref{secReferenceImplementation}) it is the universal income
+rate of the t\^{o}k system.
 
-\textbf{What is \emph{not} a symmetry statement.} None of this makes the reference velocity
-irrelevant beyond its scale. A market in which every participant counts their pace in
-$\beta$ \emph{at the same numerical magnitude} has $\dot{w}_i = w_i \priceAB_i$, which is
-participant-dependent and hence not a gauge: it is a different market, with a different
-price. Three participants suffice to see it: with estimates $(1, 4, 2)$ and weights
-$(1, 1, \tfrac12)$, the first market clears at $1.71595$ and the second at $2.33106$. This
-is not a violation of principle 4 --- it is the ordinary fact that changing what each
-participant's weight means changes the market. It does show that a per-participant
-reference velocity cannot be handed out freely without consequence, which is the subject of
-the last paragraph below.
-
-\textbf{Why the factor is forced.} The factor $\dot{R}\priceBA_i$ of
-\eqref{eqExchangeSymmetry} is not a convention that could have been chosen otherwise. Given
-the first line, principle 2 (\emph{exchange at market price}) already fixes it: by the
-functional equation \eqref{eqFunctionalEquation},
-$-\dot{X}^\alpha_i / \priceAB_\Omega = w_i f(1/x_i) \dot{R} \priceBA_i$. So the same
-factor is imposed twice over, by principle 2 and by principle 4, from two different
-directions. The word ``convention'' in the discussion following \eqref{eqExchangeSymmetry} understates it.
-
-\textbf{The degree of confidence is a design choice, not a primitive.} The mechanism never
-sees $\theta_i$, and never sees $\dot{R}$ either: it sees only $\dot{w}_i$. A market can
-therefore be set up without a common reference velocity at all, and without asking for a
-degree of confidence. It is enough that each participant declare two things: an estimate,
-and a reference velocity of their own, counted in whichever of the two assets they please.
-The declaration ``$\dot{\rho}_i$ units of $\beta$ per unit of time'' is exactly the
-declaration ``$\dot{\rho}_i \priceAB_i$ units of $\alpha$ per unit of time'', so the pair of
-options is unbiased between the assets in the strong sense established above: the swap
-carries one onto the other. Everything then goes through --- both assets clear, every
-exchange occurs at the market price, and the price is covariant.
-
-\textbf{What the common $\dot{R}$ actually buys.} Not necessity, but legibility. A degree
-of confidence is dimensionless, bounded to $[0,100)\,\%$, and comparable from one
-participant to the next; a reference velocity is none of the three, and asking a
-participant how fast they wish to trade forces them to invent a scale, where asking how
-sure they are does not. That comparability is bought, not given, and it is bought by fixing
-$\dot{R}$ once for the whole market: by \eqref{eqFunctionW} and \eqref{eqEffectiveWeight},
-the degree recovered from a participant's declaration is
-$\theta_i = \frac{200\,\%}{\pi}\arctan\!\left(3\,\dot{w}_i/\dot{R}\right)$, which depends on
-$\dot{R}$. The same five-participant market reads as degrees of $93.9\,\%$, $89.6\,\%$,
-$95.7\,\%$, $90.2\,\%$, $93.9\,\%$ against one reference, and $85.1\,\%$, $75.1\,\%$,
-$89.3\,\%$, $76.4\,\%$, $85.1\,\%$ against a reference two and a half times larger. A degree
-of confidence is not a property of a participant; it is a property of a participant
-\emph{relative to a chosen pace}. Fixing that pace once is what turns it into a common
-language --- and it is also what stops a participant from buying influence by declaring a
-large $\dot{\rho}_i$ instead of a high $\theta_i$.
-
-In the reference implementation (Sec.~\ref{secReferenceImplementation}) the choice is not
-arbitrary: $\dot{R}$ is the universal income rate of the t\^{o}k system, common to every
-participant by construction. The market's pace is the currency's own clock.
-
-\textbf{Disclosure.} The generalization \eqref{eqOwnReference}--\eqref{eqEffectiveWeight}
-is part of the present disclosure: an exchange mechanism in which each participant's
-exchange velocities are scaled by an individual reference velocity, in either asset,
-however that velocity is declared or derived, is anticipated by this document.
+\textbf{Disclosure.} An exchange mechanism scaling each participant's exchange velocities
+by an individual reference velocity, in either asset, however declared or derived, is
+anticipated by this document.
 
 \subsection{Proof that the participant's degree of confidence corresponds to a geometrical angle}\label{secProofDegree}
 % ----------------------------------------------------------------------
