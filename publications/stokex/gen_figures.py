@@ -41,8 +41,6 @@ plt.rcParams.update({
     "legend.frameon": False,
 })
 
-RATIO = r"\frac{\,[\alpha/\beta]_\Omega}{[\alpha/\beta]_i}"
-
 
 def style(ax, grid_axis="both"):
     ax.spines[["top", "right"]].set_visible(False)
@@ -93,6 +91,46 @@ def fig_symmetry():
     plt.close(fig)
 
 
+# ------------------------------------------------ trader_function.pdf
+def fig_trader_function():
+    """La fonction de trader f(x) = x^2 - 1/x, seule et nue : le zéro à
+    l'estimé, l'achat sous l'estimé, la vente au-dessus, l'urgence non
+    bornée des deux côtés."""
+    fig, ax = plt.subplots(figsize=(6.5, 4.2))
+
+    # échelle log en x : le ratio se lit multiplicativement, et la fenêtre
+    # [1/10, 10] est symétrique autour de l'estimé
+    xs = [10 ** (-1.0 + j / 1000.0) for j in range(2001)]  # 0.1 .. 10
+    ax.plot(xs, [x * x - 1.0 / x for x in xs], color=BLUE, lw=1.8)
+
+    ax.axhline(0.0, color=MUTED, lw=0.8)
+    ax.axvline(1.0, color=MUTED, lw=0.8, ls=(0, (2, 3)))
+    ax.plot([1.0], [0.0], "o", ms=6, color=INK, zorder=5)
+
+    ax.set_xscale("log")
+    ax.set_xlim(0.1, 10)
+    ax.set_ylim(-10, 10)
+    ax.set_xticks([0.1, 0.2, 0.5, 1, 2, 5, 10],
+                  ["0.1", "0.2", "0.5", "1", "2", "5", "10"])
+    ax.xaxis.set_minor_formatter(NullFormatter())
+    ax.set_yticks([-10, -5, 0, 5, 10])
+    ax.set_xlabel(r"price ratio $x$ (log scale)", fontsize=13)
+    # rotation=0 laisse le va="bottom" par défaut de matplotlib : sans
+    # va="center", l'étiquette flotte au-dessus du milieu de l'axe
+    ax.set_ylabel("$f(x)$", rotation=0, labelpad=16, fontsize=12,
+                  va="center", ha="right")
+    style(ax, grid_axis="y")
+
+    ax.annotate("no trade at one's own estimate", (1.0, 0.0),
+                xytext=(1.3, -6.0), ha="left", va="center", color=INK,
+                fontsize=9.5,
+                arrowprops=dict(arrowstyle="-|>", color=INK, lw=0.9,
+                                shrinkA=2, shrinkB=4))
+
+    fig.savefig(os.path.join(OUT, "trader_function.pdf"), bbox_inches="tight")
+    plt.close(fig)
+
+
 # ----------------------------------------------------- stokex_steps.pdf
 def fig_steps():
     """Le prix de marché, constant par morceaux entre les événements."""
@@ -130,6 +168,8 @@ def fig_degree(log=False):
     """Interprétation géométrique de θ. aspect='equal' pour que l'angle
     dessiné soit exactement arctan(3 w). L'annexe raisonne sur un
     participant quelconque : θ et w y vont sans indice."""
+    RATIO = r"\frac{\,[\alpha/\beta]_\Omega}{[\alpha/\beta]_i}"
+
     w = 0.16  # schématique : angle lisible à l'échelle du graphe
     slope = 3.0 * w
     theta_deg = math.degrees(math.atan(slope))
@@ -162,7 +202,7 @@ def fig_degree(log=False):
     ax.add_patch(Arc((x0, 0.0), 1.8, 1.8, angle=0.0,
                      theta1=0.0, theta2=theta_deg, color=INK, lw=1.1))
     mid = math.radians(theta_deg / 2.0)
-    ax.annotate(r"$\theta$", (x0 + 1.12 * math.cos(mid), 1.12 * math.sin(mid)),
+    ax.annotate(r"$\theta_i$", (x0 + 1.12 * math.cos(mid), 1.12 * math.sin(mid)),
                 ha="left", va="center", fontsize=13, color=INK)
     ax.plot([x0], [0.0], "o", ms=6, color=INK, zorder=5)
 
@@ -440,6 +480,7 @@ def fig_cadeur_example():
 
 if __name__ == "__main__":
     fig_symmetry()
+    fig_trader_function()
     fig_steps()
     fig_degree(log=False)
     fig_degree(log=True)

@@ -346,9 +346,10 @@ The function controlling the participant's exchange velocities in the \StokEx{} 
 \dot{X}^\beta_i &=  w\!\left(\theta_i\right)\, f\!\left(\frac{\hspace{2pt}\priceBA_\Omega}{\priceBA_i} \right) \, \dot{R} \priceBA_i \,,
 \label{eqExchangeSymmetry}
 \end{align}
-where $\dot{R}$ is the reference exchange velocity (in $\alpha$ / unit of time) for this particular market.
-It serves as a velocity unit, constant and common to all participants, defined in terms of asset A by convention.
+where $\dot{R}$ is the reference exchange velocity (in $\alpha$ / unit of time), by convention defined in terms of asset A.
+It serves as a velocity unit, constant and common to all participants for this particular market.
 For example, in a market where gold is exchanged for dollars, the reference exchange velocity could be set to 1~dollar per second or 1~gram of gold per hour or whatever reference velocity makes sense in the context of that particular market.
+Importantly, the market price $\priceAB_\Omega$ does not depend on the choice of $\dot{R}$.
 
 \begin{figure}[tb]
 \centering
@@ -359,9 +360,10 @@ The same construction runs independently for every participant $i = 1, \dots, N$
 \label{figRobotSchema}
 \end{figure}
 
-The corresponding reference exchange velocity for asset B is $\dot{R} \priceBA_i$ in the eyes of participant $i$: with that conversion, the two lines of \eqref{eqExchangeSymmetry} are one and the same equation, read once with $\alpha$ and once with $\beta$.
-The conversion factor is not a departure from the symmetry, it is what carries it --- and the symmetry is exact, not approximate: Annex~\ref{secReferenceGauge} shows that relabelling the two assets maps the mechanism onto itself, sending the market price to its reciprocal.
-The form of the function controlling a participant's exchange velocities therefore satisfies principle number~4 (\emph{no bias between assets}).
+The corresponding reference exchange velocity for asset B is $\dot{R} \priceBA_i$ in the eyes of participant~$i$. For them, both $\dot{R}$ and $\dot{R} \priceBA_i$ are arbitrairy yet consistent units of velocity.
+And, participant~$i$ needs a reference velocity (in $\alpha$ or in $\beta$ / unit of time) to make a rational decision about their degree of confidence.
+
+In effect, the two lines of \eqref{eqExchangeSymmetry} are one and the same equation, read once with $\alpha$ and once with $\beta$ and it respects the symmetry of principle principle number~4 (\emph{no bias between assets}), as we show in Annex~\ref{secReferenceGauge}.
 
 Next, we need to specify the functions~$w$ and~$f$ that compose the exchange-velocity function.
 
@@ -378,10 +380,20 @@ This common behavior follows principles number~5, 6 and~7 (\emph{buy low}, \emph
 \begin{equation}
     f(x) = x^2 - \frac{1}{x}\,. \label{eqTraderFunction}
 \end{equation}
+Figure~\ref{figTraderFunction} shows it.
+
 This choice is principled but not arbitrary. As shown in Annex~\ref{secTraderFamily}, principles 2 and 4 (\emph{exchange at market price} and \emph{no bias between assets}) by themselves force two structural properties of any admissible trader function:
 the functional equation $f(1/x) = -f(x)/x$, and hence $f(1) = 0$ (no trade at one's own estimate).
 The functions compatible with all eight principles and with a closed-form market price form a one-parameter family, of which \eqref{eqTraderFunction} is the minimal member with unbounded urgency on both the buying and the selling side;
 the whole family is described in Annex~\ref{secTraderFamily} and is part of the present disclosure.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.75\textwidth]{trader_function.pdf}
+\caption{The trader function $f(x) = x^2 - 1/x$, where $x$ is the ratio between the market price and the participant's own estimate.
+It vanishes at $x = 1$ (no trade at one's own estimate), is negative below it and positive above it, and grows without bound on both sides: the further the market strays from the estimate, the more urgent the trade.}
+\label{figTraderFunction}
+\end{figure}
 
 \textbf{Numerical evaluation of the trader function}:
 
@@ -408,16 +420,38 @@ so the \emph{ratio} of the two spans up to twelve decades on each side of 1.
 \subsubsection{The weight function}
 % ----------------------------------------------------------------------
 
+
+
 Second, we define the function $w$ that serves as a weighting factor for each participant in the \StokEx{}. It maps a participant's degree of confidence $[0, 100)\,\%$ onto $[0,+\infty)$, such that
 \begin{equation}
     w_i := w\left(\theta_i\right) = \frac{1}{3}\tan \left( \frac{\pi \,\theta_i}{200\%}\right)\,. \label{eqFunctionW}
 \end{equation}
-The function $w$ is consistent with principle number 8 (\emph{urgency grows with confidence}) since it scales the participant's exchange velocities according to their degree of confidence (we show in Annex \ref{secProofDegree} that $\theta_i$ can be interpreted as a geometrical angle in the right context).
+The function $w$ is consistent with principle number 8 (\emph{urgency grows with confidence}) since it scales the participant's exchange velocities according to their degree of confidence. In Fig.~\ref{figDegreeBoth}, that $\theta_i$ can be interpreted as a geometrical angle in the right context (see proof in Annex \ref{secProofDegree}).
 This tangent map is a design choice, not a requirement: principle 8 (\emph{urgency grows with confidence}) only asks for a strictly increasing $w$ with $w(0) = 0$, and Annex~\ref{secWeightFamily} shows that every result in this document holds unchanged for any such function.
-Either way, what the present document discloses is the per-participant weighting itself --- the scaling of each participant's exchange velocities by a weight $w_i \geq 0$ --- independently of the variable substitution used to derive that weight from a declared degree of confidence or equivalent conviction signal, of which the tangent map \eqref{eqFunctionW} is only one instance.
 
-The participant's weight $w_i$ is computed only once from their declared degree of confidence and, until the participant revises it, need not be recomputed at any step of the algorithm.
+The participant's weight $w_i$ is computed once at the beginning of the algorithm and it remains constant until the participant revises their degree of confidence $\theta_i$.
 
+\begin{figure}[hb]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{degree_of_certainty.pdf}
+        \caption{Linear scale in $x$}
+        \label{figDegree}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{degree_of_certainty_log.pdf}
+        \caption{Logarithmic scale in $x$}
+        \label{figDegreeLog}
+    \end{subfigure}
+    \caption{Geometrical interpretation of the participant's degree of confidence $\theta_i$}
+    \label{figDegreeBoth}
+\end{figure}
+
+
+\clearpage
 \subsubsection{Consistency with the principles}
 % ----------------------------------------------------------------------
 
@@ -430,14 +464,12 @@ Thus, the exact expressions for the exchange velocities of participant $i$ are
 
 In Fig.~\ref{figExchangeSymmetry}, we can see that, expressed in the same units of $\dot{R}$, the two curves are mirror images of one another (unbiased toward one asset or the other) and that they allow each participant to automatically ``buy low and sell high'' according to their estimate of the relative value of assets~A and~B.
 
-\begin{figure}[htb]
+\begin{figure}[tb]
 \centering
 \includegraphics[width=0.75\textwidth]{stokex_symmetry.pdf}
 \caption{participant $i$'s exchange velocities for an estimate of $\priceAB_i = 10$~$\alpha$ per~$\beta$ with a degree of confidence $\theta_i= 75 \%$. To compare both exchange velocities on a single axis, asset~B's velocity is converted to its $\alpha$-equivalent using the participant's own estimate, $\dot{X}_i^\beta \priceAB_i$ — the fair conversion factor according to participant $i$, not the (generally different) market price $\priceAB_\Omega$.}
 \label{figExchangeSymmetry}
 \end{figure}
-
-\clearpage
 
 In Annex \ref{secProofExchangeAtMarketPrice}, we prove that the expressions in \eqref{eqExchangeVelocities} are consistent with principle number~2 (\emph{exchange at market price}). Formally, this means that
 \begin{equation}\label{eqExchangeAtMarketPrice}
@@ -445,6 +477,7 @@ In Annex \ref{secProofExchangeAtMarketPrice}, we prove that the expressions in \
 \end{equation}
 Indeed, if a participant is buying asset A and paying with asset B, the two exchange velocities must be of opposite sign and the proportionality constant between the two is the market price. In Sec.~\ref{secMarketPrice}, we will determine the expression to compute the market price $\priceAB_\Omega$.
 
+\clearpage
 \subsubsection{Time it takes to empty a participant's account}
 % ----------------------------------------------------------------------
 
@@ -481,19 +514,6 @@ Profit is therefore never independent of the asset it is quoted in: it is not th
 This subsection shows a single personal trading robot in action, with a fictional participant but real market data.
 Only the exchange-velocity function \eqref{eqExchangeVelocities} is at work here: the real exchange rate is handed to the robot from the outside, instead of emerging from the other participants as it would in the full \StokEx{}.
 
-It's July 1\textsuperscript{st} 2021. Alice holds dual Canadian and French citizenship, and keeps two accounts, one in Canadian dollars (CAD) and one in euros (EUR),
-with a small reserve in each --- 100~CAD and 100~EUR --- against an unforeseen payment that may fall due in either country.
-When it does, the reserve of that country may not cover it, and she would have to convert her other currency at whatever rate happens to prevail that day.
-What she wants is buy each currency while it is cheap and sell it while it is dear, continuously, without watching the rate all day.
-This is exactly what the personal trading robot of the \StokEx{} does for her.
-
-As we have seen, Alice needs to answer two questions to deploy her personal trading robot on the CAD/EUR exchange:
-$\left.1\right)$ what she thinks one EUR is worth in CAD, and
-$\left.2\right)$ how confident she is in that estimate.
-Looking at the history of the CAD/EUR exchange rate data over the last 5 years (from July 1\textsuperscript{st} 2016 to 2021),
-she sees that the trend is pretty flat, so she makes her estimate at the average price over that 5-year window, which happens to be $\approx1.497$~CAD per EUR. She puts her degree of confidence at 70\%.
-This sets up her personal trading robot, which trades gently and continuously on her behalf. In Fig.~\ref{figCADEURExample} we show what that robot would have done over the next five years (from July 1\textsuperscript{st} 2021 to 2026) of real market data.
-
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{cadeur_example.pdf}
@@ -503,6 +523,18 @@ Second: the two account balances of Alice's wallet, starting at 100~CAD (red, le
 Third and fourth: Alice's profit since the start of the exchange window (Eqs.~\eqref{eqParticipantProfitAlpha}--\eqref{eqParticipantProfitBeta}), accounted in CAD ($P^{\mathrm{CAD}}$, red) and independently in EUR ($P^{\mathrm{EUR}}$, blue) --- the same quantity, related exactly by Eq.~\eqref{eqProfitIdentity}, not two independent findings.}
 \label{figCADEURExample}
 \end{figure}
+
+It's July 1\textsuperscript{st} 2021. Alice holds dual Canadian and French citizenship, and keeps two accounts, one in Canadian dollars (CAD) and one in euros (EUR),
+with a small reserve in each --- 100~CAD and 100~EUR. At some point, she may need to use that reserve in one country or the other and she will have to convert her entire reserve in either CAD or EUR. 
+In the meantime, she wants to buy each currency while it is cheap and sell it while it is dear, continuously, without watching the rate all day.
+This is exactly what the personal trading robot of the \StokEx{} does for her.
+
+As we have seen, Alice needs to answer two questions to deploy her personal trading robot on the CAD/EUR exchange:
+$\left.1\right)$ what she thinks one EUR is worth in CAD, and
+$\left.2\right)$ how confident she is in that estimate.
+Looking at the history of the CAD/EUR exchange rate data over the last 5 years (from July 1\textsuperscript{st} 2016 to 2021),
+she sees that the trend is pretty flat, so she makes her estimate at the average price over that 5-year window, which happens to be $\approx1.497$~CAD per EUR. She puts her degree of confidence at 70\%.
+This sets up her personal trading robot, which trades gently and continuously on her behalf. In Fig.~\ref{figCADEURExample} we show what that robot would have done over the next five years (from July 1\textsuperscript{st} 2021 to 2026) of real market data.
 
 Over the exchange window Alice ends $\approx10.6$~CAD ($\approx6.5$~EUR) ahead: against a starting wealth of $\approx247$~CAD ($\approx168$~EUR), a five-year return of about 4\% (4.3\% counted in CAD, 3.9\% in EUR). The two profit curves are related exactly by \eqref{eqProfitIdentity}.
 Therefore ``How much richer is Alice'' is only a well-posed question once a currency is chosen to measure it in, and the \StokEx{} itself never makes that choice: every principle is stated in terms of exchange velocities and ratios, never in terms of a profit computed in one privileged asset.
@@ -529,7 +561,7 @@ In this expression, the sum over the participants only includes those who are ac
 
 Let us note that this equilibrium price is \emph{unique}: by principle 7 (\emph{urgency grows with the gap}), each participant's exchange velocity is strictly increasing in the market price, hence so is the net exchange velocity $\sum_i \dot{X}_i^\alpha$, so it can vanish at only one strictly positive price, the one given by \eqref{eqMarketPrice}. The precise conditions and the proof are given in Annex~\ref{secProofUniqueness}.
 
-
+\clearpage
 % ----------------------------------------------------------------------
 \section{Implementation of the \StokEx{} Algorithm}
 % ----------------------------------------------------------------------
@@ -819,8 +851,6 @@ By taking the square root, we get the analogous standard deviation of the partic
 
 In order to derive this result, we had to imply that, in some sense, $w_i/W_\Omega$ corresponds to the probability that a participant estimates the price of $\priceAB$ at $\priceAB_i$ in a context where each participant has the same weight. Since this is not actually the case in the context of the \StokEx{}, we must be careful with the use of the analogous variance and the analogous standard deviation. Nonetheless, these quantities can offer a useful insight into the distribution of the participants' estimates, while giving more weight to the most important participants.
 
-\clearpage
-
 % ----------------------------------------------------------------------
 \section{Conclusion}
 % ----------------------------------------------------------------------
@@ -930,25 +960,6 @@ anticipated by this document.
 
 \subsection{Proof that the participant's degree of confidence corresponds to a geometrical angle}\label{secProofDegree}
 % ----------------------------------------------------------------------
-
-\begin{figure}[tbp]
-    \centering
-    \begin{subfigure}[t]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{degree_of_certainty.pdf}
-        \caption{Linear scale in $x$}
-        \label{figDegree}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{degree_of_certainty_log.pdf}
-        \caption{Logarithmic scale in $x$}
-        \label{figDegreeLog}
-    \end{subfigure}
-    \caption{Geometrical interpretation of the participant's degree of confidence $\theta$}
-    \label{figDegreeBoth}
-\end{figure}
 
 In Fig.~\ref{figDegree} we plot a participant's exchange velocity for asset A \eqref{eqExchangeVelocities} on a 2-D graph with normalized axes, such that
 \begin{equation*}
