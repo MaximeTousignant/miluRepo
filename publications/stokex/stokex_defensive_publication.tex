@@ -916,10 +916,11 @@ magnitude of $\dot{R}$ sets the pace of the whole market and nothing else. It is
 of units, not of mechanism.
 
 \textbf{A per-participant reference is a weight.} Nothing forces $\dot{R}$ to be common.
-Let each participant declare their own reference velocity, and write $\dot{\rho}_i$ for its value
+Let each participant declare their own reference velocity either in terms of $alpha$ as $\dot{\rho}_i^\alpha$ or in terms of $\beta$ as $\dot{\rho}_i^\beta$.
+In that case, clearly there is no bias between assets. Now we can show, that 
 counted in $\alpha$ per unit of time. The exchange velocities become
 \begin{equation}
-    \dot{X}^\alpha_i = w_i\, \dot{\rho}_i\, f(x_i)\,, \qquad
+    \dot{X}^\alpha_i = \dot{\rho}_i^\alpha\, f(x_i)\,, \qquad
     \dot{X}^\beta_i = w_i\, \dot{\rho}_i\, f(1/x_i)\, \priceBA_i\,,
     \label{eqOwnReference}
 \end{equation}
@@ -991,21 +992,36 @@ $-\dot{X}^\alpha_i / \priceAB_\Omega = w_i f(1/x_i) \dot{R} \priceBA_i$. So the 
 factor is imposed twice over, by principle 2 and by principle 4, from two different
 directions. The word ``convention'' in the discussion following \eqref{eqExchangeSymmetry} understates it.
 
-\textbf{Handing the pace to the participants.} What remains open is not symmetry but
-\emph{scale}. The market may fix only a unit of time and let each participant declare a
-third input alongside their estimate and their degree of confidence: the magnitude
-$\dot{\rho}_i$ of their own pace. Every result above still holds, with $\dot{w}_i = w_i \dot{\rho}_i$
-throughout.
+\textbf{The degree of confidence is a design choice, not a primitive.} The mechanism never
+sees $\theta_i$, and never sees $\dot{R}$ either: it sees only $\dot{w}_i$. A market can
+therefore be set up without a common reference velocity at all, and without asking for a
+degree of confidence. It is enough that each participant declare two things: an estimate,
+and a reference velocity of their own, counted in whichever of the two assets they please.
+The declaration ``$\dot{\rho}_i$ units of $\beta$ per unit of time'' is exactly the
+declaration ``$\dot{\rho}_i \priceAB_i$ units of $\alpha$ per unit of time'', so the pair of
+options is unbiased between the assets in the strong sense established above: the swap
+carries one onto the other. Everything then goes through --- both assets clear, every
+exchange occurs at the market price, and the price is covariant.
 
-\textbf{What it costs.} If $\dot{\rho}_i$ is free in magnitude, then $\theta_i$ is no longer the
-only urgency dial: a participant can scale up their influence on the market price by
-declaring a large reference velocity, without touching their degree of confidence. The
-comparability of $\theta$ across participants is lost, and its bound $[0,100)\,\%$ stops
-bounding anything. The conservative variant keeps both: a \emph{common} magnitude and a
-\emph{binary} denomination, $\dot{\rho}_i \in \{\dot{R},\ \dot{R}\priceAB_i\}$. In the reference
-implementation (Sec.~\ref{secReferenceImplementation}) the question does not arise:
-$\dot{R}$ is the universal income rate of the t\^{o}k system, common to every participant
-by construction, which is precisely what makes degrees of confidence comparable.
+\textbf{What the common $\dot{R}$ actually buys.} Not necessity, but legibility. A degree
+of confidence is dimensionless, bounded to $[0,100)\,\%$, and comparable from one
+participant to the next; a reference velocity is none of the three, and asking a
+participant how fast they wish to trade forces them to invent a scale, where asking how
+sure they are does not. That comparability is bought, not given, and it is bought by fixing
+$\dot{R}$ once for the whole market: by \eqref{eqFunctionW} and \eqref{eqEffectiveWeight},
+the degree recovered from a participant's declaration is
+$\theta_i = \frac{200\,\%}{\pi}\arctan\!\left(3\,\dot{w}_i/\dot{R}\right)$, which depends on
+$\dot{R}$. The same five-participant market reads as degrees of $93.9\,\%$, $89.6\,\%$,
+$95.7\,\%$, $90.2\,\%$, $93.9\,\%$ against one reference, and $85.1\,\%$, $75.1\,\%$,
+$89.3\,\%$, $76.4\,\%$, $85.1\,\%$ against a reference two and a half times larger. A degree
+of confidence is not a property of a participant; it is a property of a participant
+\emph{relative to a chosen pace}. Fixing that pace once is what turns it into a common
+language --- and it is also what stops a participant from buying influence by declaring a
+large $\dot{\rho}_i$ instead of a high $\theta_i$.
+
+In the reference implementation (Sec.~\ref{secReferenceImplementation}) the choice is not
+arbitrary: $\dot{R}$ is the universal income rate of the t\^{o}k system, common to every
+participant by construction. The market's pace is the currency's own clock.
 
 \textbf{Disclosure.} The generalization \eqref{eqOwnReference}--\eqref{eqEffectiveWeight}
 is part of the present disclosure: an exchange mechanism in which each participant's
