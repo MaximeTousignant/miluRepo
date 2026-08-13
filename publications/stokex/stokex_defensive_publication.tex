@@ -925,8 +925,11 @@ counted in $\alpha$ per unit of time. The exchange velocities become
 \end{equation}
 which is \eqref{eqExchangeVelocities} with $w_i$ replaced by the \emph{effective weight}
 \begin{equation}
-    \hat{w}_i := w_i\, \dot{\rho}_i \,. \label{eqEffectiveWeight}
+    \dot{w}_i := w_i\, \dot{\rho}_i \,. \label{eqEffectiveWeight}
 \end{equation}
+The overdot is the document's own: $w_i$ is a pure number, $\dot{\rho}_i$ is an amount of
+$\alpha$ per unit of time, so $\dot{w}_i$ is a velocity --- and, as everywhere else here,
+the dot marks that and not a time derivative.
 Every result of this document survives the substitution, because none of them uses more
 about $w_i$ than $w_i \geq 0$: the market price \eqref{eqMarketPrice}, its uniqueness
 (Annex~\ref{secProofUniqueness}), the aggregation into a single participant
@@ -935,7 +938,7 @@ particular both assets still clear simultaneously: the proof in
 Annex~\ref{secProofMarketprice} uses only the functional equation
 \eqref{eqFunctionalEquation}, never the homogeneity of the weights, so
 $\sum_i \dot{X}_i^\beta = -\priceBA_\Omega \sum_i \dot{X}_i^\alpha = 0$ for any
-nonnegative $\hat{w}_i$ whatsoever. A participant's own reference velocity is therefore
+nonnegative $\dot{w}_i$ whatsoever. A participant's own reference velocity is therefore
 not a new degree of freedom in the mechanism --- it is the weight, under another name.
 
 \textbf{The mechanism is covariant under the swap.} Relabelling the two assets sends every
@@ -944,13 +947,13 @@ and $\dot{X}^\alpha \leftrightarrow \dot{X}^\beta$. It also acts on the referenc
 velocity counted in $\alpha$ becomes one counted in $\beta$, and the second line of
 \eqref{eqExchangeSymmetry} says what that is worth to participant $i$ --- namely
 $\dot{R}\priceBA_i$. The effective weight \eqref{eqEffectiveWeight} therefore transforms as
-$\hat{w}_i \mapsto \hat{w}_i \priceBA_i$, and the closed form \eqref{eqMarketPrice} maps to
+$\dot{w}_i \mapsto \dot{w}_i \priceBA_i$, and the closed form \eqref{eqMarketPrice} maps to
 its own reciprocal:
 \begin{equation*}
-    \left( \frac{\displaystyle \sum_i \hat{w}_i \priceBA_i \cdot \priceBA_i}
-                {\displaystyle \sum_i \hat{w}_i \priceBA_i \cdot \priceAB_i^{\,2}} \right)^{1/3}
-    = \left( \frac{\displaystyle \sum_i \hat{w}_i \priceBA_i^{\,2}}
-                  {\displaystyle \sum_i \hat{w}_i \priceAB_i} \right)^{1/3}
+    \left( \frac{\displaystyle \sum_i \dot{w}_i \priceBA_i \cdot \priceBA_i}
+                {\displaystyle \sum_i \dot{w}_i \priceBA_i \cdot \priceAB_i^{\,2}} \right)^{1/3}
+    = \left( \frac{\displaystyle \sum_i \dot{w}_i \priceBA_i^{\,2}}
+                  {\displaystyle \sum_i \dot{w}_i \priceAB_i} \right)^{1/3}
     = \frac{1}{\priceAB_\Omega} \,.
 \end{equation*}
 Principle 4 (\emph{no bias between assets}) therefore holds as an identity, not as a
@@ -963,7 +966,7 @@ reference velocity were anchored \emph{outside} the pair --- in a third asset $\
 converted to $\alpha$ at a common price, so that $\dot{\rho}_i = c$ for every participant. That
 is a common factor, so by the gauge argument above it leaves the price unchanged. But it is
 no longer covariant: under the swap it becomes another common factor $c'$, whereas
-covariance demands the participant-dependent $\hat{w}_i \priceBA_i$. An impartial arbiter
+covariance demands the participant-dependent $\dot{w}_i \priceBA_i$. An impartial arbiter
 holding its reference in a neutral third currency would therefore \emph{break} the very
 symmetry it was introduced to guarantee. The only quantity that transforms correctly is the
 participant's own estimate, because it is the only participant-specific price in the
@@ -971,7 +974,7 @@ mechanism --- and it is exactly what \eqref{eqExchangeSymmetry} uses.
 
 \textbf{What is \emph{not} a symmetry statement.} None of this makes the reference velocity
 irrelevant beyond its scale. A market in which every participant counts their pace in
-$\beta$ \emph{at the same numerical magnitude} has $\hat{w}_i = w_i \priceAB_i$, which is
+$\beta$ \emph{at the same numerical magnitude} has $\dot{w}_i = w_i \priceAB_i$, which is
 participant-dependent and hence not a gauge: it is a different market, with a different
 price. Three participants suffice to see it: with estimates $(1, 4, 2)$ and weights
 $(1, 1, \tfrac12)$, the first market clears at $1.71595$ and the second at $2.33106$. This
@@ -991,7 +994,7 @@ directions. The word ``convention'' in the discussion following \eqref{eqExchang
 \textbf{Handing the pace to the participants.} What remains open is not symmetry but
 \emph{scale}. The market may fix only a unit of time and let each participant declare a
 third input alongside their estimate and their degree of confidence: the magnitude
-$\dot{\rho}_i$ of their own pace. Every result above still holds, with $\hat{w}_i = w_i \dot{\rho}_i$
+$\dot{\rho}_i$ of their own pace. Every result above still holds, with $\dot{w}_i = w_i \dot{\rho}_i$
 throughout.
 
 \textbf{What it costs.} If $\dot{\rho}_i$ is free in magnitude, then $\theta_i$ is no longer the
