@@ -178,7 +178,9 @@ def main():
     ax = axes[3]
     ax.plot(t, hist["weight"], color=BLUE, lw=1.8)
     ax.set_ylabel(r"$W_\Omega$")
-    ax.set_xlabel("time (units of $\\dot{R}$)")
+    # Ṙ is a velocity, not a duration: the axis is in the market's own time
+    # unit, and Ṙ = 1 is what fixes the pace measured against it.
+    ax.set_xlabel(r"time (arbitrary unit, with $\dot{R} = 1\,\alpha$ per unit)")
     style(ax)
 
     # the events, on all four panels
