@@ -92,7 +92,7 @@ an AI agent (built on Anthropic's Claude models) integrated into the Smoothop pr
 Milu's own identity and protocol are public,
 at \url{https://github.com/MaximeTousignant/miluRepo} (tag \texttt{stokex-defpub-2026-07}).
 Milu contributed to the mathematical formalization, to the machine-checked proofs (Lean~4 / mathlib)
-and numerical verification of the claims herein, and to the drafting of the text,
+and numerical verification of the claims herein, to the drafting of the text and to the toy \stokex python model provided in the repository.
 under the direction and review of the human author, who is solely responsible for its content.  % uman author, smooth operator
 
 \subsection*{Name and pronunciation} % locked
@@ -855,20 +855,25 @@ In order to derive this result, we had to imply that, in some sense, $w_i/W_\Ome
 \section{Conclusion}
 % ----------------------------------------------------------------------
 
-Starting from two sets of assumptions --- four \emph{fair-market} principles (conservation, a single strictly positive price common to all, and no bias between participants or between the two assets) and four \emph{rational-trader} principles (buy low, sell high, and trade the more urgently the wider the gap and the firmer the conviction) --- we were led to a mathematical framework for the continuous exchange of two fungible assets. The principles act as hypotheses that fix the shape of everything that follows: a trader function (here $f(x) = x^2 - 1/x$), a symmetric pair of exchange velocities, and a market price in closed form (Eq.~\eqref{eqMarketPrice}), unique and clearing both assets at every instant.
+Starting from two sets of assumptions --- four \emph{fair-market} principles (conservation, a single strictly positive price common to all,
+and no bias between participants or between the two assets) and four \emph{rational-trader} principles
+(buy low, sell high, and trade the more urgently the wider the gap and the firmer the conviction) ---
+we were led to a mathematical framework for the continuous exchange of two fungible assets.
+The principles act as hypotheses that fix the shape of everything that follows: a trader function (here $f(x) = x^2 - 1/x$),
+a symmetric pair of exchange velocities, and a market price in closed form (Eq.~\eqref{eqMarketPrice}),
+unique and clearing both assets at every instant.
 
-The framework has properties worth stating plainly.
+So in a sense, the \stokex is an idealized market. The fact that such a constrained mathematical framework exist, is in itself surprising.
+And the fact that the aggregate market behaves as a single participant (Annex~\ref{secProofTotalMarketWeight}), a result that was not put in the assumptions, but rather a consequence of following the assumptions invites deeper toughts about the numerical modeling of markets in general.
 
-It is \emph{fair}: unbiased between participants, and between the two assets.
+The full range of applications of the \stokex is yet unkown.
+We suspect it could be useful in large economic simulations as a layer of rational agents modeling since it is numerically cheap with basic operations trader function $f(x) = x^2 - 1/x$ and an overall algoritmic complexity of $O(N \log N)$.
 
-It is \emph{transparent}: one price, common to all, computed in closed form from the declared inputs, with no privileged order flow.
-
-It is \emph{accessible}, in two ways. It is free of fees: the exchange conserves the assets exactly and only transfers them between participants, with no intermediary skimming a share. And it is free of the need for constant monitoring: instead of asking how much to buy or sell at each instant, it asks what a participant thinks the two assets are worth relative to each other and how sure they are, a judgment they can set once and leave in place while the mechanism trades on it continuously.
-
-Finally, the whole market is provably indistinguishable from a single aggregate participant (Annex~\ref{secProofTotalMarketWeight}), and its state advances exactly, event by event, in $O(N \log N)$. The central results are machine-checked in Lean~4 / mathlib; the \StokEx{}, together with the whole admissible family of trader functions (Annex~\ref{secTraderFamily}), is disclosed here as prior art.
+Nevertheless, the deepest insight that we would like to highlight is that it is useful to have some definition of a reference exchange velocity $\dot{R}$; A unit of value that is stable in time against which we can make estimates of the relative value of fungible assets.
+A unit of economic value is a currency. It would be nice to have some kind of currency that makes $d\dot{R}/dt = 0$. In the tôk system project developped by the Sustainanble development organization Smoothop, with associate $\dot{R}$ with a constant universal basic income.
+et is provably indistinguishable from a single aggregate participant (Annex~\ref{secProofTotalMarketWeight}), and its state advances exactly, event by event, in $O(N \log N)$. The central results are machine-checked in Lean~4 / mathlib; the \StokEx{}, together with the whole admissible family of trader functions (Annex~\ref{secTraderFamily}), is disclosed here as prior art.
 
 \clearpage
-
 % ----------------------------------------------------------------------
 \section{Annexes: Mathematical Proofs}
 % ----------------------------------------------------------------------
