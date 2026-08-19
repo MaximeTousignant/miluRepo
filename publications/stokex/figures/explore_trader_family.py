@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Exploration de la famille des fonctions de marchand fₚ(x) = xᵖ − x^(1−p).
+"""Exploration of the family of trader functions fₚ(x) = xᵖ − x^(1−p).
 
-Compagnon de curiosité de l'annexe « The family of admissible trader
-functions » : à quoi ressemblent les membres, pourquoi p = 1 sature à la
-vente, et comment le prix de marché dépend du choix de p.
+A curiosity companion to the annex "The family of admissible trader
+functions": what the members look like, why p = 1 saturates on the
+selling side, and how the market price depends on the choice of p.
 
-Usage : python explore_trader_family.py   (matplotlib requis)
-Produit : trader_family.png, family_price.png (à côté du script).
+Usage: python explore_trader_family.py   (matplotlib required)
+Produces: trader_family.png, family_price.png (next to the script).
 """
 import math
 import os
@@ -17,8 +17,8 @@ import matplotlib.pyplot as plt
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 
-# Palette Smoothop (validée dataviz, fond blanc ; le vert exige des
-# étiquettes directes, présentes ci-dessous)
+# Smoothop palette (dataviz-validated, white background; green requires
+# direct labels, present below)
 COLORS = {1.0: "#0F8EB1", 1.5: "#6E39FF", 2.0: "#CC6018", 3.0: "#08B51F"}
 INK, MUTED, GRID = "#333333", "#6E6E6E", "#E4E4E4"
 
@@ -32,12 +32,12 @@ plt.rcParams.update({
 
 
 def f_p(x, p):
-    """Membre p de la famille : xᵖ − x^(1−p). Le $tôkEx est p = 2."""
+    """Member p of the family: xᵖ − x^(1−p). The $tôkEx is p = 2."""
     return x ** p - x ** (1.0 - p)
 
 
 def family_price(parts, p):
-    """Prix de marché en forme fermée du membre p (annexe, éq. famille)."""
+    """Closed-form market price of member p (annex, family eq.)."""
     num = sum(w * v ** (p - 1.0) for v, w in parts)
     den = sum(w * v ** (-p) for v, w in parts)
     return (num / den) ** (1.0 / (2.0 * p - 1.0))
@@ -50,11 +50,11 @@ def style(ax):
 
 
 # ---------------------------------------------------------- figure 1
-# Les membres de la famille : la saturation de f₁ côté vente
+# The members of the family: the saturation of f₁ on the selling side
 def fig_family():
     fig, (axl, axr) = plt.subplots(1, 2, figsize=(11, 4.6))
 
-    # panneau gauche : zoom linéaire autour de l'équilibre, pentes 2p−1
+    # left panel: linear zoom around the equilibrium, slopes 2p−1
     xs = [0.02 + i / 500.0 for i in range(1500)]
     for p, c in COLORS.items():
         axl.plot(xs, [f_p(x, p) for x in xs], color=c, lw=1.8)
@@ -69,7 +69,7 @@ def fig_family():
     axl.set_title("near the equilibrium: slope $2p-1$ at $x=1$", fontsize=11)
     style(axl)
 
-    # panneau droit : échelle log, la vente sature pour p = 1
+    # right panel: log scale, selling saturates for p = 1
     xs = [10 ** (-3 + i / 200.0) for i in range(1201)]
     for p, c in COLORS.items():
         axr.plot(xs, [f_p(x, p) for x in xs], color=c, lw=1.8)
@@ -93,9 +93,9 @@ def fig_family():
 
 
 # ---------------------------------------------------------- figure 2
-# Le prix de marché du même marché, selon le membre choisi
+# The market price of the same market, according to the chosen member
 def fig_price_vs_p():
-    # petit marché : deux camps aux estimations éloignées, poids inégaux
+    # small market: two camps with distant estimates, unequal weights
     parts = [(0.5, 1.0), (2.0, 0.5), (20.0, 0.25)]
     harmonic = sum(w for _, w in parts) / sum(w / v for v, w in parts)
     geo_extremes = math.sqrt(0.5 * 20.0)
@@ -131,10 +131,10 @@ def fig_price_vs_p():
 if __name__ == "__main__":
     fig_family()
     fig_price_vs_p()
-    # petite table de curiosité : le prix du même marché selon p
+    # a small curiosity table: the price of the same market according to p
     parts = [(0.5, 1.0), (2.0, 0.5), (20.0, 0.25)]
-    print("marché-jouet : estimations (0.5, 2, 20), poids (1, 0.5, 0.25)")
-    print(f"{'p':>6} {'prix V':>10} {'pente 2p-1':>11}")
+    print("toy market: estimates (0.5, 2, 20), weights (1, 0.5, 0.25)")
+    print(f"{'p':>6} {'price V':>10} {'slope 2p-1':>11}")
     for p in (1.0, 1.5, 2.0, 3.0, 5.0, 10.0, 100.0):
         print(f"{p:>6g} {family_price(parts, p):>10.4f} {2*p-1:>11g}")
-    print("figures : trader_family.png, family_price.png")
+    print("figures: trader_family.png, family_price.png")

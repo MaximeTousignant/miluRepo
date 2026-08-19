@@ -22,8 +22,8 @@ Output: `stokex_toy_sim.png`, **not versioned** --- an illustration is
 regenerated, not archived.
 
 Run with:
-  ./.venv/bin/python publications/stokex/stokex_toy_sim.py           # writes the PNG
-  ./.venv/bin/python publications/stokex/stokex_toy_sim.py --show    # + a window
+  ./.venv/bin/python publications/stokex/python_toy/stokex_toy_sim.py         # writes the PNG
+  ./.venv/bin/python publications/stokex/python_toy/stokex_toy_sim.py --show  # + a window
 """
 import os
 import sys

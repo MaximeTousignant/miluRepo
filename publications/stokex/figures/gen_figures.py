@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Génère les figures PDF de stokex_defensive_publication.tex (palette Smoothop).
+"""Generates the PDF figures of stokex_defensive_publication.tex (Smoothop palette).
 
-Usage : python gen_figures.py  (matplotlib requis ; testé avec 3.7)
+Usage: python gen_figures.py  (matplotlib required; tested with 3.7)
 """
 import math
 import os
@@ -15,7 +15,7 @@ from matplotlib.ticker import NullFormatter, ScalarFormatter
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 
-# Palette Smoothop, nuances -1 (validées CVD/contraste sur fond blanc)
+# Smoothop palette, shades -1 (validated for CVD/contrast on white background)
 BLUE = "#0F8EB1"
 ORANGE = "#CC6018"
 MAGENTA = "#9A23A3"
@@ -24,7 +24,7 @@ MUTED = "#6E6E6E"
 GRID = "#E4E4E4"
 
 plt.rcParams.update({
-    # Rendu du texte par LaTeX : même police Computer Modern que le document
+    # Text rendered by LaTeX: same Computer Modern font as the document
     "text.usetex": True,
     "text.latex.preamble": r"\usepackage{amsmath}\usepackage{amssymb}",
     "font.family": "serif",
@@ -51,9 +51,9 @@ def style(ax, grid_axis="both"):
 
 # ------------------------------------------------- stokex_symmetry.pdf
 def fig_symmetry():
-    """Vitesses d'échange du i-e participant : B est converti en équivalent-α
-    via l'estimé propre priceAB_i (son taux de conversion « juste »), pour
-    un seul axe commun en unités de Rdot (sans double échelle) ; miroir."""
+    """Exchange velocities of the i-th participant: B is converted to α-equivalent
+    via the participant's own estimate priceAB_i (their "fair" conversion rate), for
+    a single common axis in units of Rdot (no dual scale); mirror."""
     v_i, theta = 10.0, 75.0
     w_i = math.tan(math.pi * theta / 200.0) / 3.0
 
@@ -93,13 +93,13 @@ def fig_symmetry():
 
 # ------------------------------------------------ trader_function.pdf
 def fig_trader_function():
-    """La fonction de trader f(x) = x^2 - 1/x, seule et nue : le zéro à
-    l'estimé, l'achat sous l'estimé, la vente au-dessus, l'urgence non
-    bornée des deux côtés."""
+    """The trader function f(x) = x^2 - 1/x, bare and alone: the zero at the
+    estimate, buying below the estimate, selling above it, the unbounded
+    urgency on both sides."""
     fig, ax = plt.subplots(figsize=(6.5, 4.2))
 
-    # échelle log en x : le ratio se lit multiplicativement, et la fenêtre
-    # [1/10, 10] est symétrique autour de l'estimé
+    # log scale in x: the ratio reads multiplicatively, and the window
+    # [1/10, 10] is symmetric around the estimate
     xs = [10 ** (-1.0 + j / 1000.0) for j in range(2001)]  # 0.1 .. 10
     ax.plot(xs, [x * x - 1.0 / x for x in xs], color=BLUE, lw=1.8)
 
@@ -115,8 +115,8 @@ def fig_trader_function():
     ax.xaxis.set_minor_formatter(NullFormatter())
     ax.set_yticks([-10, -5, 0, 5, 10])
     ax.set_xlabel(r"price ratio $x$ (log scale)", fontsize=13)
-    # rotation=0 laisse le va="bottom" par défaut de matplotlib : sans
-    # va="center", l'étiquette flotte au-dessus du milieu de l'axe
+    # rotation=0 leaves matplotlib's default va="bottom": without
+    # va="center", the label floats above the middle of the axis
     ax.set_ylabel("$f(x)$", rotation=0, labelpad=16, fontsize=12,
                   va="center", ha="right")
     style(ax, grid_axis="y")
@@ -133,7 +133,7 @@ def fig_trader_function():
 
 # ----------------------------------------------------- stokex_steps.pdf
 def fig_steps():
-    """Le prix de marché, constant par morceaux entre les événements."""
+    """The market price, piecewise constant between events."""
     fig, ax = plt.subplots(figsize=(6.5, 3.2))
     events = [0.0, 1.0, 1.5, 1.8]
     steps_t = [0.0, 1.0, 1.0, 1.5, 1.5, 1.8, 1.8, 3.0]
@@ -165,12 +165,12 @@ def fig_steps():
 
 # ------------------------- degree_of_certainty.pdf / degree_of_certainty_log.pdf
 def fig_degree(log=False):
-    """Interprétation géométrique de θ. aspect='equal' pour que l'angle
-    dessiné soit exactement arctan(3 w). L'annexe raisonne sur un
-    participant quelconque : θ et w y vont sans indice."""
+    """Geometric interpretation of θ. aspect='equal' so that the drawn angle
+    is exactly arctan(3 w). The annex reasons about an arbitrary
+    participant: θ and w appear there without an index."""
     RATIO = r"\frac{\,[\alpha/\beta]_\Omega}{[\alpha/\beta]_i}"
 
-    w = 0.16  # schématique : angle lisible à l'échelle du graphe
+    w = 0.16  # schematic: angle readable at the scale of the graph
     slope = 3.0 * w
     theta_deg = math.degrees(math.atan(slope))
 
@@ -189,12 +189,12 @@ def fig_degree(log=False):
         x0 = 1.0
         ax.set_xlabel("$%s$" % RATIO, fontsize=15)
     ax.set_ylim(-1.5, 1.5)
-    ax.set_aspect("equal")  # l'angle à l'écran = l'angle géométrique
+    ax.set_aspect("equal")  # the on-screen angle = the geometric angle
     ax.set_ylabel(r"$\dot{X}_i^\alpha / \dot{R}$", rotation=0, labelpad=24,
                   fontsize=12)
     style(ax)
 
-    # construction : horizontale, tangente, arc de l'angle θ
+    # construction: horizontal, tangent, arc of the angle θ
     reach = 1.6
     dash = dict(color=INK, lw=1.1, ls=(0, (4, 3)))
     ax.plot([x0, x0 + reach], [0.0, 0.0], **dash)
@@ -213,14 +213,14 @@ def fig_degree(log=False):
 
 # --------------------------------------------- personal_trading_robot.pdf
 def fig_robot_schema():
-    """Schéma du robot de trading personnel dans le contexte du marché.
+    """Schematic of the personal trading robot in the context of the market.
 
-    Un participant humain honnête déclare deux entrées, une fois ; son robot
-    personnel négocie ensuite en continu à sa place. Comme c'est un marché,
-    on montre trois participants : le participant i (mis en évidence, honnête)
-    et deux pairs (grisés, « un parmi d'autres »). L'agrégat de tous les
-    robots fixe l'unique prix de marché, qui réalimente chaque robot en
-    continu. Diagramme, pas un graphe de données."""
+    An honest human participant declares two inputs, once; their personal
+    robot then trades continuously in their place. Since this is a market,
+    we show three participants: participant i (highlighted, honest) and two
+    peers (greyed out, "one among others"). The aggregate of every robot
+    sets the single market price, which feeds back into each robot
+    continuously. A diagram, not a data graph."""
     # ---- Palette and drawing constants ---------------------------------
     FADE = "#AAAAAA"           # muted peers: "one participant among others"
     WHITE_PAD = 3.0            # pt, white box behind a label (masks the arrow)
@@ -353,8 +353,8 @@ def fig_robot_schema():
 
 # ------------------------------------------------- cadeur_example.pdf
 def fig_cadeur_example():
-    """Illustration numerique pertinente au systeme des toks (echange
-    contre une devise etrangere) : CAD/EUR (CAD par EUR = DEXCAUS x
+    """Numerical illustration relevant to the tok system (exchange
+    against a foreign currency): CAD/EUR (CAD per EUR = DEXCAUS x
     DEXUSEU, FRED)."""
     import pandas as pd
 
@@ -486,4 +486,4 @@ if __name__ == "__main__":
     fig_degree(log=True)
     fig_robot_schema()
     fig_cadeur_example()
-    print("OK :", sorted(f for f in os.listdir(OUT) if f.endswith(".pdf")))
+    print("OK:", sorted(f for f in os.listdir(OUT) if f.endswith(".pdf")))

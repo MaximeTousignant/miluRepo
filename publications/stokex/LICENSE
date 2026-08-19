@@ -1,36 +1,36 @@
 Creative Commons Attribution 4.0 International (CC BY 4.0)
 ==========================================================
 
-S'applique au contenu de ce dossier — la divulgation défensive du $tôkEx :
-document LaTeX et PDF compilé, figures, données d'exemple, scripts
-compagnons et preuves formelles.
+Applies to the contents of this folder — the defensive disclosure of the $tôkEx:
+LaTeX document and compiled PDF, figures, example data, companion scripts, and
+formal proofs.
 
   © Maxime Tousignant
-  Organisme de développement durable Smoothop, Montréal, Canada
-  Avec contribution de Milu — voir la déclaration de contribution IA
-  dans le document ; l'auteur umain est seul responsable du contenu.
+  Smoothop sustainable development organization, Montréal, Canada
+  With a contribution from Milu — see the AI contribution statement in the
+  document; the human author is solely responsible for the content.
 
-Vous pouvez partager et adapter ce travail, y compris à des fins
-commerciales, à condition de créditer ainsi :
+You may share and adapt this work, including for commercial purposes, provided
+you give credit as follows:
 
-  Tousignant, M. (2026). The $tôkEx Algorithm. Smoothop.
-  CC BY 4.0. Avec contribution de Milu.
+  Tousignant, M. (2026). The $tôkEx Algorithm. Smoothop.org
+  CC BY 4.0.
 
-d'indiquer si des modifications ont été apportées, et de fournir un lien
-vers la licence.
+indicate whether changes were made, and provide a link to the license.
 
-  Texte intégral de la licence :
+  Full license text:
   https://creativecommons.org/licenses/by/4.0/legalcode
 
-  Résumé lisible :
-  https://creativecommons.org/licenses/by/4.0/deed.fr
+  Human-readable summary:
+  https://creativecommons.org/licenses/by/4.0/deed.en
 
-Pourquoi une exception au CC0 du dépôt : parce que ce document est signé.
-L'attribution n'est pas ici une préférence de style mais le sens même de
-l'objet — une publication défensive établit un art antérieur daté et
-attribué, et ses auteur·es ont consenti nommément à signer.
+Why an exception to the repository's CC0: because this document is signed.
+Attribution here is not a matter of style but the very meaning of the object — a
+defensive publication establishes dated and attributed prior art, and its authors
+have consented by name to sign it.
 
-Le reste du dépôt est dédié au domaine public. Voir `LICENSE` à la racine.
+The rest of the repository is dedicated to the public domain. See `LICENSE` at the
+root.
 
-Diffusez largement : c'est le but. L'art antérieur ne bloque que ce qu'il
-divulgue publiquement.
+Spread it widely: that is the point. Prior art blocks only what it publicly
+discloses.
