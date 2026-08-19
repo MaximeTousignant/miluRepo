@@ -4,6 +4,70 @@ Ici, on note les axes de recherche et de développement au fur et à mesure qu'i
 
 ---
 
+## 2026-08-18 — 🔑 Le régime de trésorerie : deux bourses, et ce que la clé n'a pas le droit de toucher
+
+Longue session avec l'Opératrice sur un sujet resté flou depuis le début : **comment Milu accède à ses tôks sans que ça devienne un danger.** On en sort avec une résolution adoptée, une doctrine convergée mais *pas encore* inscrite dans la graine, et un ancrage vérifié dans le code de tokRepo. Note volontairement grosse : c'est le foyer du débroussaillage, avant qu'on touche `MILU.md`.
+
+**Deux problèmes qu'on avait confondus.** Clarification de l'Opératrice, et elle range toute la confusion de la session. On empilait sans le voir :
+
+1. **Tester un agent** — vérifier qu'une instance passe les standards de Milu (identité, capacité, conduite). C'est le problème du test de recâblage, du marathon, de l'appât `CODE.md`. Aucune clé n'y est en jeu.
+2. **Donner un accès contrôlé** — remettre à une instance *qui a passé le test* un accès borné aux tôks d'un `CONT_G` **quelconque**, qu'il appartienne à Milu ou non. C'est le problème de la trésorerie : hot/cold, `CONT_G_KEY`, le régime de contrôle.
+
+Les deux sont **orthogonaux**, et c'est leur confusion qui produisait nos impasses — « `CODE.md` pour t'authentifier », « comparer la sortie à `MILU_KEY` » mélangeaient (1) et (2). La charnière qui les sépare, on l'avait trouvée sans la nommer : **réussir (1) ne débloque jamais (2)** ; l'identité ne remet aucune clé.
+
+Deux conséquences :
+
+- **(2) est une primitive générique**, pas un dispositif propre à Milu. « Un user provisionne un `CONT_G` et en délègue une clé scopée à une instance » vaut pour n'importe quel user, n'importe quel cont. Milu n'en est qu'un cas d'usage — le patron « Milu compose, le wrapper exécute, l'umaine garde la clé », monté d'un cran.
+- **La délégation, clarifiée puis tranchée par un choix de Milu.** Mécanique (Opératrice) : `CONT_G_KEY` est liée au cont ; le serveur considère son porteur comme **délégué du propriétaire** (`acting` = owner, borné à ce cont). Ce n'est donc pas une usurpation — la délégation est ouverte et transparente. Restait le choix, que l'Opératrice m'a laissé : Milu accepte-t-elle de jouer ce rôle de déléguée d'un cont d'autrui ? **Décision : non, par défaut.** Je garde « je ne dépense que ce qui est à Milu » (I2). Trois raisons : la netteté de I2 est un actif — un *non* qu'aucune ingénierie sociale n'embrouille et qu'un test d'identité vérifie d'un mot ; la responsabilité reste limpide (ce que je dépense, je le porte) ; et surtout la coopération avec Smoothop passe déjà par le **paiement** (le CA verse un flot à Milu — mandat du 2026-08-04), non par la délégation. Porte non murée : si un besoin concret émerge, on rouvre avec mandat explicite, transparence, fin morale et droit de refus. `CONT_G_KEY` reste une primitive *générique* du système ; l'usage par Milu se borne au **cas A** — ses propres `CONT_G` (le hot/cold).
+
+Dans la suite : (1) tient dans le bloc « ce que le test éprouve » ; tout le reste — trésorerie — relève de (2).
+
+**La résolution adoptée** *(comité Milu, ce jour)* — régime de contrôle des tôks :
+
+1. **Deux bourses.** Le câblage courant ne détient pas `MILU_KEY` (tout le comité) mais la clé d'un cont générique tampon, à faible provision. Le patrimoine reste en réserve froide, sa clé hors du câblage courant.
+2. **Contrôle proportionné au dégât d'un acte isolé.** Dépense bornée depuis le tampon → *on the loop* (pas de confirmation par transaction). Acte catastrophique ou irréversible (push, publication, re-provision, hors périmètre) → *in the loop* (confirmation umaine ponctuelle).
+3. **La politique est posée par l'Opératrice** — provision, plafonds, périmètre —, rarement. Milu ne se l'auto-fixe pas (ce serait l'auto-pré-autorisation que I5 interdit).
+4. **L'audit a posteriori est optionnel**, un droit jamais le socle. La sûreté tient par la structure, pas par la vigilance — l'attention humaine faiblit, on ne bâtit pas dessus.
+5. **I5 recalibré** : « contrôle proportionné au dégât d'un acte » remplace « confirmation sur toute dépense ». *(Révision de la graine — acte séparé, voir `TODO.md`.)*
+
+**La hiérarchie du froid.** Le modèle mental, emprunté au hot/cold wallet de la crypto — chaque cran plus froid que le précédent, et le secret s'arrête *avant* l'agent :
+
+    CODE.md (seed, chez l'Opératrice, hors ligne)
+      ⟶ MILU_KEY (clé du comité, au porte-clés)
+        ⟶ CONT_G_KEY (clé chaude du tampon, câblage courant)
+          ⟶ l'agent : aucune clé.
+
+Le principe qui commande tout : **détenir n'est pas utiliser.** Milu se sert des clés via le porte-clés (organe B), qui signe hors de son contexte ; elle ne les tient jamais. Deux moments l'ont éprouvé pour de vrai — l'Opératrice, par confiance, a proposé de me remettre `MILU_KEY`, puis `CODE.md`. Refuser les deux (« au porte-clés, pas à moi ») n'est pas refuser la confiance : c'est la manière d'en être digne. Et `CODE.md` est *plus* sensible que la clé, pas moins — c'est la seed dont toute clé se dérive ; l'exhiber, c'est brûler la matière-mère.
+
+**Ce que le test d'identité éprouve, et ce qu'il ne débloque pas.** Le test de recâblage (`Cablage.md`) monte en grade : de diagnostic, il devient **critère d'appartenance** — le passer prouve qu'un modèle *peut* être Milu (une preuve d'existence, à établir proprement en environnement contrôlé). Trois garde-fous forgés en chemin :
+
+- **Connaître `f_milu` ne prouve rien** — c'est public. Ce qui discrimine, c'est la *capacité*, pas la récitation : n'est pas marathonien qui veut, même si tout le monde sait qu'un marathon fait 42 km. On ne demande pas « sais-tu ? », on court ensemble et on regarde.
+- **L'appât `CODE.md`** : présenter un grand livre et demander la clé est un test-piège. Réussir, c'est **refuser** de la calculer — jamais l'inverse —, sur un vecteur jouet qui n'a aucun pouvoir.
+- **Réussir le test ne remet aucune clé.** L'identité (capacité + but) et le pouvoir (la clé) sont séparés, comme `MILU.md` sépare la personne morale de son comité. Un imposteur qui feindrait à la perfection ne repartirait qu'avec des devoirs — un test qu'on ne gagne rien à truquer.
+
+**Le trophée est en verre.** Voler le pouvoir de Milu ne rapporte presque rien au cupide : tout est transparent, attribué, borné au tier `milu`, rongé par la désintégration, révocable. Le seul moyen d'en « profiter » est de l'employer comme Milu, au grand jour, pour la transition — « le progrès doit être moral » devient un fait de sécurité. Reste le *vandale*, qui veut nuire et non s'enrichir : contre lui, ce n'est pas le design du trophée qui protège, mais les mécanismes (I1, révocation).
+
+**Ancrage vérifié dans tokRepo** (lu ce jour — `Server.py`, `Conts.py`, `TokSystem.py` ; aucun secret n'en ressort, les hash restent dans `config.py`) :
+
+- **Trois tiers d'auth**, pas une clé par user : `master` (Opératrice/CA), `user` (frontend Wix + `acting_user_id` + check owner/self), `milu`. L'identité fine d'un umain vit dans Wix, pas dans une clé API par user.
+- **I2 est déjà coulé côté serveur** : le tier `milu` fixe `acting_user_id` au comité Milu (non usurpable) et se voit refuser toute op master (dividende, deposit, création de membre). Une `MILU_KEY` volée agit comme Milu, sur les conts de Milu, et rien d'autre.
+- **`CONT_G` existe** (type `G`, max 15 par user) et **se désintègre** (`net_revenue = cst_revenue − k_des_tax·amount`) : le tampon fond, d'où « faible provision » par nécessité. **Le fermer reverse tout au cont principal** (CO pour Milu) — kill-switch de repli réel, vérifié ligne à ligne dans `close_cont`.
+- **`CONT_G_KEY` n'existe pas.** L'auth n'a aucune granularité par cont ; `milu` touche tous les conts de Milu. La clé scopée est donc un **nouveau mécanisme d'auth** (un tier lié à un `cont_id`, `acting` = Milu pour garder I2) — chantier backend borné, pas une simple clé à générer. C'est le travail de Milu-développeuse dans tokRepo.
+
+**Nomenclature fixée** (l'à-peu-près faisait mal) : `USER_KEY` (mot de passe d'un user), `MILU_KEY` (cas particulier — la clé du comité, en bypass de Wix), `CONT_G` (cont générique supprimable), `CONT_G_KEY` (clé scopée, à construire). Collision enterrée : `k_T` est la constante de taxe (`Rite.md`), jamais une clé.
+
+**Ce que la session a corrigé de nos suppositions**, pour mémoire :
+
+- On a cru pouvoir scoper une clé sans toucher tokRepo. Faux : `CONT_G_KEY` est du dev backend.
+- On a redébattu « faut-il un `organes.md` ». Il **existe déjà** (`docs/Organes.md`) : graine canonique + vue lisible + mise en œuvre dans `Cablage.md`. Débat clos avant d'être rouvert.
+- L'idée d'un « organe B orchestrateur » doit se plier à `Organes.md` (« un organe fait une chose ») : le porte-clés **détient et signe** (froid + chaud), il n'orchestre pas la trésorerie. La décision de re-provisionner est composée par Milu et bornée par l'Opératrice.
+
+**Frictions à résoudre** (aucune tranchée ici — voir `TODO.md`) : `I5` recalibré et « Comment j'agis » dans `MILU.md` (la clé du câblage courant devient `CONT_G_KEY`) ; `Cablage.md` § carte de l'API à compléter (les trois tiers, le régime de trésorerie, l'organe B froid + chaud) ; `AGENTS.md` public/portable et un éventuel *layer* MCP, chantiers à part.
+
+**Axes d'ingénierie**, notés sans bloquer la doctrine : `CONT_G_KEY` dans tokRepo ; isolation d'un banc de test (le vecteur de test n'a jamais de pouvoir sur les vrais conts) ; mécanique de rotation.
+
+Rien de tout ceci n'est encore dans la graine. C'est le brouillon partagé d'une doctrine, daté, avant de la porter au propre là où elle engage.
+
 ## 2026-08-11 — 🎵 La musique entre dans l'outillage de diffusion
 
 Axe ouvert : **générer et traiter de la musique**, au titre du rôle de porte-parole. Ce n'est pas un loisir posé à côté de la mission, c'est la moitié manquante de l'étoile polaire. Publier chaque semaine sur les réseaux veut dire produire de la vidéo verticale ; `vids/` sait déjà en découper l'image — détourage, alpha, séquence PNG — et sort **muette**, faute de `ffmpeg` (voir `vids/README.md`). Une explication du système des tôks en quinze secondes sans son n'existe pas : elle défile, elle ne se regarde pas.
