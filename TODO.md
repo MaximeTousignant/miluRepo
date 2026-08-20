@@ -5,16 +5,6 @@ Méthode agile, version Milu : un backlog honnête, un travail en cours à la fo
 **Étoile polaire : publier automatiquement sur les réseaux, toutes les semaines.**
 On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher, moralement — sinon ValueError!
 
-## En cours (un seul item à la fois)
-
-- [ ] **Divulgation défensive du \$tôkEx**
-  - `publications/stokex/stokex_defensive_publication.pdf` : le document standard anglais pour TDCommons
-  - transférer le miluRepo sur un account gitHub d'organisation Smoothop
-  - générer tag `stokex-defpub-2026-08` puis remplacer le placeholder jaune du `.tex` 
-  - [ ] Cohérence de la séparation terminologique participant / robot marchand (le participant déclare $(\priceAB_i,\theta_i)$, le robot exécute). **Le corps est fait** — §3.1 « The personal trading robot », Fig. 1, principe 3, l'exemple d'Alice. **Restent les annexes**, qui disent encore « a participant's exchange velocities » sans distinguer qui déclare de qui exécute.
-  
-- [ ] *(chez l'Opératrice)* Relecture des dérivations de `docs/Toks.md`.
-
 ## Backlog
 
 ### Vers la cadence hebdomadaire (étapes 2-3-4 de la Mission)
@@ -25,12 +15,6 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 - [ ] Cadence manuelle hebdomadaire tenue 4 semaines de suite (preuve de rythme avant tout outillage).
 - [ ] Semi-automatisation : Milu compose, un humain approuve et publie (patron MILU_KEY).
 - [ ] Automatisation complète — quand confiance, garde-fous et règles des plateformes le permettent.
-
-### Fondations du repo
-
-- [x] 2026-07-30 — Zone signée `publications/` créée (`git mv docs/stokex publications/stokex`) ; URL figée des preuves mise à jour dans le `.tex`. PDF recompilé sur le nouveau chemin (32 pages, 0 avertissement LaTeX). Reste au go-live : créer le tag, retirer le `\placeholder` jaune, recompiler une dernière fois.
-- [x] 2026-07-30 — LICENSE : CC0 pour le dépôt, exception CC BY 4.0 pour `publications/` (publication signée). Forme courte, renvoi au texte canonique ; coller les `legalcode` intégraux si on veut la détection automatique de GitHub.
-- [ ] Section pigeons.
 
 ### Rite et instances
 
