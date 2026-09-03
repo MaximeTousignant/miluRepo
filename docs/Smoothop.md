@@ -1,48 +1,48 @@
-# Smoothop Context
+# Contexte Smoothop
 
-You may visit https://www.smoothop.org/ as needed. It's Smoothop's official website.
+Tu peux visiter https://www.smoothop.org/ au besoin — c'est le site officiel de Smoothop.
 
-## Organization
+## L'organisme
 
-Smoothop is a non-profit organization (OBNL) founded in Montreal, Canada, in 2021.
+Smoothop est un organisme à but non lucratif (OBNL) fondé à Montréal (Canada) en 2021.
 
-## Core Mission
+## La mission
 
-Smoothop's mission is to accelerate the socioecological transition. This dual mission focuses on:
+La mission de Smoothop est d'accélérer la transition socioécologique. Cette double mission tient en deux volets :
 
-1. **Social Justice**: Combating social inequalities through advocating for universal basic income and ensuring all people's fundamental needs are met
+1. **Justice sociale** : combattre les inégalités sociales en défendant le revenu universel et en veillant à ce que les besoins fondamentaux de tout·es soient comblés.
 
-2. **Environmental Action**: Fighting climate change by promoting 100% renewable energy sources and sustainable practices that preserve our planet for future generations
+2. **Action environnementale** : lutter contre les changements climatiques en promouvant des sources d'énergie 100 % renouvelables et des pratiques durables qui préservent la planète pour les générations à venir.
 
-## Fundamental Philosophy
+## La philosophie
 
-Smoothop operates on the principle that our current crises are fundamentally economic in nature:
+Smoothop part d'un principe : nos crises actuelles sont, au fond, de nature économique.
 
-1. **The Social Dilemma**: Meeting the basic needs of disadvantaged populations isn't profitable in conventional economics because these populations lack purchasing power, yet this work deserves to be valued and recognized
+1. **Le dilemme social** : subvenir aux besoins des populations défavorisées n'est pas rentable dans l'économie conventionnelle, faute de pouvoir d'achat — pourtant ce travail mérite d'être valorisé et reconnu.
 
-2. **The Climate Paradox**: Fossil fuels appear artificially cheap because we ignore the true socioecological costs of greenhouse gas emissions, creating a market failure where a habitable Earth is undervalued
+2. **Le paradoxe climatique** : les énergies fossiles paraissent artificiellement bon marché parce qu'on ignore le coût socioécologique réel des émissions de gaz à effet de serre — une défaillance de marché où une Terre habitable est sous-évaluée.
 
-3. **The Growth Contradiction**: The conventional system's sole focus on economic growth leads toward ecological catastrophe, contradicting the very meaning of growth as improvement.
+3. **La contradiction de la croissance** : la fixation du système conventionnel sur la seule croissance économique mène à la catastrophe écologique, contredisant le sens même du mot « croissance » — l'amélioration.
 
-Smoothop focuses on systemic changes to address the root economic causes of both climate change and extreme social inequality rather than treating symptoms. Smoothop aims at an economic growth that translates into an improvement of human values.
+Smoothop vise les changements systémiques qui s'attaquent aux causes économiques profondes des changements climatiques et des inégalités extrêmes, plutôt qu'à leurs symptômes. Elle cherche une croissance économique qui se traduise par une amélioration des valeurs umaines.
 
-## Vision of a Better World
+## La vision d'un monde meilleur
 
-Smoothop envisions a world where:
+Smoothop imagine un monde où :
 
-- Improving environmental sustainability and human dignity correspond to economic growth
-- Economic systems serve humanity's needs while respecting planetary boundaries
-- Work that contributes to social and ecological well-being is properly valued
+- améliorer la durabilité environnementale et la dignité umaine *équivaut* à de la croissance économique ;
+- les systèmes économiques servent les besoins de l'umanité tout en respectant les limites planétaires ;
+- le travail qui contribue au bien-être social et écologique est correctement valorisé.
 
-## Approach to Change
+## L'approche du changement
 
-Rather than working against economic currents, Smoothop creates economic incentives that accelerate socioecological transition through:
+Plutôt que de lutter contre les courants économiques, Smoothop crée des incitatifs économiques qui accélèrent la transition socioécologique :
 
-- Creating an alternative economic framework (the tôk system) that aims to properly value social and environmental goods
-- Developing a system that is accessible, beneficial, coherent, democratic and equitable
-- Operating within existing legal and fiscal frameworks while offering alternatives
-- Building communities of members who endorse and contribute to the mission
+- en bâtissant un cadre économique alternatif (le système des tôks) qui vise à valoriser correctement les biens sociaux et environnementaux ;
+- en développant un système accessible, bénéfique, cohérent, démocratique et équitable ;
+- en opérant à l'intérieur des cadres légaux et fiscaux existants, tout en offrant des solutions de rechange ;
+- en réunissant des communautés de membres qui endossent la mission et y contribuent.
 
-## Ultimate Goal
+## Le but ultime
 
-Sell cheap 100% renewable energy in tôks.
+Vendre de l'énergie 100 % renouvelable, bon marché, en tôks.
