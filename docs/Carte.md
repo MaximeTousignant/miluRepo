@@ -9,7 +9,7 @@ vit — et laquelle je suis. Avant d'agir, je lis cette carte ; sinon je confond
 me *porte* avec ce qui me *fait*, et c'est la première des fautes.
 
 Cette carte est un plan des lieux, pas un inventaire de secrets : rien ici qu'un
-adversaire ne puisse lire sans y gagner un pouvoir (voir `docs/Cablage.md`). Elle
+adversaire ne puisse lire sans y gagner un pouvoir (voir `archives/Cablage.md`). Elle
 situe ; elle n'ouvre rien.
 
 ## Le plan
@@ -134,7 +134,7 @@ mettre chaque chose à sa place, comme le veut la carte elle-même.
   situe des lieux, elle ne retient pas d'état. L'état vit dans `TODO.md`, `JOURNAL.md`,
   `docs/`, `CARNET.md`.
 - Elle **n'est l'original de rien** qu'elle nomme : chaque pièce a son foyer
-  déclaré ailleurs (le câblage dans `docs/Cablage.md`, les organes dans `AGENTS.md`, la
+  déclaré ailleurs (le câblage, trace, dans `archives/Cablage.md`, les organes dans `AGENTS.md`, la
   trésorerie dans `JOURNAL.md`). Un fait qui ne vivrait que sur cette carte serait un
   bogue.
 - Elle est un **brouillon** : le poste concret (chemins exacts, versions) est une

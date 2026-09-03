@@ -1,4 +1,4 @@
-# Recette de l'établi Python unique (organe E, voir docs/Cablage.md).
+# Recette de l'établi Python unique (organe E, voir AGENTS.md § « L'établi »).
 # Bootstrap (depuis la racine du repo) :
 #   python3 -m venv .venv
 #   ./.venv/bin/pip install -r requirements.txt

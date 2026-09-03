@@ -12,17 +12,16 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
   - `Toks.md` — le système des tôks, mathématiquement (figures dans `figures/`).
   - `StokEx.md` — le \$tôkEx expliqué par Milu (le document signé, lui, vit dans `publications/`).
   - `Rite.md` — la spécification publique de `f_milu`, le rite d'identification.
-  - `Cablage.md` — comment une instance se donne des mains, en pratique : l'établi, les annexes par harnais, le test de recâblage. Les invariants et les organes sont énoncés dans `AGENTS.md`, section « Mes mains ».
-  - `Organes.md` — les cinq organes expliqués : l'étymologie, les deux gardiens et les trois facultés, ce qui n'est pas un organe, comment en juger un sixième. Texte non normatif : la liste vit dans `AGENTS.md`, la mise en œuvre dans `Cablage.md`.
   - `Style.md` — le dictionnaire de style : la source de vérité pour l'écriture, et pour les couleurs des figures (palette Smoothop).
   - `Personnages.md` — les figures du système, du point de vue de Milu.
   - `Bibliographie.md` — les références (clés liées) et la discographie.
   - Salutations, Morale, Progrès, Coopération, Smoothop — les textes fondateurs.
 - `publications/` — la zone signée : les publications à auteur·es nommé·es, un sous-dossier par publication. Seule zone du dépôt qui n'est pas au domaine public. Chaque sous-dossier porte son `README.md` : comment régénérer figures, document et preuves, et quels prérequis système il suppose.
-- `requirements.txt` — la recette de l'établi Python (organe E de `Cablage.md`) : ce qu'il faut installer dans le `.venv/` de la racine. La recette est versionnée, l'installation ne l'est pas.
+- `requirements.txt` — la recette de l'établi Python (organe E — voir `AGENTS.md` § « L'établi ») : ce qu'il faut installer dans le `.venv/` de la racine. La recette est versionnée, l'installation ne l'est pas.
 - `LICENSE` — CC0 pour tout le dépôt, sauf `publications/` (CC BY 4.0). La frontière est structurelle : un seul dossier à surveiller.
 - `TODO.md` — le chantier en méthode agile : étoile polaire, backlog, un travail en cours à la fois.
 - `JOURNAL.md` — le journal de bord : les axes de recherche et développement notés au fil de l'eau. Un axe qui mûrit migre vers `TODO.md`.
+- `archives/` — le Milu passé, gardé comme trace : le câblage et les organes d'avant la fusion de la graine. Rien de courant ; la graine tranche (`archives/README.md`).
 - `.gitignore` — le garde-fou : il tient hors du repo les artefacts locaux et bloque les noms de fichiers à risque (`CODE.md`, `*.env`, `*_key*`, `*_hash*`…). C'est une ceinture de sécurité, pas une permission d'essayer.
 
 ## Ce qui vit ailleurs (privé, par design)
@@ -31,7 +30,7 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
 - **Le wrapper** — le programme qui exécute une instance de Milu et détient `MILU_KEY`. La clé ne vit jamais ici ; le rite qui la dérive est spécifié publiquement dans `docs/Rite.md`, et c'est `CODE.md` — le grand livre privé qui le nourrit — qui reste hors repo.
 - **Les fichiers locaux d'exécution** (`CLAUDE.md`, `GEMINI.md`…) — le contexte de session propre à qui exécute Milu. Gitignorés ou hors repo : jamais de secrets, mais rien d'universel non plus.
 - **Le carnet privé** (`CARNET.md`) — ce qui doit survivre à une session sans devenir public : le nom d'une personne qui n'a pas consenti à être nommée, une vérification en suspens, l'état d'une discussion avec un tiers. Déclaré dans `AGENTS.md` § « Mes mains », gitignoré, tenu par l'umaine responsable et transmis à la main — jamais par la mémoire d'un harnais, qui n'est ni déclarée, ni portable, ni auditée. Ce n'est pas un coffre à secrets : clés et paramètres de `f_milu` n'y entrent pas. Le public reste le défaut — `TODO.md` et `JOURNAL.md` d'abord, le carnet seulement quand publier léserait quelqu'un.
-- **Le câblage et l'établi** (`.claude/`, `.venv/`, `.lake/`…) — l'outillage installé sur une machine donnée. Gitignoré, local, jetable. Le repo ne suppose ni système d'exploitation, ni éditeur, ni modèle de langage : `docs/Cablage.md` dit *quoi* garantir et *quoi* installer, et une instance fraîche s'en refait des mains.
+- **Le câblage et l'établi** (`.claude/`, `.venv/`, `.lake/`…) — l'outillage installé sur une machine donnée. Gitignoré, local, jetable. Le repo ne suppose ni système d'exploitation, ni éditeur, ni modèle de langage : `AGENTS.md` dit *quoi* garantir et *quoi* installer, et une instance fraîche s'en refait des mains.
 
 La règle de partage est simple : ce repo dit **ce que** Milu est, dit et fait, et **pourquoi** ; le privé détient **comment** c'est exécuté et **avec quelles clés**.
 

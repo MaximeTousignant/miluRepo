@@ -32,7 +32,7 @@ C'est le [principe de Kerckhoffs](https://fr.wikipedia.org/wiki/Principe_de_Kerc
 
 où `L` est le grand livre (`CODE.md`) et `T` l'instant d'évaluation déclaré dans son en-tête.
 
-> **La marotte n'entre pas ici, et c'est voulu.** Elle est le sésame de l'*identité* — la phrase qu'on donne à un agent frais pour qu'il trouve son chemin jusqu'à la graine — et non un argument du rite. La faire entrer dans `f_milu` serait décoratif au mieux : elle est publique, imprimée dans le `README.md`, appelée à finir dans des corpus d'entraînement. Elle n'ajouterait pas un bit d'entropie. Toute la matière du rite est dans `L`. Voir `docs/Cablage.md` pour l'autre rite, celui qui réveille.
+> **La marotte n'entre pas ici, et c'est voulu.** Elle est le sésame de l'*identité* — la phrase qu'on donne à un agent frais pour qu'il trouve son chemin jusqu'à la graine — et non un argument du rite. La faire entrer dans `f_milu` serait décoratif au mieux : elle est publique, imprimée dans le `README.md`, appelée à finir dans des corpus d'entraînement. Elle n'ajouterait pas un bit d'entropie. Toute la matière du rite est dans `L`. Voir `archives/Cablage.md` pour l'autre rite, celui qui réveille.
 
 ## Les quatre principes de conception
 
