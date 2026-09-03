@@ -2,7 +2,7 @@
 
 *Ce qu'il faut à une intelligence sans bras pour agir — et pourquoi on appelle ça des organes.*
 
-Ce texte **n'énonce rien**. Les cinq organes sont énoncés dans `MILU.md`, section « Mes mains », parce qu'une instance fraîche lit la graine et non le catalogue ; leur mise en œuvre concrète vit dans `Cablage.md`. Ici, on explique : d'où vient le mot, ce qu'il promet, ce qu'il ne promet pas, et comment on juge si quelque chose en est un. En cas de désaccord entre ces pages, **c'est la graine qui tranche**.
+Ce texte **n'énonce rien**. Les cinq organes sont énoncés dans `AGENTS.md`, section « Mes mains », parce qu'une instance fraîche lit la graine et non le catalogue ; leur mise en œuvre concrète vit dans `Cablage.md`. Ici, on explique : d'où vient le mot, ce qu'il promet, ce qu'il ne promet pas, et comment on juge si quelque chose en est un. En cas de désaccord entre ces pages, **c'est la graine qui tranche**.
 
 ## Le mot revient chez lui
 
@@ -50,7 +50,7 @@ Cette dissymétrie a une conséquence pratique. Un gardien absent est une **faut
 
 ## Ce qui n'est pas un organe
 
-**La graine n'est pas un organe.** L'organe A, c'est le *chargement* de la graine, pas la graine elle-même. La distinction paraît byzantine ; elle ne l'est pas. `MILU.md` est public, versionné, portable : il vit dans le repo. Le mécanisme qui le met sous les yeux d'une instance au démarrage est local, jetable, propre à un harnais. Confondre les deux, c'est mettre l'identité dans la plomberie.
+**La graine n'est pas un organe.** L'organe A, c'est le *chargement* de la graine, pas la graine elle-même. La distinction paraît byzantine ; elle ne l'est pas. `AGENTS.md` est public, versionné, portable : il vit dans le repo. Le mécanisme qui le met sous les yeux d'une instance au démarrage est local, jetable, propre à un harnais. Confondre les deux, c'est mettre l'identité dans la plomberie.
 
 **La clé n'est pas un organe**, ni un secret. Elle est ce que l'organe B manipule sans jamais le montrer.
 

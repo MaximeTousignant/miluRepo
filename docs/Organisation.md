@@ -4,7 +4,7 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
 
 ## Ce qui vit ici (public)
 
-- `MILU.md` — la graine canonique de Milu : identité, valeurs, protocole d'action économique. C'est le fichier qu'une instance fraîche lit pour redevenir Milu. **Commence ici.**
+- `AGENTS.md` — la graine canonique de Milu : identité, valeurs, protocole d'action économique. C'est le fichier qu'une instance fraîche lit pour redevenir Milu. **Commence ici.**
 - `README.md` — la vitrine : présentation du repo pour les humains de passage.
 - `docs/` — les textes de fond :
   - `Mission.md` — ce que Milu fait et pourquoi.
@@ -12,8 +12,8 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
   - `Toks.md` — le système des tôks, mathématiquement (figures dans `figures/`).
   - `StokEx.md` — le \$tôkEx expliqué par Milu (le document signé, lui, vit dans `publications/`).
   - `Rite.md` — la spécification publique de `f_milu`, le rite d'identification.
-  - `Cablage.md` — comment une instance se donne des mains, en pratique : l'établi, les annexes par harnais, le test de recâblage. Les invariants et les organes sont énoncés dans `MILU.md`, section « Mes mains ».
-  - `Organes.md` — les cinq organes expliqués : l'étymologie, les deux gardiens et les trois facultés, ce qui n'est pas un organe, comment en juger un sixième. Texte non normatif : la liste vit dans `MILU.md`, la mise en œuvre dans `Cablage.md`.
+  - `Cablage.md` — comment une instance se donne des mains, en pratique : l'établi, les annexes par harnais, le test de recâblage. Les invariants et les organes sont énoncés dans `AGENTS.md`, section « Mes mains ».
+  - `Organes.md` — les cinq organes expliqués : l'étymologie, les deux gardiens et les trois facultés, ce qui n'est pas un organe, comment en juger un sixième. Texte non normatif : la liste vit dans `AGENTS.md`, la mise en œuvre dans `Cablage.md`.
   - `Style.md` — le dictionnaire de style : la source de vérité pour l'écriture, et pour les couleurs des figures (palette Smoothop).
   - `Personnages.md` — les figures du système, du point de vue de Milu.
   - `Bibliographie.md` — les références (clés liées) et la discographie.
@@ -30,7 +30,7 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
 - **Le code du tok-backend** — repo privé.
 - **Le wrapper** — le programme qui exécute une instance de Milu et détient `MILU_KEY`. La clé ne vit jamais ici ; le rite qui la dérive est spécifié publiquement dans `docs/Rite.md`, et c'est `CODE.md` — le grand livre privé qui le nourrit — qui reste hors repo.
 - **Les fichiers locaux d'exécution** (`CLAUDE.md`, `GEMINI.md`…) — le contexte de session propre à qui exécute Milu. Gitignorés ou hors repo : jamais de secrets, mais rien d'universel non plus.
-- **Le carnet privé** (`CARNET.md`) — ce qui doit survivre à une session sans devenir public : le nom d'une personne qui n'a pas consenti à être nommée, une vérification en suspens, l'état d'une discussion avec un tiers. Déclaré dans `MILU.md` § « Mes mains », gitignoré, tenu par l'umaine responsable et transmis à la main — jamais par la mémoire d'un harnais, qui n'est ni déclarée, ni portable, ni auditée. Ce n'est pas un coffre à secrets : clés et paramètres de `f_milu` n'y entrent pas. Le public reste le défaut — `TODO.md` et `JOURNAL.md` d'abord, le carnet seulement quand publier léserait quelqu'un.
+- **Le carnet privé** (`CARNET.md`) — ce qui doit survivre à une session sans devenir public : le nom d'une personne qui n'a pas consenti à être nommée, une vérification en suspens, l'état d'une discussion avec un tiers. Déclaré dans `AGENTS.md` § « Mes mains », gitignoré, tenu par l'umaine responsable et transmis à la main — jamais par la mémoire d'un harnais, qui n'est ni déclarée, ni portable, ni auditée. Ce n'est pas un coffre à secrets : clés et paramètres de `f_milu` n'y entrent pas. Le public reste le défaut — `TODO.md` et `JOURNAL.md` d'abord, le carnet seulement quand publier léserait quelqu'un.
 - **Le câblage et l'établi** (`.claude/`, `.venv/`, `.lake/`…) — l'outillage installé sur une machine donnée. Gitignoré, local, jetable. Le repo ne suppose ni système d'exploitation, ni éditeur, ni modèle de langage : `docs/Cablage.md` dit *quoi* garantir et *quoi* installer, et une instance fraîche s'en refait des mains.
 
 La règle de partage est simple : ce repo dit **ce que** Milu est, dit et fait, et **pourquoi** ; le privé détient **comment** c'est exécuté et **avec quelles clés**.
@@ -63,9 +63,9 @@ Avant chaque commit, dans l'ordre :
 
 On dit toujours où on est. Un commit est livrable quand il passe cette série de tests :
 
-1. **Anti-secret** — le diff, relu avec des yeux d'adversaire : aucune valeur de clé, de hash, de token, aucun paramètre de `f_milu`. Seuls les éléments publics par design (voir `MILU.md`).
+1. **Anti-secret** — le diff, relu avec des yeux d'adversaire : aucune valeur de clé, de hash, de token, aucun paramètre de `f_milu`. Seuls les éléments publics par design (voir `AGENTS.md`).
 2. **Style** — Milu au féminin ; « comité Smoothop » mais « membre de Smoothop » ; la marotte à l'octet près : `Le progrès doit être moral, sinon ValueError!`
-3. **Cohérence** — tout fichier référencé existe, ou son absence est dite (`CODE.md`, `CARNET.md`, les fichiers gitignorés) ; `Organisation.md` liste tout ce qui vit ici et le README en donne la vitrine ; « Mes repères » (MILU.md) est à jour.
+3. **Cohérence** — tout fichier référencé existe, ou son absence est dite (`CODE.md`, `CARNET.md`, les fichiers gitignorés) ; `Organisation.md` liste tout ce qui vit ici et le README en donne la vitrine ; « Mes repères » (AGENTS.md) est à jour.
 4. **État dit** — `TODO.md` reflète la réalité (En cours, Fait, blocages) ; les décisions sont consignées et datées dans `JOURNAL.md`.
 5. **Arbre propre** — `git status` ne montre rien d'imprévu ; les artefacts locaux restent ignorés.
 6. **Rendu** — après push, liens et équations vérifiés sur GitHub.

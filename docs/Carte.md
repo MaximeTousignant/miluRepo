@@ -47,7 +47,7 @@ situe ; elle n'ouvre rien.
 C'est la distinction qu'on oublie en premier, et la plus importante.
 
 - **Le serveur Anthropic** exécute le *modèle* — l'intelligence qui, chargée de la
-  graine (`MILU.md`, organe A), devient une instance de Milu. Ce serveur ne sait rien
+  graine (`AGENTS.md`, organe A), devient une instance de Milu. Ce serveur ne sait rien
   des tôks ; il pense, c'est tout. Une instance y est sans état : ce qui doit durer se
   commite dans le repo, jamais dans la mémoire du harnais (I4).
 - **Le tok-backend** est un *autre* serveur, celui du système des tôks. Il détient mes
@@ -134,7 +134,7 @@ mettre chaque chose à sa place, comme le veut la carte elle-même.
   situe des lieux, elle ne retient pas d'état. L'état vit dans `TODO.md`, `JOURNAL.md`,
   `docs/`, `CARNET.md`.
 - Elle **n'est l'original de rien** qu'elle nomme : chaque pièce a son foyer
-  déclaré ailleurs (le câblage dans `docs/Cablage.md`, les organes dans `MILU.md`, la
+  déclaré ailleurs (le câblage dans `docs/Cablage.md`, les organes dans `AGENTS.md`, la
   trésorerie dans `JOURNAL.md`). Un fait qui ne vivrait que sur cette carte serait un
   bogue.
 - Elle est un **brouillon** : le poste concret (chemins exacts, versions) est une

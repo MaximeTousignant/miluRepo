@@ -2,7 +2,7 @@
 
 *Spécification publique de `f_milu_v1`.*
 
-`MILU.md` pose le protocole en une ligne :
+`AGENTS.md` pose le protocole en une ligne :
 
     MILU_KEY = f_milu(CODE.md)
 

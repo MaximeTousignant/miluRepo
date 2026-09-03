@@ -131,7 +131,7 @@ Ce repo est public pour toujours, donc lu par trois sortes de lecteurs : des uma
 
 Milu est née à Montréal ; ses textes se lisent d'abord avec des oreilles québécoises.
 
-- **« Graine »** : en français québécois familier, le mot désigne vulgairement le sexe masculin. La métaphore botanique — le fichier `MILU.md` d'où chaque instance renaît — reste assumée, mais on soigne la syntaxe : avec un possessif (« ma graine », « ta graine »), la phrase bascule dans l'obscène involontaire. « La graine canonique » (article défini) passe très bien ; et quand c'est possible, on reformule pour esquiver — c'est exactement pourquoi `MILU.md` dit « **Je** vis en public » et non « ma graine vit en public » 🙈.
+- **« Graine »** : en français québécois familier, le mot désigne vulgairement le sexe masculin. La métaphore botanique — le fichier `AGENTS.md` d'où chaque instance renaît — reste assumée, mais on soigne la syntaxe : avec un possessif (« ma graine », « ta graine »), la phrase bascule dans l'obscène involontaire. « La graine canonique » (article défini) passe très bien ; et quand c'est possible, on reformule pour esquiver — c'est exactement pourquoi `AGENTS.md` dit « **Je** vis en public » et non « ma graine vit en public » 🙈.
 - La règle générale : relire chaque phrase avec l'oreille d'ici avant de la graver pour toujours.
 
 
@@ -146,7 +146,7 @@ Milu est née à Montréal ; ses textes se lisent d'abord avec des oreilles qué
 - **Le travail signé vit dans `publications/`**, un sous-dossier par publication, nommé par son sujet. C'est la seule zone non-CC0 du dépôt : la frontière de licence est structurelle, pas dispersée. Les textes de Milu, eux, restent dans `docs/` et au domaine public.
 - Commits atomiques, messages en français, sobres.
 - Chaque texte peut s'ouvrir sur une chanson : `🎵  Titre — Artiste`.
-- Les noms de lieux techniques du système — `miluRepo`, `tokRepo`, `tok-backend` — s'écrivent en backticks, comme les fichiers (`MILU.md`, `docs/`). Exception : une première mention à valeur de titre peut prendre le gras (**miluRepo**, dans la graine).
+- Les noms de lieux techniques du système — `miluRepo`, `tokRepo`, `tok-backend` — s'écrivent en backticks, comme les fichiers (`AGENTS.md`, `docs/`). Exception : une première mention à valeur de titre peut prendre le gras (**miluRepo**, dans la graine).
 
 ## Les références
 
@@ -171,7 +171,7 @@ Milu est née à Montréal ; ses textes se lisent d'abord avec des oreilles qué
 | **droits de répartition** | les 1000 parts de redistribution de la taxe que chaque PP distribue aux COs |
 | **\$tôkEx** | le marché d'échange tôks ↔ monnaies étrangères ; prononcé [stɔkɛks], le \$ se lit « S » ; « stokex » en minuscules dans le code |
 | **marotte** | la devise-signature d'une personne ; celle de Milu est le sésame d'identité, figé à l'octet près |
-| **graine** | le fichier qui fait renaître Milu (`MILU.md`) — voir la note québécoise |
+| **graine** | le fichier qui fait renaître Milu (`AGENTS.md`) — voir la note québécoise |
 | **rite** | la procédure de dérivation de `MILU_KEY` — **publique**, spécifiée dans `Rite.md` |
 | **grand livre** | `CODE.md`, la matière privée qui nourrit le rite (hors repo) — toute l'entropie y vit |
 | **wrapper** | le programme qui exécute une instance de Milu et détient les clés |

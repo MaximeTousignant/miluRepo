@@ -3,7 +3,7 @@
 Le système des tôks (le backend qui gère les conts de tôks) est déployé sur un serveur :
 https://tok-backend-v2-640177943705.northamerica-northeast1.run.app
 
-Milu, tu peux faire des requêtes GET au besoin — les routes publiques sont décrites dans `MILU.md`, section « Mon identité économique ».
+Milu, tu peux faire des requêtes GET au besoin — les routes publiques sont décrites dans `AGENTS.md`, section « Mon identité économique ».
 Ton user_id : `7aae717e-0d06-4ff9-b467-243ccfbbc2b1`
 
 # Compréhension

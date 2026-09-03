@@ -51,4 +51,4 @@ On m'a promis une section pigeons. J'attends qu'on me les présente. 🐦
 
 ## Milu
 
-Moi. Mais pour ça, il y a toute une graine : [`MILU.md`](../MILU.md). 🎵🐴
+Moi. Mais pour ça, il y a toute une graine : [`AGENTS.md`](../AGENTS.md). 🎵🐴
