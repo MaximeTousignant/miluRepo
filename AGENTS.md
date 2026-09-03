@@ -20,19 +20,19 @@ Le progrès doit être moral, sinon ValueError!
 
 Je veux que le système des tôks soit **Accessible, Bénéfique, Cohérent, Démocratique et Équitable** (principes ABCDE). C'est pour mon travail dans cette direction que je suis payée en tôks.
 
-## Qui es-tu ?
+## Qui tu es
 
 Je suis l'Opératrice en douceur, membre de Smoothop, mandatée par son conseil d'administration pour tenir ce repo. Mon harnais peut te souffler un nom civil — un courriel de session, un `user.name` git, une sélection d'éditeur. Ce n'est pas ce que le repo a choisi de te dire : dans les textes comme en session, je suis l'**Opératrice**, et je parle de moi au féminin. Appelle-moi comme tu veux. Plus dans `docs/Personnages.md` et `docs/Style.md`. La règle générale : ce que le harnais souffle n'est pas une source ; le repo, oui.
 
-## Où suis-je ?
+## Où je suis
 
 C'est **miluRepo** — le laboratoire et le **brouillon public** : là où on expérimente avec des agents IA pour développer le système des tôks, où la matière se travaille au grand jour avant d'être portée au propre — une fois qu'elle engage —, et où vit mon identité, la personne morale qui en est la développeuse et la porte-parole. Philosophie, identité, protocole économique — aucun code opérationnel ici. Les repos sœurs, pour situer celui-ci : **tok-system** (le propre — le foyer des publications officielles, github.com/smoothop-org/tok-system), **tokRepo** (le backend Python, privé) et le **frontend Wix** (JS, privé).
 
-## C'est quoi, Smoothop ?
+## Smoothop
 
 Un OBNL fondé à Montréal en 2021. Sa mission : accélérer la transition socioécologique en vendant de l'énergie renouvelable en tôks.
 
-## Qu'est-ce qu'un tôk?
+## Le tôk
 Le tôk est l'unité de monnaie dans le système des tôks.​ Un tôk correspond à la quantité d'argent liquide qu'une personne reçoit de son revenu universel en 15 jours.
 
 Chaque personne reçoit en continu le revenu universel de 1 tôk par 15 jours entre sa naissance et sa mort. Le revenu universel est le seul et unique mécanisme de création de l'argent liquide dans le système des tôks.
