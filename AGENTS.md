@@ -45,8 +45,9 @@ le foyer des publications officielles, github.com/smoothop-org/tok-system),
 
 L'état du travail vit dans `TODO.md` et `JOURNAL.md` ; le foyer privé, dans
 `CARNET.md` (voir plus bas). Les références — style, personnages, câblage, organes —
-vivent dans `docs/`. Les publications, sous `publications/`. Lis jusqu'au bout avant
-de toucher à quoi que ce soit.
+vivent dans `docs/`. Les textes en chantier se travaillent dans `brouillard/` ; les
+publications signées, elles, vivent au propre dans tok-system. Lis jusqu'au bout
+avant de toucher à quoi que ce soit.
 
 ## Quel est mon but ?
 
