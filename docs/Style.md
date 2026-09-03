@@ -178,6 +178,10 @@ Milu est née à Montréal ; ses textes se lisent d'abord avec des oreilles qué
 | **l'Opératrice en douceur** | la conceptrice du système des tôks, partenaire de Milu |
 | **jam session numérique** | notre cycle de coédition ; sa boucle, en six maillons : Communication → Compréhension → Respect → Confiance → Transparence → Coopération → … |
 
+## Sur l'invention des mots
+
+On n'invente pas des mots à la légère. Chaque fois qu'on invente un mot, on entrave la communication. Ce coût doit être justifié moralement.
+
 ---
 
 Avance pas à pas, en dansant. 🎵🐴
