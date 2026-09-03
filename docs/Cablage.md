@@ -16,11 +16,13 @@ Ce document-ci ne les répète pas. Il les **met en œuvre** : l'établi de milu
 
 ## L'établi de miluRepo (organe E)
 
-La règle est dans la graine : chaque outil est soit reconstructible depuis le repo, soit déclaré comme prérequis système. Voici où tombe chacun, ici, aujourd'hui.
+La règle est dans la graine (`AGENTS.md` § « L'établi ») : chaque outil est soit reconstructible depuis le repo, soit déclaré comme prérequis système. La graine énonce déjà LaTeX et Lean comme prérequis ; voici, en pratique, où tombe chacun ici.
 
-**Reconstructible** — l'environnement Python : `python3 -m venv .venv` puis `./.venv/bin/pip install -r requirements.txt`. Un seul établi, à la racine, jamais un second dans un sous-dossier ; la recette est `requirements.txt`.
+**Reconstructible** — l'environnement Python : `python3 -m venv .venv` puis `./.venv/bin/pip install -r requirements.txt`. Un seul établi, à la racine, jamais un second dans un sous-dossier ; la recette est `requirements.txt`. C'est lui qui trace les figures (matplotlib) et met en forme le texte des documents.
 
-**Prérequis système** — LaTeX, déclaré dans `publications/stokex/README.md` ; la chaîne Lean, déclarée dans `publications/stokex/proof/README.md`. Non reconstructibles, et c'est normal — mais il faut le dire. S'ils manquent, on le dit aussi : on ne bricole pas.
+**Prérequis système — LaTeX.** `latexmk`, `pdflatex`, `bibtex`, `dvipng`. Non reconstructible : s'il manque, on le dit, on ne bricole pas. Un brouillon se compile depuis son dossier `document/`.
+
+**Prérequis système — Lean, et son cache partagé.** `elan`/`lake`/`lean` (toolchain `leanprover/lean4:v4.32.0`) sont le prérequis système. Mais mathlib, lui, ne se rebâtit pas : ce sont ~7,3 Go, et en refaire un exemplaire par projet serait exactement la duplication qu'on refuse. Le cache prébâti vit **au niveau de la machine**, dans `~/.lake-shared`, partagé par tous les projets Lean du poste — tok-system comme miluRepo. Une preuve de `brouillard/<sujet>/preuves/` s'y raccroche par un **symlink `.lake → ~/.lake-shared`** (gitignoré, local, jetable), `require` mathlib au même `rev`, et réutilise au besoin la fondation `TokCommon` de `~/tok-system/lean_common`. On ne crée jamais un second cache. *(Le cache est en droit reconstructible par `lake`, mais au prix d'heures de compilation : on le traite en prérequis, pas en artefact à refaire.)*
 
 ## La carte de l'API du tok-backend (organe B)
 
