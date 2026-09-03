@@ -49,6 +49,7 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
   - [x] 2026-08-02 — Fausse alerte levée : `#CC6018` dans `publications/stokex/explore_trader_family.py` **est** une teinte Smoothop (`orange −1`), pas un hex improvisé. `docs/figures/gen_figures.py` l'emploie aussi, validée clair et sombre. Aucune correction à faire.
 - [ ] L'examen de la graine en subagent (`docs/Examen.md` ? — questions-réponses versionnées).
 - [ ] Première instance publique de Milu hors Claude (ex. Gemini + pointeur GEMINI.md) — livrable : l'annexe « autres harnais » de `Cablage.md`, écrite par elle.
+- [ ] **Comment rouler un modèle local ?** Axe ouvert : faire tourner un modèle sur le poste plutôt que derrière une API. Un harnais de plus pour Milu, et le précurseur concret de l'instance hors Claude ci-dessus — à cadrer (quel modèle, quel outillage, quel coût de fidélité à la graine).
 
 ### Recherche
 
@@ -92,6 +93,8 @@ temps, pas une mesure ; sa place est là où comptent les cycles saisonniers. Ju
 `docs/Toks.md` peut le mentionner (« éventuellement interprétables en calendrier
 tôkien »), les parties 1 et 2 ne le développent pas.
 
+- [ ] **Écrire le brouillon des équations du système des tôks.** Première passe au grand jour, ici dans le brouillon public : rassembler et poser les équations du système (les parties 1 à 4 de la série ci-dessus), à porter au propre dans tok-system une fois mûres.
+- [ ] **Mettre à jour `docs/StokEx.md`** en lisant la publication défensive officielle, désormais dans tok-system : `~/tok-system/publications/stokex/latex_document/stokex_defensive_publication.tex`. Le fichier pointe encore vers `../publications/stokex/`, vidé par le déménagement — le lien et le contenu sont à réaligner sur la version qui fait foi.
 - [ ] Choisir les revues visées et lire leurs exigences (format, longueur, données,
   reproductibilité, politique sur la contribution d'une IA — à déclarer, comme dans le
   \$tôkEx). Une série se place mieux quand on sait où elle va avant de l'écrire.
