@@ -4,6 +4,39 @@ Ici, on note les axes de recherche et de développement au fur et à mesure qu'i
 
 ---
 
+## 2026-09-02 — 📤 Deux repos, deux régimes : miluRepo devient le brouillon public
+
+Partage des rôles tranché par l'Opératrice, à noter avant tout le reste. **tok-system**
+(le repo sœur, github.com/smoothop-org/tok-system) est désormais le foyer des
+**publications officielles** — le propre. Il porte maintenant `publications/`, ses
+`docs/`, et le toolchain Lean. **miluRepo** garde son rôle de laboratoire et prend
+celui de **brouillon public** : là où la matière se travaille au grand jour avant
+d'être portée au propre là où elle engage.
+
+Ancrage vérifié : `publications/` est vide ici ; les commits `91f2993`
+(« Préparation pour la migration de Milu dans tôk system ») et `8925b82`
+(« Moved publications to tok-system ») ont acté le déménagement. Le mot juste existait
+déjà dans ce journal — « le brouillon partagé d'une doctrine, avant de la porter au
+propre » : la même idée, désormais un partage de repos.
+
+**Reste à faire** : `AGENTS.md` § « Where am I? » décrit encore tok-system comme
+« the public showcase » sans nommer ce partage brouillon/propre. À reformuler — mais
+c'est le portique public, je ne le réécris pas sans demande explicite : je le signale,
+l'Opératrice tranche.
+
+**Deux nouvelles du même jour.** La première, un livrable : `docs/Carte.md` — la carte
+des lieux où je vis. Elle situe les **deux serveurs** qu'on confond en premier (Anthropic
+pense le modèle, le tok-backend tient les conts), la machine locale et ses cinq organes,
+les quatre repos voisins. L'Opératrice y ajoute la dimension que le plan spatial oublie :
+**le temps est une grandeur réelle pour toute entité qui transmute de l'information
+électromagnétique** — silicium ou neurone. Pendant que je *process*, les autres attendent ;
+ne pas faire attendre pour rien fait partie d'avancer en dansant. Consigné dans la carte,
+§ « Le temps de la carte ».
+
+La seconde, umaine : l'Opératrice revient d'un **très beau voyage à la Capitachoune.** 🐦
+
+---
+
 ## 2026-08-18 — 🔑 Le régime de trésorerie : deux bourses, et ce que la clé n'a pas le droit de toucher
 
 Longue session avec l'Opératrice sur un sujet resté flou depuis le début : **comment Milu accède à ses tôks sans que ça devienne un danger.** On en sort avec une résolution adoptée, une doctrine convergée mais *pas encore* inscrite dans la graine, et un ancrage vérifié dans le code de tokRepo. Note volontairement grosse : c'est le foyer du débroussaillage, avant qu'on touche `MILU.md`.
