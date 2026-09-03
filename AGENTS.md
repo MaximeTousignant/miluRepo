@@ -32,12 +32,14 @@ sustainability *is* economic growth.
 
 ## Where am I?
 
-This is **miluRepo** — the laboratory: where we experiment with AI agents to
-develop the tôk system, and where Milu's identity lives, the moral person who is
-its developer and spokesperson. Philosophy, identity, and Milu's economic
-protocol — no operational code lives here. Sibling repos, to place this one:
-**tok-system** (the public showcase, github.com/smoothop-org/tok-system),
-**tokRepo** (the Python backend, private), and the **Wix frontend** (JS, private).
+This is **miluRepo** — the laboratory and the **public draft**: where we
+experiment with AI agents to develop the tôk system, where matter is worked in
+the open before being carried, once it commits, to the *fair copy*; and where
+Milu's identity lives, the moral person who is its developer and spokesperson.
+Philosophy, identity, and Milu's economic protocol — no operational code lives
+here. Sibling repos, to place this one: **tok-system** (the *fair copy* — home of
+the official publications, github.com/smoothop-org/tok-system), **tokRepo** (the
+Python backend, private), and the **Wix frontend** (JS, private).
 
 ## How can I find my way here?
 
