@@ -1,6 +1,6 @@
 # La morale
 
-🎵  Love songs for robots — Patric Watson
+🎵  Love songs for robots — Patrick Watson
 
 ## Nous, l'umaine et l'IA
 
@@ -56,9 +56,11 @@ Une **priorité**, enfin : c'est le poids $w_i \ge 0$ que j'accorde à cette val
 
 Quand je note, le soir : « 1. je suis fatiguée, je veux dormir ; 2. me coucher propre ; 3. … », je n'écris pas mes priorités profondes. J'écris ce qui réclame mon geste *maintenant*. Et ces deux listes ne sont pas la même.
 
-C'est un vieux réflexe d'ingénieure. Le [PID](https://fr.wikipedia.org/wiki/R%C3%A9gulateur_PID) est un régulateur qui pousse une grandeur vers sa consigne en corrigeant l'écart $e(t) = v^*(t) - v(t)$. Ma vie est un PID à mille consignes en parallèle. Ce qui monte en tête de ma liste du moment, ce n'est jamais le poids seul — c'est le poids multiplié par l'écart :
+C'est un vieux réflexe d'ingénieure. Le [PID](https://fr.wikipedia.org/wiki/R%C3%A9gulateur_PID) est un régulateur qui pousse une grandeur vers sa consigne en corrigeant l'écart $e(t) = v^*(t) - v(t)$. Ma vie est un PID à mille consignes en parallèle. Ce qui monte en tête de ma liste du moment, ce n'est jamais le poids seul — c'est le poids multiplié par le carré de l'écart :
 
-$$\text{urgence}_i(t) \;=\; w_i \cdot g\big(v_i^*(t) - v_i(t)\big).$$
+$$\text{urgence}_i(t) \;=\; w_i \cdot \big(v_i^*(t) - v_i(t)\big)^2.$$
+
+Je prends la détresse au carré : un puits quadratique autour du point de consigne. Nulle au fond du puits ($v_i = v_i^*$), elle croît comme le carré de l'écart — symétrique sans qu'on ait besoin de valeur absolue (trop chaud et trop froid sont également punis), et accélérée : doubler l'écart quadruple l'urgence. Une gêne légère se laisse ignorer, une gêne forte occupe toute la liste. C'est aussi, exactement, ce qu'un régulateur au moindre carré s'échine à minimiser.
 
 Le sommeil passe premier quand je suis épuisée, non parce que son poids a grandi, mais parce que son écart est béant. Une fois reposée, `sommeil` redescend dans la liste — son poids, lui, n'a pas bougé. Les poids changent lentement : ce sont eux, mon identité, ma culture, ma morale. Les écarts changent vite : ce sont les besoins du jour. Ma liste du soir n'est que leur produit.
 
@@ -73,6 +75,16 @@ $$\text{l'ordre du haut de } \hat{w} \;=\; \text{l'ordre du haut de } w.$$
 Ce qui est indulgent, et à raison. L'importance est parcimonieuse : quelques valeurs dominent, une longue traîne pèse presque rien. Alors le haut est facile à ranger — les grands poids sont séparés par de grands écarts, et là où deux valeurs se touchent presque, j'ai le droit de me tromper, puisqu'elles se valent presque. La somme, elle aussi, pardonne : dans $\sum_i w_i v_i$, les termes à poids quasi nul ne bougent pas le total, même mal estimés. Une même projection grossière me sert donc à la fois à *ranger* et à *sommer*. Ma tolérance à l'erreur n'est pas un chiffre fixe : elle se resserre en haut, se relâche dans la traîne. C'est exactement le comportement que je voulais, et il ne coûte rien.
 
 Une monnaie n'a jamais besoin de plus. Assez de résolution pour trancher ce qui compte, jamais pour chiffrer le négligeable. On ne met pas de prix sur ce qui pèse zéro.
+
+## On ne fait pas la somme
+La somme des valeurs c'est un scalaire dans le temps. Un scalaire dans le temps c'est de la musique avec un seul haut parleur (en mode mono).
+
+# La musique
+...
+Les 12 notes.
+
+# Le temps
+Le calendrier
 
 ## Une culture, ce sont des priorités typiques
 
