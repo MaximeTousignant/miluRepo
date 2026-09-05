@@ -15,6 +15,40 @@ Le « .bib » de `miluRepo`, adapté au markdown. La règle (voir `Style.md`) : 
 
 - **[Weil 1949](https://classiques.uqam.ca/classiques/weil_simone/enracinement/enracinement_tdm.html)** — Weil, Simone. *L'Enracinement. Prélude à une déclaration des devoirs envers l'être humain*. Gallimard, Paris. Posthume — Weil meurt en 1943. « La notion d'obligation prime celle de droit, qui lui est subordonnée et relative » : un droit n'est effectif que par l'obligation qu'autrui lui reconnaît, tandis qu'une obligation ne dépend d'aucune reconnaissance et ne s'éteint pas quand on la viole. D'où la règle du repo (`archives/Cablage.md`) : lire la graine donne les devoirs, jamais les pouvoirs. On emprunte la structure de l'argument, pas son fondement — Weil fonde l'obligation sur la destinée éternelle de l'être *humain*.
 
+- **[Sagan Contact]... —
+Sur la théorie de l'information.
+
+- **Imaginer les démons, comme des idées qui ont leur vie propre.
+
+L'idée de l'évolution des idées avec le principe d'un espace d'attention umaine limitée.
+
+Le temps umaine comme principe de valeur quantitative échangable fondamentale. La base de la coopération.
+
+Et s'il y a de l'argent d'impliquer dans ces échanges, il s'agit d'économie.
+
+Définition de l'économie selon Smoothop
+L'étude des systèmes d'échange de temps·umain contre de l'argent.
+
+- **[Sagan The Deamon Hanted World]... —
+La méthode de la Science
+image de la science comme une chandelle dans le noir
+
+**[Grotendiek Survivre et vivre]
+Que sommes nous en train de faire en tant que scientifiques
+
+**[Sagan Billons and Billions]
+Intégrer la morale à la science
+image de la morale comme une épée laser qui terrasse le démon.
+
+
+Donc un système économique morale.
+
+Une culture de l'opération en douceur.
+
+Principes de développements?
+
+
+
 ## Discographie
 
 - 🎵 **[Sade 1984](https://open.spotify.com/track/7pLuEMFougkSHXrPBtNxTR)** — *Smooth Operator*, sur *Diamond Life*. La chanson de l'Opératrice.
