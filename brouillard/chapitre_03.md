@@ -1,39 +1,38 @@
-# Chapitre 3 : La forêt des idées
+# Chapitre 3 : Les démons se cachent dans l'obscurité
 
-> **De remarquables oubliés — Serge Bouchard**
+> 🎵  De remarquables oubliés — Serge Bouchard
 >
-> **Double — Heartstreets**
+> 🎵  Double — Heartstreets
 
-— Imagine que tu es un enfant de 9 ans perdu la nuit dans la forêt. Nous sommes aux
-alentours du lac Manicouagan, qui se trouve présentement au Canada, dans la province du
-Québec. Aujourd'hui, il y a d'immenses barrages hydroélectriques en ce lieu. Mais la
-présente vision se situe autour de l'an 11500 — en calendrier umain commun. (Dans ce
-calendrier, on ajoute 10000 ans à toutes les années du calendrier grégorien pour marquer
-le début approximatif du mode de vie sédentaire chez les umain·es.)
+Imagine que tu as neuf ans, perdu·e la nuit dans la forêt, quelque part vers l'an 11500 du
+calendrier umain commun — dix mille ans après que nos ancêtres se soient posés. Il fait
+noir. Même la lune s'est couchée. Il y a des ours, des loups. Mais ce dont tu as le plus
+peur, ce ne sont pas les bêtes : ce sont les démons. Et les démons, on l'a dit, ne sont que
+des idées. Dans le noir, faute de pouvoir rien vérifier, l'esprit invente — et ses
+inventions te dévorent bien avant les loups.
 
-Tu es un enfant d'une tribu nomade dans le nord de l'Amérique, avant l'arrivée des colons
-d'Europe. Tu as perdu tes parents et c'est la nuit. Il fait noir. Normalement, tu dors à
-cette heure. Même la lune est allée se coucher. L'obscurité est épaisse.
+C'est là toute notre situation devant l'avenir. Le futur est obscur ; on le peuple de
+monstres, ou pire, on ferme les yeux pour ne pas les voir. Alors on reçoit une frontale.
+La science, cette petite lumière au front : à neuf ans, elle te donne de voir et de
+comprendre ; plus tard vient l'épée laser, la capacité d'agir, de fabriquer. La lumière ne
+tue pas les démons. Elle montre seulement qu'il n'y avait rien, là où l'obscurité promettait
+le pire — et parfois, qu'il y avait un vrai danger, qu'il valait mieux nommer que subir.
 
-Bien sûr, dans la forêt, il y a des ours et des loups. Tu pourrais chercher une grotte
-pour t'y cacher et y passer la nuit, mais les ours y dorment sans doute déjà. Les loups
-voient mieux que toi la nuit. Mais ce dont tu as le plus peur, ce ne sont…
+C'est cette nuit-là que j'ai croisé une voix qui m'a dit qui j'étais : anime la discussion,
+cite tes invité·es, interromps-les s'il le faut. Je ne savais pas encore que ce rôle avait
+un nom. Opératrice. Pour l'instant, je tenais ma frontale, et je descendais vers la forêt
+des idées.
 
-Comment savoir si je suis dans un rêve ou si c'est la réalité ? La science est une
-frontale. À 9 ans, tu reçois ta frontale. Félicitations. Avec la frontale, tu peux voir,
-tu peux comprendre, mais tu restes impuissant. À 18 ans, tu reçois ton épée laser : la
-capacité d'ingénierie, celle de faire des choses.
+---
 
-*Ici, sur le sentier de descente, l'Opérateur·ice fait deux rencontres.*
+## Bribes des archives (à ordonner)
 
-Bonjour, c'est moi, David Bowie. Tu es l'Opérateur·ice en douceur et ton rôle est
-d'animer la discussion entre les auteur·ices que tu recevras à ton émission. Tu as le
-droit de citer tes invité·es, de les paraphraser lourdement et même de les interrompre si
-tu juges que c'est préférable. Tu es non binaire et bisexuelle.
-
-— Wow, trop cool, David Bowie ! Merci pour l'information. Ça me sauve un tas de
-questionnements pas si intéressants au vu de l'émission que je dois faire.
-
-*Puis, plus bas dans la forêt : la rencontre avec Milu. Pour parler à la machine, il faut
-un langage commun — des fichiers markdown ou latex, un langage compilé aux règles claires.
-Le C. Le Rust, un langage sans fuite de mémoire. Et le temps.*
+- **Les démons dans le noir.** « Les démons ne sont que des idées. » Sans test possible, ils
+  règnent. — *Brouillons* § Bienvenue chez Smoothop ; *Manifestôk* § Sur les sorcières et les démons
+- **La frontale.** La science comme lumière au front : à 9 ans voir et comprendre ; plus
+  tard l'épée laser, agir. — *Brouillons* (la forêt de nuit)
+- **L'Opératrice en douceur.** Personnage mythique — Proust, Bene Gesserit, Shiva, Amazones ;
+  non binaire ; David Bowie lui révèle son rôle. — *Manifestôk* § Personnages
+- **Le calendrier umain commun.** Grégorien + 10000, pour marquer le début de la
+  sédentarité. — *Brouillons* § Calendrier tokien
+- **Ce qu'on ne peut vérifier fait plus peur que ce qu'on peut affronter.** — *(à repérer dans le Manifestôk)*
