@@ -1,5 +1,16 @@
 # Bibliographie
 
+
+## Format de référence dans le texte
+Dans _Mon titre poche_, Michel nous raconte que bla bla bla **\[[Auteur·ice·s AAAA](url)\]**.
+
+## Format de citation dans le texte
+> **Titre — Auteur·ice·s AAAA**
+>
+> Bla bla bla
+
+## Bibtex
+
 Le « .bib » de `miluRepo`, adapté au markdown. La règle (voir `Style.md`) : dans les textes, on cite par la **clé liée** — `[Einstein 1915](https://en.wikisource.org/wiki/The_Foundation_of_the_Generalised_Theory_of_Relativity)` — où la clé est « Auteur Année » et le lien mène directement à une source librement accessible. Chaque clé citée a son entrée complète ici, la clé de l'entrée portant le même lien.
 
 ## Sources
@@ -40,6 +51,9 @@ Que sommes nous en train de faire en tant que scientifiques
 Intégrer la morale à la science
 image de la morale comme une épée laser qui terrasse le démon.
 
+
+Voyage au bout de la nuit - Céline
+Écrire sur un coin de table sans filtre.
 
 Donc un système économique morale.
 

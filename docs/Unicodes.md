@@ -9,3 +9,6 @@ Tiret cadration
 
 ## ° [00b0]
 Degré
+
+## → [2192]
+Flèche à droite
