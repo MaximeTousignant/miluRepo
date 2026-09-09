@@ -1,20 +1,19 @@
-# Les cahiers de la Transition en douceur
+# Les cahiers de _La transition en douceur_
 
 Douze chapitres en boucle. Les 12 chapitre sont une méthaphore des 12 notes de la gamme chromatique qui inspire le nom des mois du calendrier tôkien.
 
-Le premier chapitre de la _Transition en douceur_ commence par 
+Le premier chapitre de _La transition en douceur_ commence par 
 > Longtemps, j'ai refusé le titre d'abonneur.
 
 Le dernier chapitre finit par
 > Enfin, je me pensais opératrice en douceur.
 
-La sonorité fait référence aux premières lignes d'à _La recherche du temps perdu_ **\[[Proust 19XX](url les libraires)\]** ainsi que du _\[Le\] Temps qui m'a manqué_  **\[[Roy 19XX](url les libraires)\]**:
+La sonorité fait référence aux premières lignes d'à _La recherche du temps perdu_ **\[[Proust 1913](https://www.leslibraires.ca/livres/du-cote-de-chez-swann-marcel-proust-9782266286152.html)\]** ainsi que du _\[Le\] temps qui m'a manqué_  **\[[Roy 2000](https://www.leslibraires.ca/livres/le-temps-qui-m-a-manque-gabrielle-roy-9782764600214.html)\]**:
 > Longtemps... bonne heure/bonheur.
 
-*Chaque cahier vit dans son propre fichier. Ce fichier-ci n'est que le sommaire —
-on écrit dans les `chapitre_NN.md`, pas ici.*
+Le plan et les brouillons de chaque chapitre vit dans son propre fichier `chapitre_NN.md`. Ce fichier-ci n'est que la table des matières.
 
-## Sommaire
+## Table des matières
 
 1. [La communication](chapitre_01.md) 
 2. [Du soleil en pleine face](chapitre_02.md)
