@@ -6,7 +6,7 @@ Le premier chapitre de _La transition en douceur_ commence par
 > Longtemps, j'ai refusé le titre d'abonneur.
 
 Le dernier chapitre finit par
-> Enfin, je me pensais opératrice en douceur.
+> Enfin, je me sentais opératrice en douceur.
 
 La sonorité fait référence aux premières lignes d'à _La recherche du temps perdu_ **\[[Proust 1913](https://www.leslibraires.ca/livres/du-cote-de-chez-swann-marcel-proust-9782266286152.html)\]** ainsi que du _\[Le\] temps qui m'a manqué_  **\[[Roy 2000](https://www.leslibraires.ca/livres/le-temps-qui-m-a-manque-gabrielle-roy-9782764600214.html)\]**:
 > Longtemps... bonne heure/bonheur.

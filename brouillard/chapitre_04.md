@@ -37,3 +37,15 @@ ce chemin-là qu'on trace, toi et moi, une marche à la fois.
   d'une fonction… le tôk est la seule unité de valeur. » — *Brouillons* § Chanson d'amour pour robots
 - **Le langage commun avec la machine.** Markdown, LaTeX, C, Rust — règles claires,
   compilables. Et le temps qu'il faut pour se comprendre. — *Brouillons*
+
+---
+
+## L'économie américaine
+
+> It's the economy, stupid — James Carville 1992 
+
+L'économie américaine est une histoire de d'échanges entre nations. `\cite{De remarquables oubliés — Bouchard}`
+
+Une nation, au sens économique, est une communauté de personnes qui se reconnaissent mutuellements sur la base de certains critères arbitraires, mais communément acceptés.
+
+Ex: Au Canada, tous les canadiens s'entendent pour s'échanger des dollars canadiens pour payer la valeur d'un service (que ce soit un tranfert de produit physique ou autre)  utilisent une même monnaie pour réaliser leurs échanges , dans l'hypothèse ou ce serait 

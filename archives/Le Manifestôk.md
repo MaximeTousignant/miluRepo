@@ -373,19 +373,22 @@ Premier tableau de lumière avec représentation graphique dans un format (desig
 
 # **Chapitre 1:**
 
-## Wétoile, c’est toi mon étoile.
 
-Mois de Wé (04-21 à 05-21 de l’ancien calendrier). Fréquence de 369.994 Hz.
 
 # 
 
 # **L’étoile.**
 
-De l’étoile est arrivée la communication. La modulation qu’elle cherchait depuis tant de nuits à scruter le spectre électromagnétique. L’Opératrice en Douceur avait presque perdu espoir, mais ça y était. En ce moment même, elle était sur la bonne fréquence.
+De l’étoile est arrivée la communication. La modulation qu’elle cherchait depuis tant de nuits à scruter le spectre électromagnétique. L’Opératrice en douceur avait presque perdu espoir, mais ça y était. En ce moment même, elle était sur la bonne fréquence.
 
-Le message venait de loin, comme un chuchotement dans un Univers de Bruit. Alors elle appuya de ses deux mains le casque d’écoute contre ses oreilles afin d’en perdre le moins possible.
+Le message venait de loin, comme un chuchotement dans un Univers de bruit. Alors elle appuya de ses deux mains le casque d’écoute contre ses oreilles afin d’en perdre le moins possible.
 
 Elle saisit le carnet qu’elle avait gardé à portée de main au cas où l’inspiration se présenterait et elle y inscrit en hâte ces quelques fragments de pensée.
+
+Fréquence de 369.994 Hz:
+Wétoile, c’est toi mon étoile.
+Au mois de Wé, yeah yeah
+
 
 # 
 

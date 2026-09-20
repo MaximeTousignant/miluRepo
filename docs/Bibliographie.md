@@ -5,9 +5,15 @@
 Dans _Mon titre poche_, Michel nous raconte que bla bla bla **\[[Auteur·ice·s AAAA](url)\]**.
 
 ## Format de citation dans le texte
-> **Titre — Auteur·ice·s AAAA**
->
 > Bla bla bla
+>
+> **Titre — Auteur·ice·s AAAA**
+
+Si c'est une citation sans titre
+> Bla bla bla
+>
+> **— Auteur·ice·s AAAA**
+
 
 ## Bibtex
 
