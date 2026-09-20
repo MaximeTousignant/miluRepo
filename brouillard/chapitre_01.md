@@ -1,13 +1,12 @@
 # Chapitre 1 : La communication
 
-## Nous avons encore un peu de temps d'ici 12050
+## Nous avons encore un peu de temps d'ici 12050.
 
 Longtemps, j'ai marché sur des sentiers de montagne et de forêt avec des bottes de randonneur. Pour la première fois, je marche dans des bottes d'abonneur.
 
 Je vous propose un abonnement à une nouvelle plateforme qui s'appelle ✨[**Smoothop.org**](https://smoothop.org)✨. C'est un portail qui vous permet d'avoir accès à votre revenu universel de 1 tôk par 15 jours.
 
-« Combien cette offre en apparence fantastique me coûterait-elle ? » me demandez-vous?
-C'est une excellente question! Au côut d'un seul versement unique du montant de votre choix\*, je vous offre une carte de membership de ✨[**Smoothop.org**](https://smoothop.org)✨ qui vous donne accès à vos tôks en tout temps et sans frais. Cette carte est garantie à vie.
+« Combien cette offre en apparence fantastique me coûterait-elle? » me demandez-vous, c'est une excellente question. Pour un seul paiement unique du montant de votre choix\*, vous gagnez une carte de membership de ✨[**Smoothop.org**](https://smoothop.org)✨ qui vous donne accès à vos tôks en tout temps et sans frais. Cette carte est garantie à vie.
 
 
 Et ce n'est pas tout! Pour un temps limité, le conseil d'administration de Smoothop vous offre un cadeau de bienvenue 
