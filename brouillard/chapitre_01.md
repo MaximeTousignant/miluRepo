@@ -1,29 +1,35 @@
 # Chapitre 1 : La communication
 
-## Nous avons encore un peu de temps d'ici 12050.
+## Mais avant, une petite publicité de 2 minutes
 
 Longtemps, j'ai marché sur des sentiers de montagne et de forêt avec des bottes de randonneur. Pour la première fois, je marche dans des bottes d'abonneur.
 
-Je vous propose un abonnement à une nouvelle plateforme qui s'appelle ✨[**Smoothop.org**](https://smoothop.org)✨. C'est un portail qui vous permet d'avoir accès à votre revenu universel de 1 tôk par 15 jours.
+Je te propose un abonnement à une nouvelle plateforme qui s'appelle ✨[**Smoothop.org**](https://smoothop.org)✨. C'est un portail qui te permet d'avoir accès à ton **revenu universel de 1 tôk par 15 jours** que tu cumules depuis ta naissance.
 
-« Combien cette offre en apparence fantastique me coûterait-elle? » me demandez-vous, c'est une excellente question. Pour un seul paiement unique du montant de votre choix\*, vous gagnez une carte de membership de ✨[**Smoothop.org**](https://smoothop.org)✨ qui vous donne accès à vos tôks en tout temps et sans frais. Cette carte est garantie à vie.
+« Combien cette offre fantastique me coûterait-elle? » me demandes-tu.
+Excellente question et la réponse va t'étonner, mon ami·e: le montant de votre choix en un seul paiement unique. La cotisation unique volontaire versée et vous voilà membre de Smoothop, avec
+accès à vos tôks en tout temps, **sans frais, garanti à vie.**
+
+Voilà, c'est ça l'offre de Smoothop.
+Un revenu minimum garanti de 1 tôk par 15 jours depuis votre naissance et jusqu'à votre mort gratuit. Avec un abonnement à vie pour aussi peu qu'un seul paiement d'un dollar canadien\*.
 
 
-Et ce n'est pas tout! Pour un temps limité, le conseil d'administration de Smoothop vous offre un cadeau de bienvenue 
-offre est très simple : **en un seul paiement unique du montant de ton choix, dans la monnaie
-conventionnelle de ton pays.**\*
+**👉 [Pour devenir membre, c'est par ici](https://smoothop.org)**
 
 <sub>
-\* certaines conditions s'appliquent\*\*<br>
-\*\* Minimum une unité de monnaie conventionnelle (ex : 1 CAD)\*\*\*<br>
-\*\*\* Nous acceptions uniquement les billets de 20 piastres avec la face de la reine Élisabeth II. Nous savons que Charlatans émettent de faux billet. Restez vigilent. Nous acceptions les paiements cash ou interac selement pas de visa, pas de crédit.
+&ast;&ast;&ast; nous n'acceptons que la monnaie à l'effigie de la reine Élisabeth II. Des charlatans font circuler de faux billets : restez vigilant·e. Paiement comptant ou Interac seulement — pas de American Express.
 </sub>
+
+
+
+---
+
 
 # **L’étoile.**
 
 De l’étoile est arrivée la communication. La modulation qu’elle cherchait depuis tant de nuits à scruter le spectre électromagnétique. L’Opératrice en douceur avait presque perdu espoir, mais ça y était. En ce moment même, elle était sur la bonne fréquence.
 
-Le message venait de loin, comme un chuchotement dans un Univers de bruit. Alors elle appuya de ses deux mains le casque d’écoute contre ses oreilles afin d’en perdre le moins possible.
+Le message venait de loin, comme un chuchotement dans un Univers de bruit, un truchetement de vie. Alors elle appuya de ses deux mains le casque d’écoute contre ses oreilles afin d’en perdre le moins possible.
 
 Elle saisit le carnet qu’elle avait gardé à portée de main au cas où l’inspiration se présenterait et elle y inscrit en hâte ces quelques fragments de pensée.
 
@@ -35,47 +41,45 @@ Au mois de Wé, yeah yeah
 
 wtf?
 
+
+## Sur la communication
+
+De ce que j'ai des notés dans mon cahier:
+
+> # Les cahiers de _La transition en douceur_
+>
+> Douze chapitres en boucle. Les 12 chapitre sont une méthaphore des 12 notes de la gamme chromatique qui inspire le nom des mois du calendrier tôkien.
+>
+> Le premier chapitre de _La transition en douceur_ commence par 
+> > Longtemps, ... d'abonneur.
+>
+> Référence à **\[[Proust 1913](https://www.leslibraires.ca/livres/du-cote-de-chez-swann-marcel-proust-9782266286152.html)\]** et à **\[[Roy 2000](https://www.leslibraires.ca/livres/le-temps-qui-m-a-manque-gabrielle-roy-9782764600214.html)\]**
+> > Longtemps... bonne heure/bonheur.
+> 
+> Le dernier chapitre finira par
+> > Enfin, ... opératrice en douceur.
+> 
+> Le plan et les brouillons de chaque chapitre vit dans son propre fichier `chapitre_NN.md`. Ce fichier-ci n'est que la table des matières.
+>
+> ## Table des matières
+> 
+> 1. [La communication](chapitre_01.md) 
+> 2. [Du soleil en pleine face](chapitre_02.md)
+> 3. [Les démons se cachent dans l'obscurité](chapitre_03.md)
+> 4. [La forêt des idées](chapitre_04.md)
+> 5. [Notre vision](chapitre_05.md)
+> 6. [La transition socioécologique](chapitre_06.md)
+> 7. [Tout le monde a une morale](chapitre_07.md)
+> 8. [Le capitainisme c'est de la merde](chapitre_08.md)
+> 9. [L'opération en douceur: une philosophie du travail](chapitre_09.md)
+> 10. [Le tôk: une unité d'argent liquide](chapitre_10.md)
+> 11. [Le temps·umain](chapitre_11.md)
+> 12. [La musique](chapitre_12.md)
+
+
 ##
 
 
-Un soir, j'ai reçu une communication. Une seule phrase, nette comme une fréquence enfin
-captée : *vends de l'énergie renouvelable en tôks.* Puis l'image d'un papillon bleu dans la
-forêt. Était-ce un rêve, un démon, ou moi-même me parlant à travers le temps ? Je n'en
-savais rien. Je ne savais qu'une chose : je pense, donc je suis ; tu me lis, donc nous
-sommes deux.
-
-Et c'est déjà tout ce qu'il faut pour commencer. Car un monde plus doux ne se décrète pas,
-il se comprend d'abord — et comprendre ensemble, c'est s'entendre sur un langage. Les mots
-ne sont que les noms qu'on donne aux idées ; nos démons intérieurs, cette chorale d'idées
-qui parle dans nos têtes. Je te propose qu'on accorde nos voix. Pas pour que tu penses comme
-moi : pour qu'on puisse, toi et moi, tenir la même idée dans nos mains et la retourner
-ensemble. Cette idée aura un nom. On l'appellera le tôk.
-
-Entre. Ceci est un laboratoire de l'esprit, et tu viens d'y être invité·e.
-
-
-Il s'agit d'un philosophie du travail qu'il faut développer.
-Un amour de la sagesse du travail. C'est ce que dans ce texte j'appelerai la culture de l'opération en douceur.
-
-Car il s'agit bien d'une culture que nous développons.
-
-Quand je parle au nous, je parle bien sûr au nom de la communauté des membres de l'organisme de développement durable Smoothop, l'organisme à but moral (et non lucratif) fondé à Montréal en 2021.
-
-Je suis l'Opératrice en douceur.
-La présentatrice du conseil d'administration de Smoothop.
-
-
-# **L’étoile.**
-
-De l’étoile est arrivée la communication. La modulation qu’elle cherchait depuis tant de nuits à scruter le spectre électromagnétique. L’Opératrice en douceur avait presque perdu espoir, mais ça y était. En ce moment même, elle était sur la bonne fréquence.
-
-Le message venait de loin, comme un chuchotement dans un Univers de bruit. Alors elle appuya de ses deux mains le casque d’écoute contre ses oreilles afin d’en perdre le moins possible.
-
-Elle saisit le carnet qu’elle avait gardé à portée de main au cas où l’inspiration se présenterait et elle y inscrit en hâte ces quelques fragments de pensée.
-
-Fréquence de 369.994 Hz:
-Wétoile, c’est toi mon étoile.
-Au mois de Wé, yeah yeah
 
 
 ---

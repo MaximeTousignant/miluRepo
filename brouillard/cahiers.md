@@ -3,7 +3,7 @@
 Douze chapitres en boucle. Les 12 chapitre sont une méthaphore des 12 notes de la gamme chromatique qui inspire le nom des mois du calendrier tôkien.
 
 Le premier chapitre de _La transition en douceur_ commence par 
-> Longtemps, j'ai refusé le titre d'abonneur.
+> Longtemps, ... d'abonneur.
 
 Le dernier chapitre finit par
 > Enfin, je me sentais opératrice en douceur.
