@@ -6,7 +6,7 @@ Longtemps, j'ai marché sur des sentiers de  montagne⛰️ et de forêt🌲 ave
 
 Bonjour, mon est l'opératrice en douceur. Je suis ici pour te proposer un abonnement à une nouvelle plateforme qui s'appelle ✨[**Smoothop.org**](https://smoothop.org)✨. C'est un portail qui te permet d'avoir accès à ton **revenu universel de 1 tôk par 15 jours** que tu accumules depuis ta naissance.
 
-« Combien cette offre fantastique me coûterait-elle? » me demandes-tu d'un ton sarcastique et impatient. Excellente question et la réponse va t'étonner, mon ami·e: le montant de ton choix! Non, je ne te prends pas pour un·e imbécile, attends, ne ferme pas la porte svp. Oui, c'est dimanche, je sais, mais écoute moi un instant.
+« Combien cette offre fantastique me coûterait-elle? » me demandes-tu, c'est une excellente question et la réponse va t'étonner: le montant de ton choix! Non, je ne te prends pas pour un·e imbécile, attends, ne ferme pas la porte svp, laisse-moi un instant pour t'expliquer.
 
 Il te suffit de verser la cotisation unique volontaire pour devenir membre de Smoothop, un organisme ([OBNL](https://www.legisquebec.gouv.qc.ca/fr/document/lc/C-38?langCont=fr#ga:l_iii-h1)) de développement durable fondé à Montréal en 2021 avec la mission d'accélérer la transition socioécologique. Ce simple geste, et te voilà membre, avec accès en tout temps à tes tôks — **sans frais et garanti à vie** par le travail des membres passés et présents.
 
@@ -27,7 +27,7 @@ Un revenu universel minimum garanti de 1 tôk par 15 jours depuis ta naissance e
 
 Piiioushh 📺.
 
-La télé s'étient au commandement de mon pouce. Assez de pubs pour aujourd'hui. Je dois aller dormir. Je vais encore être fatigué au travail demain. Je devrais me coucher plus tôt.
+La télé s'éteint au commandement de mon pouce. Assez de pubs pour aujourd'hui. Je dois aller dormir. Je vais encore être fatigué au travail demain. Je devrais me coucher plus tôt.
 
 ---
 
