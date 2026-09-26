@@ -1,5 +1,10 @@
 # Les cahiers de _La transition en douceur_
 
+## Titre
+
+**Le Manifestôk**:
+Ou comment se sortir de cette vieille situation croûteuse et réaliser la transition socioécologique en douceur d'ici 12050?
+
 Douze chapitres en boucle. Les 12 chapitre sont une méthaphore des 12 notes de la gamme chromatique qui inspire le nom des mois du calendrier tôkien.
 
 Le premier chapitre de _La transition en douceur_ commence par 

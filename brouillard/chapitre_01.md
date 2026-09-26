@@ -2,25 +2,32 @@
 
 ## Mais avant, une petite publicité de 2 minutes
 
-Longtemps, j'ai marché sur des sentiers de montagne et de forêt avec des bottes de randonneur. Pour la première fois, je marche dans des bottes d'abonneur.
+Longtemps, j'ai marché sur des sentiers de  montagne⛰️ et de forêt🌲 avec des bottes de randonneur 🥾. Pour la première fois, je marche dans des bottes d'abonneur.
 
-Je te propose un abonnement à une nouvelle plateforme qui s'appelle ✨[**Smoothop.org**](https://smoothop.org)✨. C'est un portail qui te permet d'avoir accès à ton **revenu universel de 1 tôk par 15 jours** que tu cumules depuis ta naissance.
+Bonjour, mon est l'opératrice en douceur. Je suis ici pour te proposer un abonnement à une nouvelle plateforme qui s'appelle ✨[**Smoothop.org**](https://smoothop.org)✨. C'est un portail qui te permet d'avoir accès à ton **revenu universel de 1 tôk par 15 jours** que tu accumules depuis ta naissance.
 
-« Combien cette offre fantastique me coûterait-elle? » me demandes-tu.
-Excellente question et la réponse va t'étonner, mon ami·e: le montant de votre choix en un seul paiement unique. La cotisation unique volontaire versée et vous voilà membre de Smoothop, avec
-accès à vos tôks en tout temps, **sans frais, garanti à vie.**
+« Combien cette offre fantastique me coûterait-elle? » me demandes-tu d'un ton sarcastique et impatient. Excellente question et la réponse va t'étonner, mon ami·e: le montant de ton choix! Non, je ne te prends pas pour un·e imbécile, attends, ne ferme pas la porte svp. Oui, c'est dimanche, je sais, mais écoute moi un instant.
+
+Il te suffit de verser la cotisation unique volontaire pour devenir membre de Smoothop, un organisme ([OBNL](https://www.legisquebec.gouv.qc.ca/fr/document/lc/C-38?langCont=fr#ga:l_iii-h1)) de développement durable fondé à Montréal en 2021 avec la mission d'accélérer la transition socioécologique. Ce simple geste, et te voilà membre, avec accès en tout temps à tes tôks — **sans frais et garanti à vie** par le travail des membres passés et présents.
 
 Voilà, c'est ça l'offre de Smoothop.
-Un revenu minimum garanti de 1 tôk par 15 jours depuis votre naissance et jusqu'à votre mort gratuit. Avec un abonnement à vie pour aussi peu qu'un seul paiement d'un dollar canadien\*.
+Un revenu universel minimum garanti de 1 tôk par 15 jours depuis ta naissance et jusqu'à ta mort. Avec un abonnement à vie pour aussi peu que 1.00$\*.
 
 
-**👉 [Pour devenir membre, c'est par ici](https://smoothop.org)**
+**👉 [Devenir membre de Smoothop, c'est par ici](https://smoothop.org/devenir-membre)**
 
 <sub>
-&ast;&ast;&ast; nous n'acceptons que la monnaie à l'effigie de la reine Élisabeth II. Des charlatans font circuler de faux billets : restez vigilant·e. Paiement comptant ou Interac seulement — pas de American Express.
+&ast; La cotisation unique volontaire ne doit être versée qu'une seule fois au moment de l'admission dans l'organisme de développement durable Smoothop. Elle doit obligatoirement être payée par l'aspirant membre en monnaie conventionnelle (ex : CAD, EUR, USD, etc.). Le montant de la cotisation unique volontaire est au choix de l'aspirant membre, mais Smoothop exige au minimum le versement symbolique d'une unité de monnaie conventionnelle (ex : 1 CAD&ast;&ast;, 1 EUR, 1 USD, etc.)
 </sub>
 
 
+<sub><sub>
+&ast;&ast; Smoothop n'accepte que les billets de 20 CAD à l'effigie de la reine Élisabeth II. Des charlatans font circuler de faux billets, soyez vigilant·es.
+</sub></sub>
+
+Piiioushh 📺.
+
+La télé s'étient au commandement de mon pouce. Assez de pubs pour aujourd'hui. Je dois aller dormir. Je vais encore être fatigué au travail demain. Je devrais me coucher plus tôt.
 
 ---
 
