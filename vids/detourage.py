@@ -24,6 +24,9 @@ qui distingue cette règle d'une contrainte géométrique, et c'est pourquoi ell
 ne coupe jamais une main détachée par le flou de mouvement.
 
 **Sortie.** Un WebM/VP9 à canal alpha, ou une suite de PNG si `ffmpeg` manque.
+`--prores` livre plutôt un ProRes 4444 (.mov) à alpha, taillé pour un montage
+qui digère mal le VP9 : on l'écrit directement depuis l'algo, sans passer par le
+WebM, pour ne pas empiler une compression VP9 avec pertes sous l'intermédiaire.
 La piste audio de la source suit par défaut — une vidéo muette le reste, une
 vidéo sonore garde son son.
 L'α est droit, non prémultiplié. La couleur n'est pas celle de l'image d'origine
@@ -46,6 +49,7 @@ Usage :
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --brut     # le réseau nu
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --audio AUTRE.mp3  # remplace la piste
     ./.venv/bin/python vids/detourage.py ENTREE.mp4 --png     # séquence exacte
+    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --prores  # ProRes 4444 (.mov)
     ./.venv/bin/python vids/detourage.py DOSSIER/ -o SORTIE/  # tout ce qui est vidéo
 
 OpenCV n'écrit que trois canaux : le WebM se fabrique en poussant les images
@@ -308,7 +312,7 @@ class Rendu:
 
     def __init__(self, sortie: Path, src: Source, *, ecrire: bool, vignettes: bool,
                  video: bool = True, audio: Path | None = None,
-                 source: Path | None = None):
+                 source: Path | None = None, prores: bool = False):
         self.sortie = sortie
         self.jalons = set(src.jalons)
         self.veut_vignettes = vignettes
@@ -322,12 +326,26 @@ class Rendu:
         if not ecrire:
             return
         if video and shutil.which(FFMPEG):
-            self.chemin = sortie.with_suffix(".webm")
-            self.chemin.parent.mkdir(parents=True, exist_ok=True)
             w, h = src.taille
             commande = [FFMPEG, "-y", "-loglevel", "error",
                         "-f", "rawvideo", "-pix_fmt", "bgra", "-s", f"{w}x{h}",
                         "-r", f"{src.fps:.6f}", "-i", "-"]
+            # WebM/VP9 par défaut ; ProRes 4444 sur demande, pour un montage qui
+            # digère mal le VP9. Le ProRes porte l'alpha en 4:4:4 pleine
+            # résolution et ne recompresse rien de perceptible — au prix d'un
+            # fichier bien plus lourd. Le conteneur .mov préfère un audio PCM à
+            # de l'Opus.
+            if prores:
+                self.chemin = sortie.with_suffix(".mov")
+                video_codec = ["-c:v", "prores_ks", "-profile:v", "4444",
+                               "-pix_fmt", "yuva444p10le"]
+                audio_codec = ["-c:a", "pcm_s16le"]
+            else:
+                self.chemin = sortie.with_suffix(".webm")
+                video_codec = ["-c:v", "libvpx-vp9", "-pix_fmt", "yuva420p",
+                               "-crf", str(VP9_CRF), "-b:v", "0", "-row-mt", "1"]
+                audio_codec = ["-c:a", "libopus", "-b:a", "128k"]
+            self.chemin.parent.mkdir(parents=True, exist_ok=True)
             # La piste de la source suit par défaut : une vidéo muette le reste,
             # une vidéo sonore garde son son. `-map 1:a?` rend la piste
             # facultative, donc le même appel sert dans les deux cas, sans avoir
@@ -335,10 +353,8 @@ class Rendu:
             piste = audio if audio is not None else source
             if piste is not None:
                 commande += ["-i", str(piste), "-map", "0:v", "-map", "1:a?",
-                             "-c:a", "libopus", "-b:a", "128k", "-shortest"]
-            commande += ["-c:v", "libvpx-vp9", "-pix_fmt", "yuva420p",
-                         "-crf", str(VP9_CRF), "-b:v", "0", "-row-mt", "1",
-                         str(self.chemin)]
+                             *audio_codec, "-shortest"]
+            commande += [*video_codec, str(self.chemin)]
             self.tube = subprocess.Popen(commande, stdin=subprocess.PIPE)
         else:
             sortie.mkdir(parents=True, exist_ok=True)
@@ -380,14 +396,15 @@ def detoure(entree: Path, sortie: Path, matteur: Matteur, *,
             max_images: int | None = None, apercu: bool = False,
             planche_seule: bool = False, seuille: bool = True,
             png: bool = False, audio: Path | None = None,
-            ratio: float | None = None, muet: bool = False) -> None:
+            ratio: float | None = None, muet: bool = False,
+            prores: bool = False) -> None:
     """Les deux sens du temps, le seuillage, puis l'écriture en RGBA."""
     t0 = time.time()
     _log(f"» {entree.name}")
     src = Source.ouvre(entree, max_images)
     rendu = Rendu(sortie, src, ecrire=not planche_seule,
                   vignettes=apercu or planche_seule, video=not png, audio=audio,
-                  source=None if muet else entree)
+                  source=None if muet else entree, prores=prores)
 
     if not planche_seule:
         _log("  passe arrière, à rebrousse-temps")
@@ -447,6 +464,9 @@ def main(argv: list[str] | None = None) -> int:
                    help="le réseau nu, sans seuillage — pour comparer")
     p.add_argument("--png", action="store_true",
                    help="écrire une séquence PNG plutôt qu'un WebM (exact, mais lourd)")
+    p.add_argument("--prores", action="store_true",
+                   help="écrire un ProRes 4444 (.mov) à alpha plutôt qu'un WebM —"
+                        " pour un montage (DaVinci) qui digère mal le VP9")
     p.add_argument("--audio", type=Path, default=None,
                    help="remplacer la piste de la source par ce fichier")
     p.add_argument("--muet", action="store_true",
@@ -480,7 +500,8 @@ def main(argv: list[str] | None = None) -> int:
         sortie = racine / f"{entree.stem}_nobg"
         detoure(entree, sortie, matteur, max_images=a.max_images,
                 apercu=a.apercu, planche_seule=a.planche, seuille=not a.brut,
-                png=a.png, audio=a.audio, ratio=a.ratio, muet=a.muet)
+                png=a.png, audio=a.audio, ratio=a.ratio, muet=a.muet,
+                prores=a.prores)
     return 0
 
 
