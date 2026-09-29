@@ -1,13 +1,20 @@
-# Les cahiers de _La transition en douceur_
+Titre
+# **Ma transition en douceur**:
 
-## Titre
+Un livre en 12 chapitres divisés en 2 parties. Douze chapitres en boucle. Les 12 chapitre sont une méthaphore des 12 notes de la gamme chromatique qui inspire le nom des mois du calendrier tôkien.
 
-**Le Manifestôk**:
-Ou comment se sortir de cette vieille situation croûteuse et réaliser la transition socioécologique en douceur d'ici 12050?
+**Partie I — Ma transition socioécologique**
+Le besoin d'une philosophie du travail pour sortir de cette vielle situation croûteuse.
 
-Douze chapitres en boucle. Les 12 chapitre sont une méthaphore des 12 notes de la gamme chromatique qui inspire le nom des mois du calendrier tôkien.
+**Partie II — Le Manifestôk**
+Comment réussir sa transition socioécologique en douceur avant 12050.
 
-Le premier chapitre de _La transition en douceur_ commence par 
+
+---
+
+
+
+Le premier chapitre de _Ma transition en douceur_ commence par 
 > Longtemps, ... d'abonneur.
 
 Le dernier chapitre finit par
@@ -18,17 +25,22 @@ La sonorité fait référence aux premières lignes d'à _La recherche du temps 
 
 Le plan et les brouillons de chaque chapitre vit dans son propre fichier `chapitre_NN.md`. Ce fichier-ci n'est que la table des matières.
 
-## Table des matières
+---
 
-1. [La communication](chapitre_01.md) 
-2. [Du soleil en pleine face](chapitre_02.md)
+Table des matières
+
+**Partie I — Ma transition socioécologique
+1. [Écoutez la musique](chapitre_01.md) 
+2. [Le soleil en pleine face](chapitre_02.md)
+4. [Dans la forêt des idées](chapitre_04.md)
 3. [Les démons se cachent dans l'obscurité](chapitre_03.md)
-4. [La forêt des idées](chapitre_04.md)
-5. [Notre vision](chapitre_05.md)
-6. [La transition socioécologique](chapitre_06.md)
-7. [Tout le monde a une morale](chapitre_07.md)
-8. [Le capitainisme c'est de la merde](chapitre_08.md)
+5. [La sience est une lampe frontale](chapitre_05.md)
+6. [Le poids de la responsabilité](chapitre_06.md)
+
+**Partie II — Le Manifestôk
+7. [Le temps·umain](chapitre_07.md)
+8. [Il vaut mieux coopérer si on veut survivre](chapitre_08.md)
 9. [L'opération en douceur: une philosophie du travail](chapitre_09.md)
-10. [Le tôk: une unité d'argent liquide](chapitre_10.md)
-11. [Le temps·umain](chapitre_11.md)
-12. [La musique](chapitre_12.md)
+10. [Un revenu universel minimum garanti en argent liquide](chapitre_10.md)
+11. [Le premier système économique démocratique au monde](chapitre_11.md)
+12. [Entrez dans la danse](chapitre_12.md)
