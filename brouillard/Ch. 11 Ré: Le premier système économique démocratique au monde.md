@@ -1,26 +1,5 @@
-# Chapitre 11 : Le temps·umain
+# Chapitre Ré: Le premier système économique démocratique au monde
 
-> 🎵  À la recherche du temps perdu — Marcel Proust
->
-> *Longtemps, je me suis couché de bonne heure.*
-
-Je t'ai dit que le tôk mesure du temps. Voici ce que je voulais dire.
-
-Chaque personne reçoit trois cent soixante heures par quinzaine. Pas une de plus, pas une de
-moins, du roi comme du mendiant. Le temps est la seule chose vraiment répartie également
-entre les umain·es — la seule égalité qui ne se décrète pas, parce qu'elle est déjà là. Une
-monnaie juste, alors, ne fait que reconnaître cette égalité première : le tôk, c'est du
-temps·umain rendu échangeable. Le temps est d'or ; l'argent n'est que d'argent.
-
-Et le temps, vois-tu, n'est pas une ligne : c'est un escalier en colimaçon. Il monte en
-tournant sur lui-même, chaque marche une heure de ta vie ; à la naissance, on peut espérer
-gravir plus de mille sept cent cinquante étages. Penche-toi par-dessus la rampe, regarde en
-bas, au centre : c'est toute ta vie que tu vois d'un coup, et le vertige avec. Alors tu
-comprends pourquoi je me bats pour cette monnaie-là. Aimer quelqu'un, au fond, c'est lui
-donner de son temps — la plus limitée des ressources, celle qu'aucune fortune ne rachète.
-Sous la vision, sous les tôks, sous la transition, il n'y a que ça : goûter le sel de sa
-peau tant qu'il nous reste des marches. Ne remets pas ta vie à « quand je ne serai plus
-fatigué ». C'est maintenant qu'on vit. C'est maintenant qu'on transitionne.
 
 ---
 

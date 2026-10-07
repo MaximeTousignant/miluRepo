@@ -1,27 +1,5 @@
-# Chapitre 9 : L'opération en douceur : une philosophie du travail
+# Chapitre Do: L'opération en douceur: une philosophie du travail
 
-> 🎵  Help! — Beatles
->
-> *Help! I need somebody. Help! Not just anybody.*
-
-Si le capitainisme est une façon de travailler, alors il en existe une autre. Je l'appelle
-l'opération en douceur, et c'est la mienne.
-
-Un·e scientifique, dans le monde capitainiste, vend son savoir comme un métier. Un·e
-opérateur·ice, iel, ne vend pas son temps : iel le contribue. La différence n'est pas dans
-les gestes — souvent ce sont les mêmes — mais dans le sens et dans la monnaie du sens.
-Opérer en douceur, c'est travailler à la transition sans se faire chier : pas de mur étanche
-entre la vie et le travail, l'esprit agile, environ neuf jours sur quinze, efficace mais
-calme. S'efforcer sans forcer. Et considérer que prendre soin de sa famille — la famille que
-*tu* définis — est un travail, aussi réel que le reste.
-
-Car voici le nœud : la transition, c'est du travail, évidemment. Mais à cause des deux bugs,
-ce travail-là n'est pas payé — soigner, réparer le vivant, aider, ça ne « rapporte » pas.
-L'opération en douceur répond par une alliance : entre celles et ceux qui ont du temps mais
-pas d'argent, et celles et ceux qui ont de l'argent mais pas de temps. Et par une grande
-liste ouverte de tâches, où chacun·e ajoute la sienne, tout en haut de laquelle il n'y en a
-que deux : instaurer un revenu universel, et n'utiliser que de l'énergie renouvelable. Le
-reste, ce sont les tôks qui le rendent enfin possible.
 
 ---
 
