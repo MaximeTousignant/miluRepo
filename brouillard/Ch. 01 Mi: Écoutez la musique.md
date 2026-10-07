@@ -2,18 +2,16 @@
 
 Mais avant, une petite publicité de 2 minutes.
 
-Longtemps, j'ai marché sur des sentiers  de montagnes et de forêts avec des bottes de randonneur. Pour la première fois de ma vie, je marche dans des bottes d'abonneur. Et j'en suis sastisfaite.
+Longtemps, j'ai marché sur des sentiers  de montagnes et de forêts avec des bottes de randonneur. Pour la première fois de ma vie, je marche dans des bottes d'abonneur.
 
-Bonjour cher écouteur, mon nom est l'Opératrice en douceur. Connais-tu cette nouvelle plateforme numérique qui s'appelle [Smoothop.org](https://smoothop.org)?
+Bonjour chers auditeurices, mon nom est l'Opératrice en douceur. Connais-tu cette nouvelle plateforme numérique qui s'appelle [Smoothop.org](https://smoothop.org)? C'est un portail qui te permet d'avoir accès à ton ✨**revenu universel de 1 tôk par 15 jours**✨ que tu accumules depuis ta naissance.
 
-C'est un portail qui te permet d'avoir accès à ton ✨**revenu universel de 1 tôk par 15 jours**✨ que tu accumules depuis ta naissance.
+« Combien coûte l'accès à ce portail? » me demandes-tu, c'est une excellente question et la réponse va t'étonner: le montant de ton choix! Non, je ne te prends pas pour un imbécile, attends, ne ferme pas la porte de tes oreilles, laisse-moi un instant pour t'expliquer.
 
-« Combien cette offre fantastique me coûterait-elle? » me demandes-tu, c'est une excellente question et la réponse va t'étonner: le montant de ton choix! Non, je ne te prends pas pour un·e imbécile, attends, ne ferme pas la porte svp, laisse-moi un instant pour t'expliquer.
-
-Il te suffit de verser la cotisation unique volontaire pour devenir membre de Smoothop, un organisme ([OBNL](https://www.legisquebec.gouv.qc.ca/fr/document/lc/C-38?langCont=fr#ga:l_iii-h1)) de développement durable fondé à Montréal en 2021 avec la mission d'accélérer la transition socioécologique. Ce simple geste, et te voilà membre, avec accès en tout temps à tes tôks — **sans frais et garanti à vie** par le travail passés et présents des membres de Smoothop 🏄.
+Il te suffit de verser la cotisation unique volontaire pour devenir membre de Smoothop, un organisme ([OBNL](https://www.legisquebec.gouv.qc.ca/fr/document/lc/C-38?langCont=fr#ga:l_iii-h1)) de développement durable fondé à Montréal en 2021 avec la mission d'accélérer la transition socioécologique. Ce simple geste, et te voilà membre, avec accès en tout temps à tes tôks — sans frais et garanti à vie par le travail passés et présents des membres de Smoothop 🏄.
 
 Voilà, mon offre finale.
-Un revenu universel minimum garanti de 1 tôk par 15 jours depuis ta naissance et jusqu'à ta mort. Avec un abonnement à vie pour aussi peu que 1.00$\*.
+Un ✨**revenu universel minimum garanti de 1 tôk par 15 jours**✨ depuis ta naissance et jusqu'à ta mort. Avec un abonnement à vie pour aussi peu que 1.00$\*.
 
 
 **👉 [Devenir membre de Smoothop, c'est par ici](https://smoothop.org/devenir-membre)**
@@ -68,13 +66,21 @@ J'ai pris la craie et j'ai écrit en gros
 
 $$\frac{da}{dt} = \dot{\Lambda} - k_D \, a$$
 
-Les symboles originaux se sont quelque peu transmuttés dans le temps, mais pour moi, le sens en est toujours resté le même.
+et j'ai dessiné un cercle divisé en 360 degrés avec chaque degré divisé en 60 minutes et chaque minute divisée en 60 secondes de telle sorte que 1 degré vaut 1 heure, alors 360 h = 15 · 24 h = 1 tour par 15 jours.
 
-Et puis j'ai dessiné un cercle divisé en 360 degrés avec chaque degré divisé en 60 minutes et chaque minute divisée en 60 secondes de telle sorte que 1 degré vaut 1 heure. Et 360 heures c'est exactement 15 jours. Faites le calcul pour voir. Alors le cercle est comme une grande horloge dont l'aiguille prend 15 jours pour faire le tour.
+Le cercle est comme une grande horloge dont l'aiguille prend 15 jours à faire le tour.
 
-Et il y aurait une grosse cloche qui sonnerait après chaque tour.
+L'horloge a un grosse cloche qui sonne à chaque fois que la grande aiguille complète un grand tour.
 
-Tik Tok. Un token de revenu universel. Un tôk par 15 jours qui se désintègrent avec une espérance de vie du même ordre de grandeur que l'espérance de vie umaine moyenne.
+Quand la cloche sonne, tout le monde reçoit un token.
+
+Tik Tok. Un token de revenu universel par 15 jours. Un tôk par 15 jours qui se désintègrent avec une espérance de vie du même ordre de grandeur que l'espérance de vie umaine moyenne.
+
+Ainsi, il y a un équilibre entre la création et la destruction des tôks et le nombre moyen par personne tant vers une constante.
+
+$$\begin{align*}\frac{da}{dt} &= 0\\ \dot{\Lambda} - k_D \, a_{\infty} &=0\\ a_{\infty}=\frac{\dot{\Lambda}}{k_D} \end{align*}$$
+
+Ce qui fait qu'à chaque 15 jours le tôk reçu vaut autant que celui de la quinzaine précédente.
 
 J'ai découvert le revenu universel en dormant.
 
@@ -82,11 +88,33 @@ J'ai découvert le revenu universel en dormant.
 
 Alors il n'y a vraiment pas de mérite là-dedans. Seulement de la chance. C'est toujours de la chance.
 
-C'est comme lancer des doubles 6s à répétition au backgammon. La chance est la meilleure des stratégies lorsqu'elle se concrétise.
+C'est comme lancer des doubles six à répétition au backgammon. La chance est la meilleure des stratégies lorsqu'elle se concrétise.
 
 Dès qu'on parle d'argent, la notion de mérite n'est jamais très loin. Je déteste cette notion, elle ne repose sur rien. Où est le mérite dans un univers où toutes les particules suivent toujours rigoureusement les lois de la physique?
 
-Il n'y a que de la chance. Mais le backgammon ça reste un excellent jeu. C'est pourquoi les amoureux jouent à ce jeu depuis des millénaires.
+Il n'y a que de la chance. Ce qui n'enlève rien au plaisir de jouer au backgammon avec son âme soeur. C'est pourquoi les amoureux jouent à ce jeu depuis des milliers d'années. Ce n'est pas par hasard.
+
+---
+
+Quand je parle du revenu universel, il m'arrive souvent me disent que c'est utopique. Premièrement, je ne trouve pas ça très utopique et deuxièment, je ne vois pas pourquoi c'est dit sur une ton négatif?
+
+Qu'est-ce que ça fait si je choisi d'être utopique, moi. Toi tu es bien catastrophique. Tu crois que la fin du monde est juste sur le point d'arriver. Est-ce que je te juge pour ça Pas du tout, je participe moi-même à l'Apôcâlypse aux alentours de l'halloween.
+
+---
+
+Mais si par *utopique*, les gens pensent *irréaliste*, alors là, je ne suis pas d'accord qu'un revenu universel est impossible. La preuve, les tôks existent.
+
+Pour moi, il n'y a pas de doute que chaque personne a reçu 1 tôk par 15 jours depuis sa naissance et que quand une personne meurt, elle arrête de recevoir des tôks.
+
+Je sais aussi parfaitement que les tôks se désintègrent avec une demie-vie de 50 ans.
+
+J'ai aussi la certitute que chaque personne est libre d'offrir ses tôks à qui elle veut, de les léguer en testament si ça lui chante.
+
+Il y a de fait un revenu universel minimum garanti de 1 tôk par 15 jours. Regarder autour de vous, c'est à ça que ressemble un monde dans lequel il y a un revenu universel. Est-ce que vous trouver que le monde dans lequel vous vivez est utopique?
+
+Il y a de la nourriture en abondance et je peux prendre l'avion pour aller n'importe où dans le monde. Pourtant, je ne considère pas que le monde dans lequel nous vivons est utopique. Il est extrêmement confortable, certes. Mais comme un trop vieux canapé il est crouteux et commence à sentir le moisi.
+
+J'aspire à un nouveau canapé. Traitez-moi d'utopique si vous voulez. Rien à foutre.
 
 ---
 
