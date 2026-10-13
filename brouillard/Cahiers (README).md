@@ -31,8 +31,17 @@ Les plans et les brouillons de chaque chapitre vivent dans son propre fichier `c
 # Table des matières
 
 ## Partie I — Ma transition socioécologique
-### 01. [Mi: Écoutez la musique](chapitre_01.md)
+### 01. [Mi: Écouter la musique](chapitre_01.md)
+- L'idée du revenu universelle
+- Les valeurs, comme une chose à optimiser. La musique.
+- Le modèle des valeurs comme une liste.
+- Déconstruire le mérite.
+- Sur la liberté
 ### 02. [Fa: Du soleil en pleine face](chapitre_02.md)
+- Sur le bonheur
+- Sur l'amour
+- Sur la chance
+- Sur
 ### 04. [Wé: Dans la forêt des idées](chapitre_04.md)
 ### 03. [So: Les démons se cachent dans l'obscurité](chapitre_03.md)
 ### 05. [Vu: La sience est une lampe frontale](chapitre_05.md)
@@ -44,4 +53,4 @@ Les plans et les brouillons de chaque chapitre vivent dans son propre fichier `c
 ### 09. [Do: L'opération en douceur: une philosophie du travail](chapitre_09.md)
 ### 10. [Ka: Un revenu universel minimum garanti en argent liquide](chapitre_10.md)
 ### 11. [Ré: Le premier système économique démocratique au monde](chapitre_11.md)
-### 12. [Nu: Entrez dans la danse](chapitre_12.md)
+### 12. [Nu: Entrer dans la danse](chapitre_12.md)

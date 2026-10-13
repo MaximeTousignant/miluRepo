@@ -1,4 +1,4 @@
-# Chapitre Mi: Écoutez la musique
+# Chapitre Mi: Écouter la musique
 
 Mais avant, une petite publicité de 2 minutes.
 
@@ -32,43 +32,21 @@ La télé s'éteint au commandement de mon pouce. Assez de pubs pour aujourd'hui
 ---
 
 
-De l’étoile est arrivée la communication. La modulation qu’elle cherchait depuis tant de nuits à scruter le spectre électromagnétique. L’Opératrice en douceur avait presque perdu espoir, mais ça y était. En ce moment même, elle était sur la bonne fréquence.
+De l’étoile est arrivée la communication. La modulation que je cherchais depuis tant de nuits à scruter le spectre électromagnétique. J'avais presque perdu espoir, mais ça y était. En ce moment même, j'étais sur la bonne fréquence.
 
-Le message venait de loin, comme un chuchotement dans un univers de bruit, un truchetement de vie. Alors elle appuya de ses deux mains le casque d’écoute contre ses oreilles afin d’en perdre le moins possible.
+Le message venait de loin, comme un chuchotement dans un univers de bruit, un truchetement de vie.
 
-Elle saisit le carnet qu’elle avait gardé à portée de main au cas où l’inspiration se présenterait et elle y inscrit en hâte ces quelques fragments de pensée.
-
-> **Fréquence: 369.994 Hz**
-> 
-> <sub> Chanteuse. (chœur) <sub>
-> 
-> Wétoile, c’est toi mon étoile. (Au mois de Wé, yeah yeah)
-> 
-> Partout où j'en ai besoin. (partout où elle en a besoin)
-> 
-> De l'énergie renouvelable (100% socio-éco-logique!)
-> 
-> Vendue en tôks (pas chère, pas chère, pas chère)
-> 
-> Oui au revenu universel (minimum garanti!)
-> 
-> Non aux changements climatiques (trop rapides!)
-> 
-> Vive la transition socioécologique (100% socio-éco-logique!)
-> 
-> Sans se faire chier (Au mois de Wé, yeah yeah)
-
----
-
-En me réveillant, ça y ait, j'avais l'équation en tête. Je me suis précipité dans la cuisine, là où il y avait un tableau noir pour noter les courses, sans même prendre le temps de m'habiller. Je me doutais qu'il n'y avait plus personne dans la colocation à cette heure avancée de la matinée. Même Lyuba était partie après avoir fini son thé et son café.
-
-J'ai pris la craie et j'ai écrit en gros
+Je tatonne dans l'obscurité pour trouver l'interupteur de la lampe de chevet. Le faisceau éclaire le carnet que j'avais gardé à portée de main au cas où l’inspiration se présenterait. Je l'ouvre à une nouvelle page et j'y inscrit en hâte ces quelques fragments de pensée
 
 $$\frac{da}{dt} = \dot{\Lambda} - k_D \, a$$
 
-et j'ai dessiné un cercle divisé en 360 degrés avec chaque degré divisé en 60 minutes et chaque minute divisée en 60 secondes de telle sorte que 1 degré vaut 1 heure, alors 360 h = 15 · 24 h = 1 tour par 15 jours.
+puis je dessine cercle ◯.
 
-Le cercle est comme une grande horloge dont l'aiguille prend 15 jours à faire le tour.
+> Rendu là
+
+divisé en 360 degrés avec chaque degré divisé en 60 minutes et chaque minute divisée en 60 secondes de telle sorte que 1 degré vaut 1 heure. Ainsi, 360° → 360 h = 15 · 24 h = 1 tour par 15 jours.
+
+Le cercle est comme le cadran d'une horloge dont la plus grande aiguille prend 15 jours à faire le tour.
 
 L'horloge a un grosse cloche qui sonne à chaque fois que la grande aiguille complète un grand tour.
 
@@ -86,9 +64,9 @@ J'ai découvert le revenu universel en dormant.
 
 ---
 
-Alors il n'y a vraiment pas de mérite là-dedans. Seulement de la chance. C'est toujours de la chance.
+Alors il n'y a vraiment pas de mérite là-dedans. Seulement de la chance. C'est toujours de la chance, mais si parfois on l'oublie.
 
-C'est comme lancer des doubles six à répétition au backgammon. La chance est la meilleure des stratégies lorsqu'elle se concrétise.
+Comme lancer des doubles six à répétition au backgammon. La chance est la meilleure des stratégies lorsqu'elle se concrétise.
 
 Dès qu'on parle d'argent, la notion de mérite n'est jamais très loin. Je déteste cette notion, elle ne repose sur rien. Où est le mérite dans un univers où toutes les particules suivent toujours rigoureusement les lois de la physique?
 
@@ -96,9 +74,9 @@ Il n'y a que de la chance. Ce qui n'enlève rien au plaisir de jouer au backgamm
 
 ---
 
-Quand je parle du revenu universel, il m'arrive souvent me disent que c'est utopique. Premièrement, je ne trouve pas ça très utopique et deuxièment, je ne vois pas pourquoi c'est dit sur une ton négatif?
+Quand je parle du revenu universel, on me dit souvent que c'est utopique. Premièrement, je ne trouve pas ça très utopique et deuxièment, je ne vois pas pourquoi c'est dit sur un ton négatif?
 
-Qu'est-ce que ça fait si je choisi d'être utopique, moi. Toi tu es bien catastrophique. Tu crois que la fin du monde est juste sur le point d'arriver. Est-ce que je te juge pour ça Pas du tout, je participe moi-même à l'Apôcâlypse aux alentours de l'halloween.
+Qu'est-ce que ça fait si je choisi d'être utopique, moi. Toi tu es bien catastrophique. Tu crois que la fin du monde est juste sur le point d'arriver. Est-ce que je te juge pour ça. Pas du tout, je participe moi-même à l'Apôcâlypse aux alentours de l'halloween.
 
 ---
 
@@ -320,3 +298,20 @@ Car oui, les esclaves se louent aujourd'hui. Ce n'est plus comme hier quand on p
 Mais si tout le monde pouvait des fois être locateur d'esclave et des fois esclave loué. Alors, ça serait relativement égalitaire.
 
 Je n'ai rien contre la relation maitre esclave si elle est de bonne foi.
+
+## La chanson
+
+S'il y a une chanson, ça devrait être ça:
+Aime ce que tu fais ou fais ce que tu aimes.
+
+Est-ce que la sauvegarde d'une nation, d'une une compagnie, d'un comité, d'une relation, d'une personne me coûte plus que je ne l'aime? Oui ou non. 
+
+Est-ce que le coût de mon amour en vaut la peine?
+
+Si la réponse est Oui, est tu capable de payer le prix de ton amour? Oui ou non.
+
+Si la réponse est Oui, 
+
+Do what you love, love what you do.
+
+Maintenant, je dois aller jouer de la musique.
