@@ -3,7 +3,7 @@ Ceci est le cahier du livre au propre.
 
 # Titre: **Ma transition en douceur**:
 
-Un livre en 12 chapitres divisés en 2 parties. Douze chapitres en boucle. Les 12 chapitre sont une méthaphore des 12 notes de la gamme chromatique qui inspire le nom des mois du calendrier tôkien.
+Un livre en douze chapitres divisés en 2 parties. Douze chapitres en boucle. Les douze chapitres sont une méthaphore des 10 (en base douze) notes de la gamme chromatique qui inspire le nom des mois du calendrier tôkien.
 
 **Partie I — Ma transition socioécologique**
 Le besoin d'une philosophie du travail pour sortir de cette vielle situation croûteuse.
