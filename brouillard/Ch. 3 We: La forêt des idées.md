@@ -5,6 +5,13 @@ Comme un poisson dans l'eau.
 
 ...
 
+---
+
+<sub>✂️ Ta prose, déplacée de Mi, où elle suivait la seconde version de « utopique ».</sub>
+
+J'irai cracher sur vos tombes.
+
+Quel bon titre de livre. Dommage que le contenu du livre n'ait pas été à la hauteur.Les herbes rouges c'était mieux. bien et l'écume des jours encore mieux.
 
 
 ---
