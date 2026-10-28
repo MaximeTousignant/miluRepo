@@ -131,11 +131,6 @@ J'aspire à un nouveau canapé. Traitez-moi d'utopique si vous voulez. Rien à f
 
 ---
 
-La mission de l'organisme de développement durable Smoothop est d'acclélérer la transition socioécologique. En particulier, les membres s'engagent à lutter contre les inégalités sociales en faisant la promotion d'un revenu universel et à lutter contre les changements climatiques en favorisant l'utilisation d'énergies de sources 100% revouvelables.
-
-Essentiellent, il s'agit de vendre de l'électricité et des combustibles renouvelables pour pas cher en tôks. Les membres de Smoothop qui fournissent un bon service aux autres membres de Smoothop sont bien payés en tôks. Et ne vous méprenez pas, si on est libre d'acheter assez d'énergie pour parcourir 1000 km sans effor avec quelque millitôks, c'est qu'un tôk ça vaut très cher. Si ça venait à être le cas, alors les personnes qui auraient beaucoup de tôks serait considérées comme très riches par les autres personnes avec moins de tôks. 
-
----
 
 Un revenu universel. Les gens me disent souvent que c'est utopique. Je suis d'accord, mais je ne comprends pas pourquoi c'est dit sur un ton négatif?
 

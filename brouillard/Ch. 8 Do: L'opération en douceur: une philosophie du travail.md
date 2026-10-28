@@ -19,6 +19,14 @@ La présentatrice du conseil d'administration de Smoothop.
 
 Être graduellement plus en colère, mais voir que ça mène à la violence ou à tous le moins c'est un ton désagréable. Tomber sur la chanson Smoothop operator. Concrétiser l'idée d'un certain style de douceur. 
 
+---
+
+<sub>✂️ Ta prose, déplacée de Mi, où elle suivait « J'aspire à un nouveau canapé ».</sub>
+
+La mission de l'organisme de développement durable Smoothop est d'acclélérer la transition socioécologique. En particulier, les membres s'engagent à lutter contre les inégalités sociales en faisant la promotion d'un revenu universel et à lutter contre les changements climatiques en favorisant l'utilisation d'énergies de sources 100% revouvelables.
+
+Essentiellent, il s'agit de vendre de l'électricité et des combustibles renouvelables pour pas cher en tôks. Les membres de Smoothop qui fournissent un bon service aux autres membres de Smoothop sont bien payés en tôks. Et ne vous méprenez pas, si on est libre d'acheter assez d'énergie pour parcourir 1000 km sans effor avec quelque millitôks, c'est qu'un tôk ça vaut très cher. Si ça venait à être le cas, alors les personnes qui auraient beaucoup de tôks serait considérées comme très riches par les autres personnes avec moins de tôks. 
+
 
 ---
 
