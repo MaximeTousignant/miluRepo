@@ -1,12 +1,17 @@
-# Chapitre Mi: Écouter la musique
+# Chapitre Mi: La musique
 
-Mais avant, une petite publicité de 2 minutes.
+Mais avant, une petite publicité de 2 minutes interminables.
 
-Longtemps, j'ai marché sur des sentiers  de montagnes et de forêts avec des bottes de randonneur. Pour la première fois de ma vie, je marche dans des bottes d'abonneur.
+Longtemps, j'ai marché sur des sentiers de montagnes et de forêts avec des bottes de randonneur. Pour la première fois de ma vie, je marche dans des bottes d'abonneur.
 
 Bonjour chers auditeurices, mon nom est l'Opératrice en douceur. Connais-tu cette nouvelle plateforme numérique qui s'appelle [Smoothop.org](https://smoothop.org)? C'est un portail qui te permet d'avoir accès à ton ✨**revenu universel de 1 tôk par 15 jours**✨ que tu accumules depuis ta naissance.
 
 « Combien coûte l'accès à ce portail? » me demandes-tu, c'est une excellente question et la réponse va t'étonner: le montant de ton choix! Non, je ne te prends pas pour un imbécile, attends, ne ferme pas la porte de tes oreilles, laisse-moi un instant pour t'expliquer.
+
+```
+♫ Music begins ♫
+```
+
 
 Il te suffit de verser la cotisation unique volontaire pour devenir membre de Smoothop, un organisme ([OBNL](https://www.legisquebec.gouv.qc.ca/fr/document/lc/C-38?langCont=fr#ga:l_iii-h1)) de développement durable fondé à Montréal en 2021 avec la mission d'accélérer la transition socioécologique. Ce simple geste, et te voilà membre, avec accès en tout temps à tes tôks — sans frais et garanti à vie par le travail passés et présents des membres de Smoothop 🏄.
 
@@ -27,7 +32,7 @@ Un ✨**revenu universel minimum garanti de 1 tôk par 15 jours**✨ depuis ta n
 
 Piiioushh 📺.
 
-La télé s'éteint au commandement de mon pouce. Assez de pubs pour aujourd'hui. Je dois aller dormir. Je vais encore être fatiguée au travail demain. Je devrais me coucher plus tôt. Aller retrouver ce beau corps chaud qui m'attend dans mon lit.
+La télé s'éteint au commandement de mon pouce. Une si petite action qui a de grandes conséquences sur les prochaines minutes de ma vie. Assez de pubs pour aujourd'hui. Je dois aller dormir. Je vais encore être fatiguée au travail demain. Je devrais me coucher plus tôt. Aller retrouver ce beau corps chaud qui m'attend dans mon lit.
 
 ---
 
@@ -40,8 +45,22 @@ Je tatonne dans l'obscurité pour trouver l'interupteur de la lampe de chevet. L
 
 $$\frac{da}{dt} = \dot{\Lambda} - k_D \, a$$
 
-puis je dessine cercle ◯.
+à mon esprit, bien sûr ce que ça veut dire c'est
 
+$a$ c'est l'argent. L'amount dans ton acount.
+
+et rien n'est plus sûr que
+
+$k_D$ est la constante de mort, de désintégration, $k_{Death}$. L'inverse de l'espérance de vie umaine moyenne.
+
+Donc — ça me paraissait très évident de par l'état d'esprit que j'avais à ce moment, même si aucune phrase de l'histoire de l'humanité n'a jamais été moins claire — on en déduit que le revenu universel vaut
+
+$$\dot{\Lambda}=\frac{???}{\tau}$$
+
+où ??? est l'unité de notre monnaie et $\tau$ une constante de temps arbitraire:  = ◯
+
+puis 
+ $$1\begin{align} \tau = ◯ &= 360°\\ 1°&=60', 360°&= 15·24·60'\\ ◯ &= 15 J \\ 15 J = 1 Q\end{align}$$
 > Rendu là
 
 divisé en 360 degrés avec chaque degré divisé en 60 minutes et chaque minute divisée en 60 secondes de telle sorte que 1 degré vaut 1 heure. Ainsi, 360° → 360 h = 15 · 24 h = 1 tour par 15 jours.

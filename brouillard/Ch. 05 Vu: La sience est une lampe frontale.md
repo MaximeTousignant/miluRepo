@@ -16,3 +16,10 @@
   Équitable. — *Manifestôk* ; *Mission*
 - **La mort du statu quo.** « Les changements climatiques *sont* une transition écologique. »
   Parier sur le statu quo est le vrai optimisme naïf. — *Brouillons* § La mort du statu quo
+
+
+
+Si tu comprends que tu es de la viande et que tu acceptes la réalité du fait que tu es de la viande, après la question devient comment te sens tu en tant que morceau de viande? Et la vrai réponse c'est comme d'habitude. Parce que toute ta vie tu es un morceau de viande saignante qui se débat pour sa survie dans la nature.
+
+Des fois c'est beau, des fois c'est moins beau. Mais c'est toujours vrai.
+
