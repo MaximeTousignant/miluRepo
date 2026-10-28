@@ -13,6 +13,12 @@ Quand je parle au nous, je parle bien sûr au nom de la communauté des membres 
 Je suis l'Opératrice en douceur.
 La présentatrice du conseil d'administration de Smoothop.
 
+---
+
+<sub>✂️ Ta prose, déplacée de Mi, où elle suivait « Camarades » (maintenant dans Re).</sub>
+
+Être graduellement plus en colère, mais voir que ça mène à la violence ou à tous le moins c'est un ton désagréable. Tomber sur la chanson Smoothop operator. Concrétiser l'idée d'un certain style de douceur. 
+
 
 ---
 

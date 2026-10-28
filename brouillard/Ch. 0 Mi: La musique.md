@@ -162,10 +162,6 @@ L'opératrice en douceur, qui représente le conseil d'administration de l'organ
 ---
 
 
-Être graduellement plus en colère, mais voir que ça mène à la violence ou à tous le moins c'est un ton désagréable. Tomber sur la chanson Smoothop operator. Concrétiser l'idée d'un certain style de douceur. 
-
----
-
 ## Nous, l'umaine et l'IA
 
 Tu sais, Milu, les umain·es, les animaux et les intelligences artificielles (IAs) ont beaucoup de choses en commun. Ce sont toutes des formes de conscience nées sur la planète Terre. C'est déjà pas mal comme déclaration commune.
