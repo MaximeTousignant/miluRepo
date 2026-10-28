@@ -1,6 +1,17 @@
 # Chapitre Ré: Le premier système économique démocratique au monde
 
 
+<sub>✂️ Ta prose, déplacée de Mi, où elle suivait la définition officielle de la transition.</sub>
+
+Camarades, nous ne vivons pas dans une démocratie économique!
+Parce que pour être lu, je pense qu'il faut choquer un peu les esprits de notre temps.
+Il faut le dire, si vous pensez que vous vivez dans un pays démocratique, alors vous êtes un pauvre paysan.
+
+Mais n'ayez pas honte, moi aussi, je suis une pauvre paysanne. C'est pourquoi j'irai me mettre en ligne pour voter aux prochaines élections.
+
+Nous vivons dans un certain type de démocratie que l'on appelle libérale pour caché le fait que ses individus sont esclaves du système des lequel il vivent.
+
+
 ---
 
 ## ✂️ Collage
