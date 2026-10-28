@@ -413,6 +413,8 @@ Je vous invite à partir avec moi de l'objectif futur pour qu'ensemble nous retr
 
 Bienvenue chez Smoothop.
 
+*→ Remonter le fleuve, de l'embouchure aux sources : c'est la méthode que La reprend (« Imaginer une image du futur, retracer le chemin ») et la consigne qui ferme Nu (« Partir de la fin »).*
+
 ### 3. Jingle de la transition socioécologique
 <sub>✂️ *Le Manifestôk* § Jingle de la transition socioécologique · l. 696–703</sub>
 
