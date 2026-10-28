@@ -250,14 +250,7 @@ Les obligations correspondent à des besoins umains (valeurs).
 Voir notes (photos du 2026-01-12).
 
 ### 11. La charte des devoirs universels
-<sub>✂️ *Le Manifestôk* § La charte des devoirs universel · l. 285–314</sub>
-
-Dans prélude à une déclaration des devoirs universels, Simone Weil dit essentiellement :  
-Un droit ça ne veut rien dire. Qu’est-ce que ça veut dire avoir le droit de manger si on est seul dans le désert et qu’il n’y a rien à manger?
-
-Un droit est une obligation morale envers tous les autres umain·es. Tu *dois* nourrir un autre individu umain *qui meurt de famine*, alors que tu as *extra bouffe* et que tu as *la faculté de lui donner* une partie de notre repas. En ce sens, ne pas laisser les autres mourir de faim est un devoir universel.
-
-Contrairement à un droit qui perd sa signification lorsqu’il n’est pas réalisé, un devoir reste entier. Même si tu ne fais pas ton devoir, le devoir est quand même à faire. Il ne change pas de signification. Un devoir universel est une obligation morale.
+<sub>✂️ *Le Manifestôk* § La charte des devoirs universel · l. 292–314</sub>
 
 S’il y a une famine dans un autre pays et plus de 1000 km de distance d’où tu vis. Et que tu le sais. Est-ce que tu as la faculté de faire quelque chose? Si la réponse est non, alors ce n’est pas ton devoir. Mais si la réponse est oui et que tu as un devoir non rempli.
 
@@ -541,13 +534,11 @@ De quel autre côté?
 Oui, c’est ça. Donc, comme je disais, deux chemins s’offrent à nous. D’un côté, on se laisse absorber à notre tour par le trou noir métaphorique. On survivra peut-être à la chute, mais le chaos et les souffrances sont garanties. Ou alors, on se retourne vers le soleil, on met nos verres fumés (autant pour la protection UV que pour le style) et on y va. On se laisse guider par notre astre. On choisit l’énergie solaire pure et on tourne le dos à l’énergie noir et engluante.
 
 ### 29. La croissance : le chemin de la transition
-<sub>✂️ *Le Manifestôk* § La transition socioécologique - I · l. 1619–1623, 1633–1641</sub>
+<sub>✂️ *Le Manifestôk* § La transition socioécologique - I · l. 1619–1621, 1633–1641</sub>
 
 Le deuxième chemin est celui de la croissance. La poursuite du rêve du progrès. Une croissance durable vers une société verte et prospère, dans laquelle personne n’est laissée-pour-compte.
 
 Pendant la transition socioécologique, il y a un monde démocratique dans lequel le système économique est équitable, efficace et accessible. Un monde dans lequel chaque personne a le droit d’obtenir un peu de gratitude pour le travail qu’elle fait honnêtement. Un monde dans lequel certaines personnes éprouvent de la satisfaction à résoudre un problème. Un monde dans lequel d’autres personnes apprécie répondre à un besoin qui leur tient à cœur. Un monde dans lequel nous observons et façonnons les écosystèmes dont nous avons pleinement conscience de faire partie.
-
-Au bout de la grande célébration, il y a un monde dans lequel chaque personne reçoit un revenu universel de 1 tôk par 15 jours. Un monde dans lequel l’énergie est abondante et de source 100% renouvelable et abondante. Un monde dans lequel nous prenons soin les uns des autres. Un monde qui donne envie d’être explorer le temps d'une vie. Un monde dans lequel on est libre de chercher l’amour.
 
 […]
 

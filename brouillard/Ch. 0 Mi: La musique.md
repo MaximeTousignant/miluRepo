@@ -582,19 +582,7 @@ L'algorithme qui dicte le comportement de l'humanité est l'ensemble des lois et
 Personne ne peut prétendre connaître la fonction coût de l'humanité. Néanmoins, nous pouvons faire confiance en chaque humain pour essayer de satisfaire ses propres besoins et valeurs. Supposons que chaque personne reçoive un nombre équitable de point. Supposons également que ces personnes on la possibilité d'offrir leurs points en échange de produits ou services qui augmentent leur niveau de satisfaction. Dans ce cas, une des façons par laquelle une personne peut augmenter davantage son niveau de satisfaction consiste à gagner plus de points, pour ensuite pouvoir les échanger. Or, pour gagner plus de points, elle doit augmenter le niveau de satisfaction d'autres personnes. Dans ce jeu, maximiser son nombre de point équivaut à satisfaire ses propres besoins et valeurs en même temps que ceux des autres. Ce jeu s'appelle le système des tôks.
 
 ### 16. Emmy Noether : le bien-être se compte en joies
-<sub>✂️ *Le Manifestôk* § Emmy Noether · l. 3218–3304</sub>
-
-**Smooth operator \- Sade**
-
-Croissance, décroissance, mais de quoi au juste?
-
-Oublions un instant les chiffres que l’on nous balance à la télé ou dans les journaux et repartons de la base.
-
-Sans susciter trop de controverse, je pense qu’on peut dire que chacun d’entre nous vise un accroissement de son bien-être individuel. En fait, j’irais même plus loin en disant que l’accroissement de notre bien-être individuel est l’objectif intrinsèque qui motive chacune de nos pensées, de nos paroles et de nos actions. Chercher à augmenter notre bien-être individuel serait alors cette motivation profondément humaine qui fait en sorte que nous ne sommes jamais parfaitement inertes tant que nous ne sommes pas morts.
-
-Ce que j’essaie de formuler, c’est que chaque être vivant, et l’humain en particulier, tente constamment de maximiser quelque chose. Et cette chose, c’est ce que j’appelle le bien-être individuel. Avant d’aller plus loin, je voudrais préciser que le bien-être individuel est subjectif, mais qu’il dépend évidemment de notre perception du bien-être des autres. Je me sens mieux (mon bien-être est plus élevé) lorsque je sais que mes proches sont heureux et en sécurité.
-
-D’une certaine façon, la prémisse de l’économie consiste à supposer que l’on puisse mettre un chiffre sur ce bien-être individuel. C’est faux\! Mais utile. C’est une vision utilitariste de notre existence. Un modèle de notre réalité humaine. 
+<sub>✂️ *Le Manifestôk* § Emmy Noether · l. 3230–3304</sub>
 
 Dépenser l’argent pour augmenter notre bien-être individuel. Argent \= potentiel d’augementation du bien-être individuel. Un bon système, serait un système dans lequel les individus. Pour essayer d’augmenter leur bien-être individuel, les individus essaient d’avoir plus de monnaie. En travaillant pour avoir plus de monnaie les individus augmentent le bien commun (la somme des bien-être individuels).
 

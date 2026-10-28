@@ -345,9 +345,7 @@ Ils vont à une fête. Le narrateur qui travaille à la caisse royale. Le narrat
 Tiens, ne pas avoir envie de rester perdue trop longtemps. Voilà une certitude qui ne nécessite pas d’explication.  Ne pas mourir vidée de mon sang par de petites seringues volantes, voilà une puissante intuition. Aller. Suivre mon intuition. Je me relève et me remet en marche dans la sombre forêt des idées. Ma frontale de la science éclaire mes pas
 
 ### 21. La bête de la folie, le vieil arbre
-<sub>✂️ *Le Manifestôk* § Jingle de la transition socioécologique · l. 734–740</sub>
-
-Il est toujours possible d’être marginal et d’essayer de se tracer son propre chemin dans la forêt des idées, mais le coût social d’une telle exploration est élevé. La forêt est dense et pleine d’inconnus. Et puis il y a la fameuse bête de la folie qui y vit.
+<sub>✂️ *Le Manifestôk* § Jingle de la transition socioécologique · l. 736–740</sub>
 
 Au début, j’avais peur de la folie. On dit aux enfants qu’elle rôde la nuit, dans les coins sombres de la forêt où nous n’avions pas le droit d’aller quand nous étions petits. On dit que certains y sont allés, des gens que l’on connaissait bien, qui étaient très gentils, tellement que ça aurait pu être nous, mais qu’ils sont partis et sont tombés face à face avec la bête. On les voit maintenant tristement déambuler sur les sentiers comme s’ils étaient à jamais hantés par leur rencontre avec la bête.
 
