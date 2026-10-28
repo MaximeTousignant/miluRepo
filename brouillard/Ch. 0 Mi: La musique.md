@@ -883,7 +883,28 @@ Chapitre 12: Le temps
 
 Conclusion: Le temps·personne (L'escalier en collimasson)
 
-### 31. La table des matières du Manifestôk
+### 31. Le titre : sans se faire chier
+<sub>✂️ *Le Manifestôk* § Titre. · l. 397–398</sub>
+
+Le Manifestôk.  
+Ou comment réussir la transition socioécologique sans se faire chier.
+
+### 32. Pourquoi ce titre ; le droit à un sous-titre
+<sub>✂️ *Le Manifestôk* § Jingle de la transition socioécologique · l. 760–770</sub>
+
+ bien que je choisisse le titre du livre: Le Manifestôk, que j’ai choisi.
+
+Je ne sais plus trop pourquoi. En fait, si. Je me rendais bien cont que ce que j’écrivais…  
+
+Mais j’avais aussi droit à un sous-titre
+
+**Chapitre 3 : Une envie de ne pas me faire chier.**
+
+Ça je l’avais appris en camping.
+
+Le camping
+
+### 33. La table des matières du Manifestôk
 <sub>✂️ *Le Manifestôk* § Table des matières · l. 91–108</sub>
 
 Le système des tôks est un système économique démocratique qui sert à accélérer la transition socioécologique.
@@ -905,7 +926,7 @@ Cette définition contient en fait la réponse à deux questions :
    Ou le Pourquoi? du système des tôks.  
    1. Système des tôks → Transition socioécologique  
 
-### 32. Carnets de voyage : douze chapitres, comme les notes
+### 34. Carnets de voyage : douze chapitres, comme les notes
 <sub>✂️ *Le Manifestôk* § Carnets de voyage. · l. 404–411</sub>
 
 Le Manifestôk doit être un voyage de l’esprit, connecté par des récits. 
@@ -917,7 +938,7 @@ En 12 chapitres, comme les notes de musique:
 	2\. ???  
 	3\. …
 
-### 33. Notes : lumineux et porteur d'espoir
+### 35. Notes : lumineux et porteur d'espoir
 <sub>✂️ *Le Manifestôk* § Notes · l. 423–431</sub>
 
 Le Manifestôk doit contenir les grandes vérités, les axiomes et les hypothèses. Je suis umaine et le temps passe. Ce genre de choses. Les bases quoi.
@@ -930,7 +951,7 @@ Wé, So, Vu, La, Té, Si, Do, Ka, Ré, Nu, Mi, Fa.
 
 Écrire.
 
-### 34. Un plan de chapitres
+### 36. Un plan de chapitres
 <sub>✂️ *Le Manifestôk* § Carnets · l. 1135–1145</sub>
 
 **Chapitre 2	: La transition socioécologique**
@@ -945,7 +966,7 @@ Wé, So, Vu, La, Té, Si, Do, Ka, Ré, Nu, Mi, Fa.
 
 **Voir la philosophie de l’opération en douceur.**
 
-### 35. Un plan en trois tomes, en trois langues
+### 37. Un plan en trois tomes, en trois langues
 <sub>✂️ *Brouillons* § Le dur réveil · l. 1486–1500</sub>
 
 Un transition en douceur
@@ -964,7 +985,7 @@ Bienvenidus amigus, Bienvenidos amigos y bienvenidas amigas,
 
 À ceux que j’aime (en français original)
 
-### 36. Le modèle de la vie umaine moyenne : un cours en 39 leçons
+### 38. Le modèle de la vie umaine moyenne : un cours en 39 leçons
 <sub>✂️ *Cahiers de la Transition en douceur* § La forêt des idées · l. 112–155</sub>
 
 **Le modèle de la vie umaine moyenne**

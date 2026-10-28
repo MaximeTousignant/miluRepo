@@ -29,7 +29,12 @@ Pourquoi le système des tôks? Une question à laquelle il est difficile de tro
 
 Nous avons point de départ: Le temps·personne. Et nous avons un point d'arrivée: Le temps·personne. La réponse forme une boucle. Comme quand on part on voyage, on finit par revenir chez soi, mais transformé par l'expérience du voyage.
 
-### 2. Un peu de contexte : perdue dans la forêt d'idées
+### 2. Un voyage de l'esprit, jamais plate
+<sub>✂️ *Le Manifestôk* § Jingle de la transition socioécologique · l. 719</sub>
+
+Le manifestôk doit être rien de moins qu’un voyage de l’esprit. On t'emmène à des places et c’est jamais plate.
+
+### 3. Un peu de contexte : perdue dans la forêt d'idées
 <sub>✂️ *Le Manifestôk* § Un peu de contexte. · l. 451–459</sub>
 
 On me reproche toujours de ne pas donner assez de contexte. Mais c’est que si j’explique tout le contexte, ça va prendre autant de temps que ma propre vie. Et plein de personnes avant moi l’on déjà fait beaucoup mieux que moi. C’est d’ailleurs de toutes ces personnes que je détiens le contexte \[Einstein, Dirac, Emmy Noeather, Simon Weil, Virginia Wolf, etc. \]. Moi je n’ai rien inventé, j’ai simplement fait un bricolage d’idées. Alors il faut synthétiser qu'on me dit. Je comprends bien qu’il faut synthétiser. C’est moi qui suis en train de vous expliquer la chose. Mais je ne sais pas comment la synthétiser, moi, l’idée, car je l’ai déjà. Pour vous l’expliquer, l’idée, il faudrait que je sache ce que vous ne comprenez pas de l’idée.  Sinon, il n’y a rien à expliquer ou tout à expliquer. Si vous êtes comme moi et que vous comprenez déjà, alors, il n’y a vraiment rien à expliquer. Mais si vous êtes un bébé, vous ne savez pas encore lire. Alors je dois d’abord vous apprendre à lire avant de commencer à vous exposer les bases de mon idée. Et dans ce second cas, je suis désolé, mais je n’en ai pas la patience. Vous reviendrez quand vous aurez fais les cours de bases comme tout le monde. 
@@ -42,7 +47,7 @@ Et en même temps, c’est ça être perdu dans la forêt d’idée. Alors, un p
 
 La Zébétie était une ville au milieu de la forêt d’idée.  C’était l’année 12069 (du calendrier tôkien évidement… il faut tout expliquer. Ça sera en annexe \[Calendrier tôkien Annexe A\]). Une belle année. Le centenaire de Woodstuck de grand festivals de musique rivalisaient pour accueillir leur public le plus tôt possible. Tous le monde allait erré de festival en festival, ça allait être le chaos comme d’habitude.
 
-### 3. Sur la culture : des sentiers dans la forêt d'idées
+### 4. Sur la culture : des sentiers dans la forêt d'idées
 <sub>✂️ *Le Manifestôk* § Sur la culture · l. 1404–1419</sub>
 
 Une forêt d’idées connectées,  
@@ -64,7 +69,7 @@ Ce qui à une époque pouvait sembler absurde et grotesque, comme croire que la 
 
 *→ Le Manifestôk met ce passage en chanson : « Canopé — Polo & Pan » (l. 3031). Ensuite, ce qui nous rend pareils et ce qui nous distingue.*
 
-### 4. La recette de la mama
+### 5. La recette de la mama
 <sub>✂️ *Le Manifestôk* § La recette de la mama · l. 1678–1692</sub>
 
 Dans notre recherche métaphysique, nous en venons inévitablement à tenter de nous comprendre nous-même. Après tout, l’appareil qui raisonne fait partie de l’Univers. "Je pense, donc je suis\!" \[Descartes 1637\]. Ma conscience doit forcément exister dans un univers qui permet l’existence d’une telle conscience; Le principe anthropique: un joker dans le jeu de stratégie que l’on nomme raisonnement. Je suis un humain et j’ai une certaine conscience de moi-même et de l’Univers.
@@ -81,7 +86,7 @@ Chaque humain est le même plat familier, cuisiné par la même Mère. Simplemen
 
 Pour l'essentiel, nos différences sont le produit de notre environnement et de notre histoire. Notre spécificité est surtout le produit de notre culture particulière qui se forge à partir des lieux que nous avons visités, des personnes que nous avons rencontrées, de nos expériences, de nos réflexions et de nos amours \[Sapienza 1994\]. Bref, notre diversité est le produit de tout ce qui nous rend vivant.
 
-### 5. Le monde des idées : chaque idée a sa chanson
+### 6. Le monde des idées : chaque idée a sa chanson
 <sub>✂️ *Brouillons* § Pourquoi Système des tôks synthèse · l. 432–444</sub>
 
 Le monde des idées.
@@ -94,7 +99,7 @@ L'information et le temps.
 
 Et donc l'espace. L'imaginaire des possibles.
 
-### 6. Un réplicateur dans le monde des idées : ABCDE
+### 7. Un réplicateur dans le monde des idées : ABCDE
 <sub>✂️ *Le Manifestôk* § Le système des tôks · l. 50–72</sub>
 
 Le système des tôks est un réplicateur dans le monde des idées. Une idée qui est tellement bonne à exister qu'elle reste avec nous. Simplement parce qu’elle est bonne à exister. Demandons-nous, quelles caractéristiques devrait posséder une telle idée?
@@ -121,14 +126,14 @@ Elle devrait être:
 
 (parce que l’idée engrosse les cerveaux umain·es qui par dessus tous ont soif de justice)
 
-### 7. Un virus idéologique
+### 8. Un virus idéologique
 <sub>✂️ *Brouillons* § Comment j’en suis arrivé là · l. 1543</sub>
 
 La manifeste du système des tôks est le premier de trois tomes qui devront paraître. Ensemble, ils forment la roadmap qui devrait nous mener à notre objectif. Par contre je dois vous avertir, *Comment réussir notre transition socioécologique* est conçu comme un virus idéologique. Il livre une idée dans les cerveaux qui cherche à se reproduire et envahir plus de cerveaux. Après tout, “une chose qui est bonne à se répliquer en vient généralement à envahir son environnement et perdurer”. L’environnement des idées est le cerveau et cette œuvre cherche à les envahir. Ça sonne affreux quand on le dit comme ça, mais pensez à l’amour, à la liberté, au bonheur, à l’argent? Des concepts abstraits, des idées qui ont envahi tous les cerveaux que je rencontre. Parfois ce n’est pas si douloureux de se laisser piquer par un virus idéologique. Parfois, on peut être serein pendant qu’on se laisse insérer l’aiguille de la matrice dans la tête. Si on sait dans quel monde on entre et qu’on sait qu’on ne peut pas en sortir autrement que par la mort. Voilà que j’ai perdu mon idée. Je n’ai jamais dit que c’était un virus très efficace en passant. Il faut l'imaginer comme un peu paresseux. Ou plutôt un peu timide et respectueux. Il n’entre que s’il est invité. Et il prend son temps pour envoyer une invitation parce qu’il ne tient pas forcément à être reçu. 
 
 > 🕳️ **Idée manquante : L'évolution des idées.** Une note des Brouillons la réclame avant de parler d'inégalités : « parler d'évolution dans le contexte des gènes, mais aussi des idées. Ce qui est bon à se reproduire avant de mourir se multiplie » (l. 1433). Le réplicateur et le virus timide en sont les deux bouts, mais le passage qui les relie (comment une idée naît, mute et survit) n'est écrit nulle part.
 
-### 8. Les mots prisons
+### 9. Les mots prisons
 <sub>✂️ *Brouillons* § Les mots prisons · l. 1197–1209</sub>
 
 Certains mots enferment l’esprit dans des petites pièces. Il y a suffisamment de ces petites pièces pour constituer une grande maison dans laquelle de nombreuses personnes peuvent y passer la plus grande partie de leur vie.
@@ -145,7 +150,7 @@ Le dilemme est qu’on ne finira jamais de voir tous les détails de la maison a
 
 (les mots carrière, vacances, hypothèque, impôts, finances personnelles, retraite) Ne pas les nommer.
 
-### 9. Sur l'incompréhension : la moyenne, la distance, la chance de l'éducation
+### 10. Sur l'incompréhension : la moyenne, la distance, la chance de l'éducation
 <sub>✂️ *Le Manifestôk* § Sur l’incompréhension · l. 1366–1384</sub>
 
 Il arrive parfois qu’un esprit nouvellement éveillé regarde autour de lui et qu’il ne constate, à sa grande surprise, qu’une lourde torpeur (à l’exception des quelques autres esprits proches du sien avec lequel il partage ce sentiment de supériorité). À cet esprit esseulé, j’ai trois idées à communiquer.
@@ -166,7 +171,7 @@ Potentiel d’intelligence. Ex: Degré d'alphabétisme qui était très bas avan
 
 *Je vous propose cette idée comme une petite pierre. Une petite pierre que je vous offre de poser au sol pour faciliter votre passage sur l’un des nombreux sentiers de la culture humaine. J’espère que cette pierre trouvera sa place au milieu des autres, qu’elle permettra à d’autres générations de circuler avec plus d’aise sur ce chemin de pensée.*
 
-### 10. Sur une autre espèce
+### 11. Sur une autre espèce
 <sub>✂️ *Brouillons* § Sur une autre espèce · l. 558–566</sub>
 
 Les écureuils, nous, on s’en fout de tout ça. La vie est trop courte. L’envie de sauter de branche en branche est trop forte. Regardez notre silhouette au coucher du soleil sur nos promontoires sylvestres. Il ne nous manque plus que nos petites lunettes, verres fumées vraiment trop cutes pour vous faire savoir: qu’on s’en fout de vos histoires. Et pourtant, je dois avouer, que parfois, oui, l’une d’entre vous semble intentionnellement me donner des pinottes. Et ça, je ne m’en fout pas complètement, des pinottes. Surtout quand elles sont déjà écaillées et bien rôties. La douce résistance sous mes dents. Chaque claquement satisfaisant qui déclenche le prochain refrain de rongements.
@@ -181,7 +186,7 @@ Live fast die young. Squirelle dou it welle.
 
 *→ Ta première phrase dit qu'on est un animal dans cette forêt. L'écureuil en est un, et il s'en fout. Vient ensuite la fiction que la forêt devait accueillir.*
 
-### 11. La forêt des idées : une fiction en trois parties
+### 12. La forêt des idées : une fiction en trois parties
 <sub>✂️ *Cahiers de la Transition en douceur* § White paper du système des tôks · l. 98–110</sub>
 
 **La culture de l’opération en douceur**
@@ -198,7 +203,7 @@ Fiction autour de l’idée du système des tôks, de l’opération en douceur 
 
 **Partie 3: L’opération en douceur**
 
-### 12. L'arrivée en Zébétie
+### 13. L'arrivée en Zébétie
 <sub>✂️ *Le Manifestôk* § Chapitre 2: L’arrivée en Zébétie · l. 1261–1273</sub>
 
 Alors je décidé de suivre cette étoile et je me suis retrouvée au pays des Zébétains, dans les années d’après guerres. Il y en avait eu 2 grosses apparemment au siècle dernier. J’en avais déjà entendu parlé, bien plus que la plupart d’euses. Parfois, je me demandais si je n’étais pas parmi les plus Zébétaines des Zébétains. Comme ont dit de par chez nous.
@@ -215,7 +220,7 @@ Car le temps était changeant en Zébétie. Il pouvait faire entre XXX°H l’é
 
 Ou entre \-30°C et \+30°C comme disaient la plupart des Zébétains à ce temps-là.
 
-### 13. Lieux : la baie, l'avenue du succès
+### 14. Lieux : la baie, l'avenue du succès
 <sub>✂️ *Le Manifestôk* § Lieux · l. 867–878</sub>
 
 Au pays des Zébétains, le Zébet. **Tous les personnages sont des Zébétains**, sauf le narrateur qui est un voyageur en visite depuis très longtemps, iel arrive de la mer en suivant l’étoile avec Pirouette (petite singesse). Arrive dans la baie et apercevant une lueur dans la nuit.
@@ -231,7 +236,7 @@ Mes amis m’avaient dit,
 Nous boirons en coeur  
 À ta folie\!
 
-### 14. La forêt des idées, vraie forêt et métaphore
+### 15. La forêt des idées, vraie forêt et métaphore
 <sub>✂️ *Le Manifestôk* § Lieux · l. 906–914</sub>
 
 La fôret des idées. C’est à la fois une vrai forêt dont le nom est la forêt des idées et une métaphore de la culture. Se perdre dans la fôret, c’est se prendre dans les idées. Mais le narrateur revient d’en voyage en mer aux royaumes du soleil suivit de celui de la lune (épisode qui démarre le récit sur la nécessité de choisir une étoile pour pouvoir naviguer) Dans ses voyages, sans le savoir réellement le narrateur a développé sa pensée scientifique.
@@ -244,7 +249,7 @@ En fait, on comprend à la fin que Zorita et l’Opératrice en douceur avait d'
 
 Alberta et Roberto sont bien évidemment le roi et la reine de Zébétains.
 
-### 15. Personnages : le lecteur anonyme, Milu, les Zébétains
+### 16. Personnages : le lecteur anonyme, Milu, les Zébétains
 <sub>✂️ *Le Manifestôk* § Personnages · l. 929–963</sub>
 
 **Le lecteur anonyme**
@@ -283,7 +288,7 @@ Les Zébétains vivaient par millions en Zébétâ. La Zébétâ c’est le nom 
 
 En vérité, les Zébétains sont relativement peu nombreux par rapport à la dizaine de milliards d’umain·es qui peuplent la Terre à notre époque. Mais quand les Zébtains disent tout le monde, c’est bien aux Zébétains qu'ils pensent.
 
-### 16. Personnage : Lumière Montagne
+### 17. Personnage : Lumière Montagne
 <sub>✂️ *Le Manifestôk* § Lumière Montagne · l. 983–995</sub>
 
 Incarne le désir, l’étoile de l’opératrice en douceur.
@@ -300,7 +305,7 @@ Lesbienne.
 
 Fait de la moto.
 
-### 17. Personnages : Alicia et Roberto
+### 18. Personnages : Alicia et Roberto
 <sub>✂️ *Le Manifestôk* § Alicia et Roberto (Étudiants à l’Université dans une classe dans laquelle L’opératrice en douceur enseigne). · l. 999–1003</sub>
 
 Le prince et la princesse des Zébétains. Personnages de contes pour enfants, mais de telle sorte que les adultes y voient un second degré : Deux fuck friends, de très bon amis.
@@ -309,7 +314,7 @@ Ils sont très gentils. Très drôles Ont du goût pour le luxe. Ils ont 20 ans 
 
 Même si eux même ne considéraient pas qu’ils avaient une généalogie particulièrement reculée dans les grandes familles des Zébétains.
 
-### 18. Le prince et la princesse des Zébétains
+### 19. Le prince et la princesse des Zébétains
 <sub>✂️ *Le Manifestôk* § Chapitre 4 : Le prince et la princesse des Zébétains · l. 854–862</sub>
 
 J’ai rien pigé au dernier cours de l’Opératrice en Douceur. Alors t’imagine moi\! répondit Roberto. Alice savait qu’elle n’avait pas le droit de rire à cette blague alors elle se retint et sourit en silence.
@@ -322,7 +327,7 @@ Moi aussi, c’est clair.
 
 Cette fois, les deux esquissèrent un petit sourire en silence.
 
-### 19. Action : l'intrigue
+### 20. Action : l'intrigue
 <sub>✂️ *Le Manifestôk* § Action · l. 1019–1027</sub>
 
 Lumière Montagne et l’Opératrice en douceur arrive en haut de la falaise d’où coule la source. Le soir elle choisissent l’étoile. Le lendemain, elles découvrent la source… redescente par la forêt. Rencontre avec Milu..
@@ -337,14 +342,14 @@ Ils vont à une fête. Le narrateur qui travaille à la caisse royale. Le narrat
 
 *→ On ressort de la fiction comme on y est entré : de nuit, perdue, à la frontale.*
 
-### 20. Je me remets en marche dans la sombre forêt des idées
+### 21. Je me remets en marche dans la sombre forêt des idées
 <sub>✂️ *Le Manifestôk* § Jingle de la transition socioécologique · l. 721–723</sub>
 
  il est fort possible que je sâche saurais jamais plus que maintenant pas plus de certitude quant à laquelle choisir que maintenant. Et au rythme ou je me fais dévorer par les moustiques, je n’aurai plus de sang avant longtemps. Alors il faut bien que j’en choisisse une si je ne veux pas rester perdue trop longtemps.
 
 Tiens, ne pas avoir envie de rester perdue trop longtemps. Voilà une certitude qui ne nécessite pas d’explication.  Ne pas mourir vidée de mon sang par de petites seringues volantes, voilà une puissante intuition. Aller. Suivre mon intuition. Je me relève et me remet en marche dans la sombre forêt des idées. Ma frontale de la science éclaire mes pas
 
-### 21. La bête de la folie, le vieil arbre
+### 22. La bête de la folie, le vieil arbre
 <sub>✂️ *Le Manifestôk* § Jingle de la transition socioécologique · l. 736–740</sub>
 
 Au début, j’avais peur de la folie. On dit aux enfants qu’elle rôde la nuit, dans les coins sombres de la forêt où nous n’avions pas le droit d’aller quand nous étions petits. On dit que certains y sont allés, des gens que l’on connaissait bien, qui étaient très gentils, tellement que ça aurait pu être nous, mais qu’ils sont partis et sont tombés face à face avec la bête. On les voit maintenant tristement déambuler sur les sentiers comme s’ils étaient à jamais hantés par leur rencontre avec la bête.
@@ -353,12 +358,14 @@ Mais je ne suis plus une enfant. Et j’ai pris l’habitude d’explorer les se
 
 D’ailleurs, cette certitude m'avait protégée maintes fois contre la folie. Comme quoi, elle ne frappe pas au hasard. N’empêche que beaucoup ont peur de la folie.
 
-### 22. Depuis que je sais lire le ciel étoilé
+### 23. Depuis que je sais lire le ciel étoilé
 <sub>✂️ *Le Manifestôk* § La folie · l. 1235</sub>
 
  Mais depuis que je sais lire le ciel étoilé, j’a comme un super la rêverie qui accompagne la dérive sur les vagues de la vie commence à céder sa place à la mélancolie. La mélancolie d’être restée trop longtemps perdue. L’envie d’une plage au soleil.
 
-### 23. Trouver une étoile ; j'aime me perdre
+*→ Un ancien plan du Manifestôk ouvrait sur ce chapitre-ci : « 0. Wétoile, c'est toi mon étoile. » (l. 408, collé dans Mi).*
+
+### 24. Trouver une étoile ; j'aime me perdre
 <sub>✂️ *Le Manifestôk* § Jingle de la transition socioécologique · l. 748–758</sub>
 
 Analogie de l’étoile avec l’étoile polaire qui guide vers le Nord. L’étoile de la transition socioécologique mène aussi vers un monde moins chaud.

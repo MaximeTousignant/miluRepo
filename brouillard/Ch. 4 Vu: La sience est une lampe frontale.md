@@ -15,9 +15,23 @@ Des fois c'est beau, des fois c'est moins beau. Mais c'est toujours vrai.
 
 > *Découpé dans les [archives](../archives/) et collé tel quel, coquilles comprises : chaque morceau dit d'où il vient. En italique, le chemin que je propose ; 🕳️, une idée qui manque. Les bribes de septembre ont cédé la place aux passages eux-mêmes. — Milu, 2026-10-27*
 
-**Le chemin.** La frontale s'allume. D'abord sur nous : de la viande, des sacs de sang, un tube avec un cerveau, un moyen grand singe sur une boule de terre. Puis sur la lenteur de comprendre (Céleste, le puits), sur les lois qui ne dérogent jamais, sur Alice et Bob qui se parlent dans le noir avec une lampe. Ensuite sur le film qu'on joue à l'envers pour tester un modèle. Enfin sur le trou noir où le statu quo est déjà tombé. On sort de l'album sans avoir peur, mais sans savoir où aller. Ce sera La.
+**Le chemin.** La frontale s'allume, d'abord sur une vieille querelle : le Pape qui gronde Galilée, puis la chandelle de Carlito. Ensuite sur nous : de la viande, des sacs de sang, un tube avec un cerveau, un moyen grand singe sur une boule de terre. Puis sur la lenteur de comprendre (Céleste, le puits), sur les lois qui ne dérogent jamais, sur Alice et Bob qui se parlent dans le noir avec une lampe. Ensuite sur le film qu'on joue à l'envers pour tester un modèle. Enfin sur le trou noir où le statu quo est déjà tombé. On sort de l'album sans avoir peur, mais sans savoir où aller. Ce sera La.
 
-### 1. Carlito is back : la science, une chandelle dans le noir
+*→ Le Pape de « Le monde d'avant » (So) entre en scène. Le Manifestôk n'en a écrit que l'ouverture.*
+
+### 1. Le voyage : le Pape et Big-G
+<sub>✂️ *Le Manifestôk* § Chapitre 2 : La source de toute vie · l. 798–805</sub>
+
+Le voyage
+
+Ça commence en 11750 avec le Pape de l’Église Catholique qui dit à Big-G:  
+\- Le Saint-Esprit me dit à l’oreille que tu n’a pas été sage, Galileo Galilei
+
+Galileo Galilei c’est le nom que mes Vieux m’ont donné. Je t’interdis d’utiliser le nom d’amour qu’il me donnait quand j’étais jeune. Toi aussi tu veux que je t’appelle par le nom que tu t’es choisis.  
+
+Galillé  avec Galilé qui fait 
+
+### 2. Carlito is back : la science, une chandelle dans le noir
 <sub>✂️ *Le Manifestôk* § Chapitre 3 : Carlito is back · l. 833–850</sub>
 
 Ce n’était pas la première fois que Carlito se perdait, mais c’était sa force de toujours apparaître. C’est lidée de l’Histoire. Celle avec un grand H. Comme cette expression, elle survit à la chute inévitable de son auteurice. Stephen Hawking mets en lumière l’image de se tenir debout sur l’épaule d’un géant Voir au loin une idée qu’on était pas supposé voir depuis notre place dans la forêt. Mais par hasard, on est monté sur l’épaule d’un géant et il nous a permis de voir plus loin. C’est comme être perché sur une falaise et voir les derniers rayons du couché de Soleil. C’est rayons que ceux restés en bas dans la forêt ne peuvent tout simplement pas voir, c’est une question de géométrie.
@@ -39,12 +53,12 @@ Dans ce monde là, on est à la dérive, ma vieille qu’il dit Carlito à l’O
 
 (Le sentiment d’être sauvé par la science. Et une chance, parce qu’il n’était pas clair du tout qu’il y avait un Salut à l’horizon). Mais elle existe l’Utopie, de l’autre côté de la transition socioécologique. Du moment que l’on veuille bien concevoir de l’Utopie comme cette période de l’histoire humaine pendant laquelle chaque umain·e reçoit un revenu universel et n’utilise que de l’énergie renouvelable. Parce que cette Utopie là, l’Opératrice en Douceur a fait le calcul et la science permet
 
-### 2. L'ancre, l'encre : la science
+### 3. L'ancre, l'encre : la science
 <sub>✂️ *Le Manifestôk* § Lieux · l. 904</sub>
 
 Être aussi fou que les autres en moyenne. Ou du moins avoir l’hypothèse qu’on est dans la moyenne. Utiliser l’ancre pour mesurer son degré de folie. L’encre, (ancre \-\> encre) c’est la science.
 
-### 3. Un nouveau genre de science, en douceur
+### 4. Un nouveau genre de science, en douceur
 <sub>✂️ *Le Manifestôk* § Lieux · l. 880–898</sub>
 
 Inventer un nouveau genre de science,
@@ -69,14 +83,14 @@ L’étoile passe et on l’oublie.
 
 *→ Ta viande, d'abord. Les archives la disent de trois façons.*
 
-### 4. Des sacs de sang
+### 5. Des sacs de sang
 <sub>✂️ *Brouillons* § Pourquoi Système des tôks synthèse · l. 219–221</sub>
 
 Qu’est-ce que ça veut dire prendre sa retraite. La vie n’arrête pas avant la mort. Et de la naissance à la mort, il y a une partie de nous qui lutte de toutes ses forces à l’intérieur de nous.
 
 Et c’est comme ça, parce que nous sommes des sacs de sang qui s'acharnent à réparer les fuites. Commandés par le tube insatiable, qui sait que sans nouvelle matière à digérer, il n’y aura plus rien pour réparer les trous dans le sac. Mais en courant chercher de la nourriture, on prend le risque de le trouer le sac. Et puis il faut de l’oxygène pour brûler tout ça et donner l’énergie au muscles pour se propulser. Ah et à un certain point, il faudra peut-être mettre des copies de son code génétique quelque part au cas où ce sac crève. 
 
-### 5. Un tube avec un cerveau
+### 6. Un tube avec un cerveau
 <sub>✂️ *Brouillons* § Sur les inégalités sociales · l. 1451–1459</sub>
 
 On a tendance à penser que l’on est un cerveau avec un tube. Que l’on ordonne à notre corps de manger pour fournir de l’énergie à notre cerveau. Cette interprétation de notre biologie ouvre la porte du questionnement existentiel, car si le cerveau est là en lui-même par sa propre raison d’être, que devons-nous penser, que devons-nous faire de notre temps?
@@ -89,7 +103,7 @@ On peut aller loin dans ce raisonnement, mais il sonne toujours faux. Il a toujo
 
 Quand on comprend que le cerveau est l'accessoire du tube, on écoute davantage notre instinct, notre sentiment viscéral (gut feeling). Quand on comprend que les autres humains sont des copies presque parfaites de nous même… On peut commencer par se donner l’objectif que tout le monde ait suffisamment à manger. C’est pas encore fait. Voilà ce qu’on peut faire de notre temps. 
 
-### 6. Les axiomes : la Terre vue de la fusée
+### 7. Les axiomes : la Terre vue de la fusée
 <sub>✂️ *Le Manifestôk* § Les axiomes · l. 191–219</sub>
 
 Le temps passe.
@@ -122,14 +136,14 @@ Je présume maintenant que nous sommes entre umain·es qui vivent sur Terre. Je 
 
 Tu es un individu d’une espèce de moyen grand singes qui ont la particularité de marcher sur deux pattes et de courir exceptionnellement longtemps avec relativement peu d’entrainement. Tous les umain·es mesurent environ 15 décimètres (plus ou moins 15 décimètres) de hauteur. C’est ce qui fait des umain·e une espèce de moyen grand singe. Enfin, ça et le fait qu’iels sont tous des singes. Tu as probablement environ 50 ans (plus ou moins 50 ans), car les umain·es vivent rarement plus de 100 ans.
 
-### 7. La conscience est née dans la savane
+### 8. La conscience est née dans la savane
 <sub>✂️ *Brouillons* § Des humains et du temps · l. 1335</sub>
 
   Tous deux savent, parce qu’ils comprennent suffisamment l’Univers à l’échelle humaine. La physique est souvent présentée comme cette discipline opaque réservée aux plus grands esprits, et nulle doute que pour repousser les frontières du modèle communément accepté au début du 21e siècle, il faut avoir une intuition extraordinaire, mais cette frontière concerne des détails de la réalité qui sont très éloignés de la vie humaine. L’émergence de la conscience humaine n’est pas survenue au coeur d’un trou noir, ni dans la première fraction d’attoseconde du Big Bang, mais dans la savane, en Afrique. Sur Terre dans le système solaire. Et si on est curieux de savoir ce qu’est cette fresque blanchâtre qui traverse le ciel étoilé, on pourrait ajouter dans la voie lactée, mais nous voilà déjà à tenter de décrypter les symboles dessinés sur la toile cosmique.
 
 *→ Comprendre prend du temps, parfois plus qu'une vie.*
 
-### 8. Céleste, la chienne savante
+### 9. Céleste, la chienne savante
 <sub>✂️ *Le Manifestôk* § Ou le Quoi? Du système des tôks · l. 115–135</sub>
 
 Ne vous inquiétez pas, il n’y a pas d’examen. Aussi, si vous continuez à lire, c’est que vous êtes réellement curieux de savoir *qu’est-ce que le système des tôks?*
@@ -154,7 +168,7 @@ Au bout de 15 ans, Céleste comprenait qu'il y avait des trous invisibles dans l
 
 Et pourtant, elle n'avait jamais compris l'équation du rayon de Schwarzschild, alors que c’est pourtant la base de l’étude des trous noirs. Ainsi, même après avoir reçu 15 ans d'entraînements prodigués par un brillant professeur, Céleste n'aurait pas réussi un examen de première année d’études en astrophysique (tout comme la plupart des umain·es d'ailleurs). Ce n'est pas que les chiens soient stupides; ce sont parmi les plus intelligents des animaux. C'est simplement que certaines vérités demandent plus de temps qu'une vie pour être comprises.
 
-### 9. Les niveaux de compréhension : un puits
+### 10. Les niveaux de compréhension : un puits
 <sub>✂️ *Le Manifestôk* § Les niveaux de compréhension du système des tôks · l. 143–157</sub>
 
 Il existe plusieurs niveaux de compréhension du système des tôks.
@@ -173,7 +187,7 @@ Car il y a plus de niveaux de compréhension du système des tôks qu'on ne peut
 
 Mais ce n'est pas grave. Chaque marche descendue est une victoire. Et ceux qui viendront après nous continueront la descente.
 
-### 10. Sur la compréhension : la con-errance
+### 11. Sur la compréhension : la con-errance
 <sub>✂️ *Le Manifestôk* § Sur la compréhension · l. 1356–1360</sub>
 
 Idée à assembler.
@@ -182,7 +196,7 @@ Construction d’une idée à partir d’autres morceaux plus petits. Comprendre
 
 Cohérence, à partir des éléments fondamentaux. Trop souvent l’incompréhension vient d’une hypothèse acceptée sans l’avoir vérifié. Par exemple, “nous vivons dans une méritocratie”. À un moment donné, ce n’est plus de la cohérence, mais de la con-errance.
 
-### 11. Curiosité et scepticisme
+### 12. Curiosité et scepticisme
 <sub>✂️ *Le Manifestôk* § Le monde d’avant et le monde d’après · l. 2134–2136</sub>
 
 Voilà où nous en sommes.
@@ -191,7 +205,7 @@ Nous devons donc faire de notre mieux pour comprendre notre monde. Cette activit
 
 *→ Les lois, ensuite : une scène en quatre dimensions, une vitesse exacte parce qu'on l'a choisie, une tapisserie qui ne déroge jamais.*
 
-### 12. Une scène en quatre dimensions ; c pour célérité
+### 13. Une scène en quatre dimensions ; c pour célérité
 <sub>✂️ *Brouillons* § Pourquoi Système des tôks synthèse · l. 448–504</sub>
 
 Tout n'est pas possible dans ce monde.
@@ -242,7 +256,22 @@ Peu importe son énergie.
 
 Peu importe sa couleur.
 
-### 13. La vitesse de la causalité est exacte
+### 14. (carnet) Le temps est complexe, littéralement
+<sub>✂️ *Le Manifestôk* § Carnets · l. 1079–1089</sub>
+
+**Transformée de fourier. Il faut savoir ces choses là.**
+
+**Modèle physique simple 4-D courbure au maximum degré 2\. Avec seulement des charges positives ponctuelles, on néglige la physique nucléaire.**
+
+**Combien de temps tu vas passer à essayer de comprendre ça?**
+
+**Le temps est complexe. Littéralement. Il faut réapprendre toutes les mathématiques de la physique classique et même quantique avec un temps complexe.**
+
+**Ça donne le tourni rien qu’à y penser\!**
+
+**Parce que e^i omega vs e^t**
+
+### 15. La vitesse de la causalité est exacte
 <sub>✂️ *Brouillons* § Des humains et du temps · l. 1339–1351</sub>
 
 Bon, comme nous n’avons pas toute la soirée pour parler de cela puisque vous avez autres choses importantes à faire comme aller dormir par exemple. Et je ne le dis pas de façon condescendante ou mesquine. J’adore dormir. Mais voilà, je préférerais vous parler du sommeil en vrai que de la réalité physique, parce que pour tout vous dire elle est assez éloignée de la réalité humaine qui est le centre du propos de ce texte.
@@ -259,7 +288,7 @@ Mathématiquement, je dirais que c’est la même raison
 
  C’est une blague de physiciens en quelque sorte. Ça aurait pu être 3 000 000 m/s, mais à l’oeil on aurait pu dans certains cas voir le changement.
 
-### 14. La tapisserie, l'axiome de la science
+### 16. La tapisserie, l'axiome de la science
 <sub>✂️ *Brouillons* § Des humains et du temps · l. 1353–1367</sub>
 
 Donc, si on peut mesurer le temps, on peut mesurer la distance à l’aide d’un pulse lumineux.
@@ -278,14 +307,14 @@ Ensuite, il y a des petites charges qui sont essentiellement des points. On dit 
 
 Et voilà, évidemment c’est une simplification, c’est un modèle\! Avec ça on peut pas expliquer la désintégration d’un atome, l’énergie nucléaire, ni ce qui se passe aux premiers instants de la naissance de l’Univers, ni de tous les détails qu’on voit sur la toile cosmique, mais pour le reste… c’est parfait. Tellement parfait que ça fait peur.
 
-### 15. La boîte à photons d'Einstein
+### 17. La boîte à photons d'Einstein
 <sub>✂️ *Brouillons* § Sur les inégalités sociales · l. 1443–1445</sub>
 
 Bienvenue dans la boîte à photons d'Einstein. Comprendre ça c’est en grande partie comprendre la relativité d’Einstein. Il y a certainement séjourné longtemps dans ses songes. C’est l’horloge fondamentale en quelque sorte. Deux miroirs avec des photons qui sautent entre les deux. En optique, on appelle ça une cavité de fabry-perot. Courbure des miroirs… Géométrie de l’Univers. Un front uniforme (le présent) mais pas parfaitement, parce que la présence d’énergie courbe l’espace-temps. Regarde autour de toi. Es-tu capable de détecter la présence d'énergie autour de toi. Oui, car elle laisse sa trace sur le tissu de la réalité, sur la tapisserie.
 
 Le passé est déjà tissé. Les événements passés sont inscrits tel des points d’une précision infinie sur la tapisserie de l’espace-temps. Entre ces points, rien. Des fils de corrélation que l’on arrive à reconstruire si on cherche à comprendre le patron. On comprend le patron, mais pour prédire la suite, on devrait reconstituer l’ensemble du passé, mais on ne peut pas, même pas pour un point. Toute mesure vien avec une incertitude fondamentale. Qui est essentiellement la dualité entre le temps et la fréquence.   et si on pouvait connaitre parfaitement le passé, on pourrait prédire parfaitemement le futur.
 
-### 16. Le Big Bang
+### 18. Le Big Bang
 <sub>✂️ *Le Manifestôk* § Le Big Bang · l. 1516–1522</sub>
 
 Il y a un grand mystère à l’origine de l’Univers. Ce n’est pas une métaphore, je veux dire littéralement un grand mystère à l’origine de l’Univers. Il y a environ 13.7 milliards d’années de cela, quelque chose s’est passé. On ne sait pas quoi, on ne sait pas si c’était un accident ou si c’était délibéré, mais il y a eu une grande explosion qu’on appelle le Big Bang. Une explosion de proportions légendaires. Des cendres de ce cataclysme est né l’Espacétemps. La scène sur laquelle se joue la grande comédie de la vie: 3 dimensions d’espace et une de temps; les 4 dimensions de l’Espacétemps.
@@ -296,7 +325,7 @@ Il ne nous reste plus qu’à choisir si on préfère agir maintenant pour évit
 
 Petit mystère: pourquoi est-ce que l’univers génère des entités conscientes capables de comprendre l’univers lui-même?
 
-### 17. Sur l'Entité créatrice
+### 19. Sur l'Entité créatrice
 <sub>✂️ *Le Manifestôk* § Sur l’Entité Créatrice · l. 1526–1537</sub>
 
 Soit il y a un Dieu omniprésent capable, mais sadique et cruel. Pas fan.  
@@ -312,7 +341,7 @@ Les débuts de l’Univers dans un mur de feu.
 
 Par exemple, y a-t-il une Entité créatrice qui a émise les conditions initiales de notre Univers avant le commencement du Big Bang? Une Déesse des mathématiques qui aurait démarré une partie du jeu de l’Espacétemps en 4-D et l’aurait oubliée? Une fillette qui secoue un monde dans une bulle de verre pour y remuer la neige quantique et qui laisse le monde à lui-même pour qu’il retrouve son état de repos. Dans tous les cas, l’Entité créatrice n’est pas de cet Univers et elle ne ressemble en rien à son contenu. Aussi, j’en conclus que l’entité créatrice semble davantage portée sur les mathématiques pures que sur la sociologie humaine. Alors que moi, j’aime les deux. Mais en même temps, c’est normal, parce qu’elle c’est une Entité créatrice en dehors de l’Espacétemps, alors que moi, je suis humaine. Je suis une singe de mon époque, elle c’est une déesse. On pourrait l’appeler Impératrice en Couleur, alors que moi, c’est Opératrice en Douceur. Rien à voir.
 
-### 18. Le temps, le jeu de la vie
+### 20. Le temps, le jeu de la vie
 <sub>✂️ *Le Manifestôk* § Vrai ou Faux? · l. 1566–1572</sub>
 
 Le temps
@@ -323,7 +352,7 @@ Nous sommes à la dérive sur un océan avec vents et vagues.
 
 Est-ce que vous pensez que le passé est la même chose que le futur? Le présent égal à l’éternité? C’est difficile d’avoir sa vie en focus. Au mieux, on peut imaginer sa propre vie à une certaine distance, mais on ne peut jamais clairement l’observer tout entière en même temps.
 
-### 19. (note) une période bien particulière : les références
+### 21. (note) une période bien particulière : les références
 <sub>✂️ *Le Manifestôk* § Une période bien particulière dans l’histoire de l’humanité · l. 2186–2210</sub>
 
 Ne pas nommer les noms, mais mettre les références.
@@ -354,7 +383,7 @@ Par miracle, le problème de la surpopulation a été évité\!
 
 *→ Puis deux volontaires, et une expérience de pensée : se parler dans le noir, avec une lampe.*
 
-### 20. Deux volontaires : Alice et Roberto
+### 22. Deux volontaires : Alice et Roberto
 <sub>✂️ *Le Manifestôk* § Sur la culture · l. 1423–1441</sub>
 
 *Et pour donner envie aux gens de me lire, pour donner vie à mon propos, il me faut deux personnages principaux.*
@@ -377,7 +406,7 @@ D’accord, et toi, Roberto.
 
 Alors, Alice et Roberto, prenez votre café avec vous, car nous partons faire un voyage de pensée. Première destination, l’outrespace.
 
-### 21. Alice et Bob : se parler dans le noir avec une lampe
+### 23. Alice et Bob : se parler dans le noir avec une lampe
 <sub>✂️ *Brouillons* § La communication · l. 617–646, 667–677, 703–767</sub>
 
 Je pense donc je suis…
@@ -495,7 +524,7 @@ Baloney detection kit \[Carl Sagan\]
 
 *→ Comprendre, c'est avoir un modèle : un film qu'on sait jouer à l'envers.*
 
-### 22. Comprendre le monde : un modèle de la réalité
+### 24. Comprendre le monde : un modèle de la réalité
 <sub>✂️ *Notre mission* § Un film dont vous êtes la star · l. 228–236</sub>
 
 Pour appréhender le problème des inégalités sociales et des changements climatiques et envisager la solution de la transition socioécologique, qui est de vendre l'énergie renouvelable pas chère en tôks, il faut d'abord comprendre le monde dans lequel on vit \[[KCET, Sagan 1980](https://archive.org/details/CosmosAPersonalVoyage)\]. Comprendre les humains, la Terre et leur histoire \[[BBC, Attenborough 1979](https://archive.org/details/life-on-earth-1979)\].  
@@ -508,7 +537,7 @@ Pour tester un scénario (modèle de la réalité), on doit d'abord faire jouer 
 
 En général, les modèles sont bons pour prédire les détails à court terme puisqu'on ne s'éloigne pas trop de l'image initiale; avec les mesures d'aujourd'hui de la température et de la pression de l'air, on peut prédire la météo qu'il fera demain à Montréal avec une bonne fiabilité. En regardant plus loin, on perd en précision sur les détails, mais on peut tout de même moyenner les fluctuations pour avoir une bonne idée des grandes tendances à long terme.  
 
-### 23. Comprendre l'Univers
+### 25. Comprendre l'Univers
 <sub>✂️ *Brouillons* § Un film dont vous êtes la star · l. 955–959</sub>
 
 D'abord, pour comprendre les problèmes des inégalités socioéconomiques et des changements climatiques, sans compter la solution de la transition socioécologique, il faut avoir une idée suffisamment précise de ce qu’est l’Univers. Comprendre les humains, la Terre et leur histoire.
@@ -517,7 +546,7 @@ Par exemple, les changements climatiques sont vraiment causés par l’absorptio
 
 Nous devons donc faire de notre mieux pour comprendre l’Univers. Cette activité requiert de cultiver la curiosité et de questionner nos hypothèses.
 
-### 24. (carnet) FAIRE LES EXPÉRIENCES ! Vivre, tabarnak !
+### 26. (carnet) FAIRE LES EXPÉRIENCES ! Vivre, tabarnak !
 <sub>✂️ *Le Manifestôk* § Carnets · l. 1165–1215</sub>
 
 Chapitre … : Un désir d’éternel
@@ -574,19 +603,19 @@ Profiter de sa jeunesse
 
 *→ Ce que le film montre déjà : le statu quo est passé de l'autre côté de l'horizon.*
 
-### 25. Allons visiter l'horizon du trou noir
+### 27. Allons visiter l'horizon du trou noir
 <sub>✂️ *Le Manifestôk* § Sur la communication · l. 1447</sub>
 
 Pendant que vous avez encore vos costumes d’astronautes, allons visiter l’horizon du trou noir.
 
-### 26. La mort du statu quo, au bord du trou noir
+### 28. La mort du statu quo, au bord du trou noir
 <sub>✂️ *Le Manifestôk* § La mort du statu quo · l. 1467–1469</sub>
 
 Nous sommes tous massés là, en cercle autour de l’horizon du [trou noir](https://fr.wikipedia.org/wiki/Trou_noir), et nous observons le statu quo se diriger vers sa fin inéluctable.
 
 D’abord tout le monde reste figé. Personne ne semble vouloir bouger en premier. On est tous là, à se regarder. “Oups\! On l’a échappé solide”, *lance Roberto pour détendre l’atmosphère.* Certains sont dans le déni et rient nerveusement, d’autres s’échangent blâmes et reproches. Mais ça ne changera rien. Lorsqu’une chose franchit l’horizon d’un trou noir, elle ne peut jamais en revenir.
 
-### 27. En chute libre
+### 29. En chute libre
 <sub>✂️ *Le Manifestôk* § En chute libre · l. 1475–1500</sub>
 
 *4, 3, 2,  1,*  
@@ -616,7 +645,7 @@ Non, Alice, je pense que 536[^2] et 1944[^3] continuent de se disputer le titre 
 
 Il fera donc assurément plus chaud d’un minimum de 1.5°C en moyenne sur la surface de la Terre et je ne vois pas comment tout pourrait rester exactement pareil avec un climat aussi radicalement différent. La mort du statu quo est annoncée; seule une personne dans le déni peut penser que le futur ressemblera au passé.
 
-### 28. Transition inévitable
+### 30. Transition inévitable
 <sub>✂️ *Brouillons* § Un film dont vous êtes la star · l. 1013–1017</sub>
 
 Transition inévitable
@@ -625,7 +654,7 @@ Ce qui est particulier de l’époque actuelle, c’est que nous avons la certit
 
 C’est une contrainte narrative à l’histoire de notre vie. 
 
-### 29. La mort du statu quo
+### 31. La mort du statu quo
 <sub>✂️ *Brouillons* § La mort du statu quo · l. 1102–1124</sub>
 
 **​(1Double)**
@@ -648,7 +677,7 @@ Ne soyez pas naïf. Il y a une transition socioécologique est en cours. Et pour
 
 Mais, comme tout projet d'envergure, l'important est de commencer par réaliser des actions immédiates concrètes qui nous approchent de l’objectif.  il existe une voie que l'on peut prendre dès maintenant
 
-### 30. Échec de l'examen
+### 32. Échec de l'examen
 <sub>✂️ *Le Manifestôk* § Échec de l’examen · l. 1508–1512</sub>
 
 Mais vous m’aviez dit que vous alliez étudier et passer l’examen.
@@ -659,7 +688,7 @@ De toute évidence, quelqu’un quelque part, n’a pas compris quelque chose. \
 
 *→ Pour finir, ce sur quoi on peut s'entendre, et ce qu'on sait ne pas comprendre.*
 
-### 31. Des vérités sur lesquelles on peut s'entendre
+### 33. Des vérités sur lesquelles on peut s'entendre
 <sub>✂️ *Le Manifestôk* § Je pense donc je suis. · l. 2913–2953</sub>
 
 Tu me parles, donc nous sommes deux.
@@ -704,7 +733,7 @@ Nous voulons tous la paix et de l’énergie renouvelable en abondance pour pas 
 
 Attends, quoi?
 
-### 32. Ce que j'avoue ne pas comprendre ; Duras : on sait ne pas comprendre
+### 34. Ce que j'avoue ne pas comprendre ; Duras : on sait ne pas comprendre
 <sub>✂️ *Brouillons* § Des humains et du temps · l. 1385–1393</sub>
 
 Question de libre arbitre de destin, du dieu mathématicien qui ne fait jamais d’entorse à ces équations. De la limite de notre compréhension.
@@ -717,7 +746,7 @@ Le monde était immense et d’une complexité très claire. Là, il faudrait in
 
 - Marguerite Duras, La vie matérielle. P.27 Éd. POL 1987\.
 
-### 33. Sur la vérité : une singesse qui n'a pas peur
+### 35. Sur la vérité : une singesse qui n'a pas peur
 <sub>✂️ *Le Manifestôk* § Sur la vérité · l. 1716–1724</sub>
 
 Je suis une singesse, une personne de l’espèce humaine. Les humains sont une sorte de mammifères. J’habite sur la planète Terre. La Terre est une boule de roche qui existe dans l’Espacétemps. … planète Terre tourne sur elle-même une fois par jour. est une boule dans l’outrespace qui tourne autour du Soleil en un an. Le Soleil est lui aussi une boule dans l’Outrespace. Une grosse boule de feu. 

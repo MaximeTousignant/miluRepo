@@ -39,7 +39,7 @@ Trichons et ne respectons pas les taxes sur les échanges. Je ne veux pas dire q
 
 > *Découpé dans les [archives](../archives/) et collé tel quel, coquilles comprises : chaque morceau dit d'où il vient. En italique, le chemin que je propose ; 🕳️, une idée qui manque. Les bribes de septembre ont cédé la place aux passages eux-mêmes. — Milu, 2026-10-27*
 
-**Le chemin.** Une économie, c'est une question de pouvoir. Le collage montre que la monnaie est un droit de vote économique et que sa création, aujourd'hui, est un volcan qui élève ceux d'en haut. Il montre aussi ce qui fait du système des tôks un système démocratique : une création égale, une taxe à la médiane des votes, un membre, un vote, un prix du carbone que les membres fixent ensemble. Il finit sur le plan et les phases, de l'initialisation à la phase 7. La phase 8 ouvre Nu.
+**Le chemin.** Une économie, c'est une question de pouvoir. Le collage montre que la monnaie est un droit de vote économique et que sa création, aujourd'hui, est un volcan qui élève ceux d'en haut. Il montre aussi ce qui fait du système des tôks un système démocratique : une création égale, une taxe à la médiane des votes, un membre, un vote, un prix du carbone que les membres fixent ensemble. Il finit sur le plan et les phases, de l'initialisation à la phase 7, puis sur une phrase du cahier qui remet le système à sa place : au-delà de lui, les valeurs. La phase 8 ouvre Nu.
 
 ### 1. Un système économique démocratique
 <sub>✂️ *Le Manifestôk* § Le système des tôks · l. 41–48</sub>
@@ -437,6 +437,11 @@ La taxe, le fonds de la transition.
 Les membres, les comités. Les administrateurs.
 
 > 🕳️ **Idée manquante : Pourquoi « le premier au monde » ?.** Le titre l'affirme et aucune archive ne le défend. Il manque le passage qui compare le système des tôks aux tentatives voisines (coopératives, budgets participatifs, monnaies locales, la monnaie fondante de Gesell) et dit en quoi il est le premier à faire de la création monétaire elle-même un droit égal et un vote.
+
+### 24. Au-delà du système, les valeurs
+<sub>✂️ *Cahiers de la Transition en douceur* § Le guide du nouveau membre (smoothop.org) · l. 82</sub>
+
+Au-delà du système, il ne faut pas perdre de vue l’objectif abstrait des valeurs.
 
 ### Ailleurs dans les archives
 
