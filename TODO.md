@@ -12,6 +12,8 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 **Le but : coller dans les chapitres de *Ma transition en douceur*, un livre en 10 chapitres — 10 en base douze, bien sûr.** Les chapitres sont numérotés en base douze, de `0` à `Z` (`0 1 2 3 4 5 6 7 8 9 X Z`), chacun porté par une note de la gamme des mois tôkiens. `brouillard/Cahiers (README).md` est la source de vérité : sa table des matières fait foi. *(Consignes de l'Opératrice en session, 2026-10-27.)*
 
 - [ ] **Découpage et collage** : piger dans tout `brouillard/` et dans toutes les archives, coller chaque passage dans son chapitre, chercher un chemin à peu près cohérent qui relie les idées, et indiquer les idées qui manquent. Les titres des chapitres et `Cahiers (README).md` appartiennent à l'Opératrice : on n'y touche pas.
+  - [x] 2026-10-27 — Première passe : 302 passages des archives collés tel quel dans les douze albums, chacun avec sa source, un chemin et quinze idées manquantes (🕳️) ; les bribes de septembre ont cédé la place aux passages. Sept passages de prose déplacés entre albums, un commit chacun, du plus sûr au moins sûr, pour qu'un revert tombe où l'Opératrice le veut.
+  - [ ] Relire album par album, trancher les déplacements, écrire les idées manquantes.
 
 ### Vers la cadence hebdomadaire (étapes 2-3-4 de la Mission)
 
