@@ -302,7 +302,7 @@ Jusqu’à aujourd’hui, je n’ai été que bonne volonté, mais constat objec
 
 > 🕳️ **Idée manquante : Sur la chance.** Ta table la demande, et aucun passage n'y est consacré. Elle affleure partout : le backgammon et le mérite dans Mi, « nous avons été chanceux jusqu'à maintenant » dans « La mort du statu quo » (Vu), « par la plus grande des Chances » dans « Sur le bonheur » ci-dessus. Le cahier en fait même la dernière leçon de son cours : « 39. Essayer d'offrir plus de chance qu'on a reçu nous-même » (Cahiers, l. 155).
 
-> 🕳️ **Idée manquante : Sur….** La quatrième entrée de ta table est restée ouverte. Les passages de l'album en proposent deux : sur la jeunesse (en profiter, la grand-mère, la prière ci-dessous) et sur le soleil (le titre, l'île, la falaise).
+> 🕳️ **Idée manquante : Sur….** La quatrième entrée de ta table est restée ouverte. Les passages de l'album en proposent deux : sur la jeunesse (en profiter sur l'île, la prière ci-dessous, et la grand-mère qui l'enseigne, collée dans Té) et sur le soleil (le titre, l'île, la falaise).
 
 ### 17. Des animaux sur Terre, le vent de face
 <sub>✂️ *Brouillons* § Pourquoi Système des tôks synthèse · l. 359–393</sub>
