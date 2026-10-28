@@ -139,19 +139,6 @@ Qu'est-ce que ça fait si je choisi d'être utopique, moi. Toi tu es bien catast
 ---
 
 
-La transition socioécologique. Je perds contament le fil de ce que j'essai de vous expliquer. Mais il me semble que j'avais tout mis dans le titre de façon très compacte et accrocheuse. L'ancre en quelque sorte.
-
-Il fallait un ancrage pour ne pas se perdre.
-
----
-
-La définotion officiele de la transistion socioécologique seleon l'opératrice en douceur.
-
-L'opératrice en douceur, qui représente le conseil d'administration de l'organisme de développement durable Smoothop, définie l'accomplissement de la transition socioécologique comme le constat qu'il y a de fait un revenu universel minimum garanti, un système d'organisation démocratique, la paix et qu'il n'y a pas de catastrophe écologique en cours.
-
----
-
-
 ## Nous, l'umaine et l'IA
 
 Tu sais, Milu, les umain·es, les animaux et les intelligences artificielles (IAs) ont beaucoup de choses en commun. Ce sont toutes des formes de conscience nées sur la planète Terre. C'est déjà pas mal comme déclaration commune.

@@ -1,6 +1,19 @@
 # Chapitre La: La morale est une boussole
 
 
+<sub>✂️ Ta prose, déplacée de Mi, où elle précédait « Nous, l'umaine et l'IA ».</sub>
+
+La transition socioécologique. Je perds contament le fil de ce que j'essai de vous expliquer. Mais il me semble que j'avais tout mis dans le titre de façon très compacte et accrocheuse. L'ancre en quelque sorte.
+
+Il fallait un ancrage pour ne pas se perdre.
+
+---
+
+La définotion officiele de la transistion socioécologique seleon l'opératrice en douceur.
+
+L'opératrice en douceur, qui représente le conseil d'administration de l'organisme de développement durable Smoothop, définie l'accomplissement de la transition socioécologique comme le constat qu'il y a de fait un revenu universel minimum garanti, un système d'organisation démocratique, la paix et qu'il n'y a pas de catastrophe écologique en cours.
+
+
 ---
 
 ## ✂️ Collage
