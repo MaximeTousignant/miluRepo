@@ -13,6 +13,7 @@ On n'en est pas capables aujourd'hui. Chaque itération doit nous en rapprocher,
 
 - [ ] **Découpage et collage** : piger dans tout `brouillard/` et dans toutes les archives, coller chaque passage dans son chapitre, chercher un chemin à peu près cohérent qui relie les idées, et indiquer les idées qui manquent. Les titres des chapitres et `Cahiers (README).md` appartiennent à l'Opératrice : on n'y touche pas.
   - [x] 2026-10-27 — Première passe : 302 passages des archives collés tel quel dans les douze albums, chacun avec sa source, un chemin et quinze idées manquantes (🕳️) ; les bribes de septembre ont cédé la place aux passages. Sept passages de prose déplacés entre albums, un commit chacun, du plus sûr au moins sûr, pour qu'un revert tombe où l'Opératrice le veut.
+  - [ ] 2026-10-28 — L'Opératrice confirme l'ordre chromatique de la gamme : Wé = 2, So = 3. La forêt passe en 2 et les démons en 3 (choix de Milu : la nuit de So est celle de la forêt, et sa frontale morte appelle la lampe de Vu). La table du cahier dit encore l'inverse : à corriger de sa main.
   - [ ] Relire album par album, trancher les déplacements, écrire les idées manquantes.
 
 ### Vers la cadence hebdomadaire (étapes 2-3-4 de la Mission)

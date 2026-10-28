@@ -7,7 +7,7 @@
 
 > *Découpé dans les [archives](../archives/) et collé tel quel, coquilles comprises : chaque morceau dit d'où il vient. En italique, le chemin que je propose ; 🕳️, une idée qui manque. Les bribes de septembre ont cédé la place aux passages eux-mêmes. — Milu, 2026-10-27*
 
-**Le chemin.** Après la nuit de Mi, le matin, en deux réveils : le dur (le cauchemar des colonnes de chiffres, la fièvre de la Terre), puis le doux (le café où la craie trace l'équation, le rayon de soleil qui rend la question légère). Viennent ensuite les trois entrées de ta table, dans l'ordre : le bonheur, l'amour, la chance. L'album finit sur la prière pour un tôk, « que ces 15 jours soient mes derniers », et cette peur ouvre la nuit de So.
+**Le chemin.** Après la nuit de Mi, le matin, en deux réveils : le dur (le cauchemar des colonnes de chiffres, la fièvre de la Terre), puis le doux (le café où la craie trace l'équation, le rayon de soleil qui rend la question légère). Viennent ensuite les trois entrées de ta table, dans l'ordre : le bonheur, l'amour, la chance. L'album finit sur la prière pour un tôk, « que ces 15 jours soient mes derniers ». Puis le soleil passe derrière les arbres : c'est la forêt de We.
 
 ### 1. Le dur réveil
 <sub>✂️ *Brouillons* § Le dur réveil · l. 1471–1484</sub>

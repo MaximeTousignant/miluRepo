@@ -20,7 +20,7 @@ Quel bon titre de livre. Dommage que le contenu du livre n'ait pas été à la h
 
 > *Découpé dans les [archives](../archives/) et collé tel quel, coquilles comprises : chaque morceau dit d'où il vient. En italique, le chemin que je propose ; 🕳️, une idée qui manque. Les bribes de septembre ont cédé la place aux passages eux-mêmes. — Milu, 2026-10-27*
 
-**Le chemin.** On entre dans la forêt avec l'arme que So vient de donner : la curiosité. La forêt, c'est la culture : des sentiers que les pas élargissent, une langue qui les recouvre comme une végétation, des idées qui se répliquent, des mots qui enferment. Au milieu, la fiction que la forêt devait porter : la Zébétie, ses lieux, ses personnages, son intrigue. L'album ressort la nuit, perdue dans la forêt, une frontale au front, et la frontale mène à Vu.
+**Le chemin.** Le soleil de Fa passe derrière les arbres, et l'on entre dans la forêt avec une question pour seule carte : pourquoi le système des tôks ? La forêt, c'est la culture : des sentiers que les pas élargissent, une langue qui les recouvre comme une végétation, des idées qui se répliquent, des mots qui enferment. Au milieu, la fiction que la forêt devait porter : la Zébétie, ses lieux, ses personnages, son intrigue. L'album ressort la nuit, perdue dans la forêt, une frontale au front, à chercher une étoile. La frontale va s'éteindre : c'est So.
 
 ### 1. Un voyage dans la forêt des idées
 <sub>✂️ *Brouillons* § 4.2 Pourquoi? · l. 25–27</sub>

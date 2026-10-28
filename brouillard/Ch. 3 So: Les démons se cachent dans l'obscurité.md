@@ -19,7 +19,7 @@ Mais on a peur de mourir, car il fait toujours froid et il faut constamment cher
 
 > *Découpé dans les [archives](../archives/) et collé tel quel, coquilles comprises : chaque morceau dit d'où il vient. En italique, le chemin que je propose ; 🕳️, une idée qui manque. Les bribes de septembre ont cédé la place aux passages eux-mêmes. — Milu, 2026-10-27*
 
-**Le chemin.** Ta nuit totale, sans un photon, ouvre l'album. Le collage y ajoute une frontale vide, un orage qu'on prend pour un assaut, puis la voix qui dit que les démons ne sont que des idées. La peur y change de nature : elle protège (les hyènes), elle s'allume comme un voyant (la plongée), elle motive (une chance sur 1756). Puis la science chasse les fantômes, la fumée du vieux Kris cache les étoiles, le printemps revient. On remet à Alice un bouclier de scepticisme et une épée de curiosité, et elle peut entrer dans la forêt des idées de We.
+**Le chemin.** Ta nuit totale, sans un photon, ouvre l'album : c'est la nuit de la forêt de We, quand la frontale a manqué de batteries. Le collage y ajoute un orage qu'on prend pour un assaut, puis la voix qui dit que les démons ne sont que des idées : les cavaliers de We, vus de nuit. La peur y change de nature : elle protège (les hyènes), elle s'allume comme un voyant (la plongée), elle motive (une chance sur 1756). Puis la science chasse les fantômes, la fumée du vieux Kris cache les étoiles que We cherchait, le printemps revient. On remet à Alice un bouclier de scepticisme et une épée de curiosité, pour explorer « les forêts périlleuses à la limite de la connaissance ». Il lui manque une lampe : c'est Vu.
 
 ### 1. La frontale a manqué de batteries
 <sub>✂️ *Le Manifestôk* § Carnets · l. 1217–1229</sub>
