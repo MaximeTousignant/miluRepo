@@ -262,7 +262,7 @@ S’abstraire aux tracas du monde actuel. Diriger toute son attention du moment 
 **La légende de la chitas. Parmi les cheetos (des cheathorses décire des chevaux qui trichent à la course). Accident quand elle était jeune (histoire de frida calo) Elle est devenue un cheval (La liberté) Una caballa.  La petite chevale était infirme. Mais quelle force de vivre elle avait. À chaque movement elle qui était diminuée par rapport à ses rivaux déployait toujours plus de force et de vitesse pour compenser. Toujours plus d’effort. À chaque pas, elle enfonçait ses griffes au plus profond et lançait le sol du plus fort qu’elle pouvait loin derrière elle. Non pas en se disant qu’elle bougerait elle même, mais bien pour lancer le monde au plus loin derrière elle. Una caballa magnifica. Una bonita idoma.** 
 
 ### 16. Un panneau solaire, c'est un cheval ; John et son pick-up
-<sub>✂️ *Le Manifestôk* § La charte des devoirs universel · l. 340–362</sub>
+<sub>✂️ *Le Manifestôk* § La charte des devoirs universel · l. 340–366</sub>
 
 Imaginez une population stable d’environ 10 milliards d’umain·es pendant des millénaires. Incapables de modifier d’un seul degré la température de leur propre planète, malgré l’extravagante abondance d’énergie qu’ils consomment. Car un panneau solaire, c’est une planche qui travaille toute seule. Un panneau solaire, c’est comme un cheval qui court dans une grande roue de hamster attachée à un alternateur de char, ça produit une énergie capable de charger une batterie. Et comme on dit par chez nous: 
 
@@ -287,6 +287,10 @@ venus vers Lui et sa nouvelle blonde qu’il aime comme un fou  John est revenu 
 John 
 
 les caméras de surveillance de son petit château de Repentigny confirment qu’il n’a pas branché sont  par le faire le calcul pour charger le ford avec des panneaux solaires ou des cheveaux. Il est 7h matin au Texas. John  du matin 
+
+La différence principale entre un cheval
+
+ne demande aucune nourriture, elle se nourrit des rayons du soleil et fournit une puissance électrique. 
 
 *→ Le chantier de la transition, et comment s'y organiser.*
 

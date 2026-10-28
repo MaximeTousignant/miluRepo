@@ -73,13 +73,15 @@ Simples convertisseurs de calendrier outils informatique.
 Épreuve psychologique, prêt à changer de calendrier en 2050? Prêt à utiliser les tôks.
 
 ### 6. En quelle année se situe le lecteur ?
-<sub>✂️ *Le Manifestôk* § En quelle année se situe le lecteur? · l. 465–469</sub>
+<sub>✂️ *Le Manifestôk* § En quelle année se situe le lecteur? · l. 465–471</sub>
 
 2025? Je ne sais pas. C’est le propre des livres. On sait quand on les écrits, mais on ne sait pas quand on les lit.
 
 Parce que oui, en 12069 on avait eu certaines améliorations par rapport à l’année 2025\. Déjà on avait réintégré. 10000 ans d’histoire. On reconnaissait maintenant que l’instant 0 était le moment où la Grosse Fatoumata avait prononcé ces sages paroles dans un langage ancien: “Crisse. Mal aux pieds, à toujours marcher. Mal au cul à toujours m'asseoir sur des osties de roches pas confortables\! Asti que chu tannée de marcher. Icitte, y’a de l’eau, y’a de la bouffe. Y fait pas trop frette. Ni trop chaud. Faites ce que vous voulez, ma belle bande. Mais Moé, je bouge pu mon cul d’icitte.” Bref, on définissait maintenant l’an 0 avec le début approximatif du sédentarisme.
 
 Quoi dire d’autre, la révolution scientifique…
+
+et tout ce qui est venu après jusqu’à la révolution scientifique. Avec Gallileo Gallilei qui a dit au Pape
 
 ### 7. L'année des Zébétains : 360 jours
 <sub>✂️ *Le Manifestôk* § Lieux · l. 916</sub>

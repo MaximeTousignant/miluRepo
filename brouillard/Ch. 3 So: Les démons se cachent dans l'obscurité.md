@@ -163,8 +163,12 @@ Parti dans notre coeur?
 
 *→ Et ce qui manque à ta nuit : les étoiles. Le Manifestôk dit qui les cache.*
 
-### 9. (plan) les étoiles se couvrent
-<sub>✂️ *Le Manifestôk* § Vu… (mois de juillet) · l. 503</sub>
+### 9. (plan) des publicités dans le ciel ; les étoiles se couvrent
+<sub>✂️ *Le Manifestôk* § Vu… (mois de juillet) · l. 495, 503</sub>
+
+La calamité des publicités dans le ciel la nuit commence.
+
+[…]
 
 Les étoiles se couvrent (faire le choix de l’étoile à ce moment-là, redécouverte plus tard en haut de la falaise avec tout le reste de la nuit étoilée) 
 

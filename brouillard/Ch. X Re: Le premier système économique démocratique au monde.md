@@ -220,8 +220,12 @@ La répartition du sol (du volume de l’espace) et du spectre électromagnétiq
 
 La seule unité de valeur que je reconnais est le tôk.
 
-### 14. Accélérer : la sensation de tomber
-<sub>✂️ *Le Manifestôk* § La charte des devoirs universel · l. 320–336</sub>
+### 14. Pas d'examen ; accélérer : la sensation de tomber
+<sub>✂️ *Le Manifestôk* § La charte des devoirs universel · l. 316–336</sub>
+
+. J’y passe l’essentiel de ma vie à essayer de comprendre le système des tôks  Alors pas de stress. Il n’y a pas d’examen.
+
+ Je vais vous l’expliquer de plusieurs façons.
 
 C’est un système économique démocratique pour accélérer la transition socioécologique.
 

@@ -395,10 +395,23 @@ Je sais qu'il y en aura toujours, de la poussière \[Simon Racine 2020\].
 
 Mais là, vraiment, il y en a plus que je n'aimerais.
 
-### 2. Chaque tableau a sa chanson
-<sub>✂️ *Brouillons* § Une vague de changement en douceur (Image surfer en couleur) · l. 884</sub>
+### 2. Chaque tableau a sa chanson ; remonter le fleuve
+<sub>✂️ *Brouillons* § Une vague de changement en douceur (Image surfer en couleur) · l. 879–886, 890–892</sub>
 
+**Chanson**  
+Je danse dans ma tête  
+Céline Dion
+
+**Info**  
 Chaque tableau de lumière est accompagné d'une chanson. Cette chanson aide à communiquer l'idée contenue dans le tableau en plus de fournir une bonne ambiance.
+
+Notre projet est assez original. Il comporte quelques idées nouvelles que je dois vous expliquer. Mais vous allez voir. Une fois que vous les aurez comprises, le projet dans son ensemble prendra tout son sens. 
+
+[…]
+
+Je vous invite à partir avec moi de l'objectif futur pour qu'ensemble nous retracions le chemin inverse qui nous relie à l'instant présent. Partir de l'embouchure du fleuve et remonter jusqu'aux multitudes de sources individuelles. J'espère qu'ainsi la voie de la transition socioécologique vous apparaîtra aussi claire et invitante qu'elle m'apparaît.
+
+Bienvenue chez Smoothop.
 
 ### 3. Jingle de la transition socioécologique
 <sub>✂️ *Le Manifestôk* § Jingle de la transition socioécologique · l. 696–703</sub>

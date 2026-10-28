@@ -35,7 +35,9 @@ Les changements climatiques, les inégalités socio-économiques, le bien commun
 Modèle de la réalité. Science.
 
 ### 3. La découverte du tôk, II : au café, la craie
-<sub>✂️ *Le Manifestôk* § La découverte du tôk - II · l. 269–279</sub>
+<sub>✂️ *Le Manifestôk* § La découverte du tôk - II · l. 267–279</sub>
+
+ soit    tant donné le manque de respect flagrant du système capitainiste ambiant qui dominait à l’époque, dans lequel les inégalités les plus crasses étaient vantées sans la moindre honte en tenant pour discours que notre démocratie était fondée sur les droits de l’Homme. il m’apparaissait clair également qu’une certaine forme d’équité devait 
 
  je poursuivais mes recherches en particulier les moyens par lesquels les umain·es pourraient accomplir la transition énergétique, mais pour être honnête, ce qui m’intéresse d’avantage, c’est la collaboration entre les umain·es en général. C’est cette recherche qui m’a donné la chance de découvrir le système des tôks. Il m’est apparu très clairement pour la première fois le 19 mai 2019\. Je l’ai vu devant mes yeux. J’étais dans la cuisine en train de me faire mon café quand les symboles sont apparus. Alors j’ai saisi la craie (nous avions un tableau noir dans cette cuisine de notre colocation à Grenoble pour y écrire la liste des choses à acheter) j’ai saisi la craie et j’ai tracé les coutours des symboles.
 

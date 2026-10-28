@@ -142,7 +142,7 @@ Des humains et du temps. Les tôks.
 “Que devrions-nous faire de notre temps ?” La réponse à cette question
 
 ### 7. La question, la réponse : ça dépend de tes valeurs
-<sub>✂️ *Le Manifestôk* § Carnets · l. 1053–1063</sub>
+<sub>✂️ *Le Manifestôk* § Carnets · l. 1053–1077</sub>
 
 **Au cœur de l’idée des tôks. La musique. La douceur. Un monde plus détendu. L’entraide, L’amour (aimer et être aimée en retour). La liberté (le sentiment de bonheur).**
 
@@ -155,6 +155,20 @@ Des humains et du temps. Les tôks.
 **Ça dépend de tes valeurs. (certaines de nos valeurs change au gré du vent, mais d’autres sont toujours là, bien ancrées et partagées par tous, du fait de notre condition unaine commune)**
 
 **Être en santé, peut-être? Bien mangé, avoir un toit?**
+
+**La transition socioécologique.**
+
+**S’entraider.**
+
+**Le travail.**
+
+**Offrir un produit ou un service qui aide la cause. En tôks.**
+
+**Communiquer.**
+
+**S’éduquer.**
+
+**Le temps. La fréquence et la musique.**
 
 *→ Ce qui rend la question grave : le temps·umain.*
 
@@ -282,8 +296,8 @@ Idée des statistique et des probabilités qui implique un modèle mathématique
 
 Perte de valeur liée à la mort prématurée d’une personne de façon évitable prise en compte dans le système économique?
 
-### 15. Profite de ta jeunesse : la grand-mère
-<sub>✂️ *Le Manifestôk* § Carnets · l. 1093–1101</sub>
+### 15. Profite de ta jeunesse : la grand-mère, le camping
+<sub>✂️ *Le Manifestôk* § Carnets · l. 1093–1101, 1119–1123</sub>
 
 **Ne pas se faire chier.**
 
@@ -294,6 +308,14 @@ Perte de valeur liée à la mort prématurée d’une personne de façon évitab
 **C’est avec ma grand-mère que j’ai appris ça. Quand j’étais jeune et jusqu’à sa mort quand elle avait 94 ans et que j’en avais 26 ans. À la fin, quand elle me le disait je comprenais. Car ma mère m’avait déjà dit qu’elle avait profité de sa jeunesse, elle. Déjà dans les années 1930 et 1940 et sûrement bien avant\! Il y avait des femmes au Canada (Gabrielle Roy, la détresse et l’enchantement) et sûrement d’autres gens ailleurs (L’art de la joie) qui avaient tout compris. (David Bowie)**
 
 **Et en plus, elles savaient de quoi elles parlaient elles-ont traversée la deuxième guerre mondiale. Il faut écouter les gens qui ont vécu ces périodes, elles en ont l’expérience\! Et même s’ils sont morts. Il y avait l’écriture. La seule forme d’immortalité pour ceux et celles que ça intéresse (À la recherche du temps perdu).**
+
+[…]
+
+**Profite de ta jeunesse autant que tu peux.**
+
+**Comment profiter de ta jeunesse. Fais-toi pas chier\!**
+
+**C’est au camping avec les amis que j’ai appris ça.**
 
 ### 16. Sur l'ennui
 <sub>✂️ *Le Manifestôk* § Sur l’ennui · l. 1765–1777</sub>

@@ -704,8 +704,14 @@ Nous voulons tous la paix et de l’énergie renouvelable en abondance pour pas 
 
 Attends, quoi?
 
-### 32. Duras : on sait ne pas comprendre
-<sub>✂️ *Brouillons* § Des humains et du temps · l. 1391–1393</sub>
+### 32. Ce que j'avoue ne pas comprendre ; Duras : on sait ne pas comprendre
+<sub>✂️ *Brouillons* § Des humains et du temps · l. 1385–1393</sub>
+
+Question de libre arbitre de destin, du dieu mathématicien qui ne fait jamais d’entorse à ces équations. De la limite de notre compréhension.
+
+Peut-être qu’une entité pourrait prédire le futur avec  certitude si cette entité possédait toute l’information sur chacune des particules dans l’Univers, mais nous savons que c’est théoriquement impossible puisque … équivalence information \- énergie \- masse. Donc même si en principe, un 
+
+L’autre alternative est que l’Univers ne soit pas local, mais ça, j’avoue ne pas le comprendre.  
 
 Le monde était immense et d’une complexité très claire. Là, il faudrait inventer un vocable qui dirait que, très clairement, on sait ne pas comprendre ce qu’il y a à comprendre.
 
