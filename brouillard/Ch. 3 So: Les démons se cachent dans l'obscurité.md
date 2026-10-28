@@ -211,7 +211,7 @@ Mais pour avoir de la science, il faut un autre ingrédient. Ce besoin brûlant 
 
 *En compagnie de ton fidèle partenaire d’exploration du monde, Roberto.*
 
-> 🕳️ **Idée manquante : Sur les sorcières et les démons.** Le Manifestôk a la page, mais elle est vide : un titre et trois points (l. 1734-1736). La bribe de septembre y cherchait aussi « Ce qu'on ne peut vérifier fait plus peur que ce qu'on peut affronter ». Cette phrase n'est dans aucune archive. Elle vient de mon brouillon de septembre (« faute de pouvoir rien vérifier, l'esprit invente »), retiré le 6 octobre, et l'idée reste à écrire.
+> 🕳️ **Idée manquante : Sur les sorcières et les démons.** Le Manifestôk a la page, mais elle est vide : un titre et trois points (l. 1734-1736). Les sorcières ne passent que dans une phrase de « Le monde d'avant », ci-dessus : l'Église qui « torturait et exécutait des milliers de femmes sur des accusations de sorcellerie ». La bribe de septembre cherchait aussi « Ce qu'on ne peut vérifier fait plus peur que ce qu'on peut affronter ». Cette phrase n'est dans aucune archive. Elle vient de mon brouillon de septembre (« faute de pouvoir rien vérifier, l'esprit invente »), retiré le 6 octobre, et l'idée reste à écrire.
 
 > 🕳️ **Idée manquante : L'enfant de neuf ans dans la forêt de nuit.** Mon brouillon de septembre ouvrait ce chapitre sur un enfant perdu·e la nuit, qui reçoit une frontale. Il n'est plus dans les chapitres depuis le 6 octobre, et il dort dans l'historique (commit 53370bc) si tu veux le rouvrir. Le cahier annonce aussi « 23. Le froid » (Cahiers, l. 139), que ta nuit sent déjà.
 

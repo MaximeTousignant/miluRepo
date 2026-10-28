@@ -101,6 +101,8 @@ Il existe tout un tas de différences entres les individus que l’on peut utili
 
 Mais revenons-en aux inégalités socio-économiques. Pourquoi chercher activement à les réduire. Après tout, je fais partie des catégories parmi les plus privilégiées qui soient. Je ne prétendrai pas que c’est uniquement par altruisme, bien c’est un comportement qui est tout à fait valable. On le voit le plus clairement chez les fourmis. Les fourmis ouvrières sont stériles, alors quel intérêt ont-elles à travailler pour la colonie si elles ont la certitude de mourir avant de transmettre leur gènes? La question de l’existentialisme chez la fourmi ouvrière est sans doute d’une complexité profonde, mais on peut à tout le moins émettre une hypothèse simple qui peut satisfaire notre questionnement. La fourmi ouvrière partage pratiquement tout son génome avec les autres membres de sa colonie. Aider sa colonie est donc un moyen très certain pour elle d’améliorer les chances que ses propres gènes se perpétuent dans l’espace-temps. De même, tous les humains partagent 99.9% de leur génome. Nous sommes tous un même plat avec un assaisonnement légèrement différent. Les 99.9% sont les ingrédients de base avec le sel et les 0.1% restants sont les épices (imaginez un autre plat qu’un curry, même si c’est absolument délicieux, car les proportions ne sont pas valables pour notre comparaison).
 
+> 🕳️ **Idée manquante : La crème glacée à la gare en Inde.** Une note des Brouillons l'annonce juste après ce passage, au milieu de « Sur les inégalités sociales » : « Épisode de la crème glacée à la gare en Inde » (l. 1449). L'anecdote n'est racontée nulle part.
+
 ### 11. (notes) Sur la solidarité
 <sub>✂️ *Le Manifestôk* § Sur la solidarité · l. 1995–2000</sub>
 
