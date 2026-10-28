@@ -74,11 +74,27 @@ Il n'y a que de la chance. Ce qui n'enlève rien au plaisir de jouer au backgamm
 
 ---
 
+La question du mérite mérite d'être abordée en passant. Car il s'agit ici de fonder les bases d'un nouveau système socioéconomique. Alors, est-ce qu'on garde le principe de méritocratie? Je pense qu'on veut que oui, car sinon, aussi bien abandonner le principe de l'argent. Car s'il n'y a pas de mérite pourquoi donnerions nous des token de reconnaissance? En effet, c'est ce qu'on fait, quand on paye. On dit merci. Merci pour ce produir ou ce service dont j'avais besoin et que tu me rends. Ça marche, on s'entraide et c'est exactement ce que l'on veut pour notre propre survie en tant qu'individu et qu'espèce. Tout à fait le genre de comportement favoriser par l'évolution. Donc en phase avec nos valeurs d'être vivant sur Terre.
+
+Bref, on veut une bonne économie, je pense qu'on peut se mettre d'accord là-dessus. Mais alors où se cache le mérite. Car je ne le vois pas.
+
+Essayer de me faire une seule expérience sur Terre qui viole les équations de la physique moderne. Vraiment, je vous encourage à essayer.
+
+Et si chacune des particules qui compose notre être sont fait de matière — les cellules de mon corps sont suffisante pour expliquer ce qui se passe avec mon corps dans le temps et l'espace. En gros, le futur est prédéterminé, c'est ce que je vous dit. Moi j'y crois. La tapisserie est déjà écrite, nous ne sommes que des vers qui rampent sur le tapis. Sommes nous en contrôle de notre direction dans le temps et l'espace. Oui, je suis capable de bouger un peu à mon échelle. Je suis capable de bouger mes bras et mes jambes et avec mes doigts je peux faire plein de choses.
+
+---
+
+Comme par exemple jouer de la guitare. Mais les notes.
+
 Quand je parle du revenu universel, on me dit souvent que c'est utopique. Premièrement, je ne trouve pas ça très utopique et deuxièment, je ne vois pas pourquoi c'est dit sur un ton négatif?
 
 Qu'est-ce que ça fait si je choisi d'être utopique, moi. Toi tu es bien catastrophique. Tu crois que la fin du monde est juste sur le point d'arriver. Est-ce que je te juge pour ça. Pas du tout, je participe moi-même à l'Apôcâlypse aux alentours de l'halloween.
 
 ---
+
+En gros, le modèle des pixels genre de simulation éléments finis en 4D qui prend en compte tous les champs fondamentaux tient la route. Si on peut simuler le champ des électrons et celui du champ électromagnétique on peut très bien prédire le futur. Mais de 1 ce n'est pas si facile n'y pratique à faire en particulier à l'échelle des relations umaines 2 il faut être capable de donner avec précision un état initial ce qui est très difficile à spécifier. Il faut beaucoup d'information, l'entropie est élevée.
+
+
 
 Mais si par *utopique*, les gens pensent *irréaliste*, alors là, je ne suis pas d'accord qu'un revenu universel est impossible. La preuve, les tôks existent.
 
@@ -315,3 +331,116 @@ Si la réponse est Oui,
 Do what you love, love what you do.
 
 Maintenant, je dois aller jouer de la musique.
+
+En fait il s'agit d'un style de musique
+
+12 chapitres, douzes notes
+
+Mi Fa
+We So
+
+Vu La
+Te Si
+
+Do Ka
+Re Nu
+
+Mi Fa
+We So
+
+Vu La
+Te Si
+
+Do Ka
+Re Nu
+
+Mi Fa
+We So
+
+Vu La
+Te Si
+
+Do Ka
+Re Nu
+
+Mi Fa
+We So
+
+Vu La
+Te Si
+
+Do Ka
+Re Nu
+
+Mi Fa
+We So
+
+Vu La
+Te Si
+
+Do Ka
+Re Nu
+
+Mi Fa
+We So
+
+...
+
+Parler de la musique en base 12 (notation base 10, mais toutes les bases s'écrivent 10. Il faudrait dire base 9. Le dernier symbole de la série. Commencer à compter à 0. Comprendre la différence entre 0 en 1. L'élément neutre de l'addition et l'autre l'élément neutre de la multiplication.)
+
+Parler des changements de bases
+Des couleurs RGB3
+
+Les chiffres même seront différent. Trouvons ensemble une nouvelle langue à parler. Est la chose la plus tabou et le plus rock and roll partout dans l'histoire de l'humanité. Définir un nouveau langage, ça fait peur aux vieux qui n'ont plus la force d'apprendre. Alors, ils répliquent par la force pour causer la peur aux jeunes.
+
+BASE DOUZE
+
+0 1
+2 3
+
+4 5
+6 7
+
+8 9
+X Z
+
+0 1
+2 3
+
+4 5
+6 7
+
+8 9
+X Z
+
+0 1
+2 3
+
+4 5
+6 7
+
+8 9
+X Z
+
+0 1
+2 3
+
+4 5
+6 7
+
+8 9
+X Z
+
+0 1
+2 3
+
+...
+
+Je ne suis pas fan des 9 premiers symboles. 0 déjà selon les polices, il faudrait y mettre une barre dessus. Je ne suis pas d'accord, mais je ne vais pas me battre pour ça. Ça devrait être juste un cercle et le prononcer comme le son Ô. Pour moi il y a une poésie à confondre ses idée, mais certaine cultures préfèrent une idée claire pour chaque chose. Donc zéro pour le chiffre qui s'écrit comme un cercle.
+
+Donc déjà au zéro ce n'est pas parfait alors allons-y avec comme c'est déjà, même si, après coup, quand on a commencé à jouer au carte on s'est dit c'est qui l'Einstein qui a pensé à choisir les symboles pour 6 et 9. On était à court de symboles alors on a fait une rotation sur le 6 et on pensait que personne allait s'en rendre cont?
+
+Bref, 0 et 1 forme la base binaire. Le language de la précision extrême. L'obscurité et la lumière. Des signaux de lumière, oui, c'est comme ça qu'on communique sans perte d'information encodée sur de très grande distances.
+
+Si je veux aller vers deux, je dois m'intéresser à combiner les syboles, à les additionner entre eux.
+

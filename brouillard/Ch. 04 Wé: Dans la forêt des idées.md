@@ -1,5 +1,10 @@
 # Chapitre Wé: Dans la forêt des idées
 
+Dans la forêt des idées tu es un animal Et les idées chevauche les animaux; Comme un homme sur son cheval.
+Comme un poisson dans l'eau.
+
+...
+
 
 ---
 
