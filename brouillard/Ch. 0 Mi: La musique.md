@@ -998,3 +998,7 @@ Des fragments d’histoires d’étudiants intercalées.
 37. Le sexe.  
 38. L’amour.  
 39. Essayer d’offrir plus de chance qu’on a reçu nous-même.
+
+### Ailleurs dans les archives
+
+- **Les plans des pages du site** : la mission, le système des tôks, le guide du nouveau membre. Ce sont des plans de site plutôt que de livre ; deux idées manquantes (Té, Ka) y sont annoncées. — `archives/Cahiers de la Transition en douceur.md`, l. 7-80

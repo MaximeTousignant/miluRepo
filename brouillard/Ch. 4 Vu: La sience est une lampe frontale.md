@@ -724,6 +724,12 @@ Je suis une singesse sur Terre et je n’ai pas peur.
 
 Je suis l’opératrice en douceur.
 
+### Ailleurs dans les archives
+
+- **Les notes de physique de l'expérience d'Alice et Bob** : le cube de vingt mètres, le temps de Planck, la métrique de Minkowski et le temps imaginaire, deux miroirs et un photon. Ce sont des notes de travail, trop brutes pour le collage. — `archives/Brouillons.md`, l. 648-665 et 679-701
+- **La méthode scientifique, en notes** : modèle et prédiction, deux miroirs parallèles, l'horloge à photon, le début de l'Univers. — `archives/Brouillons.md`, l. 1369-1383
+- **Un repère local** : un cube de quatre petits cubes, aux faces comme des fenêtres à quatre carreaux. — `archives/Le Manifestôk.md`, l. 1504
+
 [^1]:  Alice (A) et Bob (B) sont, par convention, les deux personnages types pris en exemple pour décrire un algorithme de cryptographie (communication secrète).
 [^2]:  En [536](https://fr.wikipedia.org/wiki/%C3%89v%C3%A9nement_climatique_de_535-536), plusieurs éruptions volcaniques colossales projettent une immense quantité d’aérosol dans l’atmosphère. Un voile bloquant le rayonnement solaire recouvre alors la Terre pendant plusieurs mois causant un hiver volcanique. Les brusques changements climatiques qui s’ensuivent provoquent une famine généralisée.
 [^3]:  En 1944, la deuxième guerre mondiale est à son apogée.
