@@ -11,6 +11,27 @@ Mais n'ayez pas honte, moi aussi, je suis une pauvre paysanne. C'est pourquoi j'
 
 Nous vivons dans un certain type de démocratie que l'on appelle libérale pour caché le fait que ses individus sont esclaves du système des lequel il vivent.
 
+---
+
+<sub>✂️ Ta prose, déplacée de We, où elle suivait l'ouverture du chapitre.</sub>
+
+## L'économie américaine
+
+> It's the economy, stupid — James Carville 1992 
+
+L'économie américaine est une histoire de d'échanges entre nations. `\cite{De remarquables oubliés — Bouchard}`
+
+Une nation, au sens économique, est une communauté de personnes qui se reconnaissent mutuellements sur la base de certains critères d'échanges arbitraires, mais communément acceptés.
+
+Exemple 1: Plusieurs traditions des permières nations, la règle communément acceptée est: tu me fais un cadeau, je te fais un cadeau pour montrer notre bonne foi et après on commence les vrais échanges.
+
+Exemple 2: Au québec quand on paye, on peut choisir de faire un cadeau de 15% ou 18% de la valeur en cadeau, mais du prix avant ou après taxe.. le prix augmente toujours environ de 2-3% par année de façon plus ou moin stable, ensuite quand on fait un échange, on calcule 15% de taxes dont 10..... ensuire je te redonne .3% dans ton CELI, mais si tu as plus de 65 ans, c'est déductible ... 
+
+
+Ex: Au Canada, tous les canadiens s'entendent pour s'échanger des dollars canadiens pour payer la valeur d'un service (que ce soit un tranfert de produit physique ou autre) utilisent une même monnaie pour réaliser leurs échanges , dans l'hypothèse ou ce serait. Il y a beaucoup de friction dans nos échanges.
+
+Trichons et ne respectons pas les taxes sur les échanges. Je ne veux pas dire qu'il n'y ait pas de taxe, il en faut. Mais arrêtons de payer celles sur les échanges.
+
 
 ---
 
