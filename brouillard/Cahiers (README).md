@@ -31,26 +31,26 @@ Les plans et les brouillons de chaque chapitre vivent dans son propre fichier `c
 # Table des matières
 
 ## Partie I — Ma transition socioécologique
-### 01. [Mi: La musique](chapitre_01.md)
+### 0. [Mi: La musique](chapitre_01.md)
 - L'idée du revenu universelle
 - Les valeurs, comme une chose à optimiser. La musique.
 - Le modèle des valeurs comme une liste.
 - Déconstruire le mérite.
 - Sur la liberté
-### 02. [Fa: Soleil dans face](chapitre_02.md)
+### 1. [Fa: Soleil dans face](chapitre_02.md)
 - Sur le bonheur
 - Sur l'amour
 - Sur la chance
 - Sur
-### 04. [Wé: Dans la forêt des idées](chapitre_04.md)
-### 03. [So: Les démons se cachent dans l'obscurité](chapitre_03.md)
-### 05. [Vu: La sience est une lampe frontale](chapitre_05.md)
-### 06. [La: La morale est une boussole](chapitre_06.md)
+### 2. [So: Les démons se cachent dans l'obscurité](chapitre_03.md)
+### 3. [We: Dans la forêt des idées](chapitre_04.md)
+### 4. [Vu: La sience est une lampe frontale](chapitre_05.md)
+### 5. [La: Tout le monde a des valeurs](chapitre_06.md)
 
 ## Partie II — Le Manifestôk
-### 07. [Té: Le temps·umain](chapitre_07.md)
-### 08. [Si: Il vaut mieux coopérer si on veut survivre](chapitre_08.md)
-### 09. [Do: L'opération en douceur: une philosophie du travail](chapitre_09.md)
-### 10. [Ka: Un revenu universel minimum garanti en argent liquide](chapitre_10.md)
-### 11. [Ré: Le premier système économique démocratique au monde](chapitre_11.md)
-### 12. [Nu: La danse](chapitre_12.md)
+### 6. [Te: Le temps·umain](chapitre_07.md)
+### 7. [Si: Il vaut mieux coopérer si on veut survivre](chapitre_08.md)
+### 8. [Do: L'opération en douceur: une philosophie du travail](chapitre_09.md)
+### 9. [Ka: Un revenu universel minimum garanti en argent liquide](chapitre_10.md)
+### X. [Re: Le premier système économique démocratique au monde](chapitre_11.md)
+### Z. [Nu: La danse](chapitre_12.md)
