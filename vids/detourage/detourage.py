@@ -38,19 +38,19 @@ grise, invisible sur noir mais criant dès qu'on recompose sur autre chose.
 Ce fichier a d'abord porté une tout autre méthode — une statistique du décor,
 médiane et enveloppes temporelles sur toute la durée, qui exploitait
 l'immobilité de la scène sans rien savoir de ce qu'elle filmait. Elle marchait,
-et son raisonnement vaut d'être relu : `git log vids/detourage.py`, commits
+et son raisonnement vaut d'être relu : `git log --follow vids/detourage/detourage.py`, commits
 `85a21f8` à `24eaddf`. Elle a été retirée parce qu'elle ne faisait pas mieux que
 ces deux idées-ci, pour dix fois plus de code.
 
 Usage :
 
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o DOSSIER/
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --planche   # 6 vignettes seulement
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --brut     # le réseau nu
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --audio AUTRE.mp3  # remplace la piste
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --png     # séquence exacte
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 --prores  # ProRes 4444 (.mov)
-    ./.venv/bin/python vids/detourage.py DOSSIER/ -o SORTIE/  # tout ce qui est vidéo
+    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/
+    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 --planche   # 6 vignettes seulement
+    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 --brut     # le réseau nu
+    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 --audio AUTRE.mp3  # remplace la piste
+    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 --png     # séquence exacte
+    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 --prores  # ProRes 4444 (.mov)
+    ./.venv/bin/python vids/detourage/detourage.py DOSSIER/ -o SORTIE/  # tout ce qui est vidéo
 
 OpenCV n'écrit que trois canaux : le WebM se fabrique en poussant les images
 brutes dans un tube vers `ffmpeg`, qui seul sait porter un alpha. Mesuré sur ces

@@ -8,10 +8,10 @@ rendus restent hors du repo, en local. Voir `CARNET.md` (privé) pour l'endroit.
 
 ## Usage
 
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o DOSSIER/
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o DOSSIER/ --apercu
-    ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o DOSSIER/ --planche
-    ./.venv/bin/python vids/detourage.py RUSHES/ -o DOSSIER/      # tout un dossier
+    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/
+    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/ --apercu
+    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/ --planche
+    ./.venv/bin/python vids/detourage/detourage.py RUSHES/ -o DOSSIER/      # tout un dossier
 
 `--planche` ne calcule que six instants répartis sur toute la durée et les pose
 en contact sheet, sur damier : c'est le moyen rapide de juger un α sans rendre
@@ -163,7 +163,7 @@ scène. Elle marchait, et son raisonnement vaut d'être relu — notamment les d
 dissymétries qui la rendaient possible et les deux fausses pistes qui l'ont
 retardée :
 
-    git log -p vids/detourage.py    # commits 85a21f8 → 24eaddf
+    git log --follow -p vids/detourage/detourage.py    # commits 85a21f8 → 24eaddf
 
 Elle a été retirée après mesure. Une fois ses paramètres réglés, elle atteignait
 le même résultat que le réseau, ombre portée comprise — mais pour dix fois plus
