@@ -1,10 +1,18 @@
 # Chapitre So: Les démons se cachent dans l'obscurité
 
 
+Cherche tes amis comme le paradis,
+Fuis tes ennemis comme l'enfer.
+
+Bonne chance.
+
+La forêt est complètement obscure. Les arbres sont tellement hauts, il poussent depuis si longtemps que l'ensemble de leurs feuilles cachent toute la lumière.
+
+Et nous sommes des écureuils au sol. C'est l'âge des ténèbres. Depuis un temps incalculable, il n'y a plus de lumière. Il y avait des monstres, des dinausaures et du feu. Et puis plus rien. La nuit et des bruits. Je me souviens pourtant qu'il y avait des étoiles.
 
 
 
-Si la forêt est complètement noir, ça veut dire qu'il n'y a aucun photo qui se rend à ton oeil. S'il n'y a pas de signal à ton oeil, alors tu ne vois pas.
+ ça veut dire qu'il n'y a aucun photo qui se rend à ton oeil. S'il n'y a pas de signal à ton oeil, alors tu ne vois pas.
 
 Si à l'instant, on étaignait les lumières de l'univers. On emplissait l'espace d'un fluide noir qui absorbe tout. Mais ce fluide noir en lui-même est indétectable, sauf par sa propriétée d'avaler la lumière sans laisser de trace. Qu'est-ce que la terre deviendrait. Assez rapidement, il commencerait à faire froid. Et le plus drôle c'est qu'il y a toujours de l'air. Alors on peut encore respirer. On pourrait faire du feu. On ne le verrait pas, mais il agiterait les molécules d'air et procurerait de la chaleur. Mais je ne vois plus rien et il faudrait que je trouve une hâche! À l'aide!
 
