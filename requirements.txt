@@ -12,8 +12,15 @@
 #   opencv pour la lecture/écriture vidéo et la morphologie ; torch pour
 #   RobustVideoMatting, dont les poids se téléchargent au premier appel dans
 #   ~/.cache/torch. Pas de son en sortie : pas de ffmpeg ici.
+# imgs/ombre/Juste_des_Hooks-Cover.py — titre de la pochette de Juste des Hooks :
+#   ./.venv/bin/python imgs/ombre/Juste_des_Hooks-Cover.py DOSSIER [--fullres]
+#   pillow et fonttools pour le rendu du texte, numpy et opencv pour
+#   l'extrusion et le contour. La police reste dans DOSSIER, hors repo.
 matplotlib
 pandas
+numpy
+pillow
+fonttools
 opencv-python-headless
 torch
 torchvision

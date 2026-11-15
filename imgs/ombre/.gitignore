@@ -1,0 +1,9 @@
+# Aucune image ne monte dans un repo public — les sources comme les rendus
+# restent en local. Le .gitignore est un garde-fou, pas une permission d'essayer.
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.tif
+*.tiff
