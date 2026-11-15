@@ -60,7 +60,7 @@ MOTS = [
 ]
 
 # Couleurs
-COULEUR_TITRE = "321A12"       # jaune de la pochette : "FFC500"
+COULEUR_TITRE = "FFC500"       # jaune de la pochette : "FFC500"
 COULEUR_EXTRUSION = "321A12"
 COULEUR_CONTOUR = "321A12"
 
