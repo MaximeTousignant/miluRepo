@@ -16,7 +16,7 @@ Bonjour chers auditeurices, mon nom est l'Opératrice en douceur. Connais-tu cet
 Il te suffit de verser la cotisation unique volontaire pour devenir membre de Smoothop, un organisme ([OBNL](https://www.legisquebec.gouv.qc.ca/fr/document/lc/C-38?langCont=fr#ga:l_iii-h1)) de développement durable fondé à Montréal en 2021 avec la mission d'accélérer la transition socioécologique. Ce simple geste, et te voilà membre, avec accès en tout temps à tes tôks — sans frais et garanti à vie par le travail passés et présents des membres de Smoothop 🏄.
 
 Voilà, mon offre finale.
-Un ✨**revenu universel minimum garanti de 1 tôk par 15 jours**✨ depuis ta naissance et jusqu'à ta mort. Avec un abonnement à vie pour aussi peu que 1.00$\*.
+Un ✨**revenu universel minimum garanti de 1 tôk par 15 jours**✨ depuis ta naissance et jusqu'à ta mort, avec un abonnement à vie à partir de 1.00$\*.
 
 
 **👉 [Devenir membre de Smoothop, c'est par ici](https://smoothop.org/devenir-membre)**
