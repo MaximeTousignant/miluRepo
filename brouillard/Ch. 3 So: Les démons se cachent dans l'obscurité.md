@@ -1,12 +1,11 @@
 # Chapitre So: Les démons se cachent dans l'obscurité
 
-
 Cherche tes amis comme le paradis,
 Fuis tes ennemis comme l'enfer.
 
 Bonne chance.
 
-La forêt est complètement obscure. Les arbres sont tellement hauts, il poussent depuis si longtemps que l'ensemble de leurs feuilles cachent toute la lumière.
+La forêt est complètement obscure. Les arbres sont tellement hauts, il poussent depuis tellement longtemps que l'ensemble de leurs feuilles cachent toute la lumière.
 
 Et nous sommes des écureuils au sol. C'est l'âge des ténèbres. Depuis un temps incalculable, il n'y a plus de lumière. Il y avait des monstres, des dinausaures et du feu. Et puis plus rien. La nuit et des bruits. Je me souviens pourtant qu'il y avait des étoiles.
 

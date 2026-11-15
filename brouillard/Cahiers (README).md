@@ -1,7 +1,7 @@
 Ceci est le cahier du livre au propre.
 
 
-# Titre: **Ma transition en douceur**:
+# Titre: **Ma transition en douceur**
 
 Un livre en douze chapitres divisés en 2 parties. Douze chapitres en boucle. Les douze chapitres sont une méthaphore des 10 (en base douze) notes de la gamme chromatique qui inspire le nom des mois du calendrier tôkien.
 
@@ -31,26 +31,35 @@ Les plans et les brouillons de chaque chapitre vivent dans son propre fichier `c
 # Table des matières
 
 ## Partie I — Ma transition socioécologique
-### 0. [Mi: La musique](chapitre_01.md)
-- L'idée du revenu universelle
+### [Chapitre 0 Mi: En avant la musique](<./Ch. 0 Mi: En avant la musique.md>)
+- L'idée du revenu universel
 - Les valeurs, comme une chose à optimiser. La musique.
 - Le modèle des valeurs comme une liste.
 - Déconstruire le mérite.
 - Sur la liberté
-### 1. [Fa: Soleil dans face](chapitre_02.md)
+### [Chapitre 1 Fa: Soleil dans face](<./Ch. 1 Fa: Soleil dans face.md>)
 - Sur le bonheur
 - Sur l'amour
 - Sur la chance
 - Sur
-### 2. [So: Les démons se cachent dans l'obscurité](chapitre_03.md)
-### 3. [We: Dans la forêt des idées](chapitre_04.md)
-### 4. [Vu: La sience est une lampe frontale](chapitre_05.md)
-### 5. [La: Tout le monde a des valeurs](chapitre_06.md)
+### [Chapitre 2 We: La forêt des idées](<./Ch. 2 We: La forêt des idées.md>)
+- La limite de la connaissance
+- Une forêt pleine de détails magnifiques qu'on n'explorera jamais au complet.
+
+### [Chapitre 3 So: Les démons se cachent dans l'obscurité](<./Ch. 3 So: Les démons se cachent dans l'obscurité.md>)
+- Sur les mystères philosophiques
+- La limite de la connaissance
+- Sa place dans le monde
+- L'idée d'une conscience qui vit cachée au milieu d'un corps fait de viande
+- Sur l'histoire.
+
+### [Chapitre 4 Vu: La sience est une lampe frontale](<./Ch. 4 Vu: La sience est une lampe frontale.md>)
+### [Chapitre 5 La: Tout le monde a des valeurs](<./Ch. 5 La: Tout le monde a des valeurs.md>)
 
 ## Partie II — Le Manifestôk
-### 6. [Te: Le temps·umain](chapitre_07.md)
-### 7. [Si: Il vaut mieux coopérer si on veut survivre](chapitre_08.md)
-### 8. [Do: L'opération en douceur: une philosophie du travail](chapitre_09.md)
-### 9. [Ka: Un revenu universel minimum garanti en argent liquide](chapitre_10.md)
-### X. [Re: Le premier système économique démocratique au monde](chapitre_11.md)
-### Z. [Nu: La danse](chapitre_12.md)
+### [Chapitre 6 Te: Le temps·umain](<./Ch. 6 Te: Le temps·umain.md>)
+### [Chapitre 7 Si: Il vaut mieux coopérer si on veut survivre](<./Ch. 7 Si: Il vaut mieux coopérer si on veut survivre.md>)
+### [Chapitre 8 Do: L'opération en douceur: une philosophie du travail](<./Ch. 8 Do: L'opération en douceur: une philosophie du travail.md>)
+### [Chapitre 9 Ka: Un revenu universel minimum garanti en argent liquide](<./Ch. 9 Ka: Un revenu universel minimum garanti en argent liquide.md>)
+### [Chapitre X Re: Le premier système économique démocratique au monde](<./Ch. X Re: Le premier système économique démocratique au monde.md>)
+### [Chapitre Z Nu: Entrer dans la danse](<./Ch. Z Nu: Entrer dans la danse.md>)

@@ -1,4 +1,4 @@
-# Chapitre Mi: La musique
+# Chapitre Mi: En avant la musique
 
 Mais avant, une petite publicité de 2 minutes interminables.
 

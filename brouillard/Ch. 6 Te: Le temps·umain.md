@@ -1,4 +1,4 @@
-# Chapitre Té: Le temps·umain
+# Chapitre Te: Le temps·umain
 
 
 ---
