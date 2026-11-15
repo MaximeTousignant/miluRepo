@@ -7,8 +7,8 @@
 #   ./.venv/bin/python publications/stokex/gen_figures.py
 #   Requiert aussi une installation LaTeX système (text.usetex=True) :
 #   latex, dvipng — fournis par MacTeX / TeX Live.
-# vids/detourage.py — détourage vidéo :
-#   ./.venv/bin/python vids/detourage.py ENTREE.mp4 -o SORTIE.mp4
+# vids/detourage/detourage.py — détourage vidéo :
+#   ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 -o SORTIE.mp4
 #   opencv pour la lecture/écriture vidéo et la morphologie ; torch pour
 #   RobustVideoMatting, dont les poids se téléchargent au premier appel dans
 #   ~/.cache/torch. Pas de son en sortie : pas de ffmpeg ici.
