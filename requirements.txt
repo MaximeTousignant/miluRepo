@@ -24,3 +24,8 @@ fonttools
 opencv-python-headless
 torch
 torchvision
+sympy
+scipy
+ipykernel
+nbformat
+nbclient
