@@ -17,7 +17,7 @@ Ce repo est public, pour toujours — son historique git est irréversible. Tout
   - `Bibliographie.md` — les références (clés liées) et la discographie.
   - Salutations, Morale, Progrès, Coopération, Smoothop — les textes fondateurs.
 - `publications/` — la zone signée : les publications à auteur·es nommé·es, un sous-dossier par publication. Seule zone du dépôt qui n'est pas au domaine public. Chaque sous-dossier porte son `README.md` : comment régénérer figures, document et preuves, et quels prérequis système il suppose.
-- `requirements.txt` — la recette de l'établi Python (organe E — voir `AGENTS.md` § « L'établi ») : ce qu'il faut installer dans le `.venv/` de la racine. La recette est versionnée, l'installation ne l'est pas.
+- `pyproject.toml`, `uv.lock`, `.python-version` — la recette de l'établi Python (organe E — voir `AGENTS.md` § « L'établi »), au format uv : les dépendances, leurs versions figées, l'interpréteur. `uv sync` en bâtit le `.venv/` de la racine. La recette est versionnée, l'installation ne l'est pas.
 - `LICENSE` — CC0 pour tout le dépôt, sauf `publications/` (CC BY 4.0). La frontière est structurelle : un seul dossier à surveiller.
 - `TODO.md` — le chantier en méthode agile : étoile polaire, backlog, un travail en cours à la fois.
 - `JOURNAL.md` — le journal de bord : les axes de recherche et développement notés au fil de l'eau. Un axe qui mûrit migre vers `TODO.md`.

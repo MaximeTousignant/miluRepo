@@ -2,7 +2,7 @@
 
 Aucune dépendance : le format SMF est assez simple pour se plier à la main.
 
-Usage : ./.venv/bin/python jams/beats/beat_111.py
+Usage : uv run jams/beats/beat_111.py
 Sortie : jams/beats/beat_111.mid
 """
 

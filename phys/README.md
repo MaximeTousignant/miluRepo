@@ -25,4 +25,4 @@ Les trois se tiennent par la main. La rotation de Wick (sujet 1) change l'espace
 
 L'établi Python unique (`.venv/` à la racine, voir `AGENTS.md` § L'établi) porte tout ce qu'il faut : `sympy`, `scipy`, `ipykernel`. Dans VS Code, ouvrir le `.ipynb` et choisir le noyau `.venv`. Pour tout réexécuter d'un coup, depuis la racine :
 
-    ./.venv/bin/python phys/executer.py
+    uv run phys/executer.py

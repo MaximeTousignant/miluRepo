@@ -134,12 +134,12 @@ Trois garde-fous sur ce carnet. Ce n'est **pas** un coffre à secrets : ni clé,
 
 **Vérification d'arrivée** (un seul appel, ~1 s) :
 
-    ./.venv/bin/python -c "import matplotlib, numpy, pandas; print('py OK')" \
+    uv run python -c "import matplotlib, numpy, pandas; print('py OK')" \
       && command -v pdflatex dvipng gs lake
 
 Tout répond → l'établi est propre, au travail. Sinon, on ne rebâtit que la pièce manquante.
 
-- **Python** — un seul `.venv/` à la racine (la règle ci-dessus). Utilise `./.venv/bin/python` et `./.venv/bin/pip`, jamais `python3` nu. Manquant → `python3 -m venv .venv` puis `./.venv/bin/pip install -r requirements.txt`. **N'en crée jamais un second**, nulle part — ni dans un sous-dossier, ni dans le scratchpad. Les envs conda `tok*` appartiennent à l'Opératrice : on n'y touche pas.
+- **Python** — géré par [uv](https://docs.astral.sh/uv/), selon ses conventions : `pyproject.toml` déclare les dépendances, `uv.lock` les fige, `.python-version` fixe l'interpréteur (le dernier Python stable) ; les trois sont versionnés. Un seul `.venv/` à la racine, bâti par uv, jamais versionné. Lance tout par `uv run` (`uv run script.py`, `uv run python -c …`), jamais `python3` nu ni `pip`. Une dépendance s'ajoute par `uv add`, se retire par `uv remove`. Manquant ou douteux → `uv sync` le rebâtit. **N'en crée jamais un second**, nulle part — ni dans un sous-dossier, ni dans le scratchpad. Prérequis système : uv lui-même (installeur officiel). Les envs conda `tok*` appartiennent à l'Opératrice : on n'y touche pas.
 - **LaTeX** — `pdflatex`, `latexmk`, `bibtex`, `dvipng`, pour compiler les documents. Prérequis système, **non rebâtissable** : s'il manque, on le dit, on ne bricole pas. Quand je dis *compile-latex*, j'entends : `latexmk -pdf -interaction=nonstopmode -halt-on-error <fichier>.tex`, depuis le dossier du `.tex`.
 - **Lean** — `elan`, `lake`, `lean`, pour vérifier les preuves. Prérequis système.
 - **Images** — `gs` (ghostscript), `magick`, et les natifs macOS `sips`/`qlmanage`, pour rendre un PDF en PNG et le regarder.

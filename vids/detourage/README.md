@@ -8,10 +8,10 @@ rendus restent hors du repo, en local. Voir `CARNET.md` (privé) pour l'endroit.
 
 ## Usage
 
-    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/
-    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/ --apercu
-    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/ --planche
-    ./.venv/bin/python vids/detourage/detourage.py RUSHES/ -o DOSSIER/      # tout un dossier
+    uv run vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/
+    uv run vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/ --apercu
+    uv run vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/ --planche
+    uv run vids/detourage/detourage.py RUSHES/ -o DOSSIER/      # tout un dossier
 
 `--planche` ne calcule que six instants répartis sur toute la durée et les pose
 en contact sheet, sur damier : c'est le moyen rapide de juger un α sans rendre

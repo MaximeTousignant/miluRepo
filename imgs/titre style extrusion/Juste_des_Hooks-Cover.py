@@ -17,9 +17,9 @@ DOSSIER/Milu_Output/, créé au besoin. Aucune image ne vit dans ce repo.
 
 Usage, depuis la racine de miluRepo :
 
-    ./.venv/bin/python imgs/ombre/Juste_des_Hooks-Cover.py DOSSIER
-    ./.venv/bin/python imgs/ombre/Juste_des_Hooks-Cover.py DOSSIER --fullres
-    ./.venv/bin/python imgs/ombre/Juste_des_Hooks-Cover.py DOSSIER --couleur "#FFC500"
+    uv run imgs/ombre/Juste_des_Hooks-Cover.py DOSSIER
+    uv run imgs/ombre/Juste_des_Hooks-Cover.py DOSSIER --fullres
+    uv run imgs/ombre/Juste_des_Hooks-Cover.py DOSSIER --couleur "#FFC500"
 
 Dépendances (dans le .venv) : Pillow, numpy, fontTools, opencv.
 """

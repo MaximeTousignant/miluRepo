@@ -44,13 +44,13 @@ ces deux idées-ci, pour dix fois plus de code.
 
 Usage :
 
-    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/
-    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 --planche   # 6 vignettes seulement
-    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 --brut     # le réseau nu
-    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 --audio AUTRE.mp3  # remplace la piste
-    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 --png     # séquence exacte
-    ./.venv/bin/python vids/detourage/detourage.py ENTREE.mp4 --prores  # ProRes 4444 (.mov)
-    ./.venv/bin/python vids/detourage/detourage.py DOSSIER/ -o SORTIE/  # tout ce qui est vidéo
+    uv run vids/detourage/detourage.py ENTREE.mp4 -o DOSSIER/
+    uv run vids/detourage/detourage.py ENTREE.mp4 --planche   # 6 vignettes seulement
+    uv run vids/detourage/detourage.py ENTREE.mp4 --brut     # le réseau nu
+    uv run vids/detourage/detourage.py ENTREE.mp4 --audio AUTRE.mp3  # remplace la piste
+    uv run vids/detourage/detourage.py ENTREE.mp4 --png     # séquence exacte
+    uv run vids/detourage/detourage.py ENTREE.mp4 --prores  # ProRes 4444 (.mov)
+    uv run vids/detourage/detourage.py DOSSIER/ -o SORTIE/  # tout ce qui est vidéo
 
 OpenCV n'écrit que trois canaux : le WebM se fabrique en poussant les images
 brutes dans un tube vers `ffmpeg`, qui seul sait porter un alpha. Mesuré sur ces
@@ -491,7 +491,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         matteur = Matteur(a.variante)
     except ImportError:
-        _log("torch absent : `./.venv/bin/pip install torch torchvision`")
+        _log("torch absent : `uv sync`")
         return 1
 
     racine = a.sortie if a.sortie is not None else entrees[0].parent

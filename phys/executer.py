@@ -1,8 +1,8 @@
 """Réexécute tous les notebooks de phys/ et enregistre leurs sorties en place.
 
 Depuis la racine du repo :
-    ./.venv/bin/python phys/executer.py              # tous les notebooks
-    ./.venv/bin/python phys/executer.py univers-5d   # un seul sujet
+    uv run phys/executer.py              # tous les notebooks
+    uv run phys/executer.py univers-5d   # un seul sujet
 """
 import sys
 from pathlib import Path

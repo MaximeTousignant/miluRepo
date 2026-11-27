@@ -1,0 +1,20 @@
+[project]
+name = "milurepo"
+version = "0.1.0"
+description = "Laboratoire et brouillon public du système des tôks"
+requires-python = ">=3.15"
+dependencies = [
+    "fonttools>=4.69.1",
+    "ipykernel>=7.4.0",
+    "matplotlib>=3.11.2",
+    "nbclient>=0.11.0",
+    "nbformat>=5.11.1",
+    "numpy>=2.5.5",
+    "opencv-python-headless>=5.1.0.95",
+    "pandas>=3.1.1",
+    "pillow>=13.0.0",
+    "scipy>=1.18.1",
+    "sympy>=1.14.0",
+    "torch>=2.15.0",
+    "torchvision>=0.29.2",
+]
