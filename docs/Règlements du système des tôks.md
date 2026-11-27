@@ -1,12 +1,7 @@
-![][image1]
+![Logo de Smoothop][image1]
 
-# ---
-
-# 
-
-# **Règlements du système des tôks**
-
-#  **Annexe des règlements généraux**
+# Règlements du système des tôks
+*Annexe des règlements généraux*
 
 ---
 
@@ -19,23 +14,19 @@ Version 2.0
 
 Proposition soumise à l’assemblée générale, le \[...\] 2026
 
-# 
+## SECTION 1 Fondements
 
-# 
+### 1.1 Le revenu universel minimum garanti
 
-# **SECTION 1 Fondements**
+Le système des tôks est fondé sur le principe que chaque umain¹ reçoit un flot constant d’argent liquide entre sa naissance et sa mort. Le débit de ce flot est le même pour tous les umains à toutes les époques.
 
-## 
+¹ Umain : personne physique, individu de la race des grands singes chanteurs.
 
-## **1.1 Le revenu universel minimum garanti**
-
-Le système des tôks est fondé sur le principe que chaque umain1 reçoit un flot constant d’argent liquide entre sa naissance et sa mort. Le débit de ce flot est le même pour tous les umains à toutes les époques.
-
-## **1.2 Un système d’opération en douceur**
+### 1.2 Un système d’opération en douceur
 
 Le système des tôks est un système informatique qui passe le contrôle qualité ABCDE:
 
-### **1.1.1 Accessible** 
+#### 1.1.1 Accessible
 
 Le système des tôks est ouvert à ce que tous les umains soit utilisateurs, et les personnes l’utilisent parce que son utilisation est agréable. Par contre, le développement et sa maintenance sont exclusivement la responsabilité des membres de Smoothop.
 
@@ -43,13 +34,15 @@ Investir son temps·personne dans le développement ou la maintenance du systèm
 
 Il n’y a pas de revenu universel si on n’y a pas accès. De ce fait, le système des tôks doit tendre à minimiser les barrières à l’entrée. Ceci implique que le système doit rester aussi simple (rapidement compréhensible) que possible. De plus, il doit fournir aux utilisateurs les outils et l’information pour faciliter son adoption.
 
-### **1.1.2 Bénéfique** 
+Transparent, historique accessible, open source.
+
+#### 1.1.2 Bénéfique
 
 Le progrès doit être moral, où alors on fait fausse route. \-Gabrielle Roy
 
 Le système des tôks me permet de faire des échanges consentants qui soit à la fois bénéfique à moi-même et aux autres personnes impliquées dans l’échange. Comme un partage plaisant. Le système des tôks ne doit pas faire chier. Sauf lorsqu’il vend (en tôks) des laxatifs.
 
-### **1.1.3 Cohérent**
+#### 1.1.3 Cohérent
 
 Le système des tôks est accessible et c’est un système informatique (Art. 0.0 et Art. 0.1), alors on peut en conclure qu’il doit être open source, c’est-à-dire qu’il doit être publié publiquement. Dans un langue mathématique rigoureuse.
 
@@ -61,17 +54,17 @@ License CC by 4\.
 
 Il doit être transparent et ouvert à la critique en général. Passe un contrôle de qualité régulé et transparent. Qui se tient logiquement. Scientifiquement rigoureux. 
 
-### **1.1.4 Démocratique**
+#### 1.1.4 Démocratique
 
 On choisit des règles de vie collectives que l’on vote avec le principe 1 umain \= 1 vote.
 
  et on se les enseigne les uns les autres.
 
-### **1.1.5 Équitable**
+#### 1.1.5 Équitable
 
 Dans ses règlements, le système des tôks doit traiter tous les umains équitablement.
 
-## **1.2 Les qualités ABCDE du système des tôks**
+### 1.2 Les qualités ABCDE du système des tôks
 
 **1.2.1 Accessible**
 
@@ -91,19 +84,13 @@ En particulier il respecte le principe de 1 humain \= 1 vote. Idée de contrat s
 
 Le système doit passivement tendre à réduire les inégalités.
 
-## 
+## SECTION 2 Unités et Symbols
 
-## 
-
-## 
-
-# **SECTION 2 Unités et Symbols**
-
-## **1.1 Les unités du système international**
+### 1.1 Les unités du système international
 
 Dans toutes les situations, le système des tôks se soumet entièrement aux définitions des unités du Système international (SI), qui définit sur des bases physiques la seconde, le mètre, le kilogramme, l'ampère, le kelvin, la mole et la candela.
 
-## **1.2 Les unités du système impérial**
+### 1.2 Les unités du système impérial
 
 Le système des tôks défini le système impérial Victorieux dans lequel, on compte en base dix; Les dix chiffres dans l’ordre avec leur symbol entre parenthèse sont zéro (0), un (1), deux ( vers le haut sont un   0, 1, 2, 3, 4, 5 ,6, 7, 8, 9; En notation décimale, ce qui est à gauche 
 
@@ -143,15 +130,13 @@ Comme un litre correspond Le tôk est l’unité de monnaie dans le système des
 
 La plus petite fraction d’intérêt pratique est le millitôk qui est égal à 0.001 tôk. Une valeur dénotée en tôks s’écrit avec 3 décimales. Ex: 12.345 tôks se prononce “douze tôks et trois cents quarante-cinq millitôks”.
 
-## 
-
-## **1.3 Symbole de la monnaie**
+### 1.3 Symbole de la monnaie
 
 Le symbole officiel du tôk est formé de la lettre grecque tau traversée d’une barre verticale : ![][image2].
 
 Le code à 3 caractères représentant le tôk dans le style de la norme [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html#:~:text=The%20first%20two%20letters%20of,and%20the%20D%20for%20dollar.) est : TOK
 
-## **1.3 Conversion des unités de temps**
+### 1.3 Conversion des unités de temps
 
 Pour les calculs des soldes de tôks impliquant différentes échelles de temps, les conventions suivantes sont utilisées :  
 1 jour \= 86400 secondes (avec la définition de la seconde du système international)  
@@ -159,40 +144,32 @@ Pour les calculs des soldes de tôks impliquant différentes échelles de temps,
 1 mois \= 1 an / 12 \= 30 jours \+ 10 heures \+ 29 minutes \+ 3 secondes \+ 750 millisecondes  
 1 quinzaine \= 15 jours
 
-## **Notation des conversions d’unités**
+### Notation des conversions d’unités
 
 Utilisateurs
 
-# 
+## SECTION 2 Usages
 
-# **SECTION 2 Usages**
-
-## 
-
-## **2.1 Usage interne à l’organisme**
+### 2.1 Usage interne à l’organisme
 
 Le système des tôks est un système économique strictement interne à l’organisme. Seuls les membres de Smoothop ainsi que les comités formés par des membres de Smoothop peuvent ~~posséder et~~ s’échanger des tôks.
 
 Un membre de Smoothop qui offre 1 tôk papier (voir Art. XX) à une personne qui n’est pas encore membre, mais qui est intéressée à le devenir, constitue la seule exception valide au règlement de l’usage interne.
 
-## 
-
-## **2.2 Activités autorisées**
+### 2.2 Activités autorisées
 
 Les échanges de tôks et les activités auxquelles ils sont associées doivent être alignés avec la mission de Smoothop.  
 Sur la base du précédent critère, le conseil d’administration peut interdire l’utilisation du système des tôks pour certaines activités économiques spécifiques.
 
-## **2.3 Plateforme informatique**
+### 2.3 Plateforme informatique
 
 Les membres doivent utiliser exclusivement la plateforme informatique mise en place par Smoothop pour réaliser toute action qui modifie l’état du système des tôks. Les fonctionnalités de la plateforme spécifiques au système des tôks doivent être exclusivement développées par des membres de Smoothop. Autrement dit, la plateforme du système des tôks est développée *par* les membres de Smoothop *pour* les membres de Smoothop.
 
 Par les membres de Smoothop pour tous les umain.es
 
-# 
+## SECTION 3 Utilisateurs
 
-# **SECTION 3 Utilisateurs**
-
-## **3.1 Types d’utilisateurs**
+### 3.1 Types d’utilisateurs
 
 Il existe 2 types d’utilisateurs dans le système des tôks: **les membres** (voir Art. XX) et **les comités** (voir Art. XX).
 
@@ -206,9 +183,9 @@ Un comité ne reçoit pas le revenu universel minimum garanti en tôks.
 
 Un comité peut recevoir dans son compte principal une part de la taxe sur la fortune en tôks (voir Art. XXX). Un comité n’a pas le droit de participer au \$tôkEx, à l’exception du conseil d’administration de Smoothop (voir Art 4.6.1).
 
-## **3.2 Comités spéciaux**
+### 3.2 Comités spéciaux
 
-### **Conseil d’administration de Smoothop**
+#### Conseil d’administration de Smoothop
 
 En raison de son statut particulier au sein de l’organisme, le conseil d’administration est le seul comité de Smoothop autorisé à participer au \$tôkEx. Cependant, à la différence des membres, le conseil d’administration de Smoothop peut uniquement vendre des tôks; il n’est en aucun cas autorisé à en acheter.
 
@@ -220,31 +197,31 @@ Il est toutefois permis au CA de Smoothop d’offrir des tôks en échange de mo
 
 Le conseil d’administration de Smoothop se voit attribuer par défaut les droits de répartition de la taxe des nouveaux membres (voir Art. XX).
 
-### **Comité du Fonds de la transition**
+#### Comité du Fonds de la transition
 
 Le comité du Fonds de la transition est le gardien de la Réserve mondiale des tôks non réclamés (voir Art. XX).
 
 Le comité du Fonds de la transition se voit attribuer par défaut les droits de répartition de la taxe des personnes non membres (voir Art. XX).
 
-# **SECTION 4 Comptabilité**
+## SECTION 4 Comptabilité
 
-## **4.1 Création des tôks**
+### 4.1 Création des tôks
 
 Chaque personne physique (qu’elle soit membre ou non) reçoit en continu le revenu universel de **1 tôk par 15 jours** entre sa naissance et sa mort. Le revenu universel est le seul et unique mécanisme de création de l’argent liquide dans le système des tôks.
 
 Les membres reçoivent leur revenu universel dans leur compte principal. Le revenu universel des personnes non membres est versé dans la Réserve mondiale des tôks non réclamés.
 
-## **4.2 Désintégration des tôks**
+### 4.2 Désintégration des tôks
 
 Les tôks se désintègrent en continu avec une **demi-vie de 50 ans**. Les tôks qui se désintègrent ne vont nulle part, ils sont simplement détruits. La désintégration est le seul et unique mécanisme de destruction de l’argent liquide dans le système des tôks.
 
 *Le mécanisme de désintégration a pour but d’encourager la circulation des tôks en décourageant l’accumulation excessive de ceux-ci. En ce sens, la désintégration dans le système des tôks équivaut, d’une certaine façon, à un taux d’inflation fixe d’environ 1.4% par année.* 
 
-## **4.3 Solde positif**
+### 4.3 Solde positif
 
 Il n’est pas permis qu’un compte de tôks affiche un solde négatif.
 
-## **4.4 Transactions de base**
+### 4.4 Transactions de base
 
 Le système des tôks permet de déplacer des tôks d’un compte A à un compte B via deux mécanismes de base :
 
@@ -253,15 +230,15 @@ Le système des tôks permet de déplacer des tôks d’un compte A à un compte
 
 Smoothop n’impose aucun frais pour les transactions de base en tôks.
 
-## **4.4 Réserve mondiale des tôks non réclamés**
+### 4.4 Réserve mondiale des tôks non réclamés
 
 Comme son nom l’indique, la Réserve mondiale des tôks non réclamés est un compte de tôks qui contient l’ensemble des tôks issus du revenu universel des personnes physiques qui n’ont pas réclamé leurs tôks en devenant membre de Smoothop. 
 
 La Réserve mondiale des tôks non réclamés est un compte du comité du Fonds de la transition et celui-ci est garant de la bonne gestion de ce compte dans le respect des règles énoncées ci-après. Lorsqu’une personne devient membre de Smoothop, elle prend le contrôle de ses propres tôks. Les tôks sont alors transférés de la Réserve mondiale au compte principal du nouveau membre. Aucun tôk n’est créé ou détruit lors de ce transfert. Il ne peut y avoir aucun autre prélèvement dans la Réserve mondiale des tôks non réclamés. Toutefois, la désintégration (voir Art. 4.2) et la taxe (voir Art. 3.11) s’appliquent sur la Réserve mondiale des tôks non réclamés, comme sur tout autre compte de tôk.
 
-# **SECTION 4 Taxation**
+## SECTION 4 Taxation
 
-## **4.1 Principe d’équité**
+### 4.1 Principe d’équité
 
 Afin de financer la mission de l’organisme, une taxe est prélevée sur la **fortune** en tôks. Cette taxe s’applique **partout et en tout temps** dans le système des tôks. Chaque tôk est taxé, indépendamment du fait qu’il soit détenu par un membre, un comité ou qu’il soit non réclamé. Le taux de taxation, exprimé en %/an, est **unique**, c’est-à-dire qu’il est le même partout dans le système des tôks à un instant donné.
 
@@ -269,7 +246,7 @@ Les **revenus** en tôks ne sont pas taxés dans le système des tôks.
 
 *Un membre qui vend ses tôks sur le \$tôkEx (voir Art. XX) en échange d’une monnaie conventionnelle et qui en retire un montant de cette monnaie conventionnel depuis son portefeuille du \$tôkEx est taxé sur selon le régime fiscal en vigueur dans la juridiction dans lequel il se trouve.*
 
-## **4.2 Taux de taxation**
+### 4.2 Taux de taxation
 
 Le taux de taxation unique est déterminé de façon démocratique par les membres de Smoothop selon le principe **“un membre, un vote”**. Chacun des membres est appelé à voter sur la valeur du taux de taxation unique en choisissant la position d’un curseur sur un axe $x$. La relation entre la position du curseur sur l’axe $x$ et le taux de taxation en %/an est donné par la formule suivante :
 
@@ -284,9 +261,7 @@ Le taux de taxation unique correspond à la **médiane** des votes de chacun des
 
 Un membre peut choisir de participer ou non au vote sur le taux de taxation unique. Un membre qui n’exprime pas son vote n’est pas considéré dans le calcul de la médiane pour déterminer le taux de taxation unique. 
 
-### 
-
-### **3.11.2 Principe de répartition de la taxe**
+#### 3.11.2 Principe de répartition de la taxe
 
 Afin d’assurer une répartition juste des tôks collectés par la taxe et afin de permettre à tous les comités (voir Art. XX) d’avoir accès à une source de financement en tôks, la taxe est répartie de façon démocratique par les membres de Smoothop selon le principe des droits de répartition. 
 
@@ -296,7 +271,7 @@ Pour décider de la répartition de la taxe, il faut être membre de l’organis
 
 Le montant de la taxe versé à chaque comité est proportionnel au nombre de droits de répartition qui lui sont attribués. La taxe est versée en continu.
 
-### **3.11.3 Répartition par défaut**
+#### 3.11.3 Répartition par défaut
 
 *La taxe s’appliquant sur la fortune en tôks, et ceci incluant la Réserve mondiale des tôks non réclamés, le montant de tôks collectés par la taxe est très élevé. Par conséquent, la responsabilité de la répartition et de la gestion de cette somme doit être définie avec précaution.* 
 
@@ -306,37 +281,35 @@ En devenant membre de Smoothop, une personne adhère à la mission de l’organi
 
 Un membre peut à tout moment modifier l’attribution d’une partie ou de l’ensemble de ses droits de répartition au profit d’autres comités. 
 
-## 
-
-## **3.13 Dividende annuel en tôks**
+### 3.13 Dividende annuel en tôks
 
 À la fin de chaque année, le conseil d’administration peut décider de verser un dividende annuel en tôks aux membres de Smoothop. Le montant de ce dividende est par la suite distribué aux membres en 4 versements égaux lors des équinoxes et solstices de l’année suivante.
 
 Le montant du dividende doit respecter le principe d’équité. De ce fait, le montant du dividende ne peut en aucun cas être proportionnel au nombre de tôks que possède chaque membre. Toutefois, le bilan carbone (voir Art. 4.1) peut être pris en compte dans le calcul du montant du dividende qui est versé à chaque membre.
 
-## **3.14 Historique des opérations**
+### 3.14 Historique des opérations
 
 Toute opération qui modifie l’état du système des tôks est inscrite dans un registre qui est accessible aux membres de Smoothop. L’identité des utilisateurs concernés par les opérations est inscrite au registre. L’historique des opérations permet de déterminer l’état du système des tôks à tout moment sans aucune ambiguïté.
 
-## **3.9 Tôks papier**
+### 3.9 Tôks papier
 
-### **3.9.1 Apparence physique**
+#### 3.9.1 Apparence physique
 
 Les tôks papier doivent être reconnaissables à leur design distinctif. Le tôk papier a une forme de carré avec les coins arrondis. D’un côté, le tôk papier arbore le logo de Smoothop sur lequel figure le symbole du tôk (voir Art. 3.1). De l’autre côté du tôk papier figure un code QR sur lequel apparaît en filigrane le même logo que sur l’autre face. Ce code QR mène directement au site de l’organisme : smoothop.org.
 
-### **3.9.2 Désintégration**
+#### 3.9.2 Désintégration
 
 Un tôk papier dont le code QR n’est plus lisible par un appareil convenable est considéré comme désintégré. Un tôk papier désintégré n’a plus de valeur et ne doit plus servir de monnaie d’échange entre les membres de Smoothop.
 
 La constitution physique des tôks papier (matériaux, impression, fini, etc.) doit être telle que l'espérance de vie d’un tôk papier soit inférieure à l'espérance de vie d’un tôk dans un compte numérique (en considérant la désintégration et la taxe).
 
-### **3.9.3 Émission et constitution d’une réserve**
+#### 3.9.3 Émission et constitution d’une réserve
 
 Le conseil d’administration est la seule entité autorisée à émettre des tôks papier. Au moment de l’émission d’une série de tôks papier, le conseil d’administration dépose un nombre de tôks numériques égal au nombre de tôks papier émis dans un compte désigné comme *Réserve pour tôks papier*.
 
 Il devrait toujours y avoir au moins autant de tôks numériques dans la réserve que de tôks papier en circulation. 
 
-### **3.9.4 Conversion papier-numérique**
+#### 3.9.4 Conversion papier-numérique
 
 Les membres peuvent convertir leurs tôks papier en tôks numériques et vice versa auprès du conseil d’administration. Le lieu et le moment de la conversion sont désignés par le conseil d’administration à sa convenance.
 
@@ -346,7 +319,7 @@ Lorsqu’un membre convertit des tôks papier en tôks numériques, les tôks nu
 
 Un tôk papier désintégré (dont le code QR n’est plus lisible) ne peut plus être converti en tôk numérique.
 
-## **3.16 Pénalités**
+### 3.16 Pénalités
 
 Le conseil d’administration peut, selon les modalités qu’il détermine, imposer une pénalité prenant la forme d’une **amende en tôks** à tout utilisateur qui refuse de se conformer aux dispositions des présents règlements ou qui agit contrairement aux principes du système des tôks.
 
@@ -354,15 +327,13 @@ Le conseil d’administration est habilité à prélever automatiquement des tô
 
 Le conseil d’administration est autorisé à agir ainsi pour autant que l’utilisateur en question soit informé de la nature de l’acte qu’on lui reproche, qu’il ait l’occasion de se faire entendre sur ce sujet, que la décision le concernant soit prise avec impartialité et que le montant d’une pénalité en tôks soit proportionnel à l’infraction commise.
 
-### **3.16.1 Création frauduleuse de tôks**
+#### 3.16.1 Création frauduleuse de tôks
 
 Dans l’éventualité où des tôks ont été frauduleusement créés, ceux-ci doivent être versés au conseil d’administration *en plus* d’une pénalité imposée aux l’utilisateurs visés. Le montant de la pénalité est au minimum de 100 tôks et d’au plus 50% du montant des tôks frauduleusement créés. Les tôks frauduleusement créés doivent être détruits aussitôt qu’ils sont versés au conseil d’administration.
 
-# 
-
 Règlements en vigueur au 23 mai 2024
 
-## **3.7 Transactions de base**
+### 3.7 Transactions de base
 
 Le système des tôks permet de déplacer des tôks d’un compte A à un compte B via deux mécanismes de base :
 
@@ -377,13 +348,13 @@ Proposition de modification
 
 Règlements en vigueur au 23 mai 2024
 
-## **3.12 Le Stôk-Marquette**
+### 3.12 Le Stôk-Marquette
 
 Le Stôk-Marquette est une plateforme qui permet aux utilisateurs d’échanger entre eux des tôks contre une sélection d’actifs fongibles[^1]. Les échanges sur le Stôk-Marquette s’effectuent en continu et le prix d’achat ou de vente est toujours égal au prix du marché. Le prix du marché correspond à l’équilibre entre l’offre et la demande.
 
 Sur la plateforme, un utilisateur détient un portefeuille contenant un compte pour chaque actif fongible qu’il souhaite échanger. Un utilisateur ne peut pas perdre plus que ce qu’il dépose dans son portefeuille en participant au Stôk-Marquette.
 
-### **3.12.1 Fonctionnement**
+#### 3.12.1 Fonctionnement
 
 Pour participer au Stôk-Marquette, un utilisateur doit d’abord déposer un montant en tôks et/ou en dollars canadiens (CAD), par exemple, dans son portefeuille. À tout moment, l’utilisateur peut déposer un montant additionnel dans son portefeuille, ou retirer une partie ou la totalité du montant qui s’y trouve.
 
@@ -396,7 +367,7 @@ Le Stôk-Marquette fournit à l’utilisateur toutes les informations nécessair
 
 En tout temps, l’utilisateur a la possibilité de modifier son estimation de la valeur du CAD et son degré de certitude sur cette estimation.
 
-### **3.12.2 Règles spécifiques**
+#### 3.12.2 Règles spécifiques
 
 1) Le conseil d’administration détermine la sélection d’actifs fongibles échangés sur le Stôk-Marquette. Le conseil d’administration possède un portefeuille contenant un compte pour chacun des actifs fongibles qui sont échangés sur le Stôk-Marquette.
 
@@ -414,13 +385,13 @@ En tout temps, l’utilisateur a la possibilité de modifier son estimation de l
 
 Proposition de modification
 
-## **3.12 Le \$tôkEx**
+### 3.12 Le \$tôkEx
 
 Le \$tôkEx est une plateforme qui permet aux utilisateurs d’échanger entre eux des tôks contre une monnaie conventionnelle[^2]. Les échanges sur le \$tôkEx s’effectuent en continu et le prix d’achat ou de vente est toujours égal au prix du marché. Le prix du marché correspond à l’équilibre entre l’offre et la demande.
 
 Sur la plateforme, un utilisateur détient un portefeuille contenant un compte pour chaque monnaie qu’il souhaite échanger. Un utilisateur ne peut pas perdre plus que ce qu’il dépose dans son portefeuille en participant au \$tôkEx.
 
-### **3.12.1 Fonctionnement**
+#### 3.12.1 Fonctionnement
 
 Pour participer au \$tôkEx, un utilisateur doit d’abord déposer un montant en tôks et/ou en dollars canadiens (CAD), par exemple, dans son portefeuille. À tout moment, l’utilisateur peut déposer un montant additionnel dans son portefeuille, ou retirer une partie ou la totalité du montant qui s’y trouve.
 
@@ -433,7 +404,7 @@ Le \$tôkEx fournit à l’utilisateur toutes les informations nécessaires, tel
 
 En tout temps, l’utilisateur a la possibilité de modifier son estimation de la valeur du CAD et son degré de certitude sur cette estimation.
 
-### **3.12.2 Règles spécifiques**
+#### 3.12.2 Règles spécifiques
 
 1) Les échanges de tôks sont strictement limités aux activités internes de Smoothop. Les tôks ne peuvent en aucun cas être échangés pour des activités qui ne répondent pas à la mission de l’organisme.
 
@@ -451,7 +422,7 @@ En tout temps, l’utilisateur a la possibilité de modifier son estimation de l
 
 8) Il n’est pas possible d’établir un flot (voir Art. 3.7) avec un compte du \$tôkEx. Seuls les transferts sont permis entre un compte du \$tôkEx et un autre compte du système des tôks.
 
-## **La propriété**
+### La propriété
 
 Le système des tôks reconnaît la notion de propriété individuelle (propriété d’un membre) et la notion de propriété collective (propriété d’un comité sous la responsabilité directe de membres de la collectivité).
 
@@ -459,7 +430,7 @@ Le système des tôks reconnaît la notion de propriété individuelle (proprié
 
 [^2]:  Une monnaie conventionnelle
 
-[image1]: figures/reglements-logo.png
+[image1]: figures/smoothop_logo_wave_largetext_fr_transparent.svg
 
 [image2]: figures/reglements-symbole-tok.png
 
