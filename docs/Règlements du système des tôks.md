@@ -26,7 +26,7 @@ Le système des tôks est fondé sur le principe que chaque umain¹ reçoit un f
 
 Le système des tôks est un système informatique qui passe le contrôle qualité ABCDE:
 
-#### 1.1.1 Accessible
+#### 1.2.1 Accessible
 
 Le système des tôks est ouvert à ce que tous les umains soit utilisateurs, et les personnes l’utilisent parce que son utilisation est agréable. Par contre, le développement et sa maintenance sont exclusivement la responsabilité des membres de Smoothop.
 
@@ -36,13 +36,13 @@ Il n’y a pas de revenu universel si on n’y a pas accès. De ce fait, le syst
 
 Transparent, historique accessible, open source.
 
-#### 1.1.2 Bénéfique
+#### 1.2.2 Bénéfique
 
 Le progrès doit être moral, où alors on fait fausse route. \-Gabrielle Roy
 
 Le système des tôks me permet de faire des échanges consentants qui soit à la fois bénéfique à moi-même et aux autres personnes impliquées dans l’échange. Comme un partage plaisant. Le système des tôks ne doit pas faire chier. Sauf lorsqu’il vend (en tôks) des laxatifs.
 
-#### 1.1.3 Cohérent
+#### 1.2.3 Cohérent
 
 Le système des tôks est accessible et c’est un système informatique (Art. 0.0 et Art. 0.1), alors on peut en conclure qu’il doit être open source, c’est-à-dire qu’il doit être publié publiquement. Dans un langue mathématique rigoureuse.
 
@@ -54,33 +54,21 @@ License CC by 4\.
 
 Il doit être transparent et ouvert à la critique en général. Passe un contrôle de qualité régulé et transparent. Qui se tient logiquement. Scientifiquement rigoureux. 
 
-#### 1.1.4 Démocratique
+Un système économique est une construction de l’esprit humain. Pour que cette construction soit durable elle doit être cohérente (sans incohérence). Le système des tôks doit dire ce qu'il fait et faire ce qu’il dit.
+
+#### 1.2.4 Démocratique
 
 On choisit des règles de vie collectives que l’on vote avec le principe 1 umain \= 1 vote.
 
  et on se les enseigne les uns les autres.
 
-#### 1.1.5 Équitable
-
-Dans ses règlements, le système des tôks doit traiter tous les umains équitablement.
-
-### 1.2 Les qualités ABCDE du système des tôks
-
-**1.2.1 Accessible**
-
-**1.2.2 Bénéfique** 
-
-**1.2.3 Cohérent**
-
-Un système économique est une construction de l’esprit humain. Pour que cette construction soit durable elle doit être cohérente (sans incohérence). Le système des tôks doit dire ce qu'il fait et faire ce qu’il dit.
-
-**1.2.4 Démocratique**
-
 L’utilisation d’un système économique réponse sur la confiance. Transparence. 
 
 En particulier il respecte le principe de 1 humain \= 1 vote. Idée de contrat social, universel. On se reconnaît des devoirs tant qu’ils engendrent des droits qui en valent la peine.
 
-**1.2.5 Équitable**
+#### 1.2.5 Équitable
+
+Dans ses règlements, le système des tôks doit traiter tous les umains équitablement.
 
 Le système doit passivement tendre à réduire les inégalités.
 
@@ -129,6 +117,8 @@ Le tôk
 Comme un litre correspond Le tôk est l’unité de monnaie dans le système des tôks. Un tôk correspond à la quantité d’argent liquide qu’une personne reçoit de son revenu universel en 15 jours.
 
 La plus petite fraction d’intérêt pratique est le millitôk qui est égal à 0.001 tôk. Une valeur dénotée en tôks s’écrit avec 3 décimales. Ex: 12.345 tôks se prononce “douze tôks et trois cents quarante-cinq millitôks”.
+
+c = sqrt(-1) ?
 
 ### 1.3 Symbole de la monnaie
 
